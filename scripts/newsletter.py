@@ -21,34 +21,33 @@ import google.generativeai as genai
 # ─────────────────────────────────────────────
 
 RSS_FEEDS = {
-“Spiegel Online”:   “https://www.spiegel.de/schlagzeilen/tops/index.rss”,
-“FAZ”:              “https://www.faz.net/rss/aktuell/”,
-“Tagesschau”:       “https://www.tagesschau.de/xml/rss2/”,
-“Politico Europe”:  “https://www.politico.eu/feed/”,
-“Heise / c’t”:      “https://www.heise.de/rss/heise-top-atom.xml”,
+"Spiegel Online":   "https://www.spiegel.de/schlagzeilen/tops/index.rss",
+"FAZ":              "https://www.faz.net/rss/aktuell/",
+""Politico Europe”:  "https://www.politico.eu/feed/”,
+"Heise / c’t":      "https://www.heise.de/rss/heise-top-atom.xml",
 }
 
 CATEGORIES = {
-“🏛️ Innenpolitik”:        [“bundestag”, “regierung”, “koalition”, “merz”, “scholz”, “spd”, “cdu”, “csu”, “grüne”, “fdp”, “afd”, “wahl”, “bundesrat”, “minister”, “kanzler”],
-“🌍 Außenpolitik”:        [“ukraine”, “russland”, “usa”, “china”, “nato”, “eu”, “außenminister”, “diplomatie”, “krieg”, “konflikt”, “trump”, “biden”, “g7”, “g20”, “un”, “sanktionen”],
-“💰 Wirtschaft”:          [“wirtschaft”, “dax”, “aktie”, “inflation”, “ezb”, “bundesbank”, “rezession”, “wachstum”, “arbeitslos”, “unternehmen”, “konzern”, “export”, “import”, “haushalt”, “schulden”],
-“💻 Tech & KI”:           [“ki”, “ai”, “künstliche intelligenz”, “openai”, “google”, “microsoft”, “apple”, “meta”, “amazon”, “startup”, “software”, “hardware”, “chip”, “halbleiter”, “cyber”, “hacker”, “heise”, “tech”],
-“⚡ Energie & Klima”:     [“energie”, “strom”, “gas”, “öl”, “solar”, “wind”, “erneuerbar”, “co2”, “klima”, “klimawandel”, “temperatur”, “ipcc”, “atomkraft”, “kernkraft”, “wärmepumpe”],
-“🏥 Gesundheit”:          [“gesundheit”, “krankenhaus”, “arzt”, “medizin”, “impf”, “krankheit”, “virus”, “corona”, “rki”, “pharma”, “forschung”, “studie”, “therapie”, “pflege”],
-“🔬 Wissenschaft”:        [“wissenschaft”, “forschung”, “studie”, “weltraum”, “nasa”, “esa”, “physik”, “biologie”, “chemie”, “entdeckung”, “universum”, “mars”, “mond”],
-“⚖️ Recht & Justiz”:      [“gericht”, “urteil”, “klage”, “recht”, “gesetz”, “bgh”, “bverfg”, “staatsanwalt”, “strafrecht”, “prozess”, “verfahren”, “anwalt”],
-“🛡️ Sicherheit & Verteidigung”: [“bundeswehr”, “militär”, “verteidigung”, “rüstung”, “soldat”, “nato”, “drohne”, “rakete”, “sicherheit”, “geheimdienst”, “bnd”, “verfassungsschutz”],
-“📊 Finanzen & Märkte”:   [“börse”, “aktien”, “fonds”, “etf”, “anleihe”, “euro”, “dollar”, “zinsen”, “fed”, “ezb”, “krypto”, “bitcoin”, “investment”, “ipo”],
-“🌿 Umwelt & Natur”:      [“umwelt”, “natur”, “tier”, “artensterben”, “wald”, “ozean”, “meer”, “plastik”, “recycling”, “nachhaltigkeit”, “ozon”, “biodiversität”],
-“🏙️ Gesellschaft”:        [“gesellschaft”, “sozial”, “armut”, “bildung”, “schule”, “universität”, “familie”, “rente”, “migration”, “integration”, “flüchtling”],
-“🚗 Mobilität & Verkehr”: [“auto”, “bahn”, “flugzeug”, “verkehr”, “mobilität”, “elektroauto”, “tesla”, “volkswagen”, “bmw”, “mercedes”, “lufthansa”, “deutsche bahn”],
-“🏗️ Immobilien & Bauen”:  [“immobilien”, “wohnen”, “miete”, “bauen”, “wohnungsnot”, “eigenheim”, “grundstück”, “baukosten”],
-“🌐 Europa & EU”:         [“europa”, “eu”, “europäisch”, “brüssel”, “europaparlament”, “kommission”, “von der leyen”, “macron”, “draghi”, “euro”],
-“🗳️ Wahlen & Parteien”:   [“wahl”, “abstimmung”, “partei”, “kandidat”, “wahlkampf”, “umfrage”, “koalition”, “opposition”, “mandat”],
-“📱 Medien & Kultur”:     [“medien”, “zeitung”, “fernsehen”, “film”, “musik”, “kunst”, “kultur”, “theater”, “buch”, “streaming”, “netflix”, “social media”],
-“⚽ Sport”:               [“sport”, “fußball”, “bundesliga”, “champions league”, “olympia”, “formel 1”, “tennis”, “basketball”, “handball”],
-“🌎 International”:       [“international”, “welt”, “global”, “ausland”, “nahost”, “israel”, “palästina”, “iran”, “nordkorea”, “asien”, “afrika”, “lateinamerika”],
-“🔥 Sonstiges”:           [],  # Fallback
+"🏛️ Innenpolitik”:        ["bundestag”, "regierung”, "koalition”, "merz”, "scholz”, "spd”, "cdu”, "csu”, "grüne”, "fdp”, "afd”, "wahl”, "bundesrat”, "minister”, "kanzler”],
+"🌍 Außenpolitik”:        ["ukraine”, "russland”, "usa”, "china”, "nato”, "eu”, "außenminister”, "diplomatie”, "krieg”, "konflikt”, "trump”, "biden”, "g7”, "g20”, "un”, "sanktionen”],
+"💰 Wirtschaft”:          ["wirtschaft”, "dax”, "aktie”, "inflation”, "ezb”, "bundesbank”, "rezession”, "wachstum”, "arbeitslos”, "unternehmen”, "konzern”, "export”, "import”, "haushalt”, "schulden”],
+"💻 Tech & KI”:           ["ki”, "ai”, "künstliche intelligenz”, "openai”, "google”, "microsoft”, "apple”, "meta”, "amazon”, "startup”, "software”, "hardware”, "chip”, "halbleiter”, "cyber”, "hacker”, "heise”, "tech”],
+"⚡ Energie & Klima”:     ["energie”, "strom”, "gas”, "öl”, "solar”, "wind”, "erneuerbar”, "co2”, "klima”, "klimawandel”, "temperatur”, "ipcc”, "atomkraft”, "kernkraft”, "wärmepumpe”],
+"🏥 Gesundheit”:          ["gesundheit”, "krankenhaus”, "arzt”, "medizin”, "impf”, "krankheit”, "virus”, "corona”, "rki”, "pharma”, "forschung”, "studie”, "therapie”, "pflege”],
+"🔬 Wissenschaft”:        ["wissenschaft”, "forschung”, "studie”, "weltraum”, "nasa”, "esa”, "physik”, "biologie”, "chemie”, "entdeckung”, "universum”, "mars”, "mond”],
+"⚖️ Recht & Justiz”:      ["gericht”, "urteil”, "klage”, "recht”, "gesetz”, "bgh”, "bverfg”, "staatsanwalt”, "strafrecht”, "prozess”, "verfahren”, "anwalt”],
+"🛡️ Sicherheit & Verteidigung”: ["bundeswehr”, "militär”, "verteidigung”, "rüstung”, "soldat”, "nato”, "drohne”, "rakete”, "sicherheit”, "geheimdienst”, "bnd”, "verfassungsschutz”],
+"📊 Finanzen & Märkte”:   ["börse”, "aktien”, "fonds”, "etf”, "anleihe”, "euro”, "dollar”, "zinsen”, "fed”, "ezb”, "krypto”, "bitcoin”, "investment”, "ipo”],
+"🌿 Umwelt & Natur”:      ["umwelt”, "natur”, "tier”, "artensterben”, "wald”, "ozean”, "meer”, "plastik”, "recycling”, "nachhaltigkeit”, "ozon”, "biodiversität”],
+"🏙️ Gesellschaft”:        ["gesellschaft”, "sozial”, "armut”, "bildung”, "schule”, "universität”, "familie”, "rente”, "migration”, "integration”, "flüchtling”],
+"🚗 Mobilität & Verkehr”: ["auto”, "bahn”, "flugzeug”, "verkehr”, "mobilität”, "elektroauto”, "tesla”, "volkswagen”, "bmw”, "mercedes”, "lufthansa”, "deutsche bahn”],
+"🏗️ Immobilien & Bauen”:  ["immobilien”, "wohnen”, "miete”, "bauen”, "wohnungsnot”, "eigenheim”, "grundstück”, "baukosten”],
+"🌐 Europa & EU”:         ["europa”, "eu”, "europäisch”, "brüssel”, "europaparlament”, "kommission”, "von der leyen”, "macron”, "draghi”, "euro”],
+"🗳️ Wahlen & Parteien”:   ["wahl”, "abstimmung”, "partei”, "kandidat”, "wahlkampf”, "umfrage”, "koalition”, "opposition”, "mandat”],
+"📱 Medien & Kultur”:     ["medien”, "zeitung”, "fernsehen”, "film”, "musik”, "kunst”, "kultur”, "theater”, "buch”, "streaming”, "netflix”, "social media”],
+"⚽ Sport”:               ["sport”, "fußball”, "bundesliga”, "champions league”, "olympia”, "formel 1”, "tennis”, "basketball”, "handball”],
+"🌎 International”:       ["international”, "welt”, "global”, "ausland”, "nahost”, "israel”, "palästina”, "iran”, "nordkorea”, "asien”, "afrika”, "lateinamerika”],
+"🔥 Sonstiges”:           [],  # Fallback
 }
 
 MAX_ARTICLES_PER_FEED = 15
@@ -61,7 +60,7 @@ MAX_ARTICLES_FOR_SUMMARY = 60
 # ─────────────────────────────────────────────
 
 def fetch_feeds() -> list[dict]:
-“”“Alle RSS-Feeds holen und Artikel sammeln.”””
+"”"Alle RSS-Feeds holen und Artikel sammeln.”””
 articles = []
 cutoff = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0)
 
@@ -100,8 +99,8 @@ return articles[:MAX_ARTICLES_FOR_SUMMARY]
 # ─────────────────────────────────────────────
 
 def categorize_article(article: dict) -> str:
-“”“Artikel einer Kategorie zuordnen anhand von Keywords.”””
-text = (article[“title”] + “ “ + article[“summary”]).lower()
+"”"Artikel einer Kategorie zuordnen anhand von Keywords.”””
+text = (article["title”] + " " + article["summary”]).lower()
 
 ```
 # Heise-Artikel immer Tech
@@ -126,7 +125,7 @@ return "🔥 Sonstiges"
 ```
 
 def group_by_category(articles: list[dict]) -> dict[str, list[dict]]:
-“”“Artikel nach Kategorie gruppieren.”””
+"”"Artikel nach Kategorie gruppieren.”””
 grouped = {}
 for article in articles:
 cat = categorize_article(article)
@@ -145,10 +144,10 @@ return sorted_grouped
 # ─────────────────────────────────────────────
 
 def summarize_with_gemini(grouped: dict[str, list[dict]]) -> dict[str, list[str]]:
-“”“Gemini fasst jede Kategorie in Stichsätzen zusammen.”””
-api_key = os.environ.get(“GEMINI_API_KEY”)
+"”"Gemini fasst jede Kategorie in Stichsätzen zusammen.”””
+api_key = os.environ.get("GEMINI_API_KEY”)
 if not api_key:
-raise ValueError(“GEMINI_API_KEY nicht gesetzt!”)
+raise ValueError("GEMINI_API_KEY nicht gesetzt!”)
 
 ```
 genai.configure(api_key=api_key)
@@ -209,9 +208,9 @@ return summaries
 # ─────────────────────────────────────────────
 
 def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) -> str:
-“”“Schönen HTML-Newsletter bauen.”””
+"”"Schönen HTML-Newsletter bauen.”””
 now = datetime.now()
-daytime = “Morgen” if now.hour < 13 else “Abend”
+daytime = "Morgen” if now.hour < 13 else "Abend”
 date_str = now.strftime(”%A, %d. %B %Y”)
 
 ```
@@ -257,7 +256,7 @@ for category, bullets in summaries.items():
     </div>
 ```
 
-“””
+"””
 
 ```
 total_articles = sum(len(v) for v in grouped.values())
@@ -372,7 +371,7 @@ padding-left: 16px;
 position: relative;
 }}
 .bullets li::before {{
-content: “›”;
+content: "›”;
 position: absolute;
 left: 0;
 color: #c9a84c;
@@ -480,10 +479,10 @@ return html
 # ─────────────────────────────────────────────
 
 def send_email(html_content: str):
-“”“Newsletter per Gmail SMTP versenden.”””
-sender = os.environ.get(“GMAIL_ADDRESS”)
-password = os.environ.get(“GMAIL_APP_PASSWORD”)
-recipient = os.environ.get(“RECIPIENT_EMAIL”, sender)
+"”"Newsletter per Gmail SMTP versenden.”””
+sender = os.environ.get("GMAIL_ADDRESS”)
+password = os.environ.get("GMAIL_APP_PASSWORD”)
+recipient = os.environ.get("RECIPIENT_EMAIL”, sender)
 
 ```
 if not sender or not password:
@@ -543,5 +542,5 @@ send_email(html)
 print(f"\n✅ Fertig! Newsletter verschickt.\n")
 ```
 
-if **name** == “**main**”:
+if **name** == "**main**”:
 main()
