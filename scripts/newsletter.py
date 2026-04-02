@@ -11,7 +11,7 @@ import feedparser
 from datetime import datetime, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import google.generativeai as genai
+from groq import Groq
 
 # ─────────────────────────────────────────────
 # KONFIGURATION
@@ -123,17 +123,16 @@ def group_by_category(articles: list[dict]) -> dict[str, list[dict]]:
     return sorted_grouped
 
 # ─────────────────────────────────────────────
-# KI-ZUSAMMENFASSUNG MIT GEMINI
+# KI-ZUSAMMENFASSUNG MIT GROQ
 # ─────────────────────────────────────────────
 
 def summarize_with_gemini(grouped: dict[str, list[dict]]) -> dict[str, list[str]]:
-    """Gemini fasst jede Kategorie in Stichsätzen zusammen."""
-    api_key = os.environ.get("GEMINI_API_KEY")
+    """Groq fasst jede Kategorie in Stichsätzen zusammen."""
+    api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
-        raise ValueError("GEMINI_API_KEY nicht gesetzt!")
+        raise ValueError("GROQ_API_KEY nicht gesetzt!")
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    client = Groq(api_key=api_key)
 
     summaries = {}
 
@@ -162,17 +161,23 @@ Nachrichten:
 Stichsätze:"""
 
         try:
-            response = model.generate_content(prompt)
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=400,
+                temperature=0.3,
+            )
+            text = response.choices[0].message.content.strip()
             bullet_points = [
                 line.strip()
-                for line in response.text.strip().split("\n")
+                for line in text.split("\n")
                 if line.strip() and (line.strip().startswith("•") or line.strip().startswith("-") or line.strip().startswith("*"))
             ]
             bullet_points = ["• " + bp.lstrip("•-* ").strip() for bp in bullet_points]
             summaries[category] = bullet_points[:5]
             print(f"✓ Zusammenfassung: {category} ({len(bullet_points)} Punkte)")
         except Exception as e:
-            print(f"✗ Gemini-Fehler bei {category}: {e}")
+            print(f"✗ Groq-Fehler bei {category}: {e}")
             summaries[category] = [f"• Fehler beim Laden der Zusammenfassung: {e}"]
 
     return summaries
@@ -402,7 +407,7 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
   <div class="stats-bar">
     <span>📡 {len(RSS_FEEDS)} Quellen ausgewertet</span>
     <span>📰 {total_articles} Artikel analysiert</span>
-    <span>🤖 Zusammengefasst mit Gemini AI</span>
+    <span>🤖 Zusammengefasst mit Groq AI</span>
   </div>
 
   <div class="content">
@@ -412,7 +417,7 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
   <div class="footer">
     Automatisch erstellt · {now.strftime("%d.%m.%Y %H:%M")} Uhr<br>
     Quellen: Spiegel Online, FAZ, Tagesschau, Politico Europe, Heise/c't<br>
-    <a href="https://github.com">Powered by GitHub Actions + Gemini AI</a>
+    <a href="https://github.com">Powered by GitHub Actions + Groq AI</a>
   </div>
 
 </div>
@@ -472,7 +477,7 @@ def main():
         print(f"     {cat}: {len(arts)} Artikel")
     print()
 
-    print("3/4 · KI-Zusammenfassung mit Gemini...")
+    print("3/4 · KI-Zusammenfassung mit Groq...")
     summaries = summarize_with_gemini(grouped)
     print()
 
