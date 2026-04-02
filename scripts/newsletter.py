@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Nils automatisierter KI-Newsletter 
+Automatischer KI-Newsletter
+Holt RSS-Feeds, kategorisiert mit Gemini, verschickt per E-Mail.
 """
 
 import os
@@ -163,7 +164,7 @@ def summarize_with_gemini(grouped: dict[str, list[dict]]) -> dict[str, list[str]
             for a in articles[:8]
         ])
 
-        prompt = f"""Du bist ein präziser Nachrichtenredakteur in einem deutschen TOP-Blatt. Fasse die folgenden Nachrichten der Kategorie "{category}" in genau 2 knappen deutschen Stichsätzen zusammen.
+        prompt = f"""Du bist ein präziser Nachrichtenredakteur eines TOP-Blatts in Deutschland. Fasse die folgenden Nachrichten der Kategorie "{category}" in genau 2 knappen deutschen Stichsätzen zusammen.
 
 Regeln:
 - Genau 2 Stichsätze, nicht mehr
@@ -205,7 +206,7 @@ Stichsätze:"""
 # ─────────────────────────────────────────────
 
 def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) -> str:
-    """Schönen HTML-Newsletter bauen – seriös, mobile-first."""
+    """HTML-Newsletter mit vollständig inline-gestyltem HTML (forward-safe)."""
     now = datetime.now()
     daytime = "Morgen" if now.hour < 13 else "Abend"
     date_str = now.strftime("%A, %d. %B %Y")
@@ -224,229 +225,137 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
     for en, de in {**months, **days}.items():
         date_str = date_str.replace(en, de)
 
-    category_blocks = ""
-    for category, bullets in summaries.items():
-        articles = grouped.get(category, [])
+    # Inline-Style-Konstanten
+    FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+    COLOR_NAVY   = "#1b2a3b"
+    COLOR_NAVY2  = "#2c3e50"
+    COLOR_BLUE   = "#5a7fa0"
+    COLOR_LIGHT  = "#a0b4c4"
+    COLOR_MUTED  = "#7a9bb5"
+    COLOR_BG     = "#f8f9fa"
+    COLOR_BORDER = "#e8e8e8"
+    COLOR_TEXT   = "#1c1c1e"
+    COLOR_TEXT2  = "#3a3a3c"
 
-        # Artikel-Links – voller Titel, kein Abschneiden, jeder Link einzeln klickbar
+    category_blocks = ""
+    items = list(summaries.items())
+    for idx, (category, bullets) in enumerate(items):
+        articles = grouped.get(category, [])
+        is_last = (idx == len(items) - 1)
+        border_bottom = "none" if is_last else f"1px solid {COLOR_BORDER}"
+
+        # Bullet-Punkte – mit Dash als Prefix-Zeichen (inline, kein ::before)
+        bullets_html = ""
+        for b in bullets:
+            text = b.lstrip("• ").strip()
+            bullets_html += (
+                f'<tr>'
+                f'<td style="font-family:{FONT};font-size:14px;line-height:1.6;'
+                f'color:{COLOR_BLUE};font-weight:600;padding:3px 8px 3px 0;'
+                f'vertical-align:top;white-space:nowrap;">–</td>'
+                f'<td style="font-family:{FONT};font-size:14px;line-height:1.6;'
+                f'color:{COLOR_TEXT2};padding:3px 0;">{text}</td>'
+                f'</tr>\n'
+            )
+
+        # Artikel-Links
         links_html = ""
         seen_links = set()
         for a in articles[:5]:
             if a["link"] and a["link"] not in seen_links:
                 seen_links.add(a["link"])
                 links_html += (
-                    f'<a href="{a["link"]}" class="article-link">'
-                    f'<span class="article-source">{a["source"]}</span>'
-                    f'<span class="article-title">{a["title"]}</span>'
+                    f'<a href="{a["link"]}" style="display:block;text-decoration:none;'
+                    f'padding:9px 12px;margin-bottom:4px;background:{COLOR_BG};'
+                    f'border-left:3px solid #c8d8e8;border-radius:2px;">'
+                    f'<span style="display:block;font-family:{FONT};font-size:10px;'
+                    f'font-weight:600;text-transform:uppercase;letter-spacing:0.8px;'
+                    f'color:{COLOR_BLUE};margin-bottom:3px;">{a["source"]}</span>'
+                    f'<span style="display:block;font-family:{FONT};font-size:13px;'
+                    f'color:{COLOR_TEXT};line-height:1.45;word-break:break-word;">'
+                    f'{a["title"]}</span>'
                     f'</a>\n'
                 )
 
-        bullets_html = "".join(
-            f'<li>{b.lstrip("• ").strip()}</li>\n' for b in bullets
+        category_blocks += (
+            f'<tr><td style="padding:24px 32px 20px;border-bottom:{border_bottom};">\n'
+            f'  <table width="100%" cellpadding="0" cellspacing="0" border="0">\n'
+            f'    <tr><td style="padding-bottom:10px;border-bottom:2px solid {COLOR_NAVY2};">\n'
+            f'      <span style="font-family:{FONT};font-size:15px;font-weight:700;'
+            f'color:{COLOR_NAVY};">{category}</span>\n'
+            f'    </td></tr>\n'
+            f'    <tr><td style="padding-top:10px;padding-bottom:14px;">\n'
+            f'      <table cellpadding="0" cellspacing="0" border="0">{bullets_html}</table>\n'
+            f'    </td></tr>\n'
+            f'    <tr><td>{links_html}</td></tr>\n'
+            f'  </table>\n'
+            f'</td></tr>\n'
         )
 
-        category_blocks += f"""
-  <div class="cat-block">
-    <h2 class="cat-title">{category}</h2>
-    <ul class="summary-list">{bullets_html}</ul>
-    <div class="articles">{links_html}</div>
-  </div>
-"""
-
     total_articles = sum(len(v) for v in grouped.values())
+    FONT_ESC = FONT  # alias for use in f-strings below
 
-    css = """
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html = (
+        '<!DOCTYPE html>\n'
+        '<html lang="de">\n'
+        '<head>\n'
+        '  <meta charset="UTF-8">\n'
+        '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+        '  <meta name="color-scheme" content="light">\n'
+        f'  <title>Tagesbrief &ndash; {date_str}</title>\n'
+        '</head>\n'
+        f'<body style="margin:0;padding:0;background:#f0f2f4;font-family:{FONT_ESC};'
+        f'-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;">\n'
 
-    body {
-        background: #f4f4f4;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-        color: #1c1c1e;
-        line-height: 1.6;
-        -webkit-text-size-adjust: 100%;
-    }
+        # Outer wrapper
+        f'<table width="100%" cellpadding="0" cellspacing="0" border="0" '
+        f'style="background:#f0f2f4;">\n<tr><td align="center" style="padding:20px 8px;">\n'
 
-    .wrapper {
-        max-width: 640px;
-        margin: 0 auto;
-        background: #ffffff;
-    }
+        # Inner card
+        f'<table width="100%" cellpadding="0" cellspacing="0" border="0" '
+        f'style="max-width:620px;background:#ffffff;border-radius:4px;'
+        f'border:1px solid #dde3e8;">\n'
 
-    /* HEADER */
-    .header {
-        background: #1b2a3b;
-        padding: 36px 32px 28px;
-        text-align: center;
-    }
-    .header-eyebrow {
-        font-size: 10px;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: #7a9bb5;
-        margin-bottom: 10px;
-    }
-    .header-title {
-        font-size: 30px;
-        font-weight: 700;
-        color: #ffffff;
-        letter-spacing: -0.5px;
-        margin-bottom: 6px;
-    }
-    .header-date {
-        font-size: 13px;
-        color: #a0b4c4;
-    }
+        # HEADER
+        f'<tr><td style="background:{COLOR_NAVY};padding:32px 32px 26px;text-align:center;'
+        f'border-radius:4px 4px 0 0;">\n'
+        f'  <div style="font-family:{FONT_ESC};font-size:10px;letter-spacing:2.5px;'
+        f'text-transform:uppercase;color:{COLOR_MUTED};margin-bottom:10px;">'
+        f'Ihr täglicher Nachrichtenüberblick</div>\n'
+        f'  <div style="font-family:{FONT_ESC};font-size:28px;font-weight:700;'
+        f'color:#ffffff;letter-spacing:-0.5px;margin-bottom:8px;">Tagesbrief</div>\n'
+        f'  <div style="font-family:{FONT_ESC};font-size:13px;color:{COLOR_LIGHT};">'
+        f'{date_str} &middot; {daytime}s-Ausgabe</div>\n'
+        f'</td></tr>\n'
 
-    /* META BAR */
-    .meta-bar {
-        background: #2c3e50;
-        padding: 8px 32px;
-        text-align: center;
-        font-size: 11px;
-        color: #7a9bb5;
-        letter-spacing: 0.3px;
-    }
+        # META BAR
+        f'<tr><td style="background:{COLOR_NAVY2};padding:8px 32px;text-align:center;'
+        f'font-family:{FONT_ESC};font-size:11px;color:{COLOR_MUTED};">\n'
+        f'  {len(RSS_FEEDS)}&nbsp;Quellen &nbsp;&middot;&nbsp; '
+        f'{total_articles}&nbsp;Artikel &nbsp;&middot;&nbsp; KI-Zusammenfassung\n'
+        f'</td></tr>\n'
 
-    /* CONTENT */
-    .content {
-        padding: 0 24px 24px;
-    }
+        # CATEGORY BLOCKS
+        + category_blocks +
 
-    /* CATEGORY BLOCK */
-    .cat-block {
-        padding: 24px 0 20px;
-        border-bottom: 1px solid #e8e8e8;
-    }
-    .cat-block:last-child {
-        border-bottom: none;
-    }
-    .cat-title {
-        font-size: 16px;
-        font-weight: 700;
-        color: #1b2a3b;
-        margin-bottom: 10px;
-        padding-bottom: 6px;
-        border-bottom: 2px solid #2c3e50;
-        display: inline-block;
-    }
+        # FOOTER
+        f'<tr><td style="background:{COLOR_NAVY};padding:20px 32px;text-align:center;'
+        f'border-radius:0 0 4px 4px;">\n'
+        f'  <p style="font-family:{FONT_ESC};font-size:11px;color:{COLOR_MUTED};'
+        f'line-height:1.8;margin:0;">\n'
+        f'    Automatisch erstellt am {now.strftime("%d.%m.%Y")} '
+        f'um {now.strftime("%H:%M")} Uhr<br>\n'
+        f'    Quellen: Spiegel Online &middot; FAZ &middot; Politico Europe<br>\n'
+        f'    <a href="https://github.com" style="color:{COLOR_LIGHT};text-decoration:none;">'
+        f'Powered by GitHub Actions</a>\n'
+        f'  </p>\n'
+        f'</td></tr>\n'
 
-    /* SUMMARY BULLETS */
-    .summary-list {
-        list-style: none;
-        margin-bottom: 14px;
-    }
-    .summary-list li {
-        font-size: 14px;
-        line-height: 1.6;
-        color: #3a3a3c;
-        padding: 3px 0 3px 14px;
-        position: relative;
-    }
-    .summary-list li::before {
-        content: "–";
-        position: absolute;
-        left: 0;
-        color: #5a7fa0;
-        font-weight: 600;
-    }
-
-    /* ARTICLE LINKS */
-    .articles {
-        display: block;
-    }
-    .article-link {
-        display: block;
-        text-decoration: none;
-        padding: 8px 12px;
-        margin-bottom: 4px;
-        background: #f8f9fa;
-        border-left: 3px solid #d0dce8;
-        border-radius: 2px;
-        transition: border-color 0.15s, background 0.15s;
-    }
-    .article-link:hover {
-        background: #eef3f8;
-        border-left-color: #2c3e50;
-    }
-    .article-source {
-        display: block;
-        font-size: 10px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        color: #5a7fa0;
-        margin-bottom: 2px;
-    }
-    .article-title {
-        display: block;
-        font-size: 13px;
-        color: #1c1c1e;
-        line-height: 1.4;
-        word-break: break-word;
-    }
-
-    /* FOOTER */
-    .footer {
-        background: #1b2a3b;
-        padding: 20px 32px;
-        text-align: center;
-        font-size: 11px;
-        color: #7a9bb5;
-        line-height: 1.8;
-    }
-    .footer a {
-        color: #a0b4c4;
-        text-decoration: none;
-    }
-
-    /* MOBILE */
-    @media (max-width: 480px) {
-        .header { padding: 28px 20px 22px; }
-        .header-title { font-size: 24px; }
-        .meta-bar { padding: 8px 16px; }
-        .content { padding: 0 16px 20px; }
-        .footer { padding: 18px 16px; }
-        .article-link { padding: 10px 12px; }
-        .article-title { font-size: 14px; }
-        .summary-list li { font-size: 14px; }
-    }
-    """
-
-    html = f"""<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
-  <title>Tagesbrief – {date_str}</title>
-  <style>{css}</style>
-</head>
-<body>
-<div class="wrapper">
-
-  <div class="header">
-    <div class="header-eyebrow">Ihr täglicher Nachrichtenüberblick</div>
-    <div class="header-title">Tagesbrief</div>
-    <div class="header-date">{date_str} &middot; {daytime}s-Ausgabe</div>
-  </div>
-
-  <div class="meta-bar">
-    {len(RSS_FEEDS)} Quellen &nbsp;·&nbsp; {total_articles} Artikel &nbsp;·&nbsp; Zusammengefasst mit KI
-  </div>
-
-  <div class="content">
-    {category_blocks}
-  </div>
-
-  <div class="footer">
-    Automatisch erstellt am {now.strftime("%d.%m.%Y")} um {now.strftime("%H:%M")} Uhr<br>
-    Quellen: Spiegel Online · FAZ · Politico Europe<br>
-    <a href="https://github.com">Powered by GitHub Actions</a>
-  </div>
-
-</div>
-</body>
-</html>"""
+        '</table>\n'   # inner card
+        '</td></tr>\n'
+        '</table>\n'   # outer wrapper
+        '</body>\n</html>'
+    )
 
     return html
 
