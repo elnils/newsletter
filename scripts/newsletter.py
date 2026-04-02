@@ -321,9 +321,9 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
         f'border-radius:4px 4px 0 0;">\n'
         f'  <div style="font-family:{FONT_ESC};font-size:10px;letter-spacing:2.5px;'
         f'text-transform:uppercase;color:{COLOR_MUTED};margin-bottom:10px;">'
-        f'Ihr täglicher Nachrichtenüberblick</div>\n'
+        f'Dein täglicher Nachrichtenüberblick</div>\n'
         f'  <div style="font-family:{FONT_ESC};font-size:28px;font-weight:700;'
-        f'color:#ffffff;letter-spacing:-0.5px;margin-bottom:8px;">Tagesbrief</div>\n'
+        f'color:#ffffff;letter-spacing:-0.5px;margin-bottom:8px;">Tageslage</div>\n'
         f'  <div style="font-family:{FONT_ESC};font-size:13px;color:{COLOR_LIGHT};">'
         f'{date_str} &middot; {daytime}s-Ausgabe</div>\n'
         f'</td></tr>\n'
@@ -346,8 +346,8 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
         f'    Automatisch erstellt am {now.strftime("%d.%m.%Y")} '
         f'um {now.strftime("%H:%M")} Uhr<br>\n'
         f'    Quellen: Spiegel Online &middot; FAZ &middot; Politico Europe<br>\n'
-        f'    <a href="https://github.com" style="color:{COLOR_LIGHT};text-decoration:none;">'
-        f'Powered by GitHub Actions</a>\n'
+        f'    <a href="https://www.google.de" style="color:{COLOR_LIGHT};text-decoration:none;">'
+        f'Powered by Nils</a>\n'
         f'  </p>\n'
         f'</td></tr>\n'
 
@@ -374,14 +374,14 @@ def send_email(html_content: str):
 
     now = datetime.now()
     daytime = "Morgen" if now.hour < 13 else "Abend"
-    subject = f"🗞️ Tagesbrief – {now.strftime('%d.%m.%Y')} ({daytime}s-Ausgabe)"
+    subject = f"🗞️ Tageslage – {now.strftime('%d.%m.%Y')} ({daytime}s-Ausgabe)"
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
-    msg["From"] = f"Tagesbrief <{sender}>"
+    msg["From"] = f"Tageslage <{sender}>"
     msg["To"] = recipient
 
-    plain = f"Tagesbrief – {now.strftime('%d.%m.%Y')}\nBitte HTML-Ansicht aktivieren."
+    plain = f"Tageslage – {now.strftime('%d.%m.%Y')}\nBitte HTML-Ansicht aktivieren."
     msg.attach(MIMEText(plain, "plain", "utf-8"))
     msg.attach(MIMEText(html_content, "html", "utf-8"))
 
@@ -397,7 +397,7 @@ def send_email(html_content: str):
 
 def main():
     print(f"\n{'='*50}")
-    print(f"  TAGESBRIEF – {datetime.now().strftime('%d.%m.%Y %H:%M')}")
+    print(f"  TAGESLAGE – {datetime.now().strftime('%d.%m.%Y %H:%M')}")
     print(f"{'='*50}\n")
 
     print("1/4 · RSS-Feeds laden...")
