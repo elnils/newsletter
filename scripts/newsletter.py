@@ -133,7 +133,7 @@ def summarize_with_gemini(grouped: dict[str, list[dict]]) -> dict[str, list[str]
         raise ValueError("GEMINI_API_KEY nicht gesetzt!")
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.0-flash")
 
     summaries = {}
 
