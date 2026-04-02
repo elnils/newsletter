@@ -1,8 +1,9 @@
+
 #!/usr/bin/env python3
-“””
+"""
 Automatischer KI-Newsletter
 Holt RSS-Feeds, kategorisiert mit Gemini, verschickt per E-Mail.
-“””
+"""
 
 import os
 import json
