@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Automatischer KI-Newsletter
-Holt RSS-Feeds, kategorisiert mit Gemini, verschickt per E-Mail.
+Nils automatisierter KI-Newsletter 
 """
 
 import os
@@ -53,10 +52,19 @@ MAX_ARTICLES_FOR_SUMMARY = 60
 # RSS FEEDS HOLEN
 # ─────────────────────────────────────────────
 
+def _normalize_title(title: str) -> str:
+    """Titel normalisieren für Duplikat-Erkennung."""
+    import re
+    t = title.lower().strip()
+    t = re.sub(r'[^\w\s]', '', t)
+    t = re.sub(r'\s+', ' ', t)
+    return t
+
+
 def fetch_feeds() -> list[dict]:
-    """Alle RSS-Feeds holen und Artikel sammeln."""
+    """Alle RSS-Feeds holen, Duplikate entfernen und Artikel sammeln."""
     articles = []
-    cutoff = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0)
+    seen_titles = set()
 
     for source, url in RSS_FEEDS.items():
         try:
@@ -69,14 +77,23 @@ def fetch_feeds() -> list[dict]:
                 summary = entry.get("summary", entry.get("description", "")).strip()
                 link = entry.get("link", "")
                 summary = summary[:400] if summary else ""
-                if title:
-                    articles.append({
-                        "source": source,
-                        "title": title,
-                        "summary": summary,
-                        "link": link,
-                    })
-                    count += 1
+
+                if not title:
+                    continue
+
+                # Duplikat-Check über normalisierten Titel
+                norm = _normalize_title(title)
+                if norm in seen_titles:
+                    continue
+                seen_titles.add(norm)
+
+                articles.append({
+                    "source": source,
+                    "title": title,
+                    "summary": summary,
+                    "link": link,
+                })
+                count += 1
             print(f"✓ {source}: {count} Artikel geladen")
         except Exception as e:
             print(f"✗ Fehler bei {source}: {e}")
@@ -146,13 +163,14 @@ def summarize_with_gemini(grouped: dict[str, list[dict]]) -> dict[str, list[str]
             for a in articles[:8]
         ])
 
-        prompt = f"""Du bist ein präziser Nachrichtenredakteur. Fasse die folgenden Nachrichten der Kategorie "{category}" in 3-5 knappen deutschen Stichsätzen zusammen.
+        prompt = f"""Du bist ein präziser Nachrichtenredakteur in einem deutschen TOP-Blatt. Fasse die folgenden Nachrichten der Kategorie "{category}" in genau 2 knappen deutschen Stichsätzen zusammen.
 
 Regeln:
+- Genau 2 Stichsätze, nicht mehr
 - Jeder Stichsatz beginnt mit einem Bullet-Punkt (•)
-- Maximal 2 Zeilen pro Stichsatz
+- Maximal 1 Zeile pro Stichsatz
 - Sachlich, informativ, keine Wertung
-- Wichtigste Information zuerst
+- Die wichtigsten 2 Meldungen herausgreifen
 - Keine Einleitung, keine Schlussformel
 
 Nachrichten:
@@ -164,7 +182,7 @@ Stichsätze:"""
             response = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
-                max_tokens=400,
+                max_tokens=200,
                 temperature=0.3,
             )
             text = response.choices[0].message.content.strip()
@@ -174,8 +192,8 @@ Stichsätze:"""
                 if line.strip() and (line.strip().startswith("•") or line.strip().startswith("-") or line.strip().startswith("*"))
             ]
             bullet_points = ["• " + bp.lstrip("•-* ").strip() for bp in bullet_points]
-            summaries[category] = bullet_points[:5]
-            print(f"✓ Zusammenfassung: {category} ({len(bullet_points)} Punkte)")
+            summaries[category] = bullet_points[:2]
+            print(f"✓ Zusammenfassung: {category} ({len(summaries[category])} Punkte)")
         except Exception as e:
             print(f"✗ Groq-Fehler bei {category}: {e}")
             summaries[category] = [f"• Fehler beim Laden der Zusammenfassung: {e}"]
@@ -187,7 +205,7 @@ Stichsätze:"""
 # ─────────────────────────────────────────────
 
 def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) -> str:
-    """Schönen HTML-Newsletter bauen."""
+    """Schönen HTML-Newsletter bauen – seriös, mobile-first."""
     now = datetime.now()
     daytime = "Morgen" if now.hour < 13 else "Abend"
     date_str = now.strftime("%A, %d. %B %Y")
@@ -209,205 +227,211 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
     category_blocks = ""
     for category, bullets in summaries.items():
         articles = grouped.get(category, [])
-        sources_html = ""
+
+        # Artikel-Links – voller Titel, kein Abschneiden, jeder Link einzeln klickbar
+        links_html = ""
         seen_links = set()
         for a in articles[:5]:
             if a["link"] and a["link"] not in seen_links:
                 seen_links.add(a["link"])
-                title_short = a["title"][:60] + ("…" if len(a["title"]) > 60 else "")
-                sources_html += f'<a href="{a["link"]}" class="source-link">{a["source"]}: {title_short}</a>\n'
+                links_html += (
+                    f'<a href="{a["link"]}" class="article-link">'
+                    f'<span class="article-source">{a["source"]}</span>'
+                    f'<span class="article-title">{a["title"]}</span>'
+                    f'</a>\n'
+                )
 
-        bullets_html = "".join(f"<li>{b.lstrip('• ')}</li>\n" for b in bullets)
+        bullets_html = "".join(
+            f'<li>{b.lstrip("• ").strip()}</li>\n' for b in bullets
+        )
 
         category_blocks += f"""
-    <div class="category-block">
-        <h2 class="category-title">{category}</h2>
-        <ul class="bullets">
-            {bullets_html}
-        </ul>
-        <div class="sources">
-            <span class="sources-label">Quellen:</span>
-            {sources_html}
-        </div>
-    </div>
-    <div class="divider"></div>
+  <div class="cat-block">
+    <h2 class="cat-title">{category}</h2>
+    <ul class="summary-list">{bullets_html}</ul>
+    <div class="articles">{links_html}</div>
+  </div>
 """
 
     total_articles = sum(len(v) for v in grouped.values())
 
-    # CSS is stored separately to avoid f-string brace conflicts
     css = """
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-        background-color: #f5f0e8;
-        font-family: 'Source Sans 3', Georgia, sans-serif;
-        color: #1a1a1a;
+        background: #f4f4f4;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        color: #1c1c1e;
         line-height: 1.6;
+        -webkit-text-size-adjust: 100%;
     }
+
     .wrapper {
-        max-width: 680px;
+        max-width: 640px;
         margin: 0 auto;
-        background: #faf7f2;
+        background: #ffffff;
     }
+
+    /* HEADER */
     .header {
-        background: #1a1a2e;
-        padding: 40px 40px 32px;
+        background: #1b2a3b;
+        padding: 36px 32px 28px;
         text-align: center;
     }
-    .header-label {
-        font-size: 11px;
-        letter-spacing: 3px;
+    .header-eyebrow {
+        font-size: 10px;
+        letter-spacing: 2.5px;
         text-transform: uppercase;
-        color: #c9a84c;
-        font-family: 'Source Sans 3', sans-serif;
-        font-weight: 600;
-        margin-bottom: 12px;
+        color: #7a9bb5;
+        margin-bottom: 10px;
     }
     .header-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 36px;
+        font-size: 30px;
         font-weight: 700;
-        color: #faf7f2;
-        line-height: 1.2;
-        margin-bottom: 8px;
-    }
-    .header-sub {
-        font-size: 13px;
-        color: #8899aa;
-        letter-spacing: 0.5px;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
     }
     .header-date {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 6px 18px;
-        border: 1px solid #c9a84c;
-        color: #c9a84c;
-        font-size: 12px;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
+        font-size: 13px;
+        color: #a0b4c4;
     }
-    .stats-bar {
-        background: #c9a84c;
-        padding: 10px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 12px;
-        color: #1a1a2e;
-        font-weight: 600;
-        letter-spacing: 0.5px;
+
+    /* META BAR */
+    .meta-bar {
+        background: #2c3e50;
+        padding: 8px 32px;
+        text-align: center;
+        font-size: 11px;
+        color: #7a9bb5;
+        letter-spacing: 0.3px;
     }
+
+    /* CONTENT */
     .content {
-        padding: 32px 40px;
+        padding: 0 24px 24px;
     }
-    .category-block {
-        margin-bottom: 32px;
-        border-left: 3px solid #c9a84c;
-        padding-left: 20px;
+
+    /* CATEGORY BLOCK */
+    .cat-block {
+        padding: 24px 0 20px;
+        border-bottom: 1px solid #e8e8e8;
     }
-    .category-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 20px;
-        font-weight: 600;
-        color: #1a1a2e;
-        margin-bottom: 12px;
-        line-height: 1.3;
+    .cat-block:last-child {
+        border-bottom: none;
     }
-    .bullets {
+    .cat-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1b2a3b;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #2c3e50;
+        display: inline-block;
+    }
+
+    /* SUMMARY BULLETS */
+    .summary-list {
         list-style: none;
         margin-bottom: 14px;
     }
-    .bullets li {
-        font-size: 14.5px;
-        line-height: 1.65;
-        color: #2c2c2c;
-        padding: 5px 0;
-        padding-left: 16px;
+    .summary-list li {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #3a3a3c;
+        padding: 3px 0 3px 14px;
         position: relative;
     }
-    .bullets li::before {
-        content: "›";
+    .summary-list li::before {
+        content: "–";
         position: absolute;
         left: 0;
-        color: #c9a84c;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 1.5;
+        color: #5a7fa0;
+        font-weight: 600;
     }
-    .sources {
-        background: #f0ebe0;
-        border-radius: 4px;
-        padding: 10px 14px;
-        font-size: 12px;
+
+    /* ARTICLE LINKS */
+    .articles {
+        display: block;
     }
-    .sources-label {
-        color: #888;
+    .article-link {
+        display: block;
+        text-decoration: none;
+        padding: 8px 12px;
+        margin-bottom: 4px;
+        background: #f8f9fa;
+        border-left: 3px solid #d0dce8;
+        border-radius: 2px;
+        transition: border-color 0.15s, background 0.15s;
+    }
+    .article-link:hover {
+        background: #eef3f8;
+        border-left-color: #2c3e50;
+    }
+    .article-source {
+        display: block;
+        font-size: 10px;
         font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-size: 10px;
+        letter-spacing: 0.8px;
+        color: #5a7fa0;
+        margin-bottom: 2px;
+    }
+    .article-title {
         display: block;
-        margin-bottom: 4px;
+        font-size: 13px;
+        color: #1c1c1e;
+        line-height: 1.4;
+        word-break: break-word;
     }
-    .source-link {
-        display: block;
-        color: #555;
-        text-decoration: none;
-        padding: 2px 0;
-        border-bottom: 1px solid transparent;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .source-link:hover { color: #c9a84c; }
-    .divider {
-        height: 1px;
-        background: linear-gradient(to right, transparent, #d4c9b0, transparent);
-        margin: 8px 0 32px;
-    }
+
+    /* FOOTER */
     .footer {
-        background: #1a1a2e;
-        padding: 24px 40px;
+        background: #1b2a3b;
+        padding: 20px 32px;
         text-align: center;
         font-size: 11px;
-        color: #556677;
+        color: #7a9bb5;
         line-height: 1.8;
     }
-    .footer a { color: #c9a84c; text-decoration: none; }
-    @media (max-width: 600px) {
-        .content, .header { padding: 24px 20px; }
-        .stats-bar { padding: 10px 20px; flex-direction: column; gap: 4px; }
-        .header-title { font-size: 28px; }
-        .footer { padding: 20px; }
+    .footer a {
+        color: #a0b4c4;
+        text-decoration: none;
+    }
+
+    /* MOBILE */
+    @media (max-width: 480px) {
+        .header { padding: 28px 20px 22px; }
+        .header-title { font-size: 24px; }
+        .meta-bar { padding: 8px 16px; }
+        .content { padding: 0 16px 20px; }
+        .footer { padding: 18px 16px; }
+        .article-link { padding: 10px 12px; }
+        .article-title { font-size: 14px; }
+        .summary-list li { font-size: 14px; }
     }
     """
 
     html = f"""<!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dein Newsletter – {date_str}</title>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
-    {css}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Tagesbrief – {date_str}</title>
+  <style>{css}</style>
 </head>
 <body>
 <div class="wrapper">
 
   <div class="header">
-    <div class="header-label">Ihr persönlicher Nachrichtenüberblick</div>
-    <div class="header-title">Der Tages&shy;brief</div>
-    <div class="header-sub">Spiegel · FAZ · Tagesschau · Politico · Heise</div>
-    <div class="header-date">{date_str} · {daytime}s-Ausgabe</div>
+    <div class="header-eyebrow">Ihr täglicher Nachrichtenüberblick</div>
+    <div class="header-title">Tagesbrief</div>
+    <div class="header-date">{date_str} &middot; {daytime}s-Ausgabe</div>
   </div>
 
-  <div class="stats-bar">
-    <span>📡 {len(RSS_FEEDS)} Quellen ausgewertet</span>
-    <span>📰 {total_articles} Artikel analysiert</span>
-    <span>🤖 Zusammengefasst mit Groq AI</span>
+  <div class="meta-bar">
+    {len(RSS_FEEDS)} Quellen &nbsp;·&nbsp; {total_articles} Artikel &nbsp;·&nbsp; Zusammengefasst mit KI
   </div>
 
   <div class="content">
@@ -415,9 +439,9 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
   </div>
 
   <div class="footer">
-    Automatisch erstellt · {now.strftime("%d.%m.%Y %H:%M")} Uhr<br>
-    Quellen: Spiegel Online, FAZ, Tagesschau, Politico Europe, Heise/c't<br>
-    <a href="https://github.com">Powered by GitHub Actions + Groq AI</a>
+    Automatisch erstellt am {now.strftime("%d.%m.%Y")} um {now.strftime("%H:%M")} Uhr<br>
+    Quellen: Spiegel Online · FAZ · Politico Europe<br>
+    <a href="https://github.com">Powered by GitHub Actions</a>
   </div>
 
 </div>
