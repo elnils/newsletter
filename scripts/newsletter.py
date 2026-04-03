@@ -28,7 +28,7 @@ RSS_FEEDS = {
     "Deutschlandfunk": 'https://www.deutschlandfunk.de/politikportal-100.rss',
     "Handelsblatt Finanzen": 'https://www.handelsblatt.com/contentexport/feed/finanzen',
     "Handelsblatt Technik": 'https://www.handelsblatt.com/contentexport/feed/technologie',
-    "BBC News": 'https://feeds.bbci.co.uk/news/rss.xml', 'BBC News',
+    "BBC News": 'https://feeds.bbci.co.uk/news/rss.xml',
     "New York Timnes": 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
     "Deutsche Welle Enlgisch": 'https://rss.dw.com/rdf/rss-en-all',
     "Euractiv": 'https://www.euractiv.com/feed/',
