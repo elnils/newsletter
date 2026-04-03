@@ -21,6 +21,19 @@ RSS_FEEDS = {
     "Spiegel Online":   "https://www.spiegel.de/schlagzeilen/tops/index.rss",
     "FAZ":              "https://www.faz.net/rss/aktuell/",
     "Politico Europe":  "https://www.politico.eu/feed/",
+    "DPA": 'https://news.google.com/rss/search?q=dpa+Nachrichtenagentur&hl=de&gl=DE&ceid=DE:de',
+    "Reuters": 'https://news.google.com/rss/search?q=Reuters+deutsch&hl=de&gl=DE&ceid=DE:de',
+    "Tagesschau": 'https://www.tagesschau.de/infoservices/alle-meldungen-100~rss2.xml',
+    "Zeit Online": 'https://newsfeed.zeit.de/index',
+    "Deutschlandfunk": 'https://www.deutschlandfunk.de/politikportal-100.rss',
+    "Handelsblatt Finanzen": 'https://www.handelsblatt.com/contentexport/feed/finanzen',
+    "Handelsblatt Technik": 'https://www.handelsblatt.com/contentexport/feed/technologie',
+    "BBC News": 'https://feeds.bbci.co.uk/news/rss.xml', 'BBC News',
+    "New York Timnes": 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
+    "Deutsche Welle Enlgisch": 'https://rss.dw.com/rdf/rss-en-all',
+    "Euractiv": 'https://www.euractiv.com/feed/',
+    "Financial Times": 'https://www.ft.com/?format=rss',
+    "Bloomberg Markets": 'https://feeds.bloomberg.com/markets/news.rss',    
 }
 
 CATEGORIES = {
@@ -325,7 +338,7 @@ def build_html(summaries: dict[str, list[str]], grouped: dict[str, list[dict]]) 
         f'  <div style="font-family:{FONT_ESC};font-size:28px;font-weight:700;'
         f'color:#ffffff;letter-spacing:-0.5px;margin-bottom:8px;">Tageslage</div>\n'
         f'  <div style="font-family:{FONT_ESC};font-size:13px;color:{COLOR_LIGHT};">'
-        f'{date_str} &middot; {daytime}s-Ausgabe</div>\n'
+        f'{date_str} &middot; {daytime}-Ausgabe</div>\n'
         f'</td></tr>\n'
 
         # META BAR
@@ -367,19 +380,20 @@ def send_email(html_content: str):
     """Newsletter per Gmail SMTP versenden."""
     sender = os.environ.get("GMAIL_ADDRESS")
     password = os.environ.get("GMAIL_APP_PASSWORD")
-    recipient = os.environ.get("RECIPIENT_EMAIL", sender)
+    recipient_raw = os.environ.get("RECIPIENT_EMAIL", sender)
+    recipients = [r.strip() for r in recipient_raw.split(",") if r.strip()]
 
     if not sender or not password:
         raise ValueError("GMAIL_ADDRESS oder GMAIL_APP_PASSWORD nicht gesetzt!")
 
     now = datetime.now()
     daytime = "Morgen" if now.hour < 13 else "Abend"
-    subject = f"🗞️ Tageslage – {now.strftime('%d.%m.%Y')} ({daytime}s-Ausgabe)"
+    subject = f"🗞️ Tageslage – {now.strftime('%d.%m.%Y')} ({daytime}-Ausgabe)"
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"Tageslage <{sender}>"
-    msg["To"] = recipient
+    msg["To"] = ", ".join(recipients)
 
     plain = f"Tageslage – {now.strftime('%d.%m.%Y')}\nBitte HTML-Ansicht aktivieren."
     msg.attach(MIMEText(plain, "plain", "utf-8"))
@@ -387,9 +401,9 @@ def send_email(html_content: str):
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender, password)
-        server.sendmail(sender, [recipient], msg.as_string())
+        server.sendmail(sender, recipients, msg.as_string())
 
-    print(f"✓ Newsletter verschickt an {recipient}")
+    print(f"✓ Newsletter verschickt an {', '.join(recipients)}")
 
 # ─────────────────────────────────────────────
 # HAUPTPROGRAMM
