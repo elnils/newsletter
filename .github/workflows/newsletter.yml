@@ -96,6 +96,7 @@ jobs:
               exit(0)
 
           files = sorted(archiv_dir.glob("20*.html"), reverse=True)
+          file_count = len(files)
 
           FONT        = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
           COLOR_NAVY  = "#1b2a3b"
@@ -133,7 +134,7 @@ jobs:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tageslage – Archiv</title>
+  <title>Tageslage - Archiv</title>
 </head>
 <body style="margin:0;padding:0;background:#f0f2f4;font-family:{FONT};">
 <div style="background:{COLOR_NAVY};padding:36px 24px 28px;text-align:center;">
@@ -142,7 +143,7 @@ jobs:
     color:{COLOR_MUTED};margin-bottom:10px;">Newsletter-Archiv</div>
     <div style="font-size:30px;font-weight:700;color:#fff;letter-spacing:-0.5px;
     margin-bottom:8px;">Tageslage</div>
-    <div style="font-size:13px;color:{COLOR_LIGHT};">Alle Ausgaben &middot; {len(files)} Einträge</div>
+    <div style="font-size:13px;color:{COLOR_LIGHT};">Alle Ausgaben &middot; {file_count} Eintraege</div>
   </div>
 </div>
 <div style="background:{COLOR_NAVY2};padding:8px 24px;text-align:center;font-size:11px;color:{COLOR_MUTED};">
@@ -170,7 +171,7 @@ jobs:
 </html>"""
 
           Path("scripts/archiv/index.html").write_text(html, encoding="utf-8")
-          print(f"✓ index.html mit {len(files)} Einträgen generiert")
+          print(f"✓ index.html mit {file_count} Eintraegen generiert")
           PYEOF
 
       # ── 7. Auf gh-pages pushen ───────────────────────────────────────────
@@ -200,6 +201,6 @@ jobs:
                   if file_date < cutoff:
                       f.unlink()
                       removed += 1
-                      print(f"  🗑 Gelöscht: {f.name}")
+                      print(f"  🗑 Geloescht: {f.name}")
           print(f"✓ {removed} alte Dateien entfernt")
           PYEOF
