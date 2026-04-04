@@ -31,6 +31,7 @@ jobs:
 
       # ── 4. Newsletter ausführen ─────────────────────────────────────────
       - name: Newsletter ausführen
+        working-directory: scripts
         env:
           GROQ_API_KEY:          ${{ secrets.GROQ_API_KEY }}
           GMAIL_ADDRESS:         ${{ secrets.GMAIL_ADDRESS }}
@@ -57,7 +58,7 @@ jobs:
 
           # Archiv-Ordner anlegen und Datei kopieren
           mkdir -p gh-pages-dir/archiv
-          cp archiv/*.html gh-pages-dir/archiv/ 2>/dev/null || true
+          cp scripts/archiv/*.html gh-pages-dir/archiv/ 2>/dev/null || true
 
           # Index-Seite aktualisieren (Liste aller Ausgaben)
           python3 - <<'PYEOF'
