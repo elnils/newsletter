@@ -5,6 +5,7 @@ Holt RSS-Feeds, kategorisiert mit Punkte+Ausschluss-System, verschickt per E-Mai
 """
 
 import os
+import re
 import time
 import socket
 import smtplib
@@ -40,15 +41,13 @@ RSS_FEEDS = {
 # ─────────────────────────────────────────────
 # KATEGORIEN: keywords mit Gewicht + Ausschluss
 # ─────────────────────────────────────────────
-# Jede Kategorie hat:
-#   "keywords": dict {keyword: punkte}  – höhere Punkte = spezifischer
-#   "exclude":  list [keyword, ...]     – wenn eines davon matcht → Kategorie ausgeschlossen
+#
+# WICHTIG: _kw_match() prüft Wortgrenzen via \b – kurze Wörter wie
+# "krieg", "gas", "öl", "strom" sind damit sicher, da sie nur als
+# eigenständige Wörter matchen, nicht als Substring in anderen Wörtern.
 #
 # Punkte-Logik:
-#   10 = sehr spezifisch (nur diese Kategorie)
-#    5 = spezifisch
-#    3 = allgemein / kann mehrfach vorkommen
-#    1 = schwacher Hinweis
+#   10 = sehr spezifisch   8 = spezifisch   5 = eindeutig   3 = allgemein
 
 CATEGORIES = {
     "🏛️ Innenpolitik": {
@@ -57,11 +56,11 @@ CATEGORIES = {
             "bundestag": 10, "bundesrat": 10, "kanzler": 10, "koalition": 10,
             "merz": 8, "scholz": 8, "habeck": 8, "baerbock": 8,
             "spd": 8, "cdu": 8, "csu": 8, "grüne": 8, "fdp": 8, "afd": 8,
-            "regierung": 5, "minister": 5, "wahl": 5, "partei": 3,
-            "opposition": 5, "bundesregierung": 10, "kabinett": 8,
-            "koalitionsvertrag": 10, "ampel": 8, "große koalition": 10,
-            "fraktionsvorsitz": 10, "abgeordneter": 8, "volkspartei": 8,
-            # Englisch (DE-spezifisch)
+            "regierung": 5, "minister": 5, "partei": 3, "opposition": 5,
+            "bundesregierung": 10, "kabinett": 8, "koalitionsvertrag": 10,
+            "ampel": 8, "große koalition": 10, "fraktionsvorsitz": 10,
+            "abgeordneter": 8, "bundestagswahl": 10, "landtagswahl": 10,
+            # Englisch
             "german government": 10, "german parliament": 10,
             "german chancellor": 10, "german coalition": 10,
             "german minister": 8, "german election": 8,
@@ -69,18 +68,19 @@ CATEGORIES = {
         },
         "exclude": [
             "europawahl", "eu-wahl", "european election",
-            "sport", "fußball", "soccer", "bundesliga",
+            "bundesliga", "fußball", "soccer",
         ],
     },
+
     "🌍 Außenpolitik": {
         "keywords": {
-            # Deutsch
+            # Deutsch – \b macht "krieg" sicher (matcht nicht in "niederlage")
             "ukraine": 8, "russland": 8, "nato": 8, "krieg": 5,
-            "außenminister": 10, "diplomatie": 10, "sanktionen": 8,
+            "außenminister": 10, "außenpolitik": 10, "diplomatie": 10,
+            "botschafter": 10, "staatsbesuch": 10, "gipfel": 8,
+            "sanktionen": 8, "friedensverhandlung": 10, "waffenstillstand": 10,
             "trump": 5, "biden": 5, "g7": 8, "g20": 8,
-            "un": 5, "vereinte nationen": 10, "konflikt": 3,
-            "friedensverhandlung": 10, "staatsbesuch": 10,
-            "außenpolitik": 10, "botschafter": 10, "gipfel": 8,
+            "vereinte nationen": 10, "konflikt": 5,
             # Englisch
             "foreign policy": 10, "foreign minister": 10,
             "diplomacy": 10, "diplomatic": 8, "ambassador": 10,
@@ -88,405 +88,385 @@ CATEGORIES = {
             "sanctions": 8, "summit": 8, "bilateral": 8,
             "united nations": 10, "un security council": 10,
             "nato summit": 10, "state visit": 10,
-            "ukraine war": 10, "russia": 5, "kremlin": 10,
-            "white house": 5, "pentagon": 8, "state department": 10,
+            "ukraine war": 10, "kremlin": 10,
         },
         "exclude": [
-            "bundesliga", "sport", "fußball", "soccer",
+            "bundesliga", "fußball", "soccer",
             "formel 1", "formula 1", "tennis", "olympic",
         ],
     },
+
     "💰 Wirtschaft": {
         "keywords": {
             # Deutsch
-            "wirtschaft": 10, "dax": 10, "rezession": 10, "inflation": 10,
-            "wachstum": 5, "arbeitslos": 10, "unternehmen": 3,
-            "konzern": 5, "export": 8, "import": 8,
-            "haushalt": 5, "schulden": 5, "konjunktur": 10,
-            "ifo": 10, "bip": 10, "bruttoinlandsprodukt": 10,
-            "lieferkette": 10, "fachkräftemangel": 10, "tarifvertrag": 10,
+            "wirtschaft": 10, "konjunktur": 10, "rezession": 10,
+            "bruttoinlandsprodukt": 10, "bip": 10, "ifo": 10,
+            "arbeitslosigkeit": 10, "arbeitslosenquote": 10,
+            "inflation": 8, "wachstum": 5, "exportrückgang": 10,
+            "handelsbilanz": 10, "lieferkette": 10,
+            "fachkräftemangel": 10, "tarifvertrag": 10,
             "mindestlohn": 10, "insolvenz": 10, "kurzarbeit": 10,
+            "unternehmen": 3, "konzern": 5, "deindustrialisierung": 10,
+            "bundeshaushalt": 8, "schulden": 5,
             # Englisch
-            "economy": 10, "economic": 8, "recession": 10,
-            "inflation": 10, "gdp": 10, "gross domestic product": 10,
-            "unemployment": 10, "jobs report": 10, "trade deficit": 10,
+            "economic growth": 10, "economic recession": 10,
+            "gdp": 10, "unemployment rate": 10,
+            "trade deficit": 10, "trade war": 10, "tariff": 8,
             "supply chain": 10, "labour market": 8, "labor market": 8,
-            "wage": 5, "tariff": 8, "trade war": 10,
-            "manufacturing": 5, "industry output": 8,
-            "bankruptcy": 10, "insolvency": 10,
+            "manufacturing": 5, "bankruptcy": 10, "wage growth": 8,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "aktie", "börse", "fonds",
-            "stocks", "shares", "bond", "crypto", "bitcoin",
+            "fußball", "soccer", "bundesliga",
+            "aktienmarkt", "börsenhandel", "kryptowährung",
+            "stock market", "cryptocurrency",
         ],
     },
+
     "📊 Finanzen & Märkte": {
         "keywords": {
-            # Deutsch
-            "börse": 10, "aktie": 10, "aktien": 10, "fonds": 10,
-            "etf": 10, "anleihe": 10, "zinsen": 8, "fed": 8, "ezb": 8,
-            "krypto": 10, "bitcoin": 10, "ethereum": 10, "ipo": 10,
-            "investment": 8, "depot": 10, "rendite": 10, "dividende": 10,
-            "euro": 3, "dollar": 3, "währung": 8, "zinserhöhung": 10,
-            "leitzins": 10, "staatsanleihe": 10, "hedgefonds": 10,
+            # Deutsch – klare Finanzfachbegriffe
+            "aktienmarkt": 10, "aktienkurs": 10, "börse": 10, "dax": 10,
+            "zinsentscheid": 10, "leitzins": 10, "ezb-entscheidung": 10,
+            "staatsanleihe": 10, "bundesanleihe": 10, "anleihe": 8,
+            "kryptowährung": 10, "bitcoin": 10, "ethereum": 10,
+            "hedgefonds": 10, "investmentfonds": 10, "etf": 10,
+            "dividende": 10, "gewinnwarnung": 10, "quartalsbericht": 10,
+            "währung": 8, "wechselkurs": 10,
             # Englisch
-            "stock market": 10, "stock exchange": 10, "shares": 8,
-            "nasdaq": 10, "s&p 500": 10, "dow jones": 10, "ftse": 10,
-            "bond yield": 10, "treasury": 8, "interest rate": 10,
-            "federal reserve": 10, "ecb": 10, "central bank": 8,
-            "cryptocurrency": 10, "crypto": 10, "blockchain": 8,
+            "stock market": 10, "share price": 10, "nasdaq": 10,
+            "s&p 500": 10, "dow jones": 10, "ftse": 10,
+            "bond yield": 10, "interest rate decision": 10,
+            "federal reserve": 10, "central bank": 8,
+            "cryptocurrency": 10, "bitcoin price": 10,
             "hedge fund": 10, "private equity": 10, "venture capital": 10,
-            "ipo": 10, "earnings": 8, "dividend": 10,
-            "currency": 8, "forex": 10, "exchange rate": 10,
+            "quarterly earnings": 10, "exchange rate": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga",
-            "olympic", "tennis", "formula 1",
+            "fußball", "soccer", "bundesliga", "olympic", "tennis",
         ],
     },
+
     "💻 Tech & KI": {
         "keywords": {
             # Deutsch
-            "künstliche intelligenz": 10, "ki": 10, "sprachmodell": 10,
-            "openai": 10, "chatgpt": 10, "llm": 10,
-            "microsoft": 5, "apple": 5, "meta": 5, "amazon": 5,
-            "startup": 5, "software": 5, "hardware": 5,
-            "chip": 8, "halbleiter": 10, "cyber": 8, "hacker": 8,
-            "datenschutz": 5, "algorithmus": 8, "roboter": 8,
-            "nvidia": 10, "google deepmind": 10, "quantencomputer": 10,
-            "rechenzentr": 8, "cloud": 5, "plattform": 3,
+            "künstliche intelligenz": 10, "sprachmodell": 10,
+            "chatbot": 8, "halbleiter": 10, "quantencomputer": 10,
+            "rechenzentrum": 8, "cyberangriff": 10, "hackerangriff": 10,
+            "datenschutzverletzung": 10, "ransomware": 10,
+            "technologiekonzern": 8, "softwareupdate": 8,
             # Englisch
-            "artificial intelligence": 10, "ai model": 10,
+            "artificial intelligence": 10, "large language model": 10,
+            "generative ai": 10, "ai model": 10,
             "machine learning": 10, "deep learning": 10,
-            "large language model": 10, "generative ai": 10,
-            "chatgpt": 10, "openai": 10, "anthropic": 10,
-            "google deepmind": 10, "mistral": 10, "llama": 8,
-            "semiconductor": 10, "microchip": 10, "data center": 8,
-            "cybersecurity": 10, "cyber attack": 10, "ransomware": 10,
-            "data breach": 10, "hacking": 8, "encryption": 8,
-            "cloud computing": 8, "big tech": 8, "silicon valley": 8,
-            "tech giant": 8, "software update": 5, "operating system": 5,
-            "smartphone": 5, "iphone": 8, "android": 5,
+            "openai": 10, "anthropic": 10, "google deepmind": 10,
+            "nvidia": 10, "semiconductor": 10, "microchip": 10,
+            "data center": 8, "cloud computing": 8,
+            "cybersecurity": 10, "cyber attack": 10,
+            "data breach": 10, "big tech": 8, "silicon valley": 8,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga",
-            "formel 1", "formula 1", "tennis", "basketball",
-            "handball", "olympia", "olympic",
+            "fußball", "soccer", "bundesliga",
+            "formel 1", "formula 1", "tennis",
+            "basketball", "handball", "olympia", "olympic",
         ],
     },
+
     "⚡ Energie & Klima": {
         "keywords": {
-            # Deutsch
+            # Deutsch – "gas", "öl", "strom" sind mit \b sicher
             "energie": 8, "strom": 5, "gas": 5, "öl": 5,
-            "solar": 10, "wind": 5, "windkraft": 10, "erneuerbar": 10,
+            "windkraft": 10, "solaranlage": 10, "photovoltaik": 10,
+            "kernkraftwerk": 10, "atomkraftwerk": 10, "atomkraft": 10,
             "co2": 10, "klimawandel": 10, "klimaschutz": 10,
-            "atomkraft": 10, "kernkraft": 10, "wärmepumpe": 10,
             "energiewende": 10, "stromerzeugung": 10, "strompreis": 10,
-            "gaspreise": 10, "flüssiggas": 10, "lng": 10,
+            "ölpreis": 10, "gaspreise": 10, "flüssiggas": 10,
+            "erneuerbar": 10, "wärmepumpe": 10, "kohlekraftwerk": 10,
             # Englisch
-            "energy": 5, "electricity": 5, "power grid": 8,
-            "solar energy": 10, "solar panel": 10, "wind energy": 10,
-            "wind farm": 10, "renewable energy": 10, "clean energy": 10,
-            "nuclear energy": 10, "nuclear power": 10, "nuclear plant": 10,
+            "renewable energy": 10, "solar energy": 10, "wind energy": 10,
+            "nuclear power": 10, "nuclear plant": 10,
             "fossil fuel": 10, "oil price": 8, "gas price": 8,
-            "carbon emission": 10, "carbon tax": 10, "net zero": 10,
-            "climate change": 10, "climate crisis": 10, "global warming": 10,
-            "paris agreement": 10, "cop29": 10, "cop30": 10,
-            "heat pump": 10, "lng": 10, "liquefied natural gas": 10,
+            "carbon emissions": 10, "carbon tax": 10, "net zero": 10,
+            "climate change": 10, "global warming": 10,
+            "paris agreement": 10, "energy transition": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga", "olympic",
+            "fußball", "soccer", "bundesliga", "olympic",
         ],
     },
+
     "🏥 Gesundheit": {
         "keywords": {
             # Deutsch
-            "gesundheit": 10, "krankenhaus": 10, "arzt": 8,
-            "medizin": 8, "impf": 10, "impfung": 10,
-            "virus": 8, "corona": 10, "rki": 10, "who": 5,
-            "pharma": 8, "therapie": 8, "pflege": 8,
-            "klinik": 8, "diagnose": 8, "medikament": 10,
-            "krankenkasse": 10, "gesundheitssystem": 10,
-            "krebs": 8, "herzinfarkt": 10, "demenz": 10,
+            "krankenhaus": 10, "krankenhausreform": 10,
+            "gesundheitssystem": 10, "krankenkasse": 10,
+            "impfung": 10, "impfkampagne": 10, "impfpflicht": 10,
+            "virus": 8, "corona": 10, "rki": 10,
+            "medikament": 10, "arzneimittel": 8, "pharma": 8,
+            "klinik": 8, "diagnose": 8, "therapie": 8,
+            "pflegenotstand": 10, "ärztemangel": 10,
             # Englisch
-            "health": 5, "healthcare": 10, "hospital": 10,
-            "doctor": 5, "physician": 8, "medical": 5,
+            "healthcare": 10, "hospital": 10,
             "vaccine": 10, "vaccination": 10, "pandemic": 10,
-            "epidemic": 10, "outbreak": 8, "virus": 8,
-            "cancer": 8, "treatment": 5, "clinical trial": 10,
-            "drug approval": 10, "fda": 10, "ema": 10,
-            "mental health": 10, "nhs": 10, "health insurance": 8,
-            "pharmaceutical": 8, "medicine": 5, "surgery": 8,
+            "disease outbreak": 10, "drug approval": 10,
+            "clinical trial": 10, "mental health": 10,
+            "nhs": 10, "pharmaceutical": 8,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "research", "study",
-            "forschung", "studie",
+            "fußball", "soccer", "bundesliga",
         ],
     },
+
     "🔬 Wissenschaft": {
         "keywords": {
             # Deutsch
-            "wissenschaft": 10, "weltraum": 10, "nasa": 10, "esa": 10,
-            "physik": 10, "biologie": 8, "chemie": 8,
-            "entdeckung": 5, "universum": 10, "mars": 8, "mond": 5,
-            "forschung": 5, "studie": 3, "labor": 8,
-            "gen": 8, "dna": 10, "crispr": 10,
+            "weltraum": 10, "raumfahrt": 10, "nasa": 10, "esa": 10,
+            "satellitenstart": 10, "marslandung": 10, "mondmission": 10,
+            "quantencomputer": 10, "genomeditierung": 10,
+            "crispr": 10, "dna": 10, "stammzelle": 10,
+            "nobelpreis": 10, "teilchenbeschleuniger": 10,
+            "wissenschaftler": 5, "forschungsergebnis": 8,
             # Englisch
-            "science": 5, "scientific": 5, "research": 5, "study": 3,
-            "space": 5, "spacex": 10, "nasa": 10, "esa": 10,
-            "rocket launch": 10, "satellite": 8, "astronaut": 10,
-            "mars mission": 10, "moon landing": 10, "asteroid": 10,
-            "physics": 10, "quantum": 10, "particle": 8,
-            "biology": 8, "genetics": 10, "genome": 10,
-            "dna": 10, "crispr": 10, "stem cell": 10,
-            "archaeology": 10, "fossil": 8, "dinosaur": 10,
-            "nobel prize": 10, "breakthrough": 5,
+            "spacex": 10, "rocket launch": 10, "space mission": 10,
+            "asteroid": 10, "quantum computing": 10,
+            "gene editing": 10, "genome": 10, "stem cell": 10,
+            "nobel prize": 10, "scientific breakthrough": 8,
+            "particle physics": 10, "dark matter": 10,
+            "archaeology": 10, "fossil discovery": 8,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "wirtschaft", "economy",
-            "börse", "stocks", "krankenhaus", "hospital",
-            "impf", "vaccine", "corona", "rki",
+            "fußball", "soccer", "bundesliga",
+            "aktienmarkt", "stock market",
         ],
     },
+
     "⚖️ Recht & Justiz": {
         "keywords": {
             # Deutsch
-            "gericht": 10, "urteil": 10, "klage": 10, "recht": 5,
-            "gesetz": 5, "bgh": 10, "bverfg": 10,
-            "staatsanwalt": 10, "strafrecht": 10, "prozess": 8,
-            "verfahren": 5, "anwalt": 8, "richter": 8, "freispruch": 10,
-            "haftstrafe": 10, "ermittlung": 8, "verhaftung": 10,
+            "bundesgerichtshof": 10, "bundesverfassungsgericht": 10,
+            "landgericht": 8, "oberverwaltungsgericht": 10,
+            "urteil": 10, "strafurteil": 10, "freiheitsstrafe": 10,
+            "staatsanwaltschaft": 10, "ermittlung": 8,
+            "haftbefehl": 10, "verhaftung": 8, "anklage": 10,
+            "gesetzgebung": 8, "verfassungsklage": 10,
             # Englisch
-            "court": 10, "ruling": 10, "lawsuit": 10, "verdict": 10,
-            "judge": 8, "trial": 10, "sentence": 8, "conviction": 10,
-            "acquittal": 10, "indictment": 10, "prosecution": 8,
-            "supreme court": 10, "european court": 10, "ecj": 10,
-            "attorney general": 10, "law": 5, "legislation": 5,
-            "regulation": 5, "fine": 5, "penalty": 5,
-            "arrest": 8, "investigation": 5,
+            "court ruling": 10, "supreme court": 10,
+            "lawsuit": 10, "verdict": 10, "criminal trial": 10,
+            "indictment": 10, "conviction": 10, "acquittal": 10,
+            "european court": 10, "attorney general": 10,
+            "arrest warrant": 10, "criminal investigation": 8,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga", "olympic",
+            "fußball", "soccer", "bundesliga", "olympic",
         ],
     },
+
     "🛡️ Sicherheit & Verteidigung": {
         "keywords": {
             # Deutsch
             "bundeswehr": 10, "militär": 10, "verteidigung": 8,
-            "rüstung": 10, "soldat": 10, "drohne": 8, "rakete": 8,
+            "rüstung": 10, "soldat": 10, "waffenlieferung": 10,
+            "drohnenangriff": 10, "raketenabwehr": 10,
             "geheimdienst": 10, "bnd": 10, "verfassungsschutz": 10,
-            "anschlag": 8, "terrorismus": 10, "polizei": 5,
-            "sicherheit": 3, "waffenlieferung": 10, "panzer": 10,
+            "terroranschlag": 10, "terrorismus": 10,
+            "verteidigungshaushalt": 10, "nato-bündnis": 10,
             # Englisch
-            "military": 10, "defense": 8, "defence": 8,
-            "troops": 10, "soldiers": 8, "army": 8, "navy": 8,
-            "air force": 10, "missile": 10, "drone strike": 10,
-            "weapon": 5, "arms": 5, "ammunition": 10,
-            "intelligence agency": 10, "cia": 10, "mi6": 10,
-            "terrorism": 10, "terrorist": 10, "attack": 5,
-            "security forces": 8, "war": 5, "combat": 8,
-            "frontline": 10, "offensive": 8, "military aid": 10,
+            "military operation": 10, "defense spending": 10,
+            "weapons delivery": 10, "arms shipment": 10,
+            "intelligence agency": 10, "terrorist attack": 10,
+            "drone strike": 10, "missile defense": 10,
+            "frontline": 10, "military aid": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga", "olympic",
-            "tennis", "basketball",
+            "fußball", "soccer", "bundesliga", "olympic", "tennis",
         ],
     },
+
     "🌿 Umwelt & Natur": {
         "keywords": {
             # Deutsch
-            "umwelt": 10, "natur": 8, "artensterben": 10,
-            "wald": 8, "ozean": 10, "meer": 8, "plastik": 10,
-            "recycling": 10, "nachhaltigkeit": 8, "ozon": 10,
-            "biodiversität": 10, "naturschutz": 10, "tier": 5,
-            "hochwasser": 10, "dürre": 10, "waldbrand": 10,
+            "artensterben": 10, "naturschutz": 10, "waldsterben": 10,
+            "waldbrand": 10, "hochwasser": 10, "dürre": 10,
+            "meeresspiegel": 10, "plastikverschmutzung": 10,
+            "biodiversität": 10, "ozonschicht": 10,
+            "umweltkatastrophe": 10, "nachhaltigkeit": 8,
             # Englisch
-            "environment": 10, "environmental": 8, "nature": 5,
-            "wildlife": 10, "biodiversity": 10, "extinction": 10,
-            "deforestation": 10, "amazon rainforest": 10,
-            "ocean pollution": 10, "plastic waste": 10,
-            "recycling": 10, "sustainability": 8, "sustainable": 5,
-            "flood": 8, "drought": 10, "wildfire": 10, "forest fire": 10,
-            "ozone layer": 10, "ecosystem": 10,
+            "biodiversity": 10, "species extinction": 10,
+            "deforestation": 10, "ocean pollution": 10,
+            "plastic pollution": 10, "wildfire": 10,
+            "flood disaster": 10, "drought": 10,
+            "ecosystem": 10, "ozone layer": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer",
-            "wirtschaft", "economy", "börse", "stocks",
+            "fußball", "soccer",
+            "aktienmarkt", "stock market",
         ],
     },
+
     "🏙️ Gesellschaft": {
         "keywords": {
             # Deutsch
-            "gesellschaft": 10, "sozial": 5, "armut": 10,
-            "bildung": 8, "schule": 8, "universität": 8,
-            "familie": 8, "rente": 10, "migration": 10,
-            "integration": 8, "flüchtling": 10, "demografie": 10,
-            "diskriminierung": 10, "gleichstellung": 10, "inklusion": 8,
+            "bildungsreform": 10, "schulreform": 10,
+            "rentenreform": 10, "rentenniveau": 10,
+            "migrationspolitik": 10, "asylrecht": 10, "flüchtling": 10,
+            "bevölkerungsentwicklung": 10, "geburtenrate": 10,
+            "diskriminierung": 10, "gleichstellung": 10,
+            "sozialleistung": 8, "armut": 10,
             # Englisch
-            "society": 8, "social": 3, "poverty": 10,
-            "education": 8, "school": 5, "university": 5,
-            "family": 5, "pension": 10, "retirement": 8,
-            "migration": 10, "refugee": 10, "asylum": 10,
-            "immigration": 10, "diversity": 5, "inequality": 8,
-            "discrimination": 10, "gender equality": 10,
-            "demographics": 10, "population": 5,
+            "education reform": 10, "pension reform": 10,
+            "migration policy": 10, "asylum seekers": 10,
+            "refugee crisis": 10, "immigration policy": 10,
+            "demographic change": 10, "gender equality": 10,
+            "discrimination": 10, "poverty": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer",
-            "wirtschaft", "economy", "börse", "stocks",
+            "fußball", "soccer",
+            "aktienmarkt", "stock market",
         ],
     },
+
     "🚗 Mobilität & Verkehr": {
         "keywords": {
             # Deutsch
-            "bahn": 8, "flugzeug": 5, "verkehr": 8,
-            "mobilität": 8, "elektroauto": 10, "tesla": 10,
+            "elektroauto": 10, "elektromobilität": 10,
+            "ladeinfrastruktur": 10, "bahnstreik": 10,
+            "deutsche bahn": 10, "lufthansa": 10,
             "volkswagen": 10, "bmw": 10, "mercedes": 10,
-            "lufthansa": 10, "deutsche bahn": 10,
-            "stau": 8, "bahnstreik": 10, "verspätung": 8,
-            "auto": 5, "lkw": 8, "fahrrad": 5,
+            "flughafenausbau": 10, "verkehrswende": 10,
+            "stau": 8, "zugverspätung": 10,
             # Englisch
-            "electric vehicle": 10, "ev": 8, "electric car": 10,
-            "autonomous vehicle": 10, "self-driving": 10,
-            "tesla": 10, "volkswagen": 10, "toyota": 8,
-            "airline": 10, "airport": 8, "flight": 5,
-            "railway": 10, "train": 5, "high speed rail": 10,
-            "traffic": 5, "transport": 5, "infrastructure": 5,
-            "highway": 5, "road": 3, "shipping": 5,
+            "electric vehicle": 10, "ev charging": 10,
+            "self-driving car": 10, "railway strike": 10,
+            "high speed rail": 10, "airline": 10,
+            "airport expansion": 10, "tesla": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer",
-            "formel 1", "formula 1", "f1", "grand prix",
-            "börse", "stocks",
+            "fußball", "soccer",
+            "formel 1", "formula 1", "grand prix",
+            "aktienmarkt", "stock market",
         ],
     },
+
     "🏗️ Immobilien & Bauen": {
         "keywords": {
             # Deutsch
-            "immobilien": 10, "wohnen": 8, "miete": 10,
-            "bauen": 8, "wohnungsnot": 10, "eigenheim": 10,
-            "grundstück": 10, "baukosten": 10, "mietpreise": 10,
-            "wohnungsbau": 10, "vermieter": 10, "mietrecht": 10,
+            "wohnungsmarkt": 10, "immobilienmarkt": 10,
+            "mietpreise": 10, "mietpreisbremse": 10,
+            "wohnungsbau": 10, "wohnungsnot": 10,
+            "baukosten": 10, "baugenehmigung": 10,
+            "eigenheim": 10, "vermieter": 10, "mietrecht": 10,
             # Englisch
-            "real estate": 10, "housing market": 10, "property": 5,
-            "rent": 8, "rental": 8, "landlord": 10, "tenant": 10,
-            "mortgage": 10, "house prices": 10, "home prices": 10,
-            "construction": 8, "building permit": 10,
-            "housing crisis": 10, "affordable housing": 10,
+            "housing market": 10, "real estate": 10,
+            "rent increase": 10, "housing crisis": 10,
+            "mortgage rate": 10, "house prices": 10,
+            "construction costs": 10, "affordable housing": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga",
+            "fußball", "soccer", "bundesliga",
         ],
     },
+
     "🌐 Europa & EU": {
         "keywords": {
             # Deutsch
-            "eu": 5, "europäisch": 8, "brüssel": 10,
             "europaparlament": 10, "eu-kommission": 10,
-            "von der leyen": 10, "macron": 5, "draghi": 8,
-            "europawahl": 10, "eu-wahl": 10, "schengen": 10,
-            "eurozone": 10, "eu-haushalt": 10, "eu-gipfel": 10,
+            "eu-gipfel": 10, "eu-haushalt": 10,
+            "eu-verordnung": 10, "eu-richtlinie": 10,
+            "schengen": 10, "eurozone": 10,
+            "von der leyen": 10, "eu-erweiterung": 10,
+            "europäische union": 10, "brüssel": 8,
             # Englisch
             "european union": 10, "european commission": 10,
             "european parliament": 10, "eu summit": 10,
-            "brussels": 10, "eurozone": 10, "euro area": 10,
-            "von der leyen": 10, "eu regulation": 10,
-            "eu policy": 8, "eu funding": 8, "eu law": 8,
-            "brexit": 10, "schengen": 10,
+            "brussels": 8, "eu regulation": 10,
+            "eu enlargement": 10, "eu budget": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga",
-            "formula 1", "formel 1", "olympic",
+            "fußball", "soccer", "bundesliga",
+            "formel 1", "formula 1", "olympic",
         ],
     },
+
     "🗳️ Wahlen & Parteien": {
         "keywords": {
             # Deutsch
-            "wahl": 8, "abstimmung": 8, "wahlkampf": 10,
-            "umfrage": 5, "mandat": 8, "kandidat": 8,
-            "wahlprogramm": 10, "stimmzettel": 10, "hochrechnung": 10,
-            "exit poll": 10, "volksbegehren": 10,
+            "bundestagswahl": 10, "landtagswahl": 10, "kommunalwahl": 10,
+            "wahlkampf": 10, "wahlprogramm": 10, "wahlergebnis": 10,
+            "hochrechnung": 10, "wahlbeteiligung": 10,
+            "volksbegehren": 10, "volksabstimmung": 10,
             # Englisch
-            "election": 10, "vote": 5, "voting": 8, "ballot": 10,
-            "poll": 5, "polling": 8, "exit poll": 10,
-            "campaign": 8, "candidate": 8, "primary": 8,
-            "midterm": 10, "referendum": 10, "snap election": 10,
-            "voter": 5, "constituency": 10, "majority": 5,
+            "general election": 10, "snap election": 10,
+            "election campaign": 10, "election result": 10,
+            "exit poll": 10, "voter turnout": 10,
+            "referendum": 10, "polling data": 8,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga",
+            "fußball", "soccer", "bundesliga",
             "olympic", "formula 1",
         ],
     },
+
     "📱 Medien & Kultur": {
         "keywords": {
             # Deutsch
-            "medien": 10, "zeitung": 8, "fernsehen": 8,
-            "film": 5, "musik": 5, "kunst": 5, "kultur": 5,
-            "theater": 8, "buch": 5, "streaming": 8,
-            "netflix": 10, "social media": 10, "tiktok": 10,
-            "instagram": 8, "presse": 8, "rundfunk": 10,
+            "pressefreiheit": 10, "medienkonzern": 10,
+            "rundfunkbeitrag": 10, "öffentlich-rechtlich": 10,
+            "filmfestspiele": 10, "berlinale": 10, "buchpreis": 10,
+            "streaming-plattform": 8, "soziale medien": 8,
+            "desinformation": 8, "kulturförderung": 10,
             # Englisch
-            "media": 8, "newspaper": 8, "television": 8, "tv": 5,
-            "film": 5, "movie": 5, "music": 5, "art": 3,
-            "book": 5, "streaming": 8, "netflix": 10,
-            "spotify": 10, "youtube": 8, "tiktok": 10,
-            "social media": 10, "twitter": 8, "x platform": 8,
-            "press freedom": 10, "journalism": 8, "broadcaster": 8,
-            "podcast": 8, "influencer": 8,
+            "press freedom": 10, "media censorship": 10,
+            "streaming platform": 8, "social media": 8,
+            "film festival": 10, "journalism": 8,
+            "disinformation": 8, "content moderation": 10,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga",
-            "wirtschaft", "economy", "börse", "stocks",
+            "fußball", "soccer", "bundesliga",
+            "aktienmarkt", "stock market",
         ],
     },
+
     "🌎 International": {
         "keywords": {
             # Deutsch
-            "nahost": 10, "israel": 8, "palästina": 10,
-            "iran": 8, "nordkorea": 10, "asien": 5,
-            "afrika": 5, "lateinamerika": 8, "china": 5,
-            "usa": 3, "welt": 3, "global": 3,
-            "syrien": 10, "irak": 10, "jemen": 10,
+            "nahost": 10, "gazastreifen": 10, "westjordanland": 10,
+            "israel": 8, "palästina": 10, "iran": 8,
+            "nordkorea": 10, "taiwan": 10, "syrien": 10,
+            "jemen": 10, "irak": 10, "afghanistan": 10,
+            "china": 5, "russland-ukraine": 10,
             # Englisch
-            "middle east": 10, "israel": 8, "palestine": 10,
-            "gaza": 10, "west bank": 10, "iran": 8,
-            "north korea": 10, "south korea": 5,
-            "asia": 5, "china": 5, "beijing": 8,
-            "taiwan": 10, "india": 5, "pakistan": 8,
-            "africa": 5, "latin america": 8,
-            "brazil": 5, "mexico": 5, "venezuela": 8,
-            "syria": 10, "iraq": 10, "yemen": 10,
-            "saudi arabia": 8, "gulf": 5,
+            "middle east": 10, "gaza strip": 10, "west bank": 10,
+            "north korea": 10, "south china sea": 10,
+            "taiwan strait": 10, "iran nuclear": 10,
+            "saudi arabia": 8, "african union": 10,
+            "latin america": 8, "venezuela": 8,
         },
         "exclude": [
-            "sport", "fußball", "soccer", "bundesliga",
+            "fußball", "soccer", "bundesliga",
             "formula 1", "olympic", "champions league",
         ],
     },
+
     "⚽ Sport": {
         "keywords": {
             # Deutsch
-            "sport": 10, "fußball": 10, "bundesliga": 10, "champions league": 10,
-            "olympia": 10, "olympisch": 10, "formel 1": 10, "tennis": 10,
+            "fußball": 10, "bundesliga": 10, "champions league": 10,
+            "olympia": 10, "formel 1": 10, "tennis": 10,
             "basketball": 10, "handball": 10, "dfl": 10, "dfb": 10,
-            "spieltag": 10, "trikot": 8, "trainer": 5, "stadion": 8,
+            "spieltag": 10, "stadion": 8, "torschütze": 10,
             "abstieg": 8, "aufstieg": 8, "weltmeister": 10,
-            "em 2024": 10, "wm 2026": 10, "transfer": 8, "meister": 5,
-            "tor": 5, "schiedsrichter": 10, "halbfinale": 10, "finale": 8,
-            "pokal": 10, "liga": 8, "verein": 5, "athletik": 8,
+            "transfermarkt": 10, "ablösesumme": 10,
+            "halbfinale": 10, "pokalfinale": 10, "dfb-pokal": 10,
+            "schiedsrichter": 10, "europameisterschaft": 10,
             # Englisch
-            "soccer": 10, "football club": 10, "premier league": 10,
-            "la liga": 10, "serie a": 10, "ligue 1": 10,
-            "formula 1": 10, "f1": 8, "grand prix": 10,
-            "olympic": 10, "olympics": 10, "nba": 10, "nfl": 10,
-            "golf tournament": 10, "wimbledon": 10, "tour de france": 10,
-            "world cup": 10, "euros": 8, "athlete": 5, "coach": 5,
-            "match": 5, "fixture": 8, "squad": 8, "goalkeeper": 10,
-            "transfer window": 10, "championship": 8, "relegation": 10,
+            "premier league": 10, "la liga": 10, "serie a": 10,
+            "formula one": 10, "olympic games": 10, "olympics": 10,
+            "wimbledon": 10, "nba": 10, "nfl": 10,
+            "world cup": 10, "transfer window": 10,
+            "championship final": 10, "relegation": 10,
         },
         "exclude": [],
     },
+
     "🔥 Sonstiges": {
         "keywords": {},
         "exclude": [],
@@ -495,15 +475,14 @@ CATEGORIES = {
 
 MAX_ARTICLES_PER_FEED    = 15
 MAX_ARTICLES_FOR_SUMMARY = 60
-TOP_CATEGORIES_COUNT     = 5          # Anzahl Top-Kategorien im Newsletter
-FEED_TIMEOUT             = 15         # Sekunden pro Feed
-GROQ_TIMEOUT             = 30         # Sekunden pro Groq-Call
-GROQ_RETRIES             = 1          # Einmal retry bei Timeout
+TOP_CATEGORIES_COUNT     = 5
+FEED_TIMEOUT             = 15
+GROQ_TIMEOUT             = 30
+GROQ_RETRIES             = 1
 
-# GitHub Pages Archiv-URL – anpassen oder als Secret PAGES_BASE_URL setzen
 GITHUB_PAGES_BASE_URL = os.environ.get(
     "PAGES_BASE_URL",
-    "https://deinname.github.io/tageslage"
+    "https://elnils.github.io/newsletter"
 )
 
 # ─────────────────────────────────────────────
@@ -572,10 +551,21 @@ def fetch_feeds() -> list[dict]:
 # KATEGORISIERUNG (Punkte + Ausschluss)
 # ─────────────────────────────────────────────
 
+def _kw_match(kw: str, text: str) -> bool:
+    """
+    Keyword-Match mit Wortgrenzen.
+    Verhindert 'un' in 'Wohnungsnot', 'krieg' in 'Niederlage' usw.
+    Mehrwortige Keywords brauchen keine Wortgrenze (matchen kaum als Substring).
+    """
+    if " " in kw:
+        return kw in text
+    return bool(re.search(r"\b" + re.escape(kw) + r"\b", text))
+
+
 def categorize_article(article: dict) -> str:
     """
     Artikel per gewichtetem Punkte-System kategorisieren.
-    Ausschluss-Keywords verhindern Fehlzuordnungen (z.B. Sport → KI).
+    Wortgrenzen-Check verhindert Substring-Fehlmatches.
     """
     text = (article["title"] + " " + article["summary"]).lower()
 
@@ -585,16 +575,14 @@ def categorize_article(article: dict) -> str:
         if category == "🔥 Sonstiges":
             continue
 
-        # Ausschluss prüfen
-        excluded = any(kw in text for kw in config.get("exclude", []))
+        excluded = any(_kw_match(kw, text) for kw in config.get("exclude", []))
         if excluded:
             continue
 
-        # Punkte summieren
         score = sum(
             weight
             for kw, weight in config["keywords"].items()
-            if kw in text
+            if _kw_match(kw, text)
         )
 
         if score > 0:
@@ -603,7 +591,6 @@ def categorize_article(article: dict) -> str:
     if not scores:
         return "🔥 Sonstiges"
 
-    # Kategorie mit den meisten Punkten gewinnt
     return max(scores, key=lambda c: scores[c])
 
 
@@ -771,7 +758,7 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
             for a in articles[:8]
         ])
 
-        prompt = f"""Du bist ein präziser Nachrichtenredakteur einer seriösen Tageszeitung  in Deutschland. Fasse die folgenden Nachrichten der Kategorie "{category}" in genau 2 knappen deutschen Stichsätzen zusammen.
+        prompt = f"""Du bist ein präziser Nachrichtenredakteur eines TOP-Blatts in Deutschland. Fasse die folgenden Nachrichten der Kategorie "{category}" in genau 2 knappen deutschen Stichsätzen zusammen.
 
 Regeln:
 - Genau 2 Stichsätze, nicht mehr
@@ -806,7 +793,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
                        now: datetime, daytime: str) -> str:
     """
     Vollständige Archiv-Seite mit allen Kategorien im Newsletter-Design.
-    Seriöser News-Blog-inspirierte Linkliste: kompakt, klar, alle Quellen sichtbar.
+    Seriöser Medienblog-inspirierte Linkliste: kompakt, klar, alle Quellen sichtbar.
     """
     date_str = now.strftime("%A, %d. %B %Y")
     months = {
@@ -848,7 +835,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
             f'border:1px solid #3a5068;padding:3px 9px;border-radius:2px;">{cat}</a>'
         )
 
-    # Kategorien-Blöcke: Seriöser News-Blog-Stil
+    # Kategorien-Blöcke: Seriöser Medienblog-Stil
     cat_blocks = ""
     all_cats = list(grouped.items())
     for idx, (category, articles) in enumerate(all_cats):
@@ -858,7 +845,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
         is_last = (idx == len(all_cats) - 1)
         border_bottom = "none" if is_last else f"2px solid {COLOR_BORDER}"
 
-        # Artikel-Zeilen im Seriöser News-Blog-Stil
+        # Artikel-Zeilen im Seriöser Medienblog-Stil
         rows = ""
         for a in articles:
             if not a.get("link"):
