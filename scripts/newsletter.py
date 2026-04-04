@@ -51,7 +51,6 @@ RSS_FEEDS = {
 #    1 = schwacher Hinweis
 
 CATEGORIES = {
-    
     "🏛️ Innenpolitik": {
         "keywords": {
             # Deutsch
@@ -464,7 +463,8 @@ CATEGORIES = {
             "sport", "fußball", "soccer", "bundesliga",
             "formula 1", "olympic", "champions league",
         ],
-   "⚽ Sport": {
+    },
+    "⚽ Sport": {
         "keywords": {
             # Deutsch
             "sport": 10, "fußball": 10, "bundesliga": 10, "champions league": 10,
@@ -487,7 +487,6 @@ CATEGORIES = {
         },
         "exclude": [],
     },
-    },
     "🔥 Sonstiges": {
         "keywords": {},
         "exclude": [],
@@ -501,9 +500,9 @@ FEED_TIMEOUT             = 15         # Sekunden pro Feed
 GROQ_TIMEOUT             = 30         # Sekunden pro Groq-Call
 GROQ_RETRIES             = 1          # Einmal retry bei Timeout
 
-# GitHub Pages Archiv-URL – anpassen oder als Secret GITHUB_PAGES_BASE_URL setzen
+# GitHub Pages Archiv-URL – anpassen oder als Secret PAGES_BASE_URL setzen
 GITHUB_PAGES_BASE_URL = os.environ.get(
-    "GITHUB_PAGES_BASE_URL",
+    "PAGES_BASE_URL",
     "https://deinname.github.io/tageslage"
 )
 
@@ -705,13 +704,13 @@ def select_top_categories(grouped: dict[str, list[dict]], client: Groq, n: int =
 
     overview_text = "\n".join(overview)
 
-    prompt = f"""Du bist Chefredakteur eines deutschen hochqualitativen Nachrichtenbriefs.
+    prompt = f"""Du bist Chefredakteur eines deutschen Nachrichtenbriefs.
 Heute liegen folgende Nachrichtenkategorien vor:
 
 {overview_text}
 
 Wähle die {n} wichtigsten und nachrichtenwürdigsten Kategorien für die heutige Ausgabe aus.
-Berücksichtige: Aktualität, wirtschaftliche und gesellschaftliche Relevanz, Themenvielfalt (nicht 3x Politik).
+Berücksichtige: Aktualität, gesellschaftliche Relevanz, Themenvielfalt (nicht 3x Politik).
 
 Antworte NUR mit den exakten Kategorienamen, eine pro Zeile, keine Erklärung, keine Nummerierung.
 Beispiel:
@@ -772,7 +771,7 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
             for a in articles[:8]
         ])
 
-        prompt = f"""Du bist ein präziser Nachrichtenredakteur eines hochqualitativen Mediums, z.B, Zeitung, in Deutschland. Fasse die folgenden Nachrichten der Kategorie "{category}" in genau 2 knappen deutschen Stichsätzen zusammen.
+        prompt = f"""Du bist ein präziser Nachrichtenredakteur einer seriösen Tageszeitung  in Deutschland. Fasse die folgenden Nachrichten der Kategorie "{category}" in genau 2 knappen deutschen Stichsätzen zusammen.
 
 Regeln:
 - Genau 2 Stichsätze, nicht mehr
@@ -807,7 +806,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
                        now: datetime, daytime: str) -> str:
     """
     Vollständige Archiv-Seite mit allen Kategorien im Newsletter-Design.
-    Populäre Newsmedia-inspirierte Linkliste: kompakt, klar, alle Quellen sichtbar.
+    Seriöser News-Blog-inspirierte Linkliste: kompakt, klar, alle Quellen sichtbar.
     """
     date_str = now.strftime("%A, %d. %B %Y")
     months = {
@@ -849,7 +848,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
             f'border:1px solid #3a5068;padding:3px 9px;border-radius:2px;">{cat}</a>'
         )
 
-    # Kategorien-Blöcke: seriöser Stil
+    # Kategorien-Blöcke: Seriöser News-Blog-Stil
     cat_blocks = ""
     all_cats = list(grouped.items())
     for idx, (category, articles) in enumerate(all_cats):
@@ -859,7 +858,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
         is_last = (idx == len(all_cats) - 1)
         border_bottom = "none" if is_last else f"2px solid {COLOR_BORDER}"
 
-        # Artikel-Zeilen im seriösen Stil
+        # Artikel-Zeilen im Seriöser News-Blog-Stil
         rows = ""
         for a in articles:
             if not a.get("link"):
