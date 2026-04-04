@@ -7,7 +7,7 @@ on:
   workflow_dispatch:       # Manueller Start jederzeit möglich
 
 permissions:
-  contents: write          # Nötig für gh-pages Push
+  contents: write
 
 jobs:
   send-newsletter:
@@ -27,174 +27,173 @@ jobs:
 
       # ── 3. Abhängigkeiten installieren ──────────────────────────────────
       - name: Abhängigkeiten installieren
-        run: pip install feedparser groq
+        run: pip install feedparser groq gspread google-auth
 
-      # ── 4. Newsletter ausführen ─────────────────────────────────────────
+      # ── 4. Empfängerliste laden (Basis + Google Sheet Abonnenten) ────────
+      - name: Empfängerliste laden
+        id: recipients
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GOOGLE_SHEET_ID:    ${{ secrets.GOOGLE_SHEET_ID }}
+          RECIPIENT_EMAIL:    ${{ secrets.RECIPIENT_EMAIL }}
+        run: |
+          python3 - <<'PYEOF'
+          import os, json
+
+          base     = os.environ.get("RECIPIENT_EMAIL", "")
+          sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
+          creds    = os.environ.get("GOOGLE_CREDENTIALS", "")
+
+          recipients = [e.strip() for e in base.split(",") if e.strip()]
+
+          if sheet_id and creds:
+              try:
+                  import gspread
+                  from google.oauth2.service_account import Credentials
+                  info   = json.loads(creds)
+                  scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+                  gc     = gspread.authorize(Credentials.from_service_account_info(info, scopes=scopes))
+                  sheet  = gc.open_by_key(sheet_id).sheet1
+                  rows   = sheet.get_all_records()
+                  for row in rows:
+                      email  = str(row.get("E-Mail", row.get("email", ""))).strip().lower()
+                      status = str(row.get("Status", row.get("status", "aktiv"))).strip().lower()
+                      if email and status in ("aktiv", "active", "ja", "yes", ""):
+                          if email not in recipients:
+                              recipients.append(email)
+                  print(f"✓ Sheet geladen: {len(recipients)} aktive Empfänger gesamt")
+              except Exception as e:
+                  print(f"⚠ Google Sheet nicht erreichbar: {e}")
+          else:
+              print(f"ℹ Kein Sheet konfiguriert – {len(recipients)} Empfänger aus Secret")
+
+          with open(os.environ["GITHUB_ENV"], "a") as f:
+              f.write(f"RECIPIENT_LIST={','.join(recipients)}\n")
+          PYEOF
+
+      # ── 5. Newsletter ausführen ─────────────────────────────────────────
       - name: Newsletter ausführen
         working-directory: scripts
         env:
-          GROQ_API_KEY:          ${{ secrets.GROQ_API_KEY }}
-          GMAIL_ADDRESS:         ${{ secrets.GMAIL_ADDRESS }}
-          GMAIL_APP_PASSWORD:    ${{ secrets.GMAIL_APP_PASSWORD }}
-          RECIPIENT_EMAIL:       ${{ secrets.RECIPIENT_EMAIL }}
-          GITHUB_PAGES_BASE_URL: ${{ secrets.PAGES_BASE_URL }}
+          GROQ_API_KEY:       ${{ secrets.GROQ_API_KEY }}
+          GMAIL_ADDRESS:      ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL:    ${{ env.RECIPIENT_LIST }}
+          PAGES_BASE_URL:     ${{ secrets.PAGES_BASE_URL }}
         run: python newsletter.py
 
-      # ── 5. Archiv auf gh-pages deployen ─────────────────────────────────
-      - name: Archiv auf GitHub Pages deployen
+      # ── 6. Archiv-Index generieren ───────────────────────────────────────
+      - name: Archiv-Index generieren
         run: |
-          # Git konfigurieren
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # gh-pages Branch holen (oder neu erstellen)
-          git fetch origin gh-pages 2>/dev/null || true
-          if git show-ref --quiet refs/remotes/origin/gh-pages; then
-            git worktree add gh-pages-dir origin/gh-pages
-          else
-            git worktree add --orphan -b gh-pages gh-pages-dir
-            echo "# Tageslage Archiv" > gh-pages-dir/README.md
-          fi
-
-          # Archiv-Ordner anlegen und Datei kopieren
-          mkdir -p gh-pages-dir/archiv
-          cp scripts/archiv/*.html gh-pages-dir/archiv/ 2>/dev/null || true
-
-          # Index-Seite aktualisieren (Liste aller Ausgaben)
           python3 - <<'PYEOF'
-          import os, re
+          import re
           from pathlib import Path
+          from datetime import datetime
 
-          archiv_dir = Path("gh-pages-dir/archiv")
-          files = sorted(archiv_dir.glob("*.html"), reverse=True)
+          archiv_dir = Path("scripts/archiv")
+          if not archiv_dir.exists():
+              print("Kein Archiv-Ordner, überspringe")
+              exit(0)
 
-          FONT       = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-          COLOR_NAVY = "#1b2a3b"
-          COLOR_NAVY2= "#2c3e50"
-          COLOR_BLUE = "#5a7fa0"
-          COLOR_MUTED= "#7a9bb5"
-          COLOR_LIGHT= "#a0b4c4"
-          COLOR_TEXT = "#1c1c1e"
-          COLOR_BG   = "#f8f9fa"
-          COLOR_BORDER="#e8e8e8"
+          files = sorted(archiv_dir.glob("20*.html"), reverse=True)
+
+          FONT        = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          COLOR_NAVY  = "#1b2a3b"
+          COLOR_NAVY2 = "#2c3e50"
+          COLOR_BLUE  = "#5a7fa0"
+          COLOR_MUTED = "#7a9bb5"
+          COLOR_LIGHT = "#a0b4c4"
+          COLOR_BORDER= "#e8e8e8"
 
           rows = ""
           for f in files:
-              name = f.stem   # z.B. 2025-04-04-morgen
-              m = re.match(r"(\d{4}-\d{2}-\d{2})-(morgen|abend)", name)
+              m = re.match(r"(\d{4}-\d{2}-\d{2})-(morgen|abend)", f.stem)
               if not m:
                   continue
               date_raw, edition = m.group(1), m.group(2)
-              # Datum formatieren
-              from datetime import datetime
               d = datetime.strptime(date_raw, "%Y-%m-%d")
               days   = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"]
               months = ["Januar","Februar","März","April","Mai","Juni",
                         "Juli","August","September","Oktober","November","Dezember"]
-              date_de = f"{days[d.weekday()]}, {d.day}. {months[d.month-1]} {d.year}"
+              date_de    = f"{days[d.weekday()]}, {d.day}. {months[d.month-1]} {d.year}"
               edition_de = "🌅 Morgen" if edition == "morgen" else "🌆 Abend"
               rows += (
-                  f'<tr>'
-                  f'<td style="padding:11px 16px;font-family:{FONT};font-size:11px;'
-                  f'color:{COLOR_MUTED};white-space:nowrap;">{date_de}</td>'
-                  f'<td style="padding:11px 8px;font-family:{FONT};font-size:11px;'
-                  f'color:{COLOR_MUTED};">{edition_de}</td>'
+                  f'<tr style="border-bottom:1px solid {COLOR_BORDER};">'
+                  f'<td style="padding:11px 16px;font-size:11px;color:{COLOR_MUTED};white-space:nowrap;">{date_de}</td>'
+                  f'<td style="padding:11px 8px;font-size:11px;color:{COLOR_MUTED};">{edition_de}</td>'
                   f'<td style="padding:11px 16px;">'
                   f'<a href="archiv/{f.name}" style="font-family:{FONT};font-size:13px;'
                   f'color:{COLOR_BLUE};text-decoration:none;">'
                   f'Tageslage {date_de} – {edition_de.split()[1]}-Ausgabe</a>'
-                  f'</td>'
-                  f'</tr>\n'
+                  f'</td></tr>\n'
               )
 
           html = f"""<!DOCTYPE html>
-          <html lang="de">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Tageslage – Archiv</title>
-          </head>
-          <body style="margin:0;padding:0;background:#f0f2f4;font-family:{FONT};">
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tageslage – Archiv</title>
+</head>
+<body style="margin:0;padding:0;background:#f0f2f4;font-family:{FONT};">
+<div style="background:{COLOR_NAVY};padding:36px 24px 28px;text-align:center;">
+  <div style="max-width:720px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+    color:{COLOR_MUTED};margin-bottom:10px;">Newsletter-Archiv</div>
+    <div style="font-size:30px;font-weight:700;color:#fff;letter-spacing:-0.5px;
+    margin-bottom:8px;">Tageslage</div>
+    <div style="font-size:13px;color:{COLOR_LIGHT};">Alle Ausgaben &middot; {len(files)} Einträge</div>
+  </div>
+</div>
+<div style="background:{COLOR_NAVY2};padding:8px 24px;text-align:center;font-size:11px;color:{COLOR_MUTED};">
+  Automatisch aktualisiert &middot; Archiv der letzten 365 Tage
+</div>
+<div style="max-width:720px;margin:32px auto;padding:0 16px 40px;">
+  <table width="100%" cellpadding="0" cellspacing="0"
+  style="background:#fff;border:1px solid {COLOR_BORDER};border-radius:4px;border-collapse:collapse;">
+    <thead>
+      <tr style="border-bottom:2px solid {COLOR_NAVY2};">
+        <th style="padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:{COLOR_MUTED};font-weight:600;">Datum</th>
+        <th style="padding:12px 8px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:{COLOR_MUTED};font-weight:600;">Ausgabe</th>
+        <th style="padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:{COLOR_MUTED};font-weight:600;">Link</th>
+      </tr>
+    </thead>
+    <tbody>{rows}</tbody>
+  </table>
+</div>
+<div style="background:{COLOR_NAVY};padding:20px 24px;text-align:center;">
+  <p style="font-size:11px;color:{COLOR_MUTED};margin:0;">
+    Powered by Nils &middot; Automatisch erstellt via GitHub Actions
+  </p>
+</div>
+</body>
+</html>"""
 
-          <div style="background:{COLOR_NAVY};padding:36px 24px 28px;text-align:center;">
-            <div style="max-width:720px;margin:0 auto;">
-              <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-              color:{COLOR_MUTED};margin-bottom:10px;">Newsletter-Archiv</div>
-              <div style="font-size:30px;font-weight:700;color:#fff;
-              letter-spacing:-0.5px;margin-bottom:8px;">Tageslage</div>
-              <div style="font-size:13px;color:{COLOR_LIGHT};">
-                Alle Ausgaben &middot; {len(files)} Einträge
-              </div>
-            </div>
-          </div>
-
-          <div style="background:{COLOR_NAVY2};padding:8px 24px;text-align:center;
-          font-size:11px;color:{COLOR_MUTED};">
-            Automatisch aktualisiert &middot; Archiv der letzten 365 Tage
-          </div>
-
-          <div style="max-width:720px;margin:32px auto;padding:0 16px 40px;">
-            <table width="100%" cellpadding="0" cellspacing="0"
-            style="background:#fff;border:1px solid {COLOR_BORDER};border-radius:4px;
-            border-collapse:collapse;">
-              <thead>
-                <tr style="border-bottom:2px solid {COLOR_NAVY2};">
-                  <th style="padding:12px 16px;text-align:left;font-family:{FONT};
-                  font-size:10px;text-transform:uppercase;letter-spacing:0.8px;
-                  color:{COLOR_MUTED};font-weight:600;">Datum</th>
-                  <th style="padding:12px 8px;text-align:left;font-family:{FONT};
-                  font-size:10px;text-transform:uppercase;letter-spacing:0.8px;
-                  color:{COLOR_MUTED};font-weight:600;">Ausgabe</th>
-                  <th style="padding:12px 16px;text-align:left;font-family:{FONT};
-                  font-size:10px;text-transform:uppercase;letter-spacing:0.8px;
-                  color:{COLOR_MUTED};font-weight:600;">Link</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows}
-              </tbody>
-            </table>
-          </div>
-
-          <div style="background:{COLOR_NAVY};padding:20px 24px;text-align:center;">
-            <p style="font-size:11px;color:{COLOR_MUTED};margin:0;">
-              Powered by Nils &middot; Automatisch erstellt via GitHub Actions
-            </p>
-          </div>
-
-          </body>
-          </html>"""
-
-          Path("gh-pages-dir/index.html").write_text(html, encoding="utf-8")
-          print(f"✓ index.html mit {len(files)} Einträgen aktualisiert")
+          Path("scripts/archiv/index.html").write_text(html, encoding="utf-8")
+          print(f"✓ index.html mit {len(files)} Einträgen generiert")
           PYEOF
 
-          # Commit & Push
-          cd gh-pages-dir
-          git add -A
-          git diff --staged --quiet || git commit -m "Archiv: $(date '+%Y-%m-%d %H:%M') Ausgabe"
-          git push origin gh-pages
-          cd ..
+      # ── 7. Auf gh-pages pushen ───────────────────────────────────────────
+      - name: Archiv auf GitHub Pages deployen
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: scripts/archiv
+          destination_dir: archiv
+          keep_files: true
 
-      # ── 6. Alte Archiv-Dateien aufräumen (> 365 Tage) ───────────────────
+      # ── 8. Alte Archiv-Dateien aufräumen (> 365 Tage) ───────────────────
       - name: Alte Archivdateien aufräumen
         run: |
-          git worktree list | grep gh-pages-dir >/dev/null 2>&1 && \
-            git worktree remove gh-pages-dir --force 2>/dev/null || true
-
-          git fetch origin gh-pages
-          git worktree add gh-pages-clean origin/gh-pages
-
           python3 - <<'PYEOF'
           from pathlib import Path
           from datetime import datetime, timedelta
           import re
 
-          cutoff = datetime.now() - timedelta(days=365)
-          archiv = Path("gh-pages-clean/archiv")
+          cutoff  = datetime.now() - timedelta(days=365)
+          archiv  = Path("scripts/archiv")
           removed = 0
-
-          for f in archiv.glob("*.html"):
+          for f in archiv.glob("20*.html"):
               m = re.match(r"(\d{4}-\d{2}-\d{2})", f.stem)
               if m:
                   file_date = datetime.strptime(m.group(1), "%Y-%m-%d")
@@ -202,15 +201,5 @@ jobs:
                       f.unlink()
                       removed += 1
                       print(f"  🗑 Gelöscht: {f.name}")
-
           print(f"✓ {removed} alte Dateien entfernt")
           PYEOF
-
-          cd gh-pages-clean
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --staged --quiet || git commit -m "Cleanup: Archivdateien > 365 Tage entfernt"
-          git push origin gh-pages
-          cd ..
-          git worktree remove gh-pages-clean --force
