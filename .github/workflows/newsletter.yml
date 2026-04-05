@@ -32,9 +32,7 @@ jobs:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
           GOOGLE_SHEET_ID:    ${{ secrets.GOOGLE_SHEET_ID }}
           RECIPIENT_EMAIL:    ${{ secrets.RECIPIENT_EMAIL }}
-        run: |
-          echo "aW1wb3J0IG9zLCBqc29uCgpiYXNlICAgICA9IG9zLmVudmlyb24uZ2V0KCJSRUNJUElFTlRfRU1BSUwiLCAiIikKc2hlZXRfaWQgPSBvcy5lbnZpcm9uLmdldCgiR09PR0xFX1NIRUVUX0lEIiwgIiIpCmNyZWRzICAgID0gb3MuZW52aXJvbi5nZXQoIkdPT0dMRV9DUkVERU5USUFMUyIsICIiKQoKcmVjaXBpZW50cyA9IFtlLnN0cmlwKCkgZm9yIGUgaW4gYmFzZS5zcGxpdCgiLCIpIGlmIGUuc3RyaXAoKV0KCmlmIHNoZWV0X2lkIGFuZCBjcmVkczoKICAgIHRyeToKICAgICAgICBpbXBvcnQgZ3NwcmVhZAogICAgICAgIGZyb20gZ29vZ2xlLm9hdXRoMi5zZXJ2aWNlX2FjY291bnQgaW1wb3J0IENyZWRlbnRpYWxzCiAgICAgICAgaW5mbyAgID0ganNvbi5sb2FkcyhjcmVkcykKICAgICAgICBzY29wZXMgPSBbImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvc3ByZWFkc2hlZXRzLnJlYWRvbmx5Il0KICAgICAgICBnYyAgICAgPSBnc3ByZWFkLmF1dGhvcml6ZShDcmVkZW50aWFscy5mcm9tX3NlcnZpY2VfYWNjb3VudF9pbmZvKGluZm8sIHNjb3Blcz1zY29wZXMpKQogICAgICAgIHNoZWV0ICA9IGdjLm9wZW5fYnlfa2V5KHNoZWV0X2lkKS5zaGVldDEKICAgICAgICByb3dzICAgPSBzaGVldC5nZXRfYWxsX3JlY29yZHMoKQogICAgICAgIGZvciByb3cgaW4gcm93czoKICAgICAgICAgICAgZW1haWwgID0gc3RyKHJvdy5nZXQoIkUtTWFpbCIsIHJvdy5nZXQoImVtYWlsIiwgIiIpKSkuc3RyaXAoKS5sb3dlcigpCiAgICAgICAgICAgIHN0YXR1cyA9IHN0cihyb3cuZ2V0KCJTdGF0dXMiLCByb3cuZ2V0KCJzdGF0dXMiLCAiYWt0aXYiKSkpLnN0cmlwKCkubG93ZXIoKQogICAgICAgICAgICBpZiBlbWFpbCBhbmQgc3RhdHVzIGluICgiYWt0aXYiLCAiYWN0aXZlIiwgImphIiwgInllcyIsICIiKToKICAgICAgICAgICAgICAgIGlmIGVtYWlsIG5vdCBpbiByZWNpcGllbnRzOgogICAgICAgICAgICAgICAgICAgIHJlY2lwaWVudHMuYXBwZW5kKGVtYWlsKQogICAgICAgIHByaW50KCJTaGVldCBnZWxhZGVuOiB7fSBha3RpdmUgRW1wZmFlbmdlciBnZXNhbXQiLmZvcm1hdChsZW4ocmVjaXBpZW50cykpKQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgIHByaW50KCJXYXJudW5nOiBHb29nbGUgU2hlZXQgbmljaHQgZXJyZWljaGJhcjoge30iLmZvcm1hdChlKSkKZWxzZToKICAgIHByaW50KCJLZWluIFNoZWV0IGtvbmZpZ3VyaWVydCAtIHt9IEVtcGZhZW5nZXIgYXVzIFNlY3JldCIuZm9ybWF0KGxlbihyZWNpcGllbnRzKSkpCgp3aXRoIG9wZW4ob3MuZW52aXJvblsiR0lUSFVCX0VOViJdLCAiYSIpIGFzIGY6CiAgICBmLndyaXRlKCJSRUNJUElFTlRfTElTVD17fVxuIi5mb3JtYXQoIiwiLmpvaW4ocmVjaXBpZW50cykpKQo=" | base64 -d > /tmp/recipients.py
-          python3 /tmp/recipients.py
+        run: python3 scripts/recipients.py
 
       - name: Newsletter ausfuehren
         working-directory: scripts
@@ -44,8 +42,19 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           RECIPIENT_EMAIL:    ${{ env.RECIPIENT_LIST }}
           PAGES_BASE_URL:     ${{ secrets.PAGES_BASE_URL }}
-        run: python newsletter.py
+          UNSUBSCRIBE_URL:    ${{ secrets.UNSUBSCRIBE_URL }}
+        run: python3 newsletter.py
 
       - name: Alte Archivdateien aufraeumen
-        run: |
-          echo "ZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lZGVsdGEKaW1wb3J0IHJlCgpjdXRvZmYgID0gZGF0ZXRpbWUubm93KCkgLSB0aW1lZGVsdGEoZGF5cz0zNjUpCmFyY2hpdiAgPSBQYXRoKCJzY3JpcHRzL2FyY2hpdiIpCmlmIG5vdCBhcmNoaXYuZXhpc3RzKCk6CiAgICBwcmludCgiS2VpbiBBcmNoaXYtT3JkbmVyLCB1ZWJlcnNwcmluZ2UiKQogICAgZXhpdCgwKQ
+        run: python3 scripts/cleanup.py
+
+      - name: Archiv-Index generieren
+        run: python3 scripts/gen_index.py
+
+      - name: Archiv auf GitHub Pages deployen
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: scripts/archiv
+          destination_dir: archiv
+          keep_files: true
