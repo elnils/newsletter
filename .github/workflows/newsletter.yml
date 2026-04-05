@@ -1,6 +1,6 @@
 - name: Archiv-Index generieren
         run: |
-          cat > /tmp/gen_index.py << 'PYEOF'
+          python3 - << 'PYEOF'
 import re
 from pathlib import Path
 from datetime import datetime
@@ -13,7 +13,6 @@ if not archiv_dir.exists():
 files = sorted(archiv_dir.glob("20*.html"), reverse=True)
 file_count = len(files)
 
-FONT        = "-apple-system, BlinkMacSystemFont, sans-serif"
 COLOR_NAVY  = "#1b2a3b"
 COLOR_NAVY2 = "#2c3e50"
 COLOR_BLUE  = "#5a7fa0"
@@ -34,49 +33,47 @@ for f in files:
     date_de    = "{}, {}. {} {}".format(days[d.weekday()], d.day, months[d.month-1], d.year)
     edition_de = "Morgen" if edition == "morgen" else "Abend"
     rows += (
-        "<tr style=\"border-bottom:1px solid {};\">\n".format(COLOR_BORDER) +
-        "<td style=\"padding:11px 16px;font-size:11px;color:{};white-space:nowrap;\">{}</td>\n".format(COLOR_MUTED, date_de) +
-        "<td style=\"padding:11px 8px;font-size:11px;color:{};\"> {}</td>\n".format(COLOR_MUTED, edition_de) +
-        "<td style=\"padding:11px 16px;\">" +
-        "<a href=\"archiv/{}\" style=\"font-size:13px;color:{};text-decoration:none;\">".format(f.name, COLOR_BLUE) +
+        '<tr style="border-bottom:1px solid {};">\n'.format(COLOR_BORDER) +
+        '<td style="padding:11px 16px;font-size:11px;color:{};white-space:nowrap;">{}</td>\n'.format(COLOR_MUTED, date_de) +
+        '<td style="padding:11px 8px;font-size:11px;color:{};">{}</td>\n'.format(COLOR_MUTED, edition_de) +
+        '<td style="padding:11px 16px;">' +
+        '<a href="archiv/{}" style="font-size:13px;color:{};text-decoration:none;">'.format(f.name, COLOR_BLUE) +
         "Tageslage {} - {}-Ausgabe</a>".format(date_de, edition_de) +
         "</td></tr>\n"
     )
 
-lines = [
-    "<!DOCTYPE html>",
-    "<html lang=\"de\">",
-    "<head>",
-    "  <meta charset=\"UTF-8\">",
-    "  <title>Tageslage - Archiv</title>",
-    "</head>",
-    "<body style=\"margin:0;padding:0;background:#f0f2f4;\">",
-    "<div style=\"background:{};padding:36px 24px;text-align:center;\">".format(COLOR_NAVY),
-    "  <div style=\"font-size:30px;font-weight:700;color:#fff;\">Tageslage</div>",
-    "  <div style=\"font-size:13px;color:{};\">Alle Ausgaben - {} Eintraege</div>".format(COLOR_LIGHT, file_count),
-    "</div>",
-    "<div style=\"max-width:720px;margin:32px auto;padding:0 16px 40px;\">",
-    "  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#fff;border-collapse:collapse;\">",
-    "    <thead>",
-    "      <tr style=\"border-bottom:2px solid {};\">".format(COLOR_NAVY2),
-    "        <th style=\"padding:12px 16px;text-align:left;font-size:10px;color:{};\">Datum</th>".format(COLOR_MUTED),
-    "        <th style=\"padding:12px 8px;text-align:left;font-size:10px;color:{};\">Ausgabe</th>".format(COLOR_MUTED),
-    "        <th style=\"padding:12px 16px;text-align:left;font-size:10px;color:{};\">Link</th>".format(COLOR_MUTED),
-    "      </tr>",
-    "    </thead>",
-    "    <tbody>",
-    rows,
-    "    </tbody>",
-    "  </table>",
-    "</div>",
-    "<div style=\"background:{};padding:20px 24px;text-align:center;\">".format(COLOR_NAVY),
-    "  <p style=\"font-size:11px;color:{};\">Powered by Nils</p>".format(COLOR_MUTED),
-    "</div>",
-    "</body>",
-    "</html>",
-]
+html = """<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Tageslage - Archiv</title>
+</head>
+<body style="margin:0;padding:0;background:#f0f2f4;">
+<div style="background:{navy};padding:36px 24px;text-align:center;">
+  <div style="font-size:30px;font-weight:700;color:#fff;">Tageslage</div>
+  <div style="font-size:13px;color:{light};">Alle Ausgaben - {count} Eintraege</div>
+</div>
+<div style="max-width:720px;margin:32px auto;padding:0 16px 40px;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff;border-collapse:collapse;">
+    <thead>
+      <tr style="border-bottom:2px solid {navy2};">
+        <th style="padding:12px 16px;text-align:left;font-size:10px;color:{muted};">Datum</th>
+        <th style="padding:12px 8px;text-align:left;font-size:10px;color:{muted};">Ausgabe</th>
+        <th style="padding:12px 16px;text-align:left;font-size:10px;color:{muted};">Link</th>
+      </tr>
+    </thead>
+    <tbody>
+{rows}
+    </tbody>
+  </table>
+</div>
+<div style="background:{navy};padding:20px 24px;text-align:center;">
+  <p style="font-size:11px;color:{muted};">Powered by Nils</p>
+</div>
+</body>
+</html>""".format(navy=COLOR_NAVY, navy2=COLOR_NAVY2, light=COLOR_LIGHT,
+                  muted=COLOR_MUTED, count=file_count, rows=rows)
 
-Path("scripts/archiv/index.html").write_text("\n".join(lines), encoding="utf-8")
+Path("scripts/archiv/index.html").write_text(html, encoding="utf-8")
 print("index.html mit {} Eintraegen generiert".format(file_count))
 PYEOF
-          python3 /tmp/gen_index.py
