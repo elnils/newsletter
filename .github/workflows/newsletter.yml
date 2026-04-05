@@ -2,9 +2,9 @@ name: Tageslage Newsletter
 
 on:
   schedule:
-    - cron: "30 5 * * *"   # 06:30 Uhr MEZ (Morgen-Ausgabe)
-    - cron: "30 14 * * *"  # 15:30 Uhr MEZ (Abend-Ausgabe)
-  workflow_dispatch:       # Manueller Start jederzeit möglich
+    - cron: "30 5 * * *"
+    - cron: "30 14 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -12,68 +12,31 @@ permissions:
 jobs:
   send-newsletter:
     runs-on: ubuntu-latest
-
     steps:
-      # ── 1. Code auschecken ──────────────────────────────────────────────
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ── 2. Python einrichten ────────────────────────────────────────────
       - name: Python einrichten
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
-      # ── 3. Abhängigkeiten installieren ──────────────────────────────────
-      - name: Abhängigkeiten installieren
+      - name: Abhaengigkeiten installieren
         run: pip install feedparser groq gspread google-auth
 
-      # ── 4. Empfängerliste laden ──────────────────────────────────────────
-      - name: Empfängerliste laden
+      - name: Empfaengerliste laden
         id: recipients
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
           GOOGLE_SHEET_ID:    ${{ secrets.GOOGLE_SHEET_ID }}
           RECIPIENT_EMAIL:    ${{ secrets.RECIPIENT_EMAIL }}
         run: |
-          cat > /tmp/recipients.py << 'PYEOF'
-import os, json
-
-base     = os.environ.get("RECIPIENT_EMAIL", "")
-sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
-creds    = os.environ.get("GOOGLE_CREDENTIALS", "")
-
-recipients = [e.strip() for e in base.split(",") if e.strip()]
-
-if sheet_id and creds:
-    try:
-        import gspread
-        from google.oauth2.service_account import Credentials
-        info   = json.loads(creds)
-        scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-        gc     = gspread.authorize(Credentials.from_service_account_info(info, scopes=scopes))
-        sheet  = gc.open_by_key(sheet_id).sheet1
-        rows   = sheet.get_all_records()
-        for row in rows:
-            email  = str(row.get("E-Mail", row.get("email", ""))).strip().lower()
-            status = str(row.get("Status", row.get("status", "aktiv"))).strip().lower()
-            if email and status in ("aktiv", "active", "ja", "yes", ""):
-                if email not in recipients:
-                    recipients.append(email)
-        print(f"Loaded sheet: {len(recipients)} active recipients")
-    except Exception as e:
-        print(f"Warning: Google Sheet not reachable: {e}")
-else:
-    print(f"No sheet configured - {len(recipients)} recipients from secret")
-
-with open(os.environ["GITHUB_ENV"], "a") as f:
-    f.write(f"RECIPIENT_LIST={','.join(recipients)}\n")
-PYEOF
+          echo "aW1wb3J0IG9zLCBqc29uCgpiYXNlICAgICA9IG9zLmVudmlyb24uZ2V0KCJSRUNJUElFTlRfRU1BSUwiLCAiIikKc2hlZXRfaWQgPSBvcy5lbnZpcm9uLmdldCgiR09PR0xFX1NIRUVUX0lEIiwgIiIpCmNyZWRzICAgID0gb3MuZW52aXJvbi5nZXQoIkdPT0dMRV9DUkVERU5USUFMUyIsICIiKQoKcmVjaXBpZW50cyA9IFtlLnN0cmlwKCkgZm9yIGUgaW4gYmFzZS5zcGxpdCgiLCIpIGlmIGUuc3RyaXAoKV0KCmlmIHNoZWV0X2lkIGFuZCBjcmVkczoKICAgIHRyeToKICAgICAgICBpbXBvcnQgZ3NwcmVhZAogICAgICAgIGZyb20gZ29vZ2xlLm9hdXRoMi5zZXJ2aWNlX2FjY291bnQgaW1wb3J0IENyZWRlbnRpYWxzCiAgICAgICAgaW5mbyAgID0ganNvbi5sb2FkcyhjcmVkcykKICAgICAgICBzY29wZXMgPSBbImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvc3ByZWFkc2hlZXRzLnJlYWRvbmx5Il0KICAgICAgICBnYyAgICAgPSBnc3ByZWFkLmF1dGhvcml6ZShDcmVkZW50aWFscy5mcm9tX3NlcnZpY2VfYWNjb3VudF9pbmZvKGluZm8sIHNjb3Blcz1zY29wZXMpKQogICAgICAgIHNoZWV0ICA9IGdjLm9wZW5fYnlfa2V5KHNoZWV0X2lkKS5zaGVldDEKICAgICAgICByb3dzICAgPSBzaGVldC5nZXRfYWxsX3JlY29yZHMoKQogICAgICAgIGZvciByb3cgaW4gcm93czoKICAgICAgICAgICAgZW1haWwgID0gc3RyKHJvdy5nZXQoIkUtTWFpbCIsIHJvdy5nZXQoImVtYWlsIiwgIiIpKSkuc3RyaXAoKS5sb3dlcigpCiAgICAgICAgICAgIHN0YXR1cyA9IHN0cihyb3cuZ2V0KCJTdGF0dXMiLCByb3cuZ2V0KCJzdGF0dXMiLCAiYWt0aXYiKSkpLnN0cmlwKCkubG93ZXIoKQogICAgICAgICAgICBpZiBlbWFpbCBhbmQgc3RhdHVzIGluICgiYWt0aXYiLCAiYWN0aXZlIiwgImphIiwgInllcyIsICIiKToKICAgICAgICAgICAgICAgIGlmIGVtYWlsIG5vdCBpbiByZWNpcGllbnRzOgogICAgICAgICAgICAgICAgICAgIHJlY2lwaWVudHMuYXBwZW5kKGVtYWlsKQogICAgICAgIHByaW50KCJTaGVldCBnZWxhZGVuOiB7fSBha3RpdmUgRW1wZmFlbmdlciBnZXNhbXQiLmZvcm1hdChsZW4ocmVjaXBpZW50cykpKQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgIHByaW50KCJXYXJudW5nOiBHb29nbGUgU2hlZXQgbmljaHQgZXJyZWljaGJhcjoge30iLmZvcm1hdChlKSkKZWxzZToKICAgIHByaW50KCJLZWluIFNoZWV0IGtvbmZpZ3VyaWVydCAtIHt9IEVtcGZhZW5nZXIgYXVzIFNlY3JldCIuZm9ybWF0KGxlbihyZWNpcGllbnRzKSkpCgp3aXRoIG9wZW4ob3MuZW52aXJvblsiR0lUSFVCX0VOViJdLCAiYSIpIGFzIGY6CiAgICBmLndyaXRlKCJSRUNJUElFTlRfTElTVD17fVxuIi5mb3JtYXQoIiwiLmpvaW4ocmVjaXBpZW50cykpKQo=" | base64 -d > /tmp/recipients.py
           python3 /tmp/recipients.py
 
-      # ── 5. Newsletter ausführen ─────────────────────────────────────────
-      - name: Newsletter ausführen
+      - name: Newsletter ausfuehren
         working-directory: scripts
         env:
           GROQ_API_KEY:       ${{ secrets.GROQ_API_KEY }}
@@ -83,128 +46,6 @@ PYEOF
           PAGES_BASE_URL:     ${{ secrets.PAGES_BASE_URL }}
         run: python newsletter.py
 
-      # ── 6. Alte Archivdateien aufräumen (> 365 Tage) ────────────────────
-      - name: Alte Archivdateien aufräumen
+      - name: Alte Archivdateien aufraeumen
         run: |
-          cat > /tmp/cleanup.py << 'PYEOF'
-from pathlib import Path
-from datetime import datetime, timedelta
-import re
-
-cutoff  = datetime.now() - timedelta(days=365)
-archiv  = Path("scripts/archiv")
-if not archiv.exists():
-    print("Kein Archiv-Ordner, ueberspringe")
-    exit(0)
-removed = 0
-for f in archiv.glob("20*.html"):
-    m = re.match(r"(\d{4}-\d{2}-\d{2})", f.stem)
-    if m:
-        file_date = datetime.strptime(m.group(1), "%Y-%m-%d")
-        if file_date < cutoff:
-            f.unlink()
-            removed += 1
-            print(f"  Geloescht: {f.name}")
-print(f"Fertig: {removed} alte Dateien entfernt")
-PYEOF
-          python3 /tmp/cleanup.py
-
-      # ── 7. Archiv-Index generieren ───────────────────────────────────────
-      - name: Archiv-Index generieren
-        run: |
-          cat > /tmp/gen_index.py << 'PYEOF'
-import re
-from pathlib import Path
-from datetime import datetime
-
-archiv_dir = Path("scripts/archiv")
-if not archiv_dir.exists():
-    print("Kein Archiv-Ordner, ueberspringe")
-    exit(0)
-
-files = sorted(archiv_dir.glob("20*.html"), reverse=True)
-file_count = len(files)
-
-COLOR_NAVY  = "#1b2a3b"
-COLOR_NAVY2 = "#2c3e50"
-COLOR_BLUE  = "#5a7fa0"
-COLOR_MUTED = "#7a9bb5"
-COLOR_LIGHT = "#a0b4c4"
-COLOR_BORDER = "#e8e8e8"
-FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-
-rows = ""
-for f in files:
-    m = re.match(r"(\d{4}-\d{2}-\d{2})-(morgen|abend)", f.stem)
-    if not m:
-        continue
-    date_raw, edition = m.group(1), m.group(2)
-    d = datetime.strptime(date_raw, "%Y-%m-%d")
-    days   = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"]
-    months = ["Januar","Februar","Maerz","April","Mai","Juni",
-              "Juli","August","September","Oktober","November","Dezember"]
-    date_de    = "{}, {}. {} {}".format(days[d.weekday()], d.day, months[d.month-1], d.year)
-    edition_de = "Morgen" if edition == "morgen" else "Abend"
-    rows += (
-        '<tr style="border-bottom:1px solid ' + COLOR_BORDER + ';">'
-        '<td style="padding:11px 16px;font-size:11px;color:' + COLOR_MUTED + ';white-space:nowrap;">' + date_de + '</td>'
-        '<td style="padding:11px 8px;font-size:11px;color:' + COLOR_MUTED + ';">' + edition_de + '</td>'
-        '<td style="padding:11px 16px;">'
-        '<a href="archiv/' + f.name + '" style="font-size:13px;color:' + COLOR_BLUE + ';text-decoration:none;">'
-        'Tageslage ' + date_de + ' - ' + edition_de + '-Ausgabe</a>'
-        '</td></tr>\n'
-    )
-
-html = (
-    '<!DOCTYPE html>\n'
-    '<html lang="de">\n'
-    '<head>\n'
-    '  <meta charset="UTF-8">\n'
-    '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-    '  <title>Tageslage - Archiv</title>\n'
-    '</head>\n'
-    '<body style="margin:0;padding:0;background:#f0f2f4;font-family:' + FONT + ';">\n'
-    '<div style="background:' + COLOR_NAVY + ';padding:36px 24px 28px;text-align:center;">\n'
-    '  <div style="max-width:720px;margin:0 auto;">\n'
-    '    <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:' + COLOR_MUTED + ';margin-bottom:10px;">Newsletter-Archiv</div>\n'
-    '    <div style="font-size:30px;font-weight:700;color:#fff;margin-bottom:8px;">Tageslage</div>\n'
-    '    <div style="font-size:13px;color:' + COLOR_LIGHT + ';">Alle Ausgaben &middot; ' + str(file_count) + ' Eintraege</div>\n'
-    '  </div>\n'
-    '</div>\n'
-    '<div style="background:' + COLOR_NAVY2 + ';padding:8px 24px;text-align:center;font-size:11px;color:' + COLOR_MUTED + ';">\n'
-    '  Automatisch aktualisiert &middot; Archiv der letzten 365 Tage\n'
-    '</div>\n'
-    '<div style="max-width:720px;margin:32px auto;padding:0 16px 40px;">\n'
-    '  <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff;border:1px solid ' + COLOR_BORDER + ';border-radius:4px;border-collapse:collapse;">\n'
-    '    <thead>\n'
-    '      <tr style="border-bottom:2px solid ' + COLOR_NAVY2 + ';">\n'
-    '        <th style="padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;color:' + COLOR_MUTED + ';font-weight:600;">Datum</th>\n'
-    '        <th style="padding:12px 8px;text-align:left;font-size:10px;text-transform:uppercase;color:' + COLOR_MUTED + ';font-weight:600;">Ausgabe</th>\n'
-    '        <th style="padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;color:' + COLOR_MUTED + ';font-weight:600;">Link</th>\n'
-    '      </tr>\n'
-    '    </thead>\n'
-    '    <tbody>\n'
-    + rows +
-    '    </tbody>\n'
-    '  </table>\n'
-    '</div>\n'
-    '<div style="background:' + COLOR_NAVY + ';padding:20px 24px;text-align:center;">\n'
-    '  <p style="font-size:11px;color:' + COLOR_MUTED + ';margin:0;">Powered by Nils &middot; Automatisch erstellt via GitHub Actions</p>\n'
-    '</div>\n'
-    '</body>\n'
-    '</html>\n'
-)
-
-Path("scripts/archiv/index.html").write_text(html, encoding="utf-8")
-print("index.html mit {} Eintraegen generiert".format(file_count))
-PYEOF
-          python3 /tmp/gen_index.py
-
-      # ── 8. Auf gh-pages pushen ───────────────────────────────────────────
-      - name: Archiv auf GitHub Pages deployen
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: scripts/archiv
-          destination_dir: archiv
-          keep_files: true
+          echo "ZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lZGVsdGEKaW1wb3J0IHJlCgpjdXRvZmYgID0gZGF0ZXRpbWUubm93KCkgLSB0aW1lZGVsdGEoZGF5cz0zNjUpCmFyY2hpdiAgPSBQYXRoKCJzY3JpcHRzL2FyY2hpdiIpCmlmIG5vdCBhcmNoaXYuZXhpc3RzKCk6CiAgICBwcmludCgiS2VpbiBBcmNoaXYtT3JkbmVyLCB1ZWJlcnNwcmluZ2UiKQogICAgZXhpdCgwKQ
