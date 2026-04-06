@@ -30,12 +30,14 @@ for f in files:
               "Juli","August","September","Oktober","November","Dezember"]
     date_de    = "{}, {}. {} {}".format(days[d.weekday()], d.day, months[d.month-1], d.year)
     edition_de = "Morgen" if edition == "morgen" else "Abend"
+
+    # FIX: index.html liegt in scripts/archiv/ – kein "archiv/"-Prefix noetig
     rows += (
         '<tr style="border-bottom:1px solid ' + COLOR_BORDER + ';">'
         '<td style="padding:11px 16px;font-size:11px;color:' + COLOR_MUTED + ';white-space:nowrap;">' + date_de + '</td>'
         '<td style="padding:11px 8px;font-size:11px;color:' + COLOR_MUTED + ';">' + edition_de + '</td>'
         '<td style="padding:11px 16px;">'
-        '<a href="archiv/' + f.name + '" style="font-size:13px;color:' + COLOR_BLUE + ';text-decoration:none;">'
+        '<a href="' + f.name + '" style="font-size:13px;color:' + COLOR_BLUE + ';text-decoration:none;">'
         'Tageslage ' + date_de + ' - ' + edition_de + '-Ausgabe</a>'
         '</td></tr>\n'
     )
@@ -65,7 +67,7 @@ html = (
     '    <tbody>\n' + rows + '    </tbody>\n'
     '  </table>\n</div>\n'
     '<div style="background:' + COLOR_NAVY + ';padding:20px 24px;text-align:center;">\n'
-    '  <p style="font-size:11px;color:' + COLOR_MUTED + ';margin:0;">Powered by Nils - Automatisch erstellt via GitHub Actions</p>\n'
+    '  <p style="font-size:11px;color:' + COLOR_MUTED + ';margin:0;">Powered by Nils</p>\n'
     '</div>\n</body>\n</html>\n'
 )
 
