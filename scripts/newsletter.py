@@ -1068,7 +1068,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         f'text-align:center;border-radius:4px 4px 0 0;">'
         f'<div style="font-family:{FONT};font-size:10px;letter-spacing:2.5px;'
         f'text-transform:uppercase;color:{COLOR_MUTED};margin-bottom:10px;">'
-        f'Dein taeglicher Nachrichtenueberblick</div>'
+        f'Dein täglicher Nachrichtenüberblick</div>'
         f'<div style="font-family:{FONT};font-size:28px;font-weight:700;'
         f'color:#ffffff;letter-spacing:-0.5px;margin-bottom:8px;">Tageslage</div>'
         f'<div style="font-family:{FONT};font-size:13px;color:{COLOR_LIGHT};">'
@@ -1078,7 +1078,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         f'<tr><td style="background:{COLOR_NAVY2};padding:8px 32px;text-align:center;'
         f'font-family:{FONT};font-size:11px;color:{COLOR_MUTED};">'
         f'{len(RSS_FEEDS)}&nbsp;Quellen &middot; {total_articles}&nbsp;Artikel '
-        f'&middot; KI-Zusammenfassung</td></tr>\n'
+        f'&middot; kuratiert mit KI</td></tr>\n'
         + intro_html
         + category_blocks
         + footer_html +
