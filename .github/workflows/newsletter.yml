@@ -2,8 +2,8 @@ name: Tageslage Newsletter
 
 on:
   schedule:
-    - cron: "30 5 * * *"
-    - cron: "30 14 * * *"
+    - cron: "31 5 * * *"
+    - cron: "31 14 * * *"
   workflow_dispatch:
 
 permissions:
