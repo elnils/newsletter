@@ -41,10 +41,25 @@ RSS_FEEDS = {
     # ── International Allgemein ────────────────────────────────────────
     "BBC News":               "https://feeds.bbci.co.uk/news/rss.xml",
     "Reuters EN":             "https://feeds.reuters.com/reuters/topNews",
-    "New York Times":         "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
     "Deutsche Welle":         "https://rss.dw.com/rdf/rss-en-all",
     "Euractiv":               "https://www.euractiv.com/feed/",
     "Politico Europe":        "https://www.politico.eu/feed/",
+    # ── NYT – verschiedene Ressorts ───────────────────────────────────
+    "NYT World":              "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+    "NYT Business":           "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml",
+    "NYT Economy":            "https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml",
+    "NYT Politics":           "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
+    "NYT US":                 "https://rss.nytimes.com/services/xml/rss/nyt/US.xml",
+    # ── WSJ – öffentliche Feeds ───────────────────────────────────────
+    "WSJ World":              "https://feeds.content.dowjones.io/public/rss/RSSWorldNews",
+    "WSJ Markets":            "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain",
+    "WSJ Economy":            "https://feeds.content.dowjones.io/public/rss/RSSBusiness",
+    "WSJ US":                 "https://feeds.content.dowjones.io/public/rss/RSSWSJD",
+    # ── FT – öffentlicher RSS ─────────────────────────────────────────
+    "FT World":               "https://www.ft.com/world?format=rss",
+    "FT Economics":           "https://www.ft.com/economics?format=rss",
+    "FT Markets":             "https://www.ft.com/markets?format=rss",
+    "FT US":                  "https://www.ft.com/us?format=rss",
     # ── Wirtschaft & Finanzen International ───────────────────────────
     "Reuters Business":       "https://feeds.reuters.com/reuters/businessNews",
     "CNBC Economy":           "https://www.cnbc.com/id/20910258/device/rss/rss.html",
@@ -52,6 +67,9 @@ RSS_FEEDS = {
     "Google Economy EN":      "https://news.google.com/rss/search?q=economy+recession+gdp&hl=en&gl=US&ceid=US:en",
     "Google Markets EN":      "https://news.google.com/rss/search?q=stock+market+fed+interest+rates&hl=en&gl=US&ceid=US:en",
     "Google Trade EN":        "https://news.google.com/rss/search?q=trade+war+tariffs+imf&hl=en&gl=US&ceid=US:en",
+    # ── USA & Außenpolitik ────────────────────────────────────────────
+    "Google USA Politik":     "https://news.google.com/rss/search?q=trump+white+house+congress&hl=en&gl=US&ceid=US:en",
+    "Google US Foreign":      "https://news.google.com/rss/search?q=us+foreign+policy+diplomacy&hl=en&gl=US&ceid=US:en",
 }
 
 # ─────────────────────────────────────────────
@@ -101,9 +119,29 @@ CATEGORIES = {
         ],
     },
 
+    "🇺🇸 USA & Amerika": {
+        "keywords": {
+            "trump": 10, "white house": 10, "congress": 10, "senate": 10,
+            "house of representatives": 10, "oval office": 10,
+            "republican": 8, "democrat": 8, "washington": 8,
+            "president biden": 10, "president trump": 10,
+            "us president": 10, "american politics": 10,
+            "midterm": 10, "us election": 10, "us congress": 10,
+            "pentagon": 10, "state department": 10, "us treasury": 10,
+            "federal reserve": 8, "us economy": 10,
+            "tariff": 8, "us tariff": 10, "us trade": 10,
+            "us foreign policy": 10, "us sanctions": 10,
+            "us military": 10, "us troops": 10,
+            "latin america": 8, "canada": 6, "mexico": 6,
+        },
+        "exclude": [
+            "bundesliga", "fußball", "soccer",
+            "formel 1", "formula 1", "olympic",
+        ],
+    },
+
     "💰 Wirtschaft": {
         "keywords": {
-            # Deutsch
             "wirtschaft": 10, "konjunktur": 10, "rezession": 10,
             "bruttoinlandsprodukt": 10, "bip": 10, "ifo": 10,
             "arbeitslosigkeit": 10, "arbeitslosenquote": 10,
@@ -117,7 +155,6 @@ CATEGORIES = {
             "quartalszahlen": 10, "umsatzrückgang": 10, "haushaltskrise": 10,
             "wirtschaftskrise": 10, "handelsstreit": 10, "zölle": 10,
             "wirtschaftswachstum": 10, "wirtschaftsabschwung": 10,
-            # Englisch
             "economic growth": 10, "economic recession": 10,
             "gdp": 10, "unemployment rate": 10,
             "trade deficit": 10, "trade war": 10, "tariff": 8,
@@ -444,10 +481,21 @@ FEED_TIMEOUT             = 15
 GROQ_TIMEOUT             = 30
 GROQ_RETRIES             = 1
 
+SIGNUP_URL    = "https://forms.gle/LSavK3JVp3aAsLGm9"
+ARCHIVE_URL   = "https://elnils.github.io/newsletter/"
+
 GITHUB_PAGES_BASE_URL = os.environ.get(
     "PAGES_BASE_URL",
     "https://elnils.github.io/newsletter"
 )
+
+# ─────────────────────────────────────────────
+# ANKER-ID HELPER
+# ─────────────────────────────────────────────
+
+def _anchor_id(category: str) -> str:
+    """Erzeugt eine saubere HTML-Anker-ID aus dem Kategorienamen."""
+    return re.sub(r"[^\w-]", "-", category).strip("-")
 
 # ─────────────────────────────────────────────
 # RSS FEEDS HOLEN
@@ -464,7 +512,6 @@ def fetch_feeds() -> list[dict]:
     articles    = []
     seen_titles = set()
 
-    # ── FIX 1: Timeout nur lokal setzen und danach sicher zuruecksetzen ──
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(FEED_TIMEOUT)
 
@@ -507,7 +554,6 @@ def fetch_feeds() -> list[dict]:
                 print(f"  ✗ {source}: {e}")
 
     finally:
-        # Timeout immer zuruecksetzen – auch bei Fehler
         socket.setdefaulttimeout(old_timeout)
 
     return articles[:MAX_ARTICLES_FOR_SUMMARY]
@@ -579,46 +625,63 @@ def _groq_call(client: Groq, prompt: str, max_tokens: int = 200) -> str:
                 raise
 
 # ─────────────────────────────────────────────
-# INTRO – kurz, sachlich, 1-2 Sätze
+# INTRO – dynamisch mit Anker-Links
 # ─────────────────────────────────────────────
 
-def generate_intro(grouped: dict[str, list[dict]], client: Groq) -> str:
+def generate_intro(grouped: dict[str, list[dict]], client: Groq,
+                   top_cats: list[str]) -> str:
+    """
+    Generiert einen Intro-Satz und gibt ihn als HTML zurück,
+    wobei die Kategorienamen als Anker-Links eingebettet sind.
+    """
     top_topics = []
-    for cat, articles in grouped.items():
+    for cat in top_cats[:6]:
+        articles = grouped.get(cat, [])
         if articles:
             top_topics.append(articles[0]["title"])
-        if len(top_topics) >= 6:
-            break
 
     topics_text = "\n".join(f"- {t}" for t in top_topics)
 
-    prompt = f"""Schreibe den Einstiegssatz eines deutschen Nachrichtenbriefs.
+    # Wir bitten das Modell, nur die 3 Stichworte zu liefern – den Satz bauen wir selbst
+    prompt = f"""Lies die folgenden Schlagzeilen und nenne genau 3 kurze deutsche Stichworte (je 1-3 Woerter), 
+die die wichtigsten Themen zusammenfassen (z.B. "Haushaltsstreit", "Ukraine-Krieg", "KI-Regulierung").
 
-Verwende GENAU dieses Format:
-"Hier eine Auswahl der aktuellen Themen. Relevant sind unter anderem: [Thema 1], [Thema 2] und [Thema 3]."
-
-Regeln:
-- Maximal 2 Sätze, maximal 35 Woerter gesamt
-- Die 3 wichtigsten Themen als kurze Stichworte (z.B. "Haushaltsstreit", "Lage in der Ukraine", "steigende Energiepreise")
-- Kein "Heute", keine Wertung, keine Fragen, kein "Im Fokus"
-- Direkt mit "Hier" beginnen
+Nur die 3 Stichworte, kommagetrennt, keine weiteren Erklaerungen.
 
 Schlagzeilen:
 {topics_text}
 
-Einstiegssatz:"""
+Stichworte:"""
+
+    # Kategorie-Namen als verlinkte Chips für die Anker-Navigation
+    cat_links_html = " &middot; ".join(
+        f'<a href="#{_anchor_id(cat)}" style="color:inherit;text-decoration:underline;'
+        f'text-decoration-color:rgba(160,180,196,0.5);">{cat}</a>'
+        for cat in top_cats
+    )
 
     try:
-        return _groq_call(client, prompt, max_tokens=60)
+        keywords_raw = _groq_call(client, prompt, max_tokens=30)
+        # Bereinigen: nur Komma-separierte Stichworte
+        keywords = [k.strip().strip('"') for k in keywords_raw.split(",") if k.strip()][:3]
+        keywords_str = ", ".join(keywords) if keywords else "aktuelle Ereignisse"
+
+        intro_text = (
+            f"Heute u.a. zu <strong>{keywords_str}</strong> – "
+            f"direkt springen: {cat_links_html}"
+        )
+        return intro_text
+
     except Exception as e:
         print(f"  ✗ Intro-Fehler: {e}")
-        return "Hier eine Auswahl der aktuellen Themen des Tages."
+        return f"Heute mit Nachrichten aus: {cat_links_html}"
 
 # ─────────────────────────────────────────────
 # TOP-KATEGORIEN
 # ─────────────────────────────────────────────
 
-def select_top_categories(grouped: dict[str, list[dict]], client: Groq, n: int = 5) -> list[str]:
+def select_top_categories(grouped: dict[str, list[dict]], client: Groq,
+                          n: int = 5) -> list[str]:
     overview = []
     for cat, arts in grouped.items():
         if cat == "🔥 Sonstiges" or not arts:
@@ -670,8 +733,8 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
 
     print("  → Intro generieren...")
     top_grouped = {c: grouped[c] for c in top_cats if c in grouped}
-    intro = generate_intro(top_grouped, client)
-    print(f"  ✓ Intro: {intro[:80]}...")
+    intro = generate_intro(top_grouped, client, top_cats)
+    print(f"  ✓ Intro generiert")
 
     summaries: dict[str, list[str]] = {}
 
@@ -752,7 +815,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
 
     nav_links = ""
     for cat in grouped:
-        anchor = re.sub(r"[^\w-]", "-", cat)
+        anchor = _anchor_id(cat)
         nav_links += (
             f'<a href="#{anchor}" style="display:inline-block;margin:3px 4px;'
             f'font-size:11px;color:{COLOR_LIGHT};text-decoration:none;'
@@ -764,7 +827,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
     for idx, (category, articles) in enumerate(all_cats):
         if not articles:
             continue
-        anchor        = re.sub(r"[^\w-]", "-", category)
+        anchor        = _anchor_id(category)
         is_last       = (idx == len(all_cats) - 1)
         border_bottom = "none" if is_last else f"2px solid {COLOR_BORDER}"
 
@@ -795,6 +858,9 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
             f'</div>{rows}</div>'
         )
 
+    # Intro kann HTML-Tags enthalten (Anker-Links) – im Archiv plain darstellen
+    intro_plain = re.sub(r"<[^>]+>", "", intro)
+
     return (
         '<!DOCTYPE html>\n<html lang="de">\n<head>\n'
         '  <meta charset="UTF-8">\n'
@@ -820,7 +886,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
         f'<div style="background:#fff;border-bottom:1px solid {COLOR_BORDER};">'
         f'<div style="max-width:760px;margin:0 auto;padding:20px 24px;">'
         f'<p style="font-size:14px;line-height:1.75;color:{COLOR_TEXT2};'
-        f'margin:0;font-style:italic;">{intro}</p></div></div>'
+        f'margin:0;font-style:italic;">{intro_plain}</p></div></div>'
         f'<div style="max-width:760px;margin:0 auto;padding:0 24px 40px;">'
         f'<div style="background:#fff;border:1px solid {COLOR_BORDER};'
         f'border-top:none;padding:0 32px;">{cat_blocks}</div></div>'
@@ -888,20 +954,22 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     COLOR_TEXT2  = "#3a3a3c"
 
     # ── Intro ────────────────────────────────────────────────────────────
+    # intro kann HTML enthalten (Anker-Links) – direkt einbetten
     intro_html = (
         f'<tr><td style="padding:20px 32px 16px;border-bottom:1px solid {COLOR_BORDER};">'
         f'<p style="font-family:{FONT};font-size:14px;line-height:1.75;'
-        f'color:{COLOR_TEXT2};margin:0;font-style:italic;">{intro}</p>'
+        f'color:{COLOR_TEXT2};margin:0;">{intro}</p>'
         f'</td></tr>'
     )
 
-    # ── Kategorien-Bloecke ────────────────────────────────────────────────
+    # ── Kategorien-Bloecke mit Anker-IDs ─────────────────────────────────
     category_blocks = ""
     items = list(summaries.items())
     for idx, (category, bullets) in enumerate(items):
         articles      = grouped.get(category, [])
         is_last       = (idx == len(items) - 1)
         border_bottom = "none" if is_last else f"1px solid {COLOR_BORDER}"
+        anchor        = _anchor_id(category)
 
         bullets_html = ""
         for b in bullets:
@@ -934,8 +1002,9 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                     f'</a>'
                 )
 
+        # id="{anchor}" ermoeglicht Anker-Navigation aus dem Intro
         category_blocks += (
-            f'<tr><td style="padding:24px 32px 20px;border-bottom:{border_bottom};">'
+            f'<tr><td id="{anchor}" style="padding:24px 32px 20px;border-bottom:{border_bottom};">'
             f'<table width="100%" cellpadding="0" cellspacing="0" border="0">'
             f'<tr><td style="padding-bottom:10px;border-bottom:2px solid {COLOR_NAVY2};">'
             f'<span style="font-family:{FONT};font-size:15px;font-weight:700;'
@@ -950,34 +1019,31 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
     total_articles = sum(len(v) for v in grouped.values())
 
-    # ── Anmeldelink (optional) ────────────────────────────────────────────
-    signup_html = ""
-    if signup_url:
-        signup_html = (
-            f'&nbsp;&middot;&nbsp;'
-            f'<a href="{signup_url}" style="font-family:{FONT};font-size:10px;'
-            f'color:{COLOR_LIGHT};text-decoration:underline;">Newsletter abonnieren</a>'
-        )
-
-    # ── Footer mit Abmelde-Platzhalter ────────────────────────────────────
+    # ── Footer ────────────────────────────────────────────────────────────
+    # Anmelde- und Abmelde-Link + Archiv
     # ##UNSUBSCRIBE_URL## wird in send_email() pro Empfaenger ersetzt
     footer_html = (
         f'<tr><td style="background:{COLOR_NAVY};padding:20px 32px;text-align:center;'
         f'border-radius:0 0 4px 4px;">'
         f'<p style="font-family:{FONT};font-size:11px;color:{COLOR_MUTED};'
-        f'line-height:1.8;margin:0 0 10px;">'
+        f'line-height:1.8;margin:0 0 12px;">'
         f'Top-Themen des Tages – kuratiert aus {len(RSS_FEEDS)}&nbsp;Quellen.</p>'
-        f'<a href="{archive_url}" style="display:inline-block;font-family:{FONT};'
+        # Archiv-Button
+        f'<a href="{ARCHIVE_URL}" style="display:inline-block;font-family:{FONT};'
         f'font-size:12px;font-weight:600;color:#ffffff;text-decoration:none;'
         f'background:{COLOR_BLUE};padding:8px 20px;border-radius:3px;">'
         f'Vollstaendiges Archiv &amp; alle Kategorien</a>'
+        # Anmelde-Link
         f'<p style="font-family:{FONT};font-size:10px;color:{COLOR_MUTED};'
         f'margin:12px 0 0;line-height:1.8;">'
         f'Automatisch erstellt am {now.strftime("%d.%m.%Y")} um {now.strftime("%H:%M")} Uhr'
         f'&nbsp;&middot;&nbsp;Powered by Nils'
-        f'{signup_html}'
+        f'&nbsp;&middot;&nbsp;'
+        f'<a href="{signup_url or SIGNUP_URL}" style="font-family:{FONT};font-size:10px;'
+        f'color:{COLOR_LIGHT};text-decoration:underline;">Newsletter abonnieren</a>'
         f'</p>'
-        f'<p style="font-family:{FONT};font-size:10px;color:{COLOR_MUTED};margin:6px 0 0;">'
+        # Abmelde-Link
+        f'<p style="font-family:{FONT};font-size:10px;color:{COLOR_MUTED};margin:4px 0 0;">'
         f'<a href="##UNSUBSCRIBE_URL##" style="font-family:{FONT};font-size:10px;'
         f'color:{COLOR_MUTED};text-decoration:underline;">Newsletter abbestellen</a>'
         f'</p>'
@@ -1033,7 +1099,6 @@ def send_email(html_template: str, recipient: str,
     if not sender or not password:
         raise ValueError("GMAIL_ADDRESS oder GMAIL_APP_PASSWORD nicht gesetzt!")
 
-    # Abmeldelink personalisieren
     if unsubscribe_base:
         unsubscribe_url = unsubscribe_base + "?email=" + urllib.parse.quote(recipient)
     else:
@@ -1054,7 +1119,6 @@ def send_email(html_template: str, recipient: str,
     msg.attach(MIMEText(html_content, "html", "utf-8"))
 
     try:
-        # ── FIX 2: SMTP-Timeout von 30 auf 60 Sekunden erhöht ──
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=60) as server:
             server.login(sender, password)
             server.sendmail(sender, [recipient], msg.as_string())
@@ -1076,7 +1140,7 @@ def main():
 
     recipient_raw    = os.environ.get("RECIPIENT_EMAIL", "")
     unsubscribe_base = os.environ.get("UNSUBSCRIBE_URL", "")
-    signup_url       = os.environ.get("SIGNUP_URL", "")
+    signup_url       = os.environ.get("SIGNUP_URL", SIGNUP_URL)
     recipients       = [r.strip() for r in recipient_raw.split(",") if r.strip()]
 
     if not recipients:
