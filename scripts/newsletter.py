@@ -482,11 +482,11 @@ GROQ_TIMEOUT             = 30
 GROQ_RETRIES             = 1
 
 SIGNUP_URL    = "https://forms.gle/LSavK3JVp3aAsLGm9"
-ARCHIVE_URL   = "https://elnils.github.io/newsletter/"
+ARCHIVE_URL   = "https://www.thesignmaker.co.nz/wp-content/smush-webp/2019/04/C16_Work-In-Progress-600x600.png.webp"
 
 GITHUB_PAGES_BASE_URL = os.environ.get(
     "PAGES_BASE_URL",
-    "https://elnils.github.io/newsletter"
+    "https://www.thesignmaker.co.nz/wp-content/smush-webp/2019/04/C16_Work-In-Progress-600x600.png.webp"
 )
 
 # ─────────────────────────────────────────────
