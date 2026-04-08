@@ -1094,25 +1094,22 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                 seen_links.add(a["link"])
                 clean.append(a)
 
-        # Zwei abwechselnde Hintergründe – dezent, harmonisch zur Palette
-        ROW_COLORS = ["#f0f4f7", "#e8eef3"]
-
-        links_html = ""
-        for i, a in enumerate(clean):
-            bg = ROW_COLORS[i % 2]
+        links_html = (
+            f'<table width="100%" cellpadding="0" cellspacing="0" border="0" '
+            f'style="margin-top:8px;border:1px solid {COLOR_BORDER};'
+            f'border-radius:4px;padding:4px 12px;">'
+        )
+        for a in clean:
             links_html += (
-                f'<a href="{a["link"]}" style="display:block;text-decoration:none;'
-                f'padding:10px 14px;margin-bottom:3px;background:{bg};border-radius:3px;">'
-                f'<span style="font-family:{FONT};font-size:13px;line-height:1.5;'
-                f'color:{COLOR_TEXT};word-break:break-word;">'
-                f'<span style="font-weight:700;color:{COLOR_BLUE};'
-                f'text-transform:uppercase;font-size:11px;letter-spacing:0.5px;">'
-                f'{a["source"]}</span>'
-                f'<span style="color:#b0bec8;margin:0 6px;">·</span>'
-                f'{a["title"]}'
-                f'</span>'
+                f'<tr><td style="padding:4px 0;line-height:1.4;">'
+                f'<a href="{a["link"]}" style="text-decoration:none;font-family:{FONT};'
+                f'font-size:13px;color:{COLOR_TEXT};">'
+                f'<span style="font-weight:700;">{a["source"]}:</span>'
+                f'&nbsp;{a["title"]}'
                 f'</a>'
+                f'</td></tr>'
             )
+        links_html += '</table>'
 
         category_blocks += (
             f'<tr><td style="padding:20px 32px 20px;border-bottom:{border_bottom};">'
