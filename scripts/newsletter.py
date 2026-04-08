@@ -514,7 +514,7 @@ CATEGORIES = {
 }
 
 MAX_ARTICLES_PER_FEED    = 15
-MAX_ARTICLES_FOR_SUMMARY = 80
+MAX_ARTICLES_FOR_SUMMARY = 160   # erhöht: genug Puffer damit EN-Quellen nicht abgeschnitten werden
 TOP_CATEGORIES_COUNT     = 5
 FEED_TIMEOUT             = 15
 GROQ_TIMEOUT             = 30
@@ -557,8 +557,13 @@ def fetch_feeds() -> list[dict]:
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(FEED_TIMEOUT)
 
+    # Feeds zufällig mischen – verhindert dass deutsche Quellen (die zuerst
+    # definiert sind) bei MAX_ARTICLES_FOR_SUMMARY immer den Pool dominieren
+    feed_items = list(RSS_FEEDS.items())
+    random.shuffle(feed_items)
+
     try:
-        for source, url in RSS_FEEDS.items():
+        for source, url in feed_items:
             try:
                 feed = feedparser.parse(url)
                 if feed.bozo and not feed.entries:
@@ -747,11 +752,23 @@ def generate_intro(grouped: dict[str, list[dict]], client: Groq,
 
     prompt = f"""Du schreibst den Einleitungssatz eines deutschen Nachrichten-Newsletters.
 
-Schreibe GENAU EINEN flüssigen deutschen Satz (max. 25 Woerter), der die 2-3 wichtigsten Themen des Tages nennt.
-Kein "Heute", kein "Willkommen", kein "In dieser Ausgabe". Direkt sachlich starten.
-Nur den Satz, keine Anfuehrungszeichen, keine Erklaerung.
+Schreibe GENAU EINEN deutschen Satz (15-22 Woerter) der die 2-3 wichtigsten Themen direkt benennt.
 
-Beispiel: "Merz stellt Sparpaket vor, waehrend Trump neue Zoelle ankuendigt und die EZB den Leitzins senkt."
+STRIKTE Regeln:
+- Starte mit einem konkreten Subjekt (Person, Institution, Land) – NIE mit "Die Lage", "Es", "Der Tag"
+- Nenne konkrete Fakten: Namen, Zahlen, Entscheidungen – keine abstrakten Beschreibungen
+- VERBOTEN: "gepragt von", "im Zeichen von", "Debatten", "Diskussionen", "Entwicklungen", "Themen", "Lage", "Geschehen"
+- Verbinde Themen mit "waehrend", ";", "und" – nicht mit "sowie" oder "darueber hinaus"
+
+GUTE Beispiele:
+"Merz praesentiert den Bundeshaushalt 2026, waehrend Trump neue Zoelle auf EU-Waren ankuendigt."
+"Die EZB senkt den Leitzins; der DAX faellt, und Gazaverhandlungen stocken erneut."
+"Trump verhaengt 25-Prozent-Zoelle auf EU-Importe; Merz kuendigt Sondervermoegen fuer die Bundeswehr an."
+
+SCHLECHTE Beispiele – NIEMALS so:
+"Die Innenpolitik ist gepragt von Debatten und Diskussionen wie der Diskussion um..."
+"Heute gibt es wichtige Entwicklungen in Wirtschaft und Politik."
+"Der Tag steht im Zeichen von Spannungen und wichtigen Entscheidungen."
 
 Schlagzeilen:
 {topics_text}
@@ -1077,13 +1094,13 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                 seen_links.add(a["link"])
                 links_html += (
                     f'<a href="{a["link"]}" style="display:block;text-decoration:none;'
-                    f'padding:9px 12px;margin-bottom:4px;background:{COLOR_BG};'
-                    f'border-left:3px solid #c8d8e8;border-radius:2px;">'
-                    f'<span style="display:block;font-family:{FONT};font-size:10px;'
-                    f'font-weight:600;text-transform:uppercase;letter-spacing:0.8px;'
-                    f'color:{COLOR_BLUE};margin-bottom:3px;">{a["source"]}</span>'
-                    f'<span style="display:block;font-family:{FONT};font-size:13px;'
-                    f'color:{COLOR_TEXT};line-height:1.45;word-break:break-word;">'
+                    f'padding:12px 16px;margin-bottom:6px;background:{COLOR_BG};'
+                    f'border-left:3px solid #b8cedd;border-radius:3px;">'
+                    f'<span style="display:block;font-family:{FONT};font-size:11px;'
+                    f'font-weight:700;text-transform:uppercase;letter-spacing:0.9px;'
+                    f'color:{COLOR_BLUE};margin-bottom:5px;">{a["source"]}</span>'
+                    f'<span style="display:block;font-family:{FONT};font-size:14px;'
+                    f'color:{COLOR_TEXT};line-height:1.55;word-break:break-word;">'
                     f'{a["title"]}</span>'
                     f'</a>'
                 )
