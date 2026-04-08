@@ -1,4 +1,4 @@
-# 🗞️ Tagesbrief – Dein automatischer KI-Newsletter
+# 🗞️ Tagesbrief – Ein automatischer KI-Newsletter
 
 Täglich 2× eine KI-Zusammenfassung der wichtigsten Nachrichten – kostenlos, automatisch, direkt in dein Postfach.
 
