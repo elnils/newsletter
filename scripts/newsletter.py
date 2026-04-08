@@ -1087,23 +1087,29 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
         # Links aus Groq-Auswahl
         mixed = selected_links.get(category, [])
-        links_html = ""
+        # Nur Links mit URL und ohne Duplikate
+        clean = []
         seen_links: set[str] = set()
         for a in mixed:
             if a["link"] and a["link"] not in seen_links:
                 seen_links.add(a["link"])
-                links_html += (
-                    f'<a href="{a["link"]}" style="display:block;text-decoration:none;'
-                    f'padding:12px 16px;margin-bottom:6px;background:{COLOR_BG};'
-                    f'border-left:3px solid #b8cedd;border-radius:3px;">'
-                    f'<span style="display:block;font-family:{FONT};font-size:11px;'
-                    f'font-weight:700;text-transform:uppercase;letter-spacing:0.9px;'
-                    f'color:{COLOR_BLUE};margin-bottom:5px;">{a["source"]}</span>'
-                    f'<span style="display:block;font-family:{FONT};font-size:14px;'
-                    f'color:{COLOR_TEXT};line-height:1.55;word-break:break-word;">'
-                    f'{a["title"]}</span>'
-                    f'</a>'
-                )
+                clean.append(a)
+
+        links_html = ""
+        for i, a in enumerate(clean):
+            is_last_link  = (i == len(clean) - 1)
+            link_border   = "none" if is_last_link else f"1px solid {COLOR_BORDER}"
+            links_html += (
+                f'<a href="{a["link"]}" style="display:block;text-decoration:none;'
+                f'padding:11px 0;border-bottom:{link_border};">'
+                f'<span style="display:block;font-family:{FONT};font-size:14px;'
+                f'color:{COLOR_TEXT};line-height:1.5;word-break:break-word;'
+                f'margin-bottom:4px;">{a["title"]}</span>'
+                f'<span style="display:block;font-family:{FONT};font-size:11px;'
+                f'font-weight:600;text-transform:uppercase;letter-spacing:0.7px;'
+                f'color:{COLOR_MUTED};">{a["source"]}</span>'
+                f'</a>'
+            )
 
         category_blocks += (
             f'<tr><td style="padding:20px 32px 20px;border-bottom:{border_bottom};">'
