@@ -7,6 +7,7 @@ Holt RSS-Feeds, kategorisiert mit Punkte+Ausschluss-System, verschickt per E-Mai
 import os
 import re
 import time
+import random
 import socket
 import smtplib
 import urllib.parse
@@ -72,6 +73,14 @@ RSS_FEEDS = {
     "Google US Foreign":      "https://news.google.com/rss/search?q=us+foreign+policy+diplomacy&hl=en&gl=US&ceid=US:en",
 }
 
+# Deutsche Quellen – werden beim Quellen-Mixing identifiziert
+_DE_SOURCES = {
+    "Spiegel Online", "FAZ", "Tagesschau", "Zeit Online", "Deutschlandfunk",
+    "DPA", "Reuters DE", "Handelsblatt", "Handelsblatt Finanzen",
+    "Handelsblatt Technik", "Wirtschaftswoche", "Manager Magazin",
+    "Tagesspiegel Wirtschaft", "Google Wirtschaft DE", "Google Finanzen DE",
+}
+
 # ─────────────────────────────────────────────
 # KATEGORIEN
 # ─────────────────────────────────────────────
@@ -79,13 +88,20 @@ RSS_FEEDS = {
 CATEGORIES = {
     "🏛️ Innenpolitik": {
         "keywords": {
-            "bundestag": 10, "bundesrat": 10, "kanzler": 10, "koalition": 10,
-            "merz": 8, "scholz": 8, "habeck": 8, "baerbock": 8,
-            "spd": 8, "cdu": 8, "csu": 8, "grüne": 8, "fdp": 8, "afd": 8,
-            "regierung": 5, "minister": 5, "partei": 3, "opposition": 5,
-            "bundesregierung": 10, "kabinett": 8, "koalitionsvertrag": 10,
-            "ampel": 8, "große koalition": 10, "fraktionsvorsitz": 10,
-            "abgeordneter": 8, "bundestagswahl": 10, "landtagswahl": 10,
+            # Deutsche Institutionen – hohe Gewichtung
+            "bundestag": 10, "bundesrat": 10, "bundesregierung": 10,
+            "koalitionsvertrag": 10, "fraktionsvorsitz": 10,
+            "bundestagswahl": 10, "landtagswahl": 10,
+            "kanzler": 10, "koalition": 10,
+            # Merz ist Bundeskanzler seit März 2025
+            "merz": 10, "friedrich merz": 10,
+            # Scholz ist jetzt SPD-Oppositionsführer
+            "scholz": 5,
+            "habeck": 7, "baerbock": 7, "lindner": 7,
+            "spd": 8, "cdu": 8, "csu": 8, "grüne": 8, "fdp": 7, "afd": 8,
+            "kabinett": 8, "große koalition": 10,
+            "abgeordneter": 8,
+            # Explizit deutsche Kontexte
             "german government": 10, "german parliament": 10,
             "german chancellor": 10, "german coalition": 10,
             "german minister": 8, "german election": 8,
@@ -94,6 +110,11 @@ CATEGORIES = {
         "exclude": [
             "europawahl", "eu-wahl", "european election",
             "bundesliga", "fußball", "soccer",
+            "uk government", "british government", "french government",
+            "italian government", "spanish government", "polish government",
+            "uk parliament", "british parliament", "house of commons",
+            "macron", "sunak", "starmer", "meloni",
+            "white house", "congress", "senate",
         ],
     },
 
@@ -104,7 +125,9 @@ CATEGORIES = {
             "botschafter": 10, "staatsbesuch": 10, "gipfel": 8,
             "sanktionen": 8, "friedensverhandlung": 10, "waffenstillstand": 10,
             "trump": 5, "biden": 5, "g7": 8, "g20": 8,
-            "vereinte nationen": 10, "konflikt": 5,
+            # Vereinte Nationen gehören zur Außenpolitik, nicht Innenpolitik
+            "vereinte nationen": 10, "un-sicherheitsrat": 10,
+            "konflikt": 5,
             "foreign policy": 10, "foreign minister": 10,
             "diplomacy": 10, "diplomatic": 8, "ambassador": 10,
             "ceasefire": 10, "peace talks": 10, "peace deal": 10,
@@ -119,24 +142,49 @@ CATEGORIES = {
         ],
     },
 
-    "🇺🇸 USA & Amerika": {
+    "🌐 Großmächte & Geopolitik": {
+        # Zusammenführung der früheren Kategorien "USA & Amerika" und "International"
+        # Fokus: USA, China, Russland als Weltmächte + geopolitische Konfliktherde
         "keywords": {
+            # ── USA / Washington ──────────────────────────────────────
             "trump": 10, "white house": 10, "congress": 10, "senate": 10,
             "house of representatives": 10, "oval office": 10,
             "republican": 8, "democrat": 8, "washington": 8,
-            "president biden": 10, "president trump": 10,
-            "us president": 10, "american politics": 10,
-            "midterm": 10, "us election": 10, "us congress": 10,
+            "president trump": 10, "us president": 10, "american politics": 10,
+            "us election": 10, "us congress": 10,
             "pentagon": 10, "state department": 10, "us treasury": 10,
-            "federal reserve": 8, "us economy": 10,
-            "tariff": 8, "us tariff": 10, "us trade": 10,
+            "us tariff": 10, "us trade": 10,
             "us foreign policy": 10, "us sanctions": 10,
             "us military": 10, "us troops": 10,
-            "latin america": 8, "canada": 6, "mexico": 6,
+            "canada": 6, "mexico": 6,
+            # ── China ─────────────────────────────────────────────────
+            "china": 8, "xi jinping": 10, "beijing": 10, "peking": 10,
+            "kommunistische partei china": 10, "volksrepublik": 8,
+            "south china sea": 10, "taiwan strait": 10,
+            "taiwan": 10, "hongkong": 8,
+            "chinese economy": 10, "china trade": 10,
+            # ── Russland ──────────────────────────────────────────────
+            "putin": 10, "kremlin": 10, "moskau": 8, "moscow": 8,
+            "russland": 8, "russia": 8,
+            "ukraine war": 10, "ukraine": 7,
+            # ── Geopolitische Konfliktherde ───────────────────────────
+            "nahost": 10, "gazastreifen": 10, "westjordanland": 10,
+            "israel": 8, "palästina": 10, "iran": 8,
+            "nordkorea": 10, "north korea": 10,
+            "syrien": 10, "jemen": 10, "irak": 10, "afghanistan": 10,
+            "middle east": 10, "gaza strip": 10, "west bank": 10,
+            "iran nuclear": 10, "saudi arabia": 8,
+            "african union": 8, "latin america": 7, "venezuela": 8,
+            # ── Weltordnung ───────────────────────────────────────────
+            "g7": 8, "g20": 8, "brics": 10,
+            "geopolitik": 10, "geopolitics": 10,
+            "superpower": 10, "great power": 10,
         },
         "exclude": [
             "bundesliga", "fußball", "soccer",
-            "formel 1", "formula 1", "olympic",
+            "formel 1", "formula 1", "olympic", "champions league",
+            # Nicht mit Innenpolitik überschneiden
+            "bundestag", "bundesrat", "bundesregierung",
         ],
     },
 
@@ -157,7 +205,7 @@ CATEGORIES = {
             "wirtschaftswachstum": 10, "wirtschaftsabschwung": 10,
             "economic growth": 10, "economic recession": 10,
             "gdp": 10, "unemployment rate": 10,
-            "trade deficit": 10, "trade war": 10, "tariff": 8,
+            "trade deficit": 10, "trade war": 10,
             "supply chain": 10, "labour market": 8, "labor market": 8,
             "manufacturing": 5, "bankruptcy": 10, "wage growth": 8,
             "layoffs": 10, "job cuts": 10, "profit warning": 10,
@@ -169,11 +217,15 @@ CATEGORIES = {
             "trade policy": 10, "import tariff": 10,
             "inflation rate": 10, "consumer prices": 10,
             "interest rate": 8, "recession risk": 10,
+            # tariff ohne "us" bleibt Wirtschaft, da Handelskontext
+            "tariff": 6,
         },
         "exclude": [
             "fußball", "soccer", "bundesliga",
             "aktienmarkt", "börsenhandel", "kryptowährung",
             "stock market", "cryptocurrency", "bitcoin",
+            # Gaspreise/Energiepreise → Energie-Kategorie hat Vorrang
+            # (höhere Gewichtung dort verhindert Fehlzuweisung)
         ],
     },
 
@@ -225,16 +277,22 @@ CATEGORIES = {
 
     "⚡ Energie & Klima": {
         "keywords": {
+            # Energiepreise – hohe Gewichtung damit Energie > Wirtschaft gewinnt
+            "gaspreise": 15, "gaspreis": 15, "gas price": 15, "gas prices": 15,
+            "strompreis": 15, "strompreise": 15, "electricity price": 15,
+            "ölpreis": 15, "oil price": 15, "energy prices": 15,
+            "energiepreise": 15,
+            # Allgemeine Energiethemen
             "energie": 8, "strom": 5, "gas": 5, "öl": 5,
             "windkraft": 10, "solaranlage": 10, "photovoltaik": 10,
             "kernkraftwerk": 10, "atomkraftwerk": 10, "atomkraft": 10,
             "co2": 10, "klimawandel": 10, "klimaschutz": 10,
-            "energiewende": 10, "stromerzeugung": 10, "strompreis": 10,
-            "ölpreis": 10, "gaspreise": 10, "flüssiggas": 10,
+            "energiewende": 10, "stromerzeugung": 10,
+            "flüssiggas": 10, "lng": 10,
             "erneuerbar": 10, "wärmepumpe": 10, "kohlekraftwerk": 10,
             "renewable energy": 10, "solar energy": 10, "wind energy": 10,
             "nuclear power": 10, "nuclear plant": 10,
-            "fossil fuel": 10, "oil price": 8, "gas price": 8,
+            "fossil fuel": 10,
             "carbon emissions": 10, "carbon tax": 10, "net zero": 10,
             "climate change": 10, "global warming": 10,
             "paris agreement": 10, "energy transition": 10,
@@ -382,7 +440,7 @@ CATEGORIES = {
         "exclude": ["fußball", "soccer", "bundesliga"],
     },
 
-    "🌐 Europa & EU": {
+    "🇪🇺 Europa & EU": {
         "keywords": {
             "europaparlament": 10, "eu-kommission": 10,
             "eu-gipfel": 10, "eu-haushalt": 10,
@@ -428,25 +486,6 @@ CATEGORIES = {
             "disinformation": 8, "content moderation": 10,
         },
         "exclude": ["fußball", "soccer", "bundesliga", "aktienmarkt", "stock market"],
-    },
-
-    "🌎 International": {
-        "keywords": {
-            "nahost": 10, "gazastreifen": 10, "westjordanland": 10,
-            "israel": 8, "palästina": 10, "iran": 8,
-            "nordkorea": 10, "taiwan": 10, "syrien": 10,
-            "jemen": 10, "irak": 10, "afghanistan": 10,
-            "china": 5, "russland-ukraine": 10,
-            "middle east": 10, "gaza strip": 10, "west bank": 10,
-            "north korea": 10, "south china sea": 10,
-            "taiwan strait": 10, "iran nuclear": 10,
-            "saudi arabia": 8, "african union": 10,
-            "latin america": 8, "venezuela": 8,
-        },
-        "exclude": [
-            "fußball", "soccer", "bundesliga",
-            "formula 1", "olympic", "champions league",
-        ],
     },
 
     "⚽ Sport": {
@@ -495,7 +534,10 @@ GITHUB_PAGES_BASE_URL = os.environ.get(
 
 def _anchor_id(category: str) -> str:
     """Erzeugt eine saubere HTML-Anker-ID aus dem Kategorienamen."""
-    return re.sub(r"[^\w-]", "-", category).strip("-")
+    s = category.replace("&", "und").replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss")
+    s = re.sub(r"[^\w-]", "-", s)
+    s = re.sub(r"-{2,}", "-", s)   # mehrfache Bindestriche zusammenfassen
+    return s.strip("-")
 
 # ─────────────────────────────────────────────
 # RSS FEEDS HOLEN
@@ -625,14 +667,45 @@ def _groq_call(client: Groq, prompt: str, max_tokens: int = 200) -> str:
                 raise
 
 # ─────────────────────────────────────────────
+# QUELLEN-MIXING
+# ─────────────────────────────────────────────
+
+def _mix_sources(articles: list[dict], max_total: int = 5,
+                 max_per_source: int = 2) -> list[dict]:
+    """
+    Wählt Artikel für den Newsletter aus:
+    - Zufällig shuffeln (kein DE/INTL-Bias)
+    - Maximal max_per_source Artikel pro Quelle (verhindert 4x Spiegel Online)
+    - Insgesamt max max_total Artikel
+    """
+    if not articles:
+        return []
+
+    pool = articles.copy()
+    random.shuffle(pool)
+
+    result: list[dict] = []
+    source_count: dict[str, int] = {}
+
+    for a in pool:
+        if len(result) >= max_total:
+            break
+        src = a["source"]
+        if source_count.get(src, 0) < max_per_source:
+            result.append(a)
+            source_count[src] = source_count.get(src, 0) + 1
+
+    return result
+
+# ─────────────────────────────────────────────
 # INTRO – dynamisch mit Anker-Links
 # ─────────────────────────────────────────────
 
 def generate_intro(grouped: dict[str, list[dict]], client: Groq,
                    top_cats: list[str]) -> str:
     """
-    Generiert einen Intro-Satz und gibt ihn als HTML zurück,
-    wobei die Kategorienamen als Anker-Links eingebettet sind.
+    Generiert einen Intro-Satz mit verlinkten Kategorie-Chips.
+    Verwendet <a name="..."> für maximale E-Mail-Client-Kompatibilität.
     """
     top_topics = []
     for cat in top_cats[:6]:
@@ -642,7 +715,6 @@ def generate_intro(grouped: dict[str, list[dict]], client: Groq,
 
     topics_text = "\n".join(f"- {t}" for t in top_topics)
 
-    # Wir bitten das Modell, nur die 3 Stichworte zu liefern – den Satz bauen wir selbst
     prompt = f"""Lies die folgenden Schlagzeilen und nenne genau 3 kurze deutsche Stichworte (je 1-3 Woerter), 
 die die wichtigsten Themen zusammenfassen (z.B. "Haushaltsstreit", "Ukraine-Krieg", "KI-Regulierung").
 
@@ -653,28 +725,36 @@ Schlagzeilen:
 
 Stichworte:"""
 
-    # Kategorie-Namen als verlinkte Chips für die Anker-Navigation
-    cat_links_html = " &middot; ".join(
-        f'<a href="#{_anchor_id(cat)}" style="color:inherit;text-decoration:underline;'
-        f'text-decoration-color:rgba(160,180,196,0.5);">{cat}</a>'
+    # Kategorie-Chips als Anker-Links
+    # Hinweis: Im E-Mail-Client wird mit href="#anker" zum <a name="anker"> gesprungen
+    CHIP_STYLE = (
+        "display:inline-block;margin:3px 3px;padding:3px 10px;"
+        "background:#2c3e50;color:#a0b4c4;text-decoration:none;"
+        "font-size:11px;border-radius:3px;border:1px solid #3a5068;"
+        "font-weight:600;letter-spacing:0.3px;"
+    )
+    cat_chips_html = " ".join(
+        f'<a href="#{_anchor_id(cat)}" style="{CHIP_STYLE}">{cat}</a>'
         for cat in top_cats
     )
 
     try:
         keywords_raw = _groq_call(client, prompt, max_tokens=30)
-        # Bereinigen: nur Komma-separierte Stichworte
         keywords = [k.strip().strip('"') for k in keywords_raw.split(",") if k.strip()][:3]
         keywords_str = ", ".join(keywords) if keywords else "aktuelle Ereignisse"
 
         intro_text = (
-            f"Heute u.a. zu <strong>{keywords_str}</strong> – "
-            f"direkt springen: {cat_links_html}"
+            f"Heute u.a. zu <strong>{keywords_str}</strong><br>"
+            f'<span style="font-size:12px;color:#7a9bb5;">Direkt springen:</span> '
+            f'{cat_chips_html}'
         )
         return intro_text
 
     except Exception as e:
         print(f"  ✗ Intro-Fehler: {e}")
-        return f"Heute mit Nachrichten aus: {cat_links_html}"
+        return (
+            f'Nachrichten des Tages – direkt springen: {cat_chips_html}'
+        )
 
 # ─────────────────────────────────────────────
 # TOP-KATEGORIEN
@@ -786,7 +866,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
                        now: datetime, daytime: str) -> str:
     date_str = now.strftime("%A, %d. %B %Y")
     months = {
-        "January": "Januar", "February": "Februar", "March": "Maerz",
+        "January": "Januar", "February": "Februar", "March": "März",
         "April": "April", "May": "Mai", "June": "Juni",
         "July": "Juli", "August": "August", "September": "September",
         "October": "Oktober", "November": "November", "December": "Dezember",
@@ -848,8 +928,10 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
                 f'</div>'
             )
 
+        # <a name="..."> für Anker-Kompatibilität im Browser (Archiv-Seite)
         cat_blocks += (
-            f'<div id="{anchor}" style="padding:28px 0;border-bottom:{border_bottom};">'
+            f'<div style="padding:28px 0;border-bottom:{border_bottom};">'
+            f'<a name="{anchor}" style="display:block;height:0;overflow:hidden;"></a>'
             f'<div style="display:flex;align-items:center;margin-bottom:16px;'
             f'padding-bottom:10px;border-bottom:2px solid {COLOR_NAVY2};">'
             f'<span style="font-size:16px;font-weight:700;color:{COLOR_NAVY};flex:1;">'
@@ -858,7 +940,6 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
             f'</div>{rows}</div>'
         )
 
-    # Intro kann HTML-Tags enthalten (Anker-Links) – im Archiv plain darstellen
     intro_plain = re.sub(r"<[^>]+>", "", intro)
 
     return (
@@ -873,7 +954,7 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
         f'<div style="background:{COLOR_NAVY};padding:36px 24px 28px;text-align:center;">'
         f'<div style="max-width:760px;margin:0 auto;">'
         f'<div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;'
-        f'color:{COLOR_MUTED};margin-bottom:10px;">Vollstaendiges Archiv</div>'
+        f'color:{COLOR_MUTED};margin-bottom:10px;">Vollständiges Archiv</div>'
         f'<div style="font-size:30px;font-weight:700;color:#fff;margin-bottom:8px;">Tageslage</div>'
         f'<div style="font-size:13px;color:{COLOR_LIGHT};margin-bottom:20px;">'
         f'{date_str} &middot; {daytime_label}-Ausgabe</div>'
@@ -901,35 +982,25 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
 # NEWSLETTER-HTML
 # ─────────────────────────────────────────────
 
-def _mix_sources(articles: list[dict], max_total: int = 5, max_per_source: int = 2) -> list[dict]:
-    seen: dict[str, int] = {}
-    result = []
-    for a in articles:
-        src = a["source"]
-        if seen.get(src, 0) < max_per_source:
-            result.append(a)
-            seen[src] = seen.get(src, 0) + 1
-        if len(result) >= max_total:
-            break
-    return result
-
-
 def build_html(intro: str, summaries: dict[str, list[str]],
                grouped: dict[str, list[dict]],
                archive_url: str = "",
                signup_url: str = "") -> str:
     """
     Baut den HTML-Newsletter.
-    Der Abmeldelink wird NICHT hier eingebaut – er wird pro Empfaenger
-    in send_email() direkt in den fertigen HTML-String eingefuegt.
-    Platzhalter: ##UNSUBSCRIBE_URL##
+    Platzhalter ##UNSUBSCRIBE_URL## wird in send_email() ersetzt.
+
+    Anker-Technik für E-Mail-Clients:
+    - Jede Kategorie bekommt ein unsichtbares <a name="..."> VOR dem Inhaltsblock
+    - Die Intro-Chips verlinken per href="#anker"
+    - Das funktioniert in Gmail, Apple Mail, Outlook Web
     """
     now      = datetime.now()
     daytime  = "Morgen" if now.hour < 13 else "Abend"
     date_str = now.strftime("%A, %d. %B %Y")
 
     months = {
-        "January": "Januar", "February": "Februar", "March": "Maerz",
+        "January": "Januar", "February": "Februar", "March": "März",
         "April": "April", "May": "Mai", "June": "Juni",
         "July": "Juli", "August": "August", "September": "September",
         "October": "Oktober", "November": "November", "December": "Dezember",
@@ -953,16 +1024,15 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     COLOR_TEXT   = "#1c1c1e"
     COLOR_TEXT2  = "#3a3a3c"
 
-    # ── Intro ────────────────────────────────────────────────────────────
-    # intro kann HTML enthalten (Anker-Links) – direkt einbetten
+    # ── Intro-Block ──────────────────────────────────────────────────────
     intro_html = (
-        f'<tr><td style="padding:20px 32px 16px;border-bottom:1px solid {COLOR_BORDER};">'
-        f'<p style="font-family:{FONT};font-size:14px;line-height:1.75;'
+        f'<tr><td style="padding:20px 32px 18px;border-bottom:2px solid {COLOR_BORDER};">'
+        f'<p style="font-family:{FONT};font-size:14px;line-height:1.9;'
         f'color:{COLOR_TEXT2};margin:0;">{intro}</p>'
         f'</td></tr>'
     )
 
-    # ── Kategorien-Bloecke mit Anker-IDs ─────────────────────────────────
+    # ── Kategorien-Blöcke ────────────────────────────────────────────────
     category_blocks = ""
     items = list(summaries.items())
     for idx, (category, bullets) in enumerate(items):
@@ -984,9 +1054,10 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                 f'</tr>'
             )
 
+        mixed = _mix_sources(articles, max_total=5, max_per_source=2)
         links_html = ""
         seen_links = set()
-        for a in _mix_sources(articles, max_total=5, max_per_source=2):
+        for a in mixed:
             if a["link"] and a["link"] not in seen_links:
                 seen_links.add(a["link"])
                 links_html += (
@@ -1002,9 +1073,15 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                     f'</a>'
                 )
 
-        # id="{anchor}" ermoeglicht Anker-Navigation aus dem Intro
+        # Anker: unsichtbares <a name="..."> direkt vor dem Kategorie-Titel
+        # → funktioniert in Gmail, Apple Mail, Outlook.com
         category_blocks += (
-            f'<tr><td id="{anchor}" style="padding:24px 32px 20px;border-bottom:{border_bottom};">'
+            f'<tr><td style="padding:0 32px;">'
+            # Unsichtbarer Anker-Tag – MUSS außerhalb der Padding-Struktur sein
+            f'<a name="{anchor}" style="display:block;font-size:0;line-height:0;'
+            f'height:0;overflow:hidden;">&nbsp;</a>'
+            f'</td></tr>'
+            f'<tr><td style="padding:20px 32px 20px;border-bottom:{border_bottom};">'
             f'<table width="100%" cellpadding="0" cellspacing="0" border="0">'
             f'<tr><td style="padding-bottom:10px;border-bottom:2px solid {COLOR_NAVY2};">'
             f'<span style="font-family:{FONT};font-size:15px;font-weight:700;'
@@ -1020,20 +1097,16 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     total_articles = sum(len(v) for v in grouped.values())
 
     # ── Footer ────────────────────────────────────────────────────────────
-    # Anmelde- und Abmelde-Link + Archiv
-    # ##UNSUBSCRIBE_URL## wird in send_email() pro Empfaenger ersetzt
     footer_html = (
         f'<tr><td style="background:{COLOR_NAVY};padding:20px 32px;text-align:center;'
         f'border-radius:0 0 4px 4px;">'
         f'<p style="font-family:{FONT};font-size:11px;color:{COLOR_MUTED};'
         f'line-height:1.8;margin:0 0 12px;">'
         f'Top-Themen des Tages – kuratiert aus {len(RSS_FEEDS)}&nbsp;Quellen.</p>'
-        # Archiv-Button
         f'<a href="{ARCHIVE_URL}" style="display:inline-block;font-family:{FONT};'
         f'font-size:12px;font-weight:600;color:#ffffff;text-decoration:none;'
         f'background:{COLOR_BLUE};padding:8px 20px;border-radius:3px;">'
-        f'Vollstaendiges Archiv &amp; alle Kategorien</a>'
-        # Anmelde-Link
+        f'Vollständiges Archiv &amp; alle Kategorien</a>'
         f'<p style="font-family:{FONT};font-size:10px;color:{COLOR_MUTED};'
         f'margin:12px 0 0;line-height:1.8;">'
         f'Automatisch erstellt am {now.strftime("%d.%m.%Y")} um {now.strftime("%H:%M")} Uhr'
@@ -1042,7 +1115,6 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         f'<a href="{signup_url or SIGNUP_URL}" style="font-family:{FONT};font-size:10px;'
         f'color:{COLOR_LIGHT};text-decoration:underline;">Newsletter abonnieren</a>'
         f'</p>'
-        # Abmelde-Link
         f'<p style="font-family:{FONT};font-size:10px;color:{COLOR_MUTED};margin:4px 0 0;">'
         f'<a href="##UNSUBSCRIBE_URL##" style="font-family:{FONT};font-size:10px;'
         f'color:{COLOR_MUTED};text-decoration:underline;">Newsletter abbestellen</a>'
@@ -1050,32 +1122,45 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         f'</td></tr>'
     )
 
+    # ── Gesamt-HTML ──────────────────────────────────────────────────────
+    # Desktop: max-width 680px, zentriert mit Außen-Padding
+    # Mobile:  100% Breite, kein Padding (Outlook/Gmail-kompatibel)
     return (
         '<!DOCTYPE html>\n<html lang="de">\n<head>\n'
         '  <meta charset="UTF-8">\n'
         '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
         '  <meta name="color-scheme" content="light">\n'
         f'  <title>Tageslage - {date_str}</title>\n'
+        '  <style>\n'
+        '    @media only screen and (max-width: 680px) {\n'
+        '      .email-outer { padding: 0 !important; }\n'
+        '      .email-body { border-radius: 0 !important; border-left: none !important; border-right: none !important; }\n'
+        '    }\n'
+        '  </style>\n'
         '</head>\n'
         f'<body style="margin:0;padding:0;background:#f0f2f4;font-family:{FONT};">\n'
+        # Äußerer Wrapper – auf Desktop zentriert mit Padding oben/unten
         f'<table width="100%" cellpadding="0" cellspacing="0" border="0" '
-        f'style="background:#f0f2f4;"><tr><td align="center" style="padding:20px 8px;">\n'
+        f'style="background:#f0f2f4;" class="email-outer">'
+        f'<tr><td align="center" style="padding:28px 16px;">\n'
+        # Innerer Container – 680px max-width
         f'<table width="100%" cellpadding="0" cellspacing="0" border="0" '
-        f'style="max-width:620px;background:#ffffff;border-radius:4px;'
-        f'border:1px solid #dde3e8;">\n'
+        f'style="max-width:680px;background:#ffffff;border-radius:6px;'
+        f'border:1px solid #d0d8e0;box-shadow:0 2px 8px rgba(0,0,0,0.06);" '
+        f'class="email-body">\n'
         # HEADER
-        f'<tr><td style="background:{COLOR_NAVY};padding:32px 32px 26px;'
-        f'text-align:center;border-radius:4px 4px 0 0;">'
+        f'<tr><td style="background:{COLOR_NAVY};padding:36px 36px 28px;'
+        f'text-align:center;border-radius:6px 6px 0 0;">'
         f'<div style="font-family:{FONT};font-size:10px;letter-spacing:2.5px;'
         f'text-transform:uppercase;color:{COLOR_MUTED};margin-bottom:10px;">'
         f'Dein täglicher Nachrichtenüberblick</div>'
-        f'<div style="font-family:{FONT};font-size:28px;font-weight:700;'
+        f'<div style="font-family:{FONT};font-size:30px;font-weight:700;'
         f'color:#ffffff;letter-spacing:-0.5px;margin-bottom:8px;">Tageslage</div>'
         f'<div style="font-family:{FONT};font-size:13px;color:{COLOR_LIGHT};">'
         f'{date_str} &middot; {daytime}-Ausgabe</div>'
         f'</td></tr>\n'
         # META BAR
-        f'<tr><td style="background:{COLOR_NAVY2};padding:8px 32px;text-align:center;'
+        f'<tr><td style="background:{COLOR_NAVY2};padding:7px 36px;text-align:center;'
         f'font-family:{FONT};font-size:11px;color:{COLOR_MUTED};">'
         f'{len(RSS_FEEDS)}&nbsp;Quellen &middot; {total_articles}&nbsp;Artikel '
         f'&middot; kuratiert mit KI</td></tr>\n'
@@ -1091,8 +1176,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
 def send_email(html_template: str, recipient: str,
                unsubscribe_base: str = "") -> None:
-    """Sendet den Newsletter an einen einzelnen Empfaenger.
-    Ersetzt ##UNSUBSCRIBE_URL## durch den personalisierten Abmeldelink."""
+    """Sendet den Newsletter an einen einzelnen Empfänger."""
     sender   = os.environ.get("GMAIL_ADDRESS")
     password = os.environ.get("GMAIL_APP_PASSWORD")
 
@@ -1123,7 +1207,7 @@ def send_email(html_template: str, recipient: str,
             server.login(sender, password)
             server.sendmail(sender, [recipient], msg.as_string())
     except smtplib.SMTPAuthenticationError:
-        raise RuntimeError("SMTP-Login fehlgeschlagen – App-Passwort pruefen!")
+        raise RuntimeError("SMTP-Login fehlgeschlagen – App-Passwort prüfen!")
     except smtplib.SMTPException as e:
         raise RuntimeError(f"SMTP-Fehler: {e}")
     except socket.timeout:
@@ -1145,7 +1229,7 @@ def main():
 
     if not recipients:
         raise ValueError("RECIPIENT_EMAIL nicht gesetzt!")
-    print(f"Empfaenger: {len(recipients)}\n")
+    print(f"Empfänger: {len(recipients)}\n")
 
     print("1/5 – RSS-Feeds laden...")
     articles = fetch_feeds()
