@@ -670,31 +670,61 @@ def _groq_call(client: Groq, prompt: str, max_tokens: int = 200) -> str:
 # QUELLEN-MIXING
 # ─────────────────────────────────────────────
 
-def _mix_sources(articles: list[dict], max_total: int = 5,
-                 max_per_source: int = 2) -> list[dict]:
+def _select_links_with_groq(client: Groq, category: str,
+                            articles: list[dict], max_total: int = 5) -> list[dict]:
     """
-    Wählt Artikel für den Newsletter aus:
-    - Zufällig shuffeln (kein DE/INTL-Bias)
-    - Maximal max_per_source Artikel pro Quelle (verhindert 4x Spiegel Online)
-    - Insgesamt max max_total Artikel
+    Lässt Groq die relevantesten und quellenmäßig vielfältigsten Artikel
+    aus der Kategorie auswählen. Groq gibt Indizes zurück (0-basiert).
+    Fallback: einfaches Shuffeln mit max 2x pro Quelle.
     """
     if not articles:
         return []
 
-    pool = articles.copy()
-    random.shuffle(pool)
+    # Kandidaten: max 12 Artikel – genug Auswahl, nicht zu viel Token-Verbrauch
+    candidates = articles[:12]
 
+    lines = "\n".join(
+        f"{i}: [{a['source']}] {a['title']}"
+        for i, a in enumerate(candidates)
+    )
+
+    prompt = f"""Du kuratierst Links für die Newsletter-Kategorie "{category}".
+
+Wähle die {max_total} relevantesten Artikel aus. Achte dabei auf:
+- Thematische Vielfalt (nicht 3x dasselbe Thema)
+- Quellenvielfalt (mix aus deutschen UND englischen Quellen wenn vorhanden)
+- Nachrichtenwert (wichtig, aktuell, relevant)
+
+Antworte NUR mit den Zeilennummern, kommagetrennt, z.B.: 0,3,5,7,9
+Keine Erklärung, keine anderen Zeichen.
+
+Artikel:
+{lines}
+
+Auswahl:"""
+
+    try:
+        raw = _groq_call(client, prompt, max_tokens=20)
+        indices = [int(x.strip()) for x in raw.split(",") if x.strip().isdigit()]
+        indices = [i for i in indices if 0 <= i < len(candidates)]
+        selected = [candidates[i] for i in indices[:max_total]]
+        if selected:
+            return selected
+    except Exception as e:
+        print(f"  ⚠ Link-Auswahl Fallback ({e})")
+
+    # Fallback: shuffle, max 2x pro Quelle
+    pool = candidates.copy()
+    random.shuffle(pool)
     result: list[dict] = []
     source_count: dict[str, int] = {}
-
     for a in pool:
         if len(result) >= max_total:
             break
         src = a["source"]
-        if source_count.get(src, 0) < max_per_source:
+        if source_count.get(src, 0) < 2:
             result.append(a)
             source_count[src] = source_count.get(src, 0) + 1
-
     return result
 
 # ─────────────────────────────────────────────
@@ -704,57 +734,39 @@ def _mix_sources(articles: list[dict], max_total: int = 5,
 def generate_intro(grouped: dict[str, list[dict]], client: Groq,
                    top_cats: list[str]) -> str:
     """
-    Generiert einen Intro-Satz mit verlinkten Kategorie-Chips.
-    Verwendet <a name="..."> für maximale E-Mail-Client-Kompatibilität.
+    Generiert einen einzigen flüssigen deutschen Satz, der die
+    wichtigsten Themen des Tages zusammenfasst. Kein HTML, keine Links.
     """
     top_topics = []
     for cat in top_cats[:6]:
         articles = grouped.get(cat, [])
-        if articles:
-            top_topics.append(articles[0]["title"])
+        for a in articles[:2]:
+            top_topics.append(f"[{cat}] {a['title']}")
 
     topics_text = "\n".join(f"- {t}" for t in top_topics)
 
-    prompt = f"""Lies die folgenden Schlagzeilen und nenne genau 3 kurze deutsche Stichworte (je 1-3 Woerter), 
-die die wichtigsten Themen zusammenfassen (z.B. "Haushaltsstreit", "Ukraine-Krieg", "KI-Regulierung").
+    prompt = f"""Du schreibst den Einleitungssatz eines deutschen Nachrichten-Newsletters.
 
-Nur die 3 Stichworte, kommagetrennt, keine weiteren Erklaerungen.
+Schreibe GENAU EINEN flüssigen deutschen Satz (max. 25 Woerter), der die 2-3 wichtigsten Themen des Tages nennt.
+Kein "Heute", kein "Willkommen", kein "In dieser Ausgabe". Direkt sachlich starten.
+Nur den Satz, keine Anfuehrungszeichen, keine Erklaerung.
+
+Beispiel: "Merz stellt Sparpaket vor, waehrend Trump neue Zoelle ankuendigt und die EZB den Leitzins senkt."
 
 Schlagzeilen:
 {topics_text}
 
-Stichworte:"""
-
-    # Kategorie-Chips als Anker-Links
-    # Hinweis: Im E-Mail-Client wird mit href="#anker" zum <a name="anker"> gesprungen
-    CHIP_STYLE = (
-        "display:inline-block;margin:3px 3px;padding:3px 10px;"
-        "background:#2c3e50;color:#a0b4c4;text-decoration:none;"
-        "font-size:11px;border-radius:3px;border:1px solid #3a5068;"
-        "font-weight:600;letter-spacing:0.3px;"
-    )
-    cat_chips_html = " ".join(
-        f'<a href="#{_anchor_id(cat)}" style="{CHIP_STYLE}">{cat}</a>'
-        for cat in top_cats
-    )
+Satz:"""
 
     try:
-        keywords_raw = _groq_call(client, prompt, max_tokens=30)
-        keywords = [k.strip().strip('"') for k in keywords_raw.split(",") if k.strip()][:3]
-        keywords_str = ", ".join(keywords) if keywords else "aktuelle Ereignisse"
-
-        intro_text = (
-            f"Heute u.a. zu <strong>{keywords_str}</strong><br>"
-            f'<span style="font-size:12px;color:#7a9bb5;">Direkt springen:</span> '
-            f'{cat_chips_html}'
-        )
-        return intro_text
-
+        sentence = _groq_call(client, prompt, max_tokens=60)
+        sentence = sentence.strip().strip('"').strip("'").split("\n")[0].strip()
+        if not sentence.endswith("."):
+            sentence += "."
+        return sentence
     except Exception as e:
         print(f"  ✗ Intro-Fehler: {e}")
-        return (
-            f'Nachrichten des Tages – direkt springen: {cat_chips_html}'
-        )
+        return "Die wichtigsten Nachrichten des Tages im Überblick."
 
 # ─────────────────────────────────────────────
 # TOP-KATEGORIEN
@@ -801,28 +813,30 @@ Beispiel:
 # ZUSAMMENFASSUNGEN
 # ─────────────────────────────────────────────
 
-def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, list[str]], list[str]]:
+def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, list[str]], list[str], dict[str, list[dict]]]:
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise ValueError("GROQ_API_KEY nicht gesetzt!")
 
     client = Groq(api_key=api_key)
 
-    print("  → Top-Kategorien waehlen...")
+    print("  → Top-Kategorien wählen...")
     top_cats = select_top_categories(grouped, client, n=TOP_CATEGORIES_COUNT)
 
     print("  → Intro generieren...")
     top_grouped = {c: grouped[c] for c in top_cats if c in grouped}
     intro = generate_intro(top_grouped, client, top_cats)
-    print(f"  ✓ Intro generiert")
+    print(f"  ✓ Intro: {intro[:60]}...")
 
-    summaries: dict[str, list[str]] = {}
+    summaries:     dict[str, list[str]]  = {}
+    selected_links: dict[str, list[dict]] = {}
 
     for category in top_cats:
         articles = grouped.get(category, [])
         if not articles:
             continue
 
+        # ── Zusammenfassung ──────────────────────────────────────────
         articles_text = "\n".join([
             f"- [{a['source']}] {a['title']}"
             + (f": {a['summary'][:200]}" if a["summary"] else "")
@@ -856,7 +870,13 @@ Stichsaetze:"""
             print(f"  ✗ Fehler bei {category}: {e}")
             summaries[category] = ["• Fehler beim Laden der Zusammenfassung."]
 
-    return intro, summaries, top_cats
+        # ── Link-Auswahl via Groq ─────────────────────────────────────
+        print(f"  → Links für {category} wählen...")
+        selected_links[category] = _select_links_with_groq(client, category, articles)
+        sources = [a["source"] for a in selected_links[category]]
+        print(f"  ✓ Links: {', '.join(sources)}")
+
+    return intro, summaries, top_cats, selected_links
 
 # ─────────────────────────────────────────────
 # ARCHIV-HTML
@@ -984,16 +1004,12 @@ def build_archive_html(grouped: dict[str, list[dict]], intro: str,
 
 def build_html(intro: str, summaries: dict[str, list[str]],
                grouped: dict[str, list[dict]],
+               selected_links: dict[str, list[dict]],
                archive_url: str = "",
                signup_url: str = "") -> str:
     """
     Baut den HTML-Newsletter.
     Platzhalter ##UNSUBSCRIBE_URL## wird in send_email() ersetzt.
-
-    Anker-Technik für E-Mail-Clients:
-    - Jede Kategorie bekommt ein unsichtbares <a name="..."> VOR dem Inhaltsblock
-    - Die Intro-Chips verlinken per href="#anker"
-    - Das funktioniert in Gmail, Apple Mail, Outlook Web
     """
     now      = datetime.now()
     daytime  = "Morgen" if now.hour < 13 else "Abend"
@@ -1036,10 +1052,8 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     category_blocks = ""
     items = list(summaries.items())
     for idx, (category, bullets) in enumerate(items):
-        articles      = grouped.get(category, [])
         is_last       = (idx == len(items) - 1)
         border_bottom = "none" if is_last else f"1px solid {COLOR_BORDER}"
-        anchor        = _anchor_id(category)
 
         bullets_html = ""
         for b in bullets:
@@ -1054,9 +1068,10 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                 f'</tr>'
             )
 
-        mixed = _mix_sources(articles, max_total=5, max_per_source=2)
+        # Links aus Groq-Auswahl
+        mixed = selected_links.get(category, [])
         links_html = ""
-        seen_links = set()
+        seen_links: set[str] = set()
         for a in mixed:
             if a["link"] and a["link"] not in seen_links:
                 seen_links.add(a["link"])
@@ -1073,14 +1088,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                     f'</a>'
                 )
 
-        # Anker: unsichtbares <a name="..."> direkt vor dem Kategorie-Titel
-        # → funktioniert in Gmail, Apple Mail, Outlook.com
         category_blocks += (
-            f'<tr><td style="padding:0 32px;">'
-            # Unsichtbarer Anker-Tag – MUSS außerhalb der Padding-Struktur sein
-            f'<a name="{anchor}" style="display:block;font-size:0;line-height:0;'
-            f'height:0;overflow:hidden;">&nbsp;</a>'
-            f'</td></tr>'
             f'<tr><td style="padding:20px 32px 20px;border-bottom:{border_bottom};">'
             f'<table width="100%" cellpadding="0" cellspacing="0" border="0">'
             f'<tr><td style="padding-bottom:10px;border-bottom:2px solid {COLOR_NAVY2};">'
@@ -1242,7 +1250,7 @@ def main():
     print()
 
     print("3/5 – KI-Zusammenfassung mit Groq...")
-    intro, summaries, top_cats = summarize_with_groq(grouped)
+    intro, summaries, top_cats, selected_links = summarize_with_groq(grouped)
     print()
 
     now      = datetime.now()
@@ -1261,6 +1269,7 @@ def main():
     print("5/5 – Newsletter versenden...")
     html_template = build_html(
         intro, summaries, grouped,
+        selected_links=selected_links,
         archive_url=archive_url,
         signup_url=signup_url,
     )
