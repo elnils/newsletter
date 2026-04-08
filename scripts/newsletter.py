@@ -1087,7 +1087,6 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
         # Links aus Groq-Auswahl
         mixed = selected_links.get(category, [])
-        # Nur Links mit URL und ohne Duplikate
         clean = []
         seen_links: set[str] = set()
         for a in mixed:
@@ -1095,19 +1094,23 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                 seen_links.add(a["link"])
                 clean.append(a)
 
+        # Zwei abwechselnde Hintergründe – dezent, harmonisch zur Palette
+        ROW_COLORS = ["#f0f4f7", "#e8eef3"]
+
         links_html = ""
         for i, a in enumerate(clean):
-            is_last_link  = (i == len(clean) - 1)
-            link_border   = "none" if is_last_link else f"1px solid {COLOR_BORDER}"
+            bg = ROW_COLORS[i % 2]
             links_html += (
                 f'<a href="{a["link"]}" style="display:block;text-decoration:none;'
-                f'padding:11px 0;border-bottom:{link_border};">'
-                f'<span style="display:block;font-family:{FONT};font-size:14px;'
-                f'color:{COLOR_TEXT};line-height:1.5;word-break:break-word;'
-                f'margin-bottom:4px;">{a["title"]}</span>'
-                f'<span style="display:block;font-family:{FONT};font-size:11px;'
-                f'font-weight:600;text-transform:uppercase;letter-spacing:0.7px;'
-                f'color:{COLOR_MUTED};">{a["source"]}</span>'
+                f'padding:10px 14px;margin-bottom:3px;background:{bg};border-radius:3px;">'
+                f'<span style="font-family:{FONT};font-size:13px;line-height:1.5;'
+                f'color:{COLOR_TEXT};word-break:break-word;">'
+                f'<span style="font-weight:700;color:{COLOR_BLUE};'
+                f'text-transform:uppercase;font-size:11px;letter-spacing:0.5px;">'
+                f'{a["source"]}</span>'
+                f'<span style="color:#b0bec8;margin:0 6px;">·</span>'
+                f'{a["title"]}'
+                f'</span>'
                 f'</a>'
             )
 
