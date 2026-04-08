@@ -695,10 +695,10 @@ def _select_links_with_groq(client: Groq, category: str,
 
     prompt = f"""Du kuratierst Links für die Newsletter-Kategorie "{category}".
 
-Wähle die {max_total} relevantesten Artikel aus. Achte dabei auf:
+Wähle {max_total} Artikel aus. Regeln:
+- MAXIMAL 2 Artikel von derselben Quelle (z.B. nicht 3x Spiegel Online)
+- Mix aus deutschen UND englischen Quellen wenn vorhanden
 - Thematische Vielfalt (nicht 3x dasselbe Thema)
-- Quellenvielfalt (mix aus deutschen UND englischen Quellen wenn vorhanden)
-- Nachrichtenwert (wichtig, aktuell, relevant)
 
 Antworte NUR mit den Zeilennummern, kommagetrennt, z.B.: 0,3,5,7,9
 Keine Erklärung, keine anderen Zeichen.
@@ -712,7 +712,15 @@ Auswahl:"""
         raw = _groq_call(client, prompt, max_tokens=20)
         indices = [int(x.strip()) for x in raw.split(",") if x.strip().isdigit()]
         indices = [i for i in indices if 0 <= i < len(candidates)]
-        selected = [candidates[i] for i in indices[:max_total]]
+        # Sicherheitsnetz: max 2x pro Quelle auch wenn Groq es ignoriert
+        source_count: dict[str, int] = {}
+        safe_indices = []
+        for i in indices:
+            src = candidates[i]["source"]
+            if source_count.get(src, 0) < 2:
+                safe_indices.append(i)
+                source_count[src] = source_count.get(src, 0) + 1
+        selected = [candidates[i] for i in safe_indices[:max_total]]
         if selected:
             return selected
     except Exception as e:
@@ -1096,15 +1104,16 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
         links_html = (
             f'<table width="100%" cellpadding="0" cellspacing="0" border="0" '
-            f'style="margin-top:8px;border:1px solid {COLOR_BORDER};'
-            f'border-radius:4px;padding:4px 12px;">'
+            f'style="margin-top:10px;border:1px solid {COLOR_BORDER};border-radius:4px;">'
         )
-        for a in clean:
+        for i, a in enumerate(clean):
+            is_last_link = (i == len(clean) - 1)
+            row_border   = "none" if is_last_link else f"1px solid {COLOR_BORDER}"
             links_html += (
-                f'<tr><td style="padding:4px 0;line-height:1.4;">'
+                f'<tr><td style="padding:7px 12px;border-bottom:{row_border};">'
                 f'<a href="{a["link"]}" style="text-decoration:none;font-family:{FONT};'
-                f'font-size:13px;color:{COLOR_TEXT};">'
-                f'<span style="font-weight:700;">{a["source"]}:</span>'
+                f'font-size:12px;line-height:1.45;color:{COLOR_TEXT2};">'
+                f'<span style="font-weight:700;color:{COLOR_NAVY};">{a["source"]}:</span>'
                 f'&nbsp;{a["title"]}'
                 f'</a>'
                 f'</td></tr>'
