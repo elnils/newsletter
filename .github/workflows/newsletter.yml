@@ -1,5 +1,5 @@
 name: Tageslage Newsletter
-
+# schedule resync
 on:
   schedule:
     - cron: "31 5 * * *"
