@@ -1104,15 +1104,15 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
         links_html = (
             f'<table width="100%" cellpadding="0" cellspacing="0" border="0" '
-            f'style="margin-top:10px;border:1px solid {COLOR_BORDER};border-radius:4px;">'
+            f'style="margin-top:10px;background:#d4e3ed;border-radius:4px;">'
         )
         for i, a in enumerate(clean):
             is_last_link = (i == len(clean) - 1)
-            row_border   = "none" if is_last_link else f"1px solid {COLOR_BORDER}"
+            row_border   = "none" if is_last_link else f"1px solid #bdd0de"
             links_html += (
-                f'<tr><td style="padding:7px 12px;border-bottom:{row_border};">'
+                f'<tr><td style="padding:5px 12px;border-bottom:{row_border};">'
                 f'<a href="{a["link"]}" style="text-decoration:none;font-family:{FONT};'
-                f'font-size:12px;line-height:1.45;color:{COLOR_TEXT2};">'
+                f'font-size:12px;line-height:1.4;color:{COLOR_TEXT2};">'
                 f'<span style="font-weight:700;color:{COLOR_NAVY};">{a["source"]}:</span>'
                 f'&nbsp;{a["title"]}'
                 f'</a>'
