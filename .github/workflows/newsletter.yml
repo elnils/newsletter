@@ -2,8 +2,7 @@ name: Tageslage Newsletter
 # schedule resync
 on:
   schedule:
-    - cron: "31 5 * * *"
-    - cron: "31 14 * * *"
+# hier könnte ein Cron job stehen wird aber abgerufen über cron-job.org
   workflow_dispatch:
 
 permissions:
