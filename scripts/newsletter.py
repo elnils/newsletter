@@ -12,7 +12,7 @@ import socket
 import smtplib
 import urllib.parse
 import feedparser
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from groq import Groq
@@ -507,6 +507,43 @@ CATEGORIES = {
         "exclude": [],
     },
 
+    "📄 Aktuelle Analysen & Berichte": {
+        # Think-Tank-Papiere, Institutional Reports, Policy Briefs –
+        # Inhalte die keine Tagesnachricht sind, sondern Analysen/Studien
+        "keywords": {
+            # Explizite Dokumenttypen
+            "policy paper": 15, "policy brief": 15, "working paper": 15,
+            "discussion paper": 15, "research paper": 15,
+            "white paper": 12, "briefing paper": 15,
+            "strategy paper": 12, "position paper": 12,
+            "report": 6, "analysis": 5, "studie": 10, "analyse": 10,
+            "gutachten": 12, "expertenbericht": 12,
+            "jahresbericht": 12, "quartalsbericht": 10,
+            # Think Tanks & Research Institutions
+            "brookings": 15, "chatham house": 15, "rand corporation": 15,
+            "council on foreign relations": 15, "cfr": 12,
+            "ecfr": 15, "european council on foreign relations": 15,
+            "carnegie endowment": 15, "iiss": 15,
+            "stiftung wissenschaft": 15, "swp berlin": 15,
+            "bertelsmann stiftung": 15, "ifo institut": 12,
+            "diw berlin": 12, "bundesbank": 10,
+            "imf working": 12, "world bank report": 12,
+            "oecd report": 12, "oecd studie": 12,
+            "think tank": 12,
+            # Sprachliche Signale
+            "neue studie zeigt": 12, "studie belegt": 12,
+            "forscher warnen": 10, "experten empfehlen": 10,
+            "laut bericht": 10, "according to report": 10,
+            "researchers find": 10, "study finds": 10,
+            "analysis shows": 10, "report warns": 10,
+        },
+        "exclude": [
+            "fußball", "soccer", "bundesliga", "olympic",
+            # Tagesnachrichten-Signale sollen diese Kategorie nicht befüllen
+            "breaking", "eilmeldung", "bricht zusammen",
+        ],
+    },
+
     "🔥 Sonstiges": {
         "keywords": {},
         "exclude": [],
@@ -543,11 +580,45 @@ def _anchor_id(category: str) -> str:
 # RSS FEEDS HOLEN
 # ─────────────────────────────────────────────
 
+MAX_ARTICLE_AGE_HOURS = 24   # Artikel älter als X Stunden werden gefiltert
+
+
 def _normalize_title(title: str) -> str:
     t = title.lower().strip()
     t = re.sub(r"[^\w\s]", "", t)
     t = re.sub(r"\s+", " ", t)
     return t
+
+
+def _is_too_old(entry) -> bool:
+    """True wenn Artikel älter als MAX_ARTICLE_AGE_HOURS. False wenn kein Datum (Fallback: behalten)."""
+    for field in ("published_parsed", "updated_parsed"):
+        ts = getattr(entry, field, None)
+        if ts:
+            try:
+                pub = datetime(*ts[:6], tzinfo=timezone.utc)
+                return (datetime.now(timezone.utc) - pub) > timedelta(hours=MAX_ARTICLE_AGE_HOURS)
+            except Exception:
+                pass
+    return False  # kein Datum → Artikel behalten
+
+
+def _token_overlap(a: str, b: str) -> float:
+    """Jaccard-Koeffizient der Wort-Tokens (0.0–1.0)."""
+    ta = set(a.split())
+    tb = set(b.split())
+    if not ta or not tb:
+        return 0.0
+    return len(ta & tb) / len(ta | tb)
+
+
+def _is_near_duplicate(norm_title: str, seen_norms: set[str],
+                       threshold: float = 0.55) -> bool:
+    """True wenn ein ähnlicher Titel bereits gesehen wurde."""
+    for seen in seen_norms:
+        if _token_overlap(norm_title, seen) >= threshold:
+            return True
+    return False
 
 
 def fetch_feeds() -> list[dict]:
@@ -570,10 +641,17 @@ def fetch_feeds() -> list[dict]:
                     print(f"  ⚠ {source}: nicht erreichbar ({feed.bozo_exception})")
                     continue
 
-                count = 0
+                count      = 0
+                old_count  = 0
                 for entry in feed.entries:
                     if count >= MAX_ARTICLES_PER_FEED:
                         break
+
+                    # ── Altersfilter ───────────────────────────────────
+                    if _is_too_old(entry):
+                        old_count += 1
+                        continue
+
                     title   = entry.get("title", "").strip()
                     summary = entry.get("summary", entry.get("description", "")).strip()
                     link    = entry.get("link", "")
@@ -583,10 +661,16 @@ def fetch_feeds() -> list[dict]:
                         continue
 
                     norm = _normalize_title(title)
+
+                    # ── Exakt-Duplikat ─────────────────────────────────
                     if norm in seen_titles:
                         continue
-                    seen_titles.add(norm)
 
+                    # ── Fuzzy-Duplikat (Jaccard >= 0.55) ──────────────
+                    if _is_near_duplicate(norm, seen_titles):
+                        continue
+
+                    seen_titles.add(norm)
                     articles.append({
                         "source":  source,
                         "title":   title,
@@ -595,7 +679,9 @@ def fetch_feeds() -> list[dict]:
                     })
                     count += 1
 
-                print(f"  ✓ {source}: {count} Artikel")
+                age_note = f", {old_count} zu alt" if old_count else ""
+
+                print(f"  ✓ {source}: {count} Artikel{age_note}")
 
             except Exception as e:
                 print(f"  ✗ {source}: {e}")
@@ -868,21 +954,30 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
             for a in articles[:8]
         ])
 
-        prompt = f"""Fasse die Nachrichten der Kategorie "{category}" in genau 2 deutschen Stichsaetzen zusammen.
-
-Regeln:
-- Genau 2 Stichsaetze, jeder beginnt mit Bullet-Zeichen (•)
-- Maximal 1 Zeile pro Stichsatz
-- Sachlich, informativ, keine Wertung
-- Keine Einleitung, keine Schlussformel
-
-Nachrichten:
-{articles_text}
-
-Stichsaetze:"""
+        prompt = (
+            f'Du bist Redakteur eines seriösen deutschen Nachrichtenbriefs. '
+            f'Fasse die folgenden Nachrichten der Kategorie "{category}" in GENAU 2 deutschen Stichsätzen zusammen.\n\n'
+            'STRIKTE QUALITÄTSREGELN – jede Verletzung macht den Text wertlos:\n\n'
+            '1. AKTEURE benennen: Nie "die Regierung", "Investoren", "Experten" ohne zu sagen WELCHE.\n'
+            '   FALSCH: "Investoren reagieren nervoes."\n'
+            '   RICHTIG: "US-Hedgefonds verkaufen europaeische Anleihen nach Fed-Entscheid."\n\n'
+            '2. KONTEXT liefern: Nie eine Konsequenz ohne Ursache, nie eine Ursache ohne Konsequenz.\n'
+            '   FALSCH: "Die Maerkte stehen unter Druck."\n'
+            '   RICHTIG: "Der DAX faellt um 2,1 Prozent, nachdem Trump neue 25-Prozent-Zoelle auf EU-Stahl ankuendigte."\n\n'
+            '3. GEOGRAFIE: Bei internationalen Themen immer Laender/Orte nennen.\n'
+            '   FALSCH: "Die Spannungen im Handelsstreit eskalieren."\n'
+            '   RICHTIG: "Im US-chinesischen Handelsstreit verhaengt Washington neue Exportverbote fuer KI-Chips."\n\n'
+            '4. SPRACHE: Ausschliesslich korrektes Deutsch. Keine englischen Einschübe. Kein Passiv ohne Subjekt.\n'
+            '   FALSCH: "Entscheidungen wurden getroffen bezueglich..."\n'
+            '   RICHTIG: "Der Bundestag beschloss..."\n\n'
+            '5. KEINE FLOSKELN: Verboten sind "zeigt sich", "steht im Fokus", "sorgt fuer Aufsehen", '
+            '"bleibt abzuwarten", "weitreichende Folgen", "unter Druck".\n\n'
+            '6. FORMAT: Genau 2 Zeilen. Jede beginnt mit \u2022 (Bullet). Keine Einleitung, keine Schlussformel.\n\n'
+            f'Quellen (max. 8):\n{articles_text}\n\nStichsaetze:'
+        )
 
         try:
-            text = _groq_call(client, prompt, max_tokens=200)
+            text = _groq_call(client, prompt, max_tokens=500)
             bullet_points = [
                 line.strip()
                 for line in text.split("\n")
