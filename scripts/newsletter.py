@@ -1310,7 +1310,8 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                grouped: dict[str, list[dict]],
                selected_links: dict[str, list[dict]],
                archive_url: str = "",
-               signup_url: str = "") -> str:
+               signup_url: str = "",
+               history_fact: str = "") -> str:
     """
     Baut den HTML-Newsletter.
     Platzhalter ##UNSUBSCRIBE_URL## wird in send_email() ersetzt.
@@ -1351,6 +1352,23 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         f'color:{COLOR_TEXT2};margin:0;">{intro}</p>'
         f'</td></tr>'
     )
+
+    # ── "Heute vor X Jahren" – nur wenn vorhanden ─────────────────────────
+    history_html = ""
+    if history_fact:
+        history_html = (
+            f'<tr><td style="padding:14px 32px;background:{COLOR_BG};'
+            f'border-bottom:1px solid {COLOR_BORDER};">'
+            f'<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>'
+            f'<td style="font-family:{FONT};font-size:11px;font-weight:700;'
+            f'text-transform:uppercase;letter-spacing:1px;color:{COLOR_BLUE};'
+            f'padding-bottom:4px;">📅 An diesem Tag</td></tr>'
+            f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
+            f'color:{COLOR_TEXT2};">{history_fact}'
+            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Wikipedia</span>'
+            f'</td></tr></table>'
+            f'</td></tr>'
+        )
 
     # ── Kategorien-Blöcke ────────────────────────────────────────────────
     category_blocks = ""
@@ -1482,10 +1500,70 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         f'{len(RSS_FEEDS)}&nbsp;Quellen &middot; {total_articles}&nbsp;Artikel '
         f'&middot; kuratiert mit KI</td></tr>\n'
         + intro_html
+        + history_html
         + category_blocks
         + footer_html +
         '</table>\n</td></tr>\n</table>\n</body>\n</html>'
     )
+
+# ─────────────────────────────────────────────
+# "HEUTE VOR X JAHREN" – WIKIPEDIA
+# ─────────────────────────────────────────────
+
+HISTORY_FETCH_TIMEOUT = 15  # Sekunden
+# Deutsche Wikipedia "On this day" – kuratierte Ereignisse (selected), CC BY-SA
+WIKIPEDIA_ONTHISDAY_URL = "https://de.wikipedia.org/api/rest_v1/feed/onthisday/selected/{month}/{day}"
+
+
+def fetch_history_fact() -> str:
+    """
+    Holt ein historisches Ereignis des heutigen Kalendertags von der
+    deutschen Wikipedia (CC BY-SA). Gibt formatierten String zurück
+    oder "" bei Fehler/keinem passenden Eintrag (dann faellt der Block weg).
+    """
+    now = datetime.now()
+    url = WIKIPEDIA_ONTHISDAY_URL.format(
+        month=now.strftime("%m"), day=now.strftime("%d")
+    )
+    try:
+        # Wikimedia verlangt einen aussagekraeftigen User-Agent, sonst 403
+        req = urllib.request.Request(
+            url, headers={"User-Agent": "Tageslage-Newsletter/1.0 (RSS-Digest)"}
+        )
+        with urllib.request.urlopen(req, timeout=HISTORY_FETCH_TIMEOUT) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+
+        events = data.get("selected") or data.get("events") or []
+        # Nur Eintraege mit Jahr und vernuenftiger Textlaenge (nicht zu lang/kurz)
+        usable = [
+            e for e in events
+            if e.get("year") and e.get("text")
+            and 20 <= len(str(e["text"]).strip()) <= 170
+        ]
+        if not usable:
+            print("  ⚠ Wikipedia-Fakt: kein passender Eintrag")
+            return ""
+
+        ev        = random.choice(usable)
+        year      = int(ev["year"])
+        years_ago = now.year - year
+        text      = str(ev["text"]).strip()
+
+        if years_ago <= 0:
+            return ""
+
+        print(f"  ✓ Wikipedia-Fakt: vor {years_ago} Jahren ({year})")
+        return f"Vor {years_ago} Jahren ({year}): {text}"
+
+    except (urllib.error.URLError, socket.timeout) as e:
+        print(f"  ⚠ Wikipedia nicht erreichbar: {e}")
+        return ""
+    except (json.JSONDecodeError, ValueError, KeyError) as e:
+        print(f"  ⚠ Wikipedia-Antwort ungueltig: {e}")
+        return ""
+    except Exception as e:
+        print(f"  ⚠ Wikipedia-Fakt Fehler: {e}")
+        return ""
 
 # ─────────────────────────────────────────────
 # EMPFÄNGER-LISTE VOM APPS SCRIPT
@@ -1631,6 +1709,10 @@ def main():
     intro, summaries, top_cats, selected_links = summarize_with_groq(grouped)
     print()
 
+    print("    → 'Heute vor X Jahren' von Wikipedia holen...")
+    history_fact = fetch_history_fact()
+    print()
+
     now      = datetime.now()
     daytime  = "morgen" if now.hour < 13 else "abend"
     filename = f"{now.strftime('%Y-%m-%d')}-{daytime}.html"
@@ -1650,6 +1732,7 @@ def main():
         selected_links=selected_links,
         archive_url=archive_url,
         signup_url=signup_url,
+        history_fact=history_fact,
     )
 
     sent   = 0
