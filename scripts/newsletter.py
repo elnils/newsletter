@@ -518,7 +518,7 @@ CATEGORIES = {
 
 MAX_ARTICLES_PER_FEED    = 15
 MAX_ARTICLES_FOR_SUMMARY = 240   # erhöht: mehr Artikel im Pool = mehr Auswahl pro Kategorie
-ARTICLES_PER_CATEGORY    = 12    # wie viele Artikel pro Kategorie an die KI gehen (vorher 8)
+ARTICLES_PER_CATEGORY    = 18    # wie viele Artikel pro Kategorie an die KI gehen (mehr Auswahl)
 TOP_CATEGORIES_COUNT     = 5
 FEED_TIMEOUT             = 15
 GROQ_TIMEOUT             = 30
@@ -1070,16 +1070,26 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
 
 Regeln:
 {regel_anzahl}
-- Maximal 1 Zeile pro Stichsatz
+- Jeder Stichsatz: 15-30 Woerter, ein VOLLSTAENDIGER, fuer sich allein verstaendlicher Satz.
 - Sachlich, informativ, keine Wertung
 - Keine Einleitung, keine Schlussformel
 - Bei Aemtern ohne Namen im Quelltext: Institution statt Person ("Das Wirtschaftsministerium", "Das Weisse Haus", "Die Bundesregierung", "Der Kreml")
 - Bei auslaendischen Amtstraegern IMMER das Land voranstellen: "US-Verteidigungsminister Hegseth" (nicht nur "Verteidigungsminister Hegseth"), "franzoesischer Praesident Macron", "britischer Premier Starmer"
 
-INHALT:
-- Jeder Satz behandelt EIN konkretes Ereignis – nicht mehrere zusammengestopft.
-- Mehrere Saetze decken UNTERSCHIEDLICHE Geschichten ab (nicht dieselbe Story zweimal).
-- Jeder Satz braucht: konkreten Akteur + konkrete Handlung + (wenn vorhanden) Zahl/Ort/Effekt.
+AUSWAHL (wichtig):
+- Waehle nur UEBERREGIONAL bedeutsame Nachrichten: Bundes-/EU-/Weltpolitik, grosse Konzerne, gesamtwirtschaftliche Themen.
+- IGNORIERE rein lokale oder einzelbetriebliche Meldungen (z.B. "Logistikzentrum einer Handelskette", "Stadtrat beschliesst", "Filiale schliesst") – auch wenn sie in der Liste stehen.
+
+SATZBAU (sehr wichtig – haeufige Fehler vermeiden):
+- Jeder Satz muss ALLEIN verstaendlich sein. Keine abgehackten Fragmente.
+  FALSCH: "CSU-Vize Weber kritisiert Soeder ohne vorbereiteten Plan."
+    → "ohne vorbereiteten Plan" haengt sinnlos in der Luft – WAS hat keinen Plan?
+  RICHTIG: "CSU-Vize Weber wirft Soeder vor, die Stromsteuer-Senkung ohne Gegenfinanzierung zu fordern."
+- KEINE konstruierten oder zirkulaeren Kausalzusaetze. Haenge NICHT "was X beeinflusst" an, wenn es nicht im Quelltext steht.
+  FALSCH: "Chinas Xi besucht Nordkorea, was die Verhandlungsposition gegenueber Nordkorea beeinflusst."
+    → tautologisch (Nordkorea-Besuch beeinflusst Nordkorea-Position) und erfunden.
+  RICHTIG: "Chinas Staatschef Xi reist erstmals seit 2019 nach Nordkorea und trifft Machthaber Kim."
+- Nenne einen Effekt NUR, wenn er konkret im Quelltext steht. Sonst beschreibe einfach das Ereignis.
 
 SCHLECHTE Beispiele – NIEMALS so:
 "• Die internationale Staatengemeinschaft warnt vor negativen Auswirkungen auf die globale Wirtschaft."
@@ -1088,8 +1098,8 @@ SCHLECHTE Beispiele – NIEMALS so:
   → keine konkrete Information
 
 GUTE Beispiele:
-"• Das Weisse Haus verhaengt 25-Prozent-Zoelle auf EU-Stahlimporte ab Juli."
-"• Der IMF senkt seine Wachstumsprognose fuer die Eurozone auf 0,8 Prozent."
+"• Das Weisse Haus verhaengt 25-Prozent-Zoelle auf EU-Stahlimporte ab Juli und trifft damit vor allem deutsche Hersteller."
+"• Der IMF senkt seine Wachstumsprognose fuer die Eurozone auf 0,8 Prozent und nennt die Handelskonflikte als Hauptgrund."
 
 Nachrichten:
 {articles_text}
@@ -1097,7 +1107,7 @@ Nachrichten:
 Stichsaetze:"""
 
         try:
-            text = _groq_call(client, prompt, max_tokens=200)
+            text = _groq_call(client, prompt, max_tokens=320)
             bullet_points = [
                 line.strip()
                 for line in text.split("\n")
