@@ -6,13 +6,16 @@ Holt RSS-Feeds, kategorisiert mit Punkte+Ausschluss-System, verschickt per E-Mai
 
 import os
 import re
+import json
 import time
 import random
 import socket
 import smtplib
 import urllib.parse
+import urllib.request
+import urllib.error
 import feedparser
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from groq import Groq
@@ -520,6 +523,16 @@ FEED_TIMEOUT             = 15
 GROQ_TIMEOUT             = 30
 GROQ_RETRIES             = 1
 
+# Groq-Modell: "openai/gpt-oss-120b" (Reasoning-Modell, klueger) oder
+# "llama-3.3-70b-versatile" (schneller, kein Reasoning). Hier umstellbar.
+GROQ_MODEL               = "openai/gpt-oss-120b"
+# reasoning_effort: nur fuer gpt-oss-Modelle relevant ("low"/"medium"/"high").
+# "low" = kurz nachdenken, spart Tokens + Zeit. Bei Llama wird es ignoriert.
+GROQ_REASONING_EFFORT    = "low"
+# Fallback-Modell: wird automatisch genutzt, sobald GROQ_MODEL einmal im
+# Lauf versagt (Fehler ODER leere Antwort). Dann bleibt es bis Lauf-Ende dabei.
+GROQ_FALLBACK_MODEL      = "llama-3.3-70b-versatile"
+
 SIGNUP_URL    = "https://forms.gle/LSavK3JVp3aAsLGm9"
 ARCHIVE_URL   = "https://www.thesignmaker.co.nz/wp-content/smush-webp/2019/04/C16_Work-In-Progress-600x600.png.webp"
 
@@ -543,11 +556,46 @@ def _anchor_id(category: str) -> str:
 # RSS FEEDS HOLEN
 # ─────────────────────────────────────────────
 
+MAX_ARTICLE_AGE_HOURS  = 18   # Artikel älter als X Stunden werden gefiltert
+DUPLICATE_THRESHOLD    = 0.45 # Jaccard-Schwelle: niedriger = strenger gegen Dopplungen
+
+
 def _normalize_title(title: str) -> str:
     t = title.lower().strip()
     t = re.sub(r"[^\w\s]", "", t)
     t = re.sub(r"\s+", " ", t)
     return t
+
+
+def _is_too_old(entry) -> bool:
+    """True wenn Artikel älter als MAX_ARTICLE_AGE_HOURS. False wenn kein Datum (Fallback: behalten)."""
+    for field in ("published_parsed", "updated_parsed"):
+        ts = getattr(entry, field, None)
+        if ts:
+            try:
+                pub = datetime(*ts[:6], tzinfo=timezone.utc)
+                return (datetime.now(timezone.utc) - pub) > timedelta(hours=MAX_ARTICLE_AGE_HOURS)
+            except Exception:
+                pass
+    return False  # kein Datum → Artikel behalten
+
+
+def _token_overlap(a: str, b: str) -> float:
+    """Jaccard-Koeffizient der Wort-Tokens (0.0–1.0)."""
+    ta = set(a.split())
+    tb = set(b.split())
+    if not ta or not tb:
+        return 0.0
+    return len(ta & tb) / len(ta | tb)
+
+
+def _is_near_duplicate(norm_title: str, seen_norms: set[str],
+                       threshold: float = DUPLICATE_THRESHOLD) -> bool:
+    """True wenn ein ähnlicher Titel bereits gesehen wurde."""
+    for seen in seen_norms:
+        if _token_overlap(norm_title, seen) >= threshold:
+            return True
+    return False
 
 
 def fetch_feeds() -> list[dict]:
@@ -570,10 +618,18 @@ def fetch_feeds() -> list[dict]:
                     print(f"  ⚠ {source}: nicht erreichbar ({feed.bozo_exception})")
                     continue
 
-                count = 0
+                count       = 0
+                old_count   = 0
+                dup_count   = 0
                 for entry in feed.entries:
                     if count >= MAX_ARTICLES_PER_FEED:
                         break
+
+                    # ── Altersfilter ───────────────────────────────────
+                    if _is_too_old(entry):
+                        old_count += 1
+                        continue
+
                     title   = entry.get("title", "").strip()
                     summary = entry.get("summary", entry.get("description", "")).strip()
                     link    = entry.get("link", "")
@@ -584,10 +640,18 @@ def fetch_feeds() -> list[dict]:
                         continue
 
                     norm = _normalize_title(title)
-                    if norm in seen_titles:
-                        continue
-                    seen_titles.add(norm)
 
+                    # ── Exakt-Duplikat ─────────────────────────────────
+                    if norm in seen_titles:
+                        dup_count += 1
+                        continue
+
+                    # ── Fuzzy-Duplikat (Jaccard) ──────────────────────
+                    if _is_near_duplicate(norm, seen_titles):
+                        dup_count += 1
+                        continue
+
+                    seen_titles.add(norm)
                     articles.append({
                         "source":  source,
                         "title":   title,
@@ -596,7 +660,12 @@ def fetch_feeds() -> list[dict]:
                     })
                     count += 1
 
-                print(f"  ✓ {source}: {count} Artikel")
+                extras = []
+                if old_count: extras.append(f"{old_count} zu alt")
+                if dup_count: extras.append(f"{dup_count} Dopplung")
+                note = f" ({', '.join(extras)})" if extras else ""
+
+                print(f"  ✓ {source}: {count} Artikel{note}")
 
             except Exception as e:
                 print(f"  ✗ {source}: {e}")
@@ -669,27 +738,89 @@ QUELLENTREUE_REGELN = """QUELLENTREUE (oberste Prioritaet, ueberschreibt alle an
     Quelltext "US-Praesident trifft Merz" → "Das Weisse Haus trifft Merz" oder "Die US-Regierung..."
     Quelltext "russischer Praesident droht" → "Der Kreml droht" oder "Moskau droht"
     Quelltext "EU-Kommissionspraesident kuendigt an" → "Die EU-Kommission kuendigt an"
-    Quelltext "franzoesischer Praesident" → "Paris" oder "die franzoesische Regierung"
 - Niemals Anreden wie "der/die" oder Genderformen ("Minister:in") verwenden – immer Institution.
-- Im Zweifelsfall: weglassen oder neutral umschreiben. Lieber unspezifisch als falsch."""
+
+NIEMALS META-KOMMENTARE schreiben:
+- VERBOTEN: "ist nicht erwaehnt", "laut Quelltext", "Quelle sagt", "im Artikel steht"
+- VERBOTEN: "unklar bleibt", "nicht spezifiziert", "ohne Namen genannt"
+- Schreibe direkt die Nachricht – kommentiere NIE was du nicht weisst.
+- Wenn du etwas nicht weisst: lass es weg. Nicht ueber das Weglassen schreiben.
+
+KEINE LEEREN PHRASEN (sehr wichtig):
+- VERBOTEN: "die internationale Staatengemeinschaft", "Beobachter sehen", "Experten warnen"
+- VERBOTEN: "negative Auswirkungen", "globale Wirtschaft", "weitreichende Folgen"
+- VERBOTEN: vage Subjekte ohne konkreten Akteur, vage Verben ohne konkrete Handlung
+- Schreibe konkret: WER macht WAS mit WELCHEM Effekt – oder lass den Satz weg."""
+
+# Modul-weites Flag: aktuell aktives Modell. Startet mit GROQ_MODEL.
+# Sobald GROQ_MODEL einmal versagt, wird dies dauerhaft auf den Fallback
+# gesetzt – fuer den Rest des Laufs.
+_active_model = GROQ_MODEL
+
+
+def _one_groq_attempt(client: Groq, prompt: str, model: str, max_tokens: int) -> str:
+    """Ein einzelner API-Versuch mit gegebenem Modell. Wirft bei Fehler."""
+    extra = {}
+    effective_max = max_tokens
+    if "gpt-oss" in model:
+        extra["reasoning_effort"] = GROQ_REASONING_EFFORT
+        # Reasoning-Modelle verbrauchen Tokens fuers "Nachdenken" BEVOR die
+        # Antwort kommt. Ohne Puffer kaeme die Antwort leer zurueck.
+        effective_max = max_tokens + 1200
+
+    response = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=effective_max,
+        temperature=0.3,
+        timeout=GROQ_TIMEOUT,
+        **extra,
+    )
+    content = response.choices[0].message.content
+    return content.strip() if content else ""
+
 
 def _groq_call(client: Groq, prompt: str, max_tokens: int = 200) -> str:
+    """
+    Ruft das aktive Modell auf (mit Retries). Versagt das primaere Modell
+    (Fehler ODER leere Antwort), wird EINMALIG und dauerhaft auf
+    GROQ_FALLBACK_MODEL umgeschaltet.
+    """
+    global _active_model
+
+    # ── Versuch mit aktuell aktivem Modell (inkl. Retries) ────────────
+    last_error = None
     for attempt in range(GROQ_RETRIES + 1):
         try:
-            response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=max_tokens,
-                temperature=0.3,
-                timeout=GROQ_TIMEOUT,
-            )
-            return response.choices[0].message.content.strip()
+            result = _one_groq_attempt(client, prompt, _active_model, max_tokens)
+            if result:
+                return result
+            last_error = "leere Antwort"
+            break  # leere Antwort → kein Retry, direkt zum Fallback
         except Exception as e:
+            last_error = e
             if attempt < GROQ_RETRIES:
-                print(f"  ↻ Retry: {e}")
+                print(f"  ↻ Retry ({_active_model}): {e}")
                 time.sleep(2)
-            else:
-                raise
+
+    # ── Umschalten auf Fallback, falls noch nicht geschehen ───────────
+    if _active_model != GROQ_FALLBACK_MODEL:
+        print(f"  ⚠ {_active_model} versagt ({last_error}) → Wechsel auf {GROQ_FALLBACK_MODEL}")
+        _active_model = GROQ_FALLBACK_MODEL
+        try:
+            result = _one_groq_attempt(client, prompt, _active_model, max_tokens)
+            if result:
+                return result
+            print(f"  ✗ Auch {GROQ_FALLBACK_MODEL} lieferte leere Antwort")
+            return ""
+        except Exception as e:
+            print(f"  ✗ Auch Fallback {GROQ_FALLBACK_MODEL} versagt: {e}")
+            raise
+
+    # Bereits auf Fallback und trotzdem fehlgeschlagen
+    if isinstance(last_error, Exception):
+        raise last_error
+    return ""
 
 # ─────────────────────────────────────────────
 # QUELLEN-MIXING
@@ -785,25 +916,27 @@ def generate_intro(grouped: dict[str, list[dict]], client: Groq,
 
 {quellentreue}
 
-Schreibe GENAU EINEN deutschen Satz (15-22 Woerter) der die 2-3 wichtigsten Themen direkt benennt.
+Schreibe GENAU EINEN deutschen Satz (12-20 Woerter) mit MAXIMAL ZWEI Themen.
 
 STRIKTE Regeln:
-- Starte mit einem konkreten Subjekt (Person, Institution, Land) – NIE mit "Die Lage", "Es", "Der Tag"
-- Nenne konkrete Fakten: Namen, Zahlen, Entscheidungen – ABER nur wenn sie in den Schlagzeilen stehen
-- VERBOTEN: "gepragt von", "im Zeichen von", "Debatten", "Diskussionen", "Entwicklungen", "Themen", "Lage", "Geschehen"
-- Verbinde Themen mit "waehrend", ";", "und" – nicht mit "sowie" oder "darueber hinaus"
+- MAXIMAL 2 Subjekte – nicht 3, nicht 4. Lieber EIN Hauptthema klar als drei verstuemmelt.
+- Beide Themen MUESSEN inhaltlich zusammenhaengen (gleiche Region ODER gleicher Bereich).
+  Wenn die Top-Themen nichts miteinander zu tun haben: NUR das wichtigste nennen.
+- Starte mit einem konkreten Subjekt – NIE mit "Die Lage", "Es", "Der Tag", "Heute"
+- VERBOTEN: "gepragt von", "im Zeichen von", "Debatten", "Diskussionen", "Entwicklungen", "Themen", "Lage", "Geschehen", "Spannungen"
+- Verbinde Themen mit "waehrend" oder ";" – nicht mit "sowie", "darueber hinaus", "und der ... warnt"
 
-GUTE Beispiele (wenn Namen in Quellen stehen):
-"Merz praesentiert den Bundeshaushalt 2026, waehrend Trump neue Zoelle auf EU-Waren ankuendigt."
-"Die EZB senkt den Leitzins; der DAX faellt, und Gazaverhandlungen stocken erneut."
-
-GUTE Beispiele (wenn Namen NICHT in Quellen stehen – Institution statt Person):
-"Die Bundesregierung praesentiert den Haushalt, waehrend das Weisse Haus neue Zoelle ankuendigt."
-"Das Wirtschaftsministerium beschliesst Foerderpaket; der DAX faellt nach EZB-Entscheid."
+GUTE Beispiele:
+"Die EZB senkt den Leitzins um 25 Basispunkte; der DAX legt um 1,2 Prozent zu."
+"Merz praesentiert den Bundeshaushalt 2026, waehrend die Opposition die Schuldenbremse kritisiert."
+"Das Weisse Haus verhaengt 25-Prozent-Zoelle auf EU-Stahl."
 
 SCHLECHTE Beispiele – NIEMALS so:
-"Die Innenpolitik ist gepragt von Debatten und Diskussionen wie der Diskussion um..."
-"Heute gibt es wichtige Entwicklungen in Wirtschaft und Politik."
+"Die Innenpolitik ist gepragt von Debatten und Diskussionen..."
+"Das Weisse Haus droht mit Zoellen, waehrend die Bundesregierung den UN-Sicherheitsrat anpeilt und der IMF warnt."
+  → drei unverbundene Themen, klingt zusammengestopft
+"Die internationale Staatengemeinschaft warnt vor negativen Auswirkungen auf die globale Wirtschaft."
+  → vage Subjekte, vage Verben, kein konkretes Faktum
 
 Schlagzeilen:
 {topics_text}
@@ -866,11 +999,16 @@ Beispiel:
 # ─────────────────────────────────────────────
 
 def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, list[str]], list[str], dict[str, list[dict]]]:
+    global _active_model
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise ValueError("GROQ_API_KEY nicht gesetzt!")
 
     client = Groq(api_key=api_key)
+
+    # Aktives Modell auf das primaere zuruecksetzen (falls Funktion mehrfach läuft)
+    _active_model = GROQ_MODEL
+    print(f"  → Modell: {GROQ_MODEL} (Fallback: {GROQ_FALLBACK_MODEL})")
 
     print("  → Top-Kategorien wählen...")
     top_cats = select_top_categories(grouped, client, n=TOP_CATEGORIES_COUNT)
@@ -910,6 +1048,21 @@ Regeln:
 - Keine Einleitung, keine Schlussformel
 - Bei Aemtern ohne Namen im Quelltext: Institution statt Person ("Das Wirtschaftsministerium", "Das Weisse Haus", "Die Bundesregierung", "Der Kreml")
 
+INHALT der zwei Saetze:
+- Jeder Satz behandelt EIN konkretes Ereignis – nicht mehrere zusammengestopft.
+- Die zwei Saetze sollen die wichtigsten unterschiedlichen Geschichten der Kategorie abdecken (nicht dieselbe Story zweimal).
+- Jeder Satz braucht: konkreten Akteur + konkrete Handlung + (wenn vorhanden) Zahl/Ort/Effekt.
+
+SCHLECHTE Beispiele – NIEMALS so:
+"• Die internationale Staatengemeinschaft warnt vor negativen Auswirkungen auf die globale Wirtschaft."
+  → vages Subjekt, vages Verb, kein Fakt
+"• Beobachter sehen weitreichende Folgen fuer den Markt."
+  → keine konkrete Information
+
+GUTE Beispiele:
+"• Das Weisse Haus verhaengt 25-Prozent-Zoelle auf EU-Stahlimporte ab Juli."
+"• Der IMF senkt seine Wachstumsprognose fuer die Eurozone auf 0,8 Prozent."
+
 Nachrichten:
 {articles_text}
 
@@ -923,8 +1076,13 @@ Stichsaetze:"""
                 if line.strip() and line.strip()[0] in ("•", "-", "*")
             ]
             bullet_points = ["• " + bp.lstrip("•-* ").strip() for bp in bullet_points]
-            summaries[category] = bullet_points[:2]
-            print(f"  ✓ {category}: {len(summaries[category])} Punkte")
+            if bullet_points:
+                summaries[category] = bullet_points[:2]
+                print(f"  ✓ {category}: {len(summaries[category])} Punkte")
+            else:
+                # Leere Antwort (z.B. Reasoning-Budget aufgebraucht) → Kategorie überspringen
+                print(f"  ⚠ {category}: leere Antwort, übersprungen")
+                continue
         except Exception as e:
             print(f"  ✗ Fehler bei {category}: {e}")
             summaries[category] = ["• Fehler beim Laden der Zusammenfassung."]
@@ -934,6 +1092,9 @@ Stichsaetze:"""
         selected_links[category] = _select_links_with_groq(client, category, articles)
         sources = [a["source"] for a in selected_links[category]]
         print(f"  ✓ Links: {', '.join(sources)}")
+
+    if _active_model != GROQ_MODEL:
+        print(f"  ℹ Hinweis: Lauf auf Fallback-Modell {_active_model} beendet")
 
     return intro, summaries, top_cats, selected_links
 
@@ -1243,6 +1404,72 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     )
 
 # ─────────────────────────────────────────────
+# EMPFÄNGER-LISTE VOM APPS SCRIPT
+# ─────────────────────────────────────────────
+
+SUBSCRIBER_FETCH_TIMEOUT = 20  # Sekunden
+
+
+def fetch_subscribers() -> list[str]:
+    """
+    Holt die Empfaengerliste vom Google Apps Script.
+    Fallback: env-Variable RECIPIENT_EMAIL (kommagetrennt).
+
+    Returns:
+        Liste deduplizierter, lowercase E-Mail-Adressen.
+
+    Raises:
+        ValueError: wenn weder Apps Script noch Fallback verfuegbar sind.
+    """
+    list_url = os.environ.get("SUBSCRIBER_LIST_URL", "").strip()
+    token    = os.environ.get("SUBSCRIBER_LIST_TOKEN", "").strip()
+
+    # ── Versuch 1: Apps Script ─────────────────────────────────────
+    if list_url and token:
+        try:
+            url = f"{list_url}?action=list&token={urllib.parse.quote(token)}"
+            req = urllib.request.Request(url, headers={"User-Agent": "Tageslage/1.0"})
+            with urllib.request.urlopen(req, timeout=SUBSCRIBER_FETCH_TIMEOUT) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+
+            if "error" in data:
+                print(f"  ⚠ Apps Script Fehler: {data['error']}")
+            else:
+                emails = data.get("emails", [])
+                cleaned = sorted({
+                    e.strip().lower()
+                    for e in emails
+                    if isinstance(e, str) and "@" in e
+                })
+                if cleaned:
+                    print(f"  ✓ {len(cleaned)} Empfaenger via Apps Script geladen")
+                    return cleaned
+                print("  ⚠ Apps Script lieferte leere Liste")
+
+        except (urllib.error.URLError, socket.timeout) as e:
+            print(f"  ⚠ Apps Script nicht erreichbar: {e}")
+        except (json.JSONDecodeError, ValueError) as e:
+            print(f"  ⚠ Apps Script Antwort ungueltig: {e}")
+        except Exception as e:
+            print(f"  ⚠ Apps Script Fehler: {e}")
+
+    # ── Versuch 2: Fallback env-Variable ──────────────────────────
+    recipient_raw = os.environ.get("RECIPIENT_EMAIL", "")
+    fallback = sorted({
+        r.strip().lower()
+        for r in recipient_raw.split(",")
+        if r.strip() and "@" in r
+    })
+    if fallback:
+        print(f"  ✓ {len(fallback)} Empfaenger via RECIPIENT_EMAIL (Fallback)")
+        return fallback
+
+    raise ValueError(
+        "Keine Empfaenger gefunden! "
+        "Setze SUBSCRIBER_LIST_URL + SUBSCRIBER_LIST_TOKEN (oder RECIPIENT_EMAIL als Fallback)."
+    )
+
+# ─────────────────────────────────────────────
 # E-MAIL VERSENDEN
 # ─────────────────────────────────────────────
 
@@ -1256,7 +1483,12 @@ def send_email(html_template: str, recipient: str,
         raise ValueError("GMAIL_ADDRESS oder GMAIL_APP_PASSWORD nicht gesetzt!")
 
     if unsubscribe_base:
-        unsubscribe_url = unsubscribe_base + "?email=" + urllib.parse.quote(recipient)
+        # Apps-Script-Format: ?action=unsubscribe&email=...
+        sep = "&" if "?" in unsubscribe_base else "?"
+        unsubscribe_url = (
+            f"{unsubscribe_base}{sep}action=unsubscribe"
+            f"&email={urllib.parse.quote(recipient)}"
+        )
     else:
         unsubscribe_url = "#"
     html_content = html_template.replace("##UNSUBSCRIBE_URL##", unsubscribe_url)
@@ -1294,13 +1526,11 @@ def main():
     print(f"  TAGESLAGE – {datetime.now().strftime('%d.%m.%Y %H:%M')}")
     print(f"{'='*50}\n")
 
-    recipient_raw    = os.environ.get("RECIPIENT_EMAIL", "")
     unsubscribe_base = os.environ.get("UNSUBSCRIBE_URL", "")
     signup_url       = os.environ.get("SIGNUP_URL", SIGNUP_URL)
-    recipients       = [r.strip() for r in recipient_raw.split(",") if r.strip()]
 
-    if not recipients:
-        raise ValueError("RECIPIENT_EMAIL nicht gesetzt!")
+    print("0/5 – Empfaengerliste laden...")
+    recipients = fetch_subscribers()
     print(f"Empfänger: {len(recipients)}\n")
 
     print("1/5 – RSS-Feeds laden...")
