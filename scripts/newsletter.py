@@ -37,14 +37,15 @@ RSS_FEEDS = {
     "Handelsblatt":           "https://www.handelsblatt.com/contentexport/feed/schlagzeilen",
     "Handelsblatt Finanzen":  "https://www.handelsblatt.com/contentexport/feed/finanzen",
     "Handelsblatt Technik":   "https://www.handelsblatt.com/contentexport/feed/technologie",
-    "Wirtschaftswoche":       "https://www.wiwo.de/rss/feed.rss",
-    "Manager Magazin":        "https://www.manager-magazin.de/schlagzeilen/index.rss",
-    "Tagesspiegel Wirtschaft":"https://www.tagesspiegel.de/wirtschaft/feed.rss",
+    "Wirtschaftswoche":       "https://feeds.cms.wiwo.de/rss/schlagzeilen",
+    "Manager Magazin":        "https://www.manager-magazin.de/news/index.rss",
+    "Tagesspiegel":           "https://www.tagesspiegel.de/contentexport/feed/home",
     "Google Wirtschaft DE":   "https://news.google.com/rss/search?q=wirtschaft+konjunktur+deutschland&hl=de&gl=DE&ceid=DE:de",
     "Google Finanzen DE":     "https://news.google.com/rss/search?q=boerse+aktien+dax&hl=de&gl=DE&ceid=DE:de",
     # ── International Allgemein ────────────────────────────────────────
     "BBC News":               "https://feeds.bbci.co.uk/news/rss.xml",
-    "Reuters EN":             "https://feeds.reuters.com/reuters/topNews",
+    "Guardian World":         "https://www.theguardian.com/world/rss",
+    "Reuters EN":             "https://news.google.com/rss/search?q=reuters+world+news&hl=en&gl=US&ceid=US:en",
     "Deutsche Welle":         "https://rss.dw.com/rdf/rss-en-all",
     "Euractiv":               "https://www.euractiv.com/feed/",
     "Politico Europe":        "https://www.politico.eu/feed/",
@@ -65,7 +66,9 @@ RSS_FEEDS = {
     "FT Markets":             "https://www.ft.com/markets?format=rss",
     "FT US":                  "https://www.ft.com/us?format=rss",
     # ── Wirtschaft & Finanzen International ───────────────────────────
-    "Reuters Business":       "https://feeds.reuters.com/reuters/businessNews",
+    "Guardian Business":      "https://www.theguardian.com/business/rss",
+    "Reuters Business":       "https://news.google.com/rss/search?q=reuters+business+markets&hl=en&gl=US&ceid=US:en",
+    "WiWo Finanzen":          "https://feeds.cms.wiwo.de/rss/finanzen",
     "CNBC Economy":           "https://www.cnbc.com/id/20910258/device/rss/rss.html",
     "CNBC Finance":           "https://www.cnbc.com/id/10000664/device/rss/rss.html",
     "Google Economy EN":      "https://news.google.com/rss/search?q=economy+recession+gdp&hl=en&gl=US&ceid=US:en",
@@ -81,7 +84,8 @@ _DE_SOURCES = {
     "Spiegel Online", "FAZ", "Tagesschau", "Zeit Online", "Deutschlandfunk",
     "DPA", "Reuters DE", "Handelsblatt", "Handelsblatt Finanzen",
     "Handelsblatt Technik", "Wirtschaftswoche", "Manager Magazin",
-    "Tagesspiegel Wirtschaft", "Google Wirtschaft DE", "Google Finanzen DE",
+    "Tagesspiegel", "Google Wirtschaft DE", "Google Finanzen DE",
+    "WiWo Finanzen",
 }
 
 # ─────────────────────────────────────────────
@@ -763,7 +767,13 @@ KEINE LEEREN PHRASEN (sehr wichtig):
 - VERBOTEN: "die internationale Staatengemeinschaft", "Beobachter sehen", "Experten warnen"
 - VERBOTEN: "negative Auswirkungen", "globale Wirtschaft", "weitreichende Folgen"
 - VERBOTEN: vage Subjekte ohne konkreten Akteur, vage Verben ohne konkrete Handlung
-- Schreibe konkret: WER macht WAS mit WELCHEM Effekt – oder lass den Satz weg."""
+- Schreibe konkret: WER macht WAS mit WELCHEM Effekt – oder lass den Satz weg.
+
+LAENDER KURZ HALTEN (Platz sparen):
+- Nutze kurze, gaengige Bezeichnungen: USA, EU, UK, China, Russland, Israel, Iran, Ukraine.
+- NICHT ausschreiben: "Vereinigte Staaten von Amerika" → "USA", "Volksrepublik China" → "China", "Vereinigtes Koenigreich" → "UK".
+- Adjektive kurz: "US-", "EU-", "UK-" als Praefix ("US-Zoelle", "EU-Gipfel"), nicht "amerikanische Zoelle".
+- KEINE kryptischen Codes wie "DEU" oder "GBR" – nur etablierte Kuerzel."""
 
 # Modul-weites Flag: aktuell aktives Modell. Startet mit GROQ_MODEL.
 # Sobald GROQ_MODEL einmal versagt, wird dies dauerhaft auf den Fallback
@@ -840,10 +850,13 @@ def _groq_call(client: Groq, prompt: str, max_tokens: int = 200) -> str:
 # ─────────────────────────────────────────────
 
 def _select_links_with_groq(client: Groq, category: str,
-                            articles: list[dict], max_total: int = 5) -> list[dict]:
+                            articles: list[dict], max_total: int = 5,
+                            summary_context: str = "") -> list[dict]:
     """
     Lässt Groq die relevantesten und quellenmäßig vielfältigsten Artikel
     aus der Kategorie auswählen. Groq gibt Indizes zurück (0-basiert).
+    summary_context: die erzeugte Zusammenfassung – damit die Links zu den
+    im Text genannten Themen passen (Konsistenz).
     Fallback: einfaches Shuffeln mit max 2x pro Quelle.
     """
     if not articles:
@@ -857,9 +870,21 @@ def _select_links_with_groq(client: Groq, category: str,
         for i, a in enumerate(candidates)
     )
 
-    prompt = f"""Du kuratierst Links für die Newsletter-Kategorie "{category}".
+    # Wenn eine Zusammenfassung vorliegt: Links sollen zu deren Themen passen
+    kontext_block = ""
+    if summary_context.strip():
+        kontext_block = f"""
+Die Zusammenfassung dieser Kategorie behandelt diese Themen:
+"{summary_context.strip()}"
 
+WICHTIG: Waehle bevorzugt Artikel, die zu diesen Themen passen – die Leser
+sollen zu dem weiterlesen koennen, was im Text steht.
+"""
+
+    prompt = f"""Du kuratierst Links für die Newsletter-Kategorie "{category}".
+{kontext_block}
 Wähle {max_total} Artikel aus. Regeln:
+- Passend zu den oben genannten Themen (falls angegeben)
 - MAXIMAL 2 Artikel von derselben Quelle (z.B. nicht 3x Spiegel Online)
 - Mix aus deutschen UND englischen Quellen wenn vorhanden
 - Thematische Vielfalt (nicht 3x dasselbe Thema)
@@ -929,26 +954,29 @@ def generate_intro(grouped: dict[str, list[dict]], client: Groq,
 
 {quellentreue}
 
-Schreibe GENAU ZWEI deutsche Saetze (je 12-20 Woerter), die die wichtigsten Themen des Tages benennen.
+Schreibe GENAU ZWEI deutsche Saetze, die die wichtigsten Themen des Tages benennen.
 
 STRIKTE Regeln:
 - Satz 1: das wichtigste Thema des Tages, konkret mit Fakten.
 - Satz 2: das zweitwichtigste Thema ODER ein verbundener Aspekt des ersten.
+- Laenge flexibel (ca. 12-28 Woerter je Satz): so lang wie noetig fuer Klarheit, so kurz wie moeglich.
+- Bei Personen IMMER die Rolle/Position nennen, damit der Leser sie einordnen kann:
+  "CSU-Vize Weber" statt nur "Weber", "EZB-Chefin Lagarde" statt nur "Lagarde",
+  "US-Verteidigungsminister Hegseth" statt nur "Hegseth".
 - Pro Satz MAXIMAL 2 Subjekte – nicht zusammenstopfen. Lieber klar als ueberladen.
 - Jeder Satz startet mit einem konkreten Subjekt – NIE mit "Die Lage", "Es", "Der Tag", "Heute"
-- Bei auslaendischen Amtstraegern IMMER das Land voranstellen: "US-Verteidigungsminister Hegseth", "franzoesischer Praesident Macron".
 - VERBOTEN: "gepragt von", "im Zeichen von", "Debatten", "Diskussionen", "Entwicklungen", "Themen", "Lage", "Geschehen", "Spannungen"
 
-GUTE Beispiele (zwei Saetze):
-"Die EZB senkt den Leitzins um 25 Basispunkte; der DAX legt um 1,2 Prozent zu. Das Weisse Haus kuendigt zugleich neue Zoelle auf EU-Stahl an."
-"Merz praesentiert den Bundeshaushalt 2026, waehrend die Opposition die Schuldenbremse kritisiert. In der Ukraine stocken die Waffenstillstandsgespraeche erneut."
+GUTE Beispiele (zwei Saetze, Rollen genannt, Laender kurz):
+"EZB-Chefin Lagarde senkt den Leitzins um 25 Basispunkte; der DAX legt um 1,2 Prozent zu. Das Weisse Haus kuendigt zugleich neue Zoelle auf EU-Stahl an."
+"Kanzler Merz praesentiert den Bundeshaushalt 2026, waehrend CSU-Vize Weber die Schuldenbremse verteidigt. In der Ukraine stocken die Waffenstillstandsgespraeche erneut."
 
 SCHLECHTE Beispiele – NIEMALS so:
 "Die Innenpolitik ist gepragt von Debatten und Diskussionen..."
 "Das Weisse Haus droht mit Zoellen, waehrend die Bundesregierung den UN-Sicherheitsrat anpeilt und der IMF warnt."
   → drei unverbundene Themen in einem Satz, klingt zusammengestopft
-"Die internationale Staatengemeinschaft warnt vor negativen Auswirkungen auf die globale Wirtschaft."
-  → vage Subjekte, vage Verben, kein konkretes Faktum
+"Weber kritisiert Soeder."
+  → Rolle fehlt (wer ist Weber?), kein Inhalt
 
 Schlagzeilen:
 {topics_text}
@@ -1064,6 +1092,19 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
             "- Genau 2 Stichsaetze, jeder beginnt mit Bullet-Zeichen (•)"
         )
 
+        # Kategorie-spezifischer Zusatz: Finanzen/Wirtschaft brauchen mehr Fachtiefe
+        fach_zusatz = ""
+        if category in ("📊 Finanzen & Märkte", "💰 Wirtschaft"):
+            fach_zusatz = """
+
+FACHLICHE TIEFE (Finanzen/Wirtschaft – besonders wichtig):
+- Bei Firmen IMMER kurz sagen, was sie tun: "der Chiphersteller Nvidia", "der Triebwerksbauer MTU", "die Direktbank ING" – nie nur den Namen.
+- Bei Zinspolitik praezise und verstaendlich: WER (EZB/Fed), WAS (anheben/senken/halten), um WIE VIEL (Basispunkte/Prozent), auf WELCHES Niveau, und WARUM (Inflation/Konjunktur).
+  FALSCH: "Die Zinspolitik bleibt im Fokus der Maerkte." (nichtssagend)
+  RICHTIG: "Die EZB haelt den Leitzins bei 2,5 Prozent und begruendet das mit der hartnaeckigen Kerninflation."
+- Zahlen einordnen: nicht nur "der DAX faellt", sondern "der DAX faellt um 2,1 Prozent auf 18.400 Punkte".
+- Relevanz herstellen: WARUM ist das fuer Anleger oder die Wirtschaft wichtig?"""
+
         prompt = f"""Fasse die Nachrichten der Kategorie "{category}" in {satz_wort} zusammen.
 
 {quellentreue}
@@ -1074,7 +1115,7 @@ Regeln:
 - Sachlich, informativ, keine Wertung
 - Keine Einleitung, keine Schlussformel
 - Bei Aemtern ohne Namen im Quelltext: Institution statt Person ("Das Wirtschaftsministerium", "Das Weisse Haus", "Die Bundesregierung", "Der Kreml")
-- Bei auslaendischen Amtstraegern IMMER das Land voranstellen: "US-Verteidigungsminister Hegseth" (nicht nur "Verteidigungsminister Hegseth"), "franzoesischer Praesident Macron", "britischer Premier Starmer"
+- Bei auslaendischen Amtstraegern IMMER das Land voranstellen: "US-Verteidigungsminister Hegseth" (nicht nur "Verteidigungsminister Hegseth"), "franzoesischer Praesident Macron", "britischer Premier Starmer"{fach_zusatz}
 
 AUSWAHL (wichtig):
 - Waehle nur UEBERREGIONAL bedeutsame Nachrichten: Bundes-/EU-/Weltpolitik, grosse Konzerne, gesamtwirtschaftliche Themen.
@@ -1126,8 +1167,13 @@ Stichsaetze:"""
             summaries[category] = ["• Fehler beim Laden der Zusammenfassung."]
 
         # ── Link-Auswahl via Groq ─────────────────────────────────────
+        # Die erzeugte Zusammenfassung wird als Kontext uebergeben, damit die
+        # Links zu den im Text genannten Themen passen (Text-Link-Konsistenz).
         print(f"  → Links für {category} wählen...")
-        selected_links[category] = _select_links_with_groq(client, category, articles)
+        summary_context = " ".join(summaries.get(category, []))
+        selected_links[category] = _select_links_with_groq(
+            client, category, articles, summary_context=summary_context
+        )
         sources = [a["source"] for a in selected_links[category]]
         print(f"  ✓ Links: {', '.join(sources)}")
 
