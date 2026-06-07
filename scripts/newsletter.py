@@ -517,7 +517,8 @@ CATEGORIES = {
 }
 
 MAX_ARTICLES_PER_FEED    = 15
-MAX_ARTICLES_FOR_SUMMARY = 160   # erhöht: genug Puffer damit EN-Quellen nicht abgeschnitten werden
+MAX_ARTICLES_FOR_SUMMARY = 240   # erhöht: mehr Artikel im Pool = mehr Auswahl pro Kategorie
+ARTICLES_PER_CATEGORY    = 12    # wie viele Artikel pro Kategorie an die KI gehen (vorher 8)
 TOP_CATEGORIES_COUNT     = 5
 FEED_TIMEOUT             = 15
 GROQ_TIMEOUT             = 30
@@ -685,20 +686,32 @@ def _kw_match(kw: str, text: str) -> bool:
     return bool(re.search(r"\b" + re.escape(kw) + r"\b", text))
 
 
+# Titel-Treffer zaehlen mehr als Summary-Treffer: der Titel definiert das
+# Hauptthema, die Summary liefert nur Kontext. Verhindert in den meisten
+# Faellen, dass z.B. eine "Volksabstimmung ueber X" in Wirtschaft statt
+# Wahlen landet. (Reines Keyword-System hat Grenzen bei mehrdeutigen Themen.)
+TITLE_WEIGHT_MULTIPLIER = 3.0
+
+
 def categorize_article(article: dict) -> str:
-    text   = (article["title"] + " " + article["summary"]).lower()
-    scores: dict[str, int] = {}
+    title_text   = article["title"].lower()
+    summary_text = article["summary"].lower()
+    scores: dict[str, float] = {}
 
     for category, config in CATEGORIES.items():
         if category == "🔥 Sonstiges":
             continue
-        if any(_kw_match(kw, text) for kw in config.get("exclude", [])):
+        # Ausschluss prüft Titel UND Summary
+        full_text = title_text + " " + summary_text
+        if any(_kw_match(kw, full_text) for kw in config.get("exclude", [])):
             continue
-        score = sum(
-            weight
-            for kw, weight in config["keywords"].items()
-            if _kw_match(kw, text)
-        )
+
+        score = 0.0
+        for kw, weight in config["keywords"].items():
+            if _kw_match(kw, title_text):
+                score += weight * TITLE_WEIGHT_MULTIPLIER   # Titel-Treffer = doppelt
+            elif _kw_match(kw, summary_text):
+                score += weight                              # Summary-Treffer = normal
         if score > 0:
             scores[category] = score
 
@@ -836,8 +849,8 @@ def _select_links_with_groq(client: Groq, category: str,
     if not articles:
         return []
 
-    # Kandidaten: max 12 Artikel – genug Auswahl, nicht zu viel Token-Verbrauch
-    candidates = articles[:12]
+    # Kandidaten: begrenzt auf ARTICLES_PER_CATEGORY – genug Auswahl, nicht zu viel Token-Verbrauch
+    candidates = articles[:ARTICLES_PER_CATEGORY]
 
     lines = "\n".join(
         f"{i}: [{a['source']}] {a['title']}"
@@ -898,8 +911,8 @@ Auswahl:"""
 def generate_intro(grouped: dict[str, list[dict]], client: Groq,
                    top_cats: list[str]) -> str:
     """
-    Generiert einen einzigen flüssigen deutschen Satz, der die
-    wichtigsten Themen des Tages zusammenfasst. Kein HTML, keine Links.
+    Generiert zwei flüssige deutsche Sätze, die die wichtigsten Themen
+    des Tages zusammenfassen. Kein HTML, keine Links.
     """
     top_topics = []
     for cat in top_cats[:6]:
@@ -912,43 +925,45 @@ def generate_intro(grouped: dict[str, list[dict]], client: Groq,
     today_str = datetime.now().strftime("%d.%m.%Y")
     quellentreue = QUELLENTREUE_REGELN.format(today=today_str)
 
-    prompt = f"""Du schreibst den Einleitungssatz eines deutschen Nachrichten-Newsletters.
+    prompt = f"""Du schreibst die Einleitung eines deutschen Nachrichten-Newsletters.
 
 {quellentreue}
 
-Schreibe GENAU EINEN deutschen Satz (12-20 Woerter) mit MAXIMAL ZWEI Themen.
+Schreibe GENAU ZWEI deutsche Saetze (je 12-20 Woerter), die die wichtigsten Themen des Tages benennen.
 
 STRIKTE Regeln:
-- MAXIMAL 2 Subjekte – nicht 3, nicht 4. Lieber EIN Hauptthema klar als drei verstuemmelt.
-- Beide Themen MUESSEN inhaltlich zusammenhaengen (gleiche Region ODER gleicher Bereich).
-  Wenn die Top-Themen nichts miteinander zu tun haben: NUR das wichtigste nennen.
-- Starte mit einem konkreten Subjekt – NIE mit "Die Lage", "Es", "Der Tag", "Heute"
+- Satz 1: das wichtigste Thema des Tages, konkret mit Fakten.
+- Satz 2: das zweitwichtigste Thema ODER ein verbundener Aspekt des ersten.
+- Pro Satz MAXIMAL 2 Subjekte – nicht zusammenstopfen. Lieber klar als ueberladen.
+- Jeder Satz startet mit einem konkreten Subjekt – NIE mit "Die Lage", "Es", "Der Tag", "Heute"
+- Bei auslaendischen Amtstraegern IMMER das Land voranstellen: "US-Verteidigungsminister Hegseth", "franzoesischer Praesident Macron".
 - VERBOTEN: "gepragt von", "im Zeichen von", "Debatten", "Diskussionen", "Entwicklungen", "Themen", "Lage", "Geschehen", "Spannungen"
-- Verbinde Themen mit "waehrend" oder ";" – nicht mit "sowie", "darueber hinaus", "und der ... warnt"
 
-GUTE Beispiele:
-"Die EZB senkt den Leitzins um 25 Basispunkte; der DAX legt um 1,2 Prozent zu."
-"Merz praesentiert den Bundeshaushalt 2026, waehrend die Opposition die Schuldenbremse kritisiert."
-"Das Weisse Haus verhaengt 25-Prozent-Zoelle auf EU-Stahl."
+GUTE Beispiele (zwei Saetze):
+"Die EZB senkt den Leitzins um 25 Basispunkte; der DAX legt um 1,2 Prozent zu. Das Weisse Haus kuendigt zugleich neue Zoelle auf EU-Stahl an."
+"Merz praesentiert den Bundeshaushalt 2026, waehrend die Opposition die Schuldenbremse kritisiert. In der Ukraine stocken die Waffenstillstandsgespraeche erneut."
 
 SCHLECHTE Beispiele – NIEMALS so:
 "Die Innenpolitik ist gepragt von Debatten und Diskussionen..."
 "Das Weisse Haus droht mit Zoellen, waehrend die Bundesregierung den UN-Sicherheitsrat anpeilt und der IMF warnt."
-  → drei unverbundene Themen, klingt zusammengestopft
+  → drei unverbundene Themen in einem Satz, klingt zusammengestopft
 "Die internationale Staatengemeinschaft warnt vor negativen Auswirkungen auf die globale Wirtschaft."
   → vage Subjekte, vage Verben, kein konkretes Faktum
 
 Schlagzeilen:
 {topics_text}
 
-Satz:"""
+Zwei Saetze:"""
 
     try:
-        sentence = _groq_call(client, prompt, max_tokens=60)
-        sentence = sentence.strip().strip('"').strip("'").split("\n")[0].strip()
-        if not sentence.endswith("."):
-            sentence += "."
-        return sentence
+        text = _groq_call(client, prompt, max_tokens=120)
+        # Mehrzeilige Antwort zu Fliesstext zusammenfuehren, Anfuehrungszeichen weg
+        text = text.strip().strip('"').strip("'")
+        text = " ".join(line.strip() for line in text.split("\n") if line.strip())
+        text = re.sub(r"\s+", " ", text).strip()
+        if text and not text.endswith((".", "!", "?")):
+            text += "."
+        return text or "Die wichtigsten Nachrichten des Tages im Überblick."
     except Exception as e:
         print(f"  ✗ Intro-Fehler: {e}")
         return "Die wichtigsten Nachrichten des Tages im Überblick."
@@ -1027,30 +1042,43 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
             continue
 
         # ── Zusammenfassung ──────────────────────────────────────────
+        # Anzahl Stichsaetze an Artikelzahl koppeln: 1 Artikel → 1 Satz,
+        # ab 2 Artikeln → 2 Saetze. Verhindert mit Floskeln aufgefuellte
+        # zweite Bullets bei duennen Kategorien.
+        n_bullets = 1 if len(articles) == 1 else 2
+
         # 400 Zeichen Summary (statt 200): mehr Originalkontext = weniger Halluzinationen
         articles_text = "\n".join([
             f"- [{a['source']}] {a['title']}"
             + (f": {a['summary'][:400]}" if a["summary"] else "")
-            for a in articles[:8]
+            for a in articles[:ARTICLES_PER_CATEGORY]
         ])
 
         today_str = datetime.now().strftime("%d.%m.%Y")
         quellentreue = QUELLENTREUE_REGELN.format(today=today_str)
 
-        prompt = f"""Fasse die Nachrichten der Kategorie "{category}" in genau 2 deutschen Stichsaetzen zusammen.
+        satz_wort = "einem deutschen Stichsatz" if n_bullets == 1 else "genau 2 deutschen Stichsaetzen"
+        regel_anzahl = (
+            "- Genau 1 Stichsatz, beginnt mit Bullet-Zeichen (•)"
+            if n_bullets == 1 else
+            "- Genau 2 Stichsaetze, jeder beginnt mit Bullet-Zeichen (•)"
+        )
+
+        prompt = f"""Fasse die Nachrichten der Kategorie "{category}" in {satz_wort} zusammen.
 
 {quellentreue}
 
 Regeln:
-- Genau 2 Stichsaetze, jeder beginnt mit Bullet-Zeichen (•)
+{regel_anzahl}
 - Maximal 1 Zeile pro Stichsatz
 - Sachlich, informativ, keine Wertung
 - Keine Einleitung, keine Schlussformel
 - Bei Aemtern ohne Namen im Quelltext: Institution statt Person ("Das Wirtschaftsministerium", "Das Weisse Haus", "Die Bundesregierung", "Der Kreml")
+- Bei auslaendischen Amtstraegern IMMER das Land voranstellen: "US-Verteidigungsminister Hegseth" (nicht nur "Verteidigungsminister Hegseth"), "franzoesischer Praesident Macron", "britischer Premier Starmer"
 
-INHALT der zwei Saetze:
+INHALT:
 - Jeder Satz behandelt EIN konkretes Ereignis – nicht mehrere zusammengestopft.
-- Die zwei Saetze sollen die wichtigsten unterschiedlichen Geschichten der Kategorie abdecken (nicht dieselbe Story zweimal).
+- Mehrere Saetze decken UNTERSCHIEDLICHE Geschichten ab (nicht dieselbe Story zweimal).
 - Jeder Satz braucht: konkreten Akteur + konkrete Handlung + (wenn vorhanden) Zahl/Ort/Effekt.
 
 SCHLECHTE Beispiele – NIEMALS so:
@@ -1077,7 +1105,7 @@ Stichsaetze:"""
             ]
             bullet_points = ["• " + bp.lstrip("•-* ").strip() for bp in bullet_points]
             if bullet_points:
-                summaries[category] = bullet_points[:2]
+                summaries[category] = bullet_points[:n_bullets]
                 print(f"  ✓ {category}: {len(summaries[category])} Punkte")
             else:
                 # Leere Antwort (z.B. Reasoning-Budget aufgebraucht) → Kategorie überspringen
