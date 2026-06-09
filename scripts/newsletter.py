@@ -773,7 +773,16 @@ LAENDER KURZ HALTEN (Platz sparen):
 - Nutze kurze, gaengige Bezeichnungen: USA, EU, UK, China, Russland, Israel, Iran, Ukraine.
 - NICHT ausschreiben: "Vereinigte Staaten von Amerika" → "USA", "Volksrepublik China" → "China", "Vereinigtes Koenigreich" → "UK".
 - Adjektive kurz: "US-", "EU-", "UK-" als Praefix ("US-Zoelle", "EU-Gipfel"), nicht "amerikanische Zoelle".
-- KEINE kryptischen Codes wie "DEU" oder "GBR" – nur etablierte Kuerzel."""
+- KEINE kryptischen Codes wie "DEU" oder "GBR" – nur etablierte Kuerzel.
+
+UEBERSETZUNG (viele Quellen sind englisch):
+- Schreibe IMMER fluessiges, idiomatisches Deutsch – nie woertlich aus dem Englischen uebersetzt.
+- Englische Begriffe ins Deutsche uebertragen, NICHT stehen lassen:
+  "lawmakers" → "Abgeordnete", "officials" → "Behoerden/Beamte", "bill" → "Gesetzentwurf",
+  "administration" → "Regierung", "billion" → "Milliarde" (nicht "Billion"!), "trillion" → "Billion".
+- ACHTUNG falsche Freunde: englisch "billion" = deutsch "Milliarde"; englisch "trillion" = deutsch "Billion".
+- Eigennamen, Firmen und Institutionen bleiben im Original (z.B. "Federal Reserve", "Supreme Court", "House of Representatives").
+- Keine englische Satzstellung, keine Anglizismen wie "realisieren" (statt "erkennen"), "kontrollieren" (statt "steuern")."""
 
 # Modul-weites Flag: aktuell aktives Modell. Startet mit GROQ_MODEL.
 # Sobald GROQ_MODEL einmal versagt, wird dies dauerhaft auf den Fallback
@@ -1311,7 +1320,8 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                selected_links: dict[str, list[dict]],
                archive_url: str = "",
                signup_url: str = "",
-               history_fact: str = "") -> str:
+               history_fact: str = "",
+               history_url: str = "") -> str:
     """
     Baut den HTML-Newsletter.
     Platzhalter ##UNSUBSCRIBE_URL## wird in send_email() ersetzt.
@@ -1356,6 +1366,15 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     # ── "Heute vor X Jahren" – nur wenn vorhanden ─────────────────────────
     history_html = ""
     if history_fact:
+        # Wenn ein Wikipedia-Link da ist: ganzen Fakt anklickbar machen
+        if history_url:
+            fact_html = (
+                f'<a href="{history_url}" style="color:{COLOR_TEXT2};'
+                f'text-decoration:none;border-bottom:1px solid {COLOR_LIGHT};">'
+                f'{history_fact}</a>'
+            )
+        else:
+            fact_html = history_fact
         history_html = (
             f'<tr><td style="padding:14px 32px;background:{COLOR_BG};'
             f'border-bottom:1px solid {COLOR_BORDER};">'
@@ -1364,7 +1383,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'text-transform:uppercase;letter-spacing:1px;color:{COLOR_BLUE};'
             f'padding-bottom:4px;">📅 An diesem Tag</td></tr>'
             f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
-            f'color:{COLOR_TEXT2};">{history_fact}'
+            f'color:{COLOR_TEXT2};">{fact_html}'
             f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Wikipedia</span>'
             f'</td></tr></table>'
             f'</td></tr>'
@@ -1515,11 +1534,11 @@ HISTORY_FETCH_TIMEOUT = 15  # Sekunden
 WIKIPEDIA_ONTHISDAY_URL = "https://de.wikipedia.org/api/rest_v1/feed/onthisday/selected/{month}/{day}"
 
 
-def fetch_history_fact() -> str:
+def fetch_history_fact() -> tuple[str, str]:
     """
     Holt ein historisches Ereignis des heutigen Kalendertags von der
-    deutschen Wikipedia (CC BY-SA). Gibt formatierten String zurück
-    oder "" bei Fehler/keinem passenden Eintrag (dann faellt der Block weg).
+    deutschen Wikipedia (CC BY-SA). Gibt (Text, Wikipedia-URL) zurück
+    oder ("", "") bei Fehler/keinem passenden Eintrag (dann faellt der Block weg).
     """
     now = datetime.now()
     url = WIKIPEDIA_ONTHISDAY_URL.format(
@@ -1542,7 +1561,7 @@ def fetch_history_fact() -> str:
         ]
         if not usable:
             print("  ⚠ Wikipedia-Fakt: kein passender Eintrag")
-            return ""
+            return "", ""
 
         ev        = random.choice(usable)
         year      = int(ev["year"])
@@ -1550,20 +1569,28 @@ def fetch_history_fact() -> str:
         text      = str(ev["text"]).strip()
 
         if years_ago <= 0:
-            return ""
+            return "", ""
+
+        # Link zum passenden Wikipedia-Artikel aus dem "pages"-Array ziehen
+        link = ""
+        pages = ev.get("pages") or []
+        if pages:
+            content_urls = pages[0].get("content_urls") or {}
+            desktop = content_urls.get("desktop") or {}
+            link = desktop.get("page", "") or ""
 
         print(f"  ✓ Wikipedia-Fakt: vor {years_ago} Jahren ({year})")
-        return f"Vor {years_ago} Jahren ({year}): {text}"
+        return f"Vor {years_ago} Jahren ({year}): {text}", link
 
     except (urllib.error.URLError, socket.timeout) as e:
         print(f"  ⚠ Wikipedia nicht erreichbar: {e}")
-        return ""
+        return "", ""
     except (json.JSONDecodeError, ValueError, KeyError) as e:
         print(f"  ⚠ Wikipedia-Antwort ungueltig: {e}")
-        return ""
+        return "", ""
     except Exception as e:
         print(f"  ⚠ Wikipedia-Fakt Fehler: {e}")
-        return ""
+        return "", ""
 
 # ─────────────────────────────────────────────
 # EMPFÄNGER-LISTE
@@ -1687,7 +1714,7 @@ def main():
     print()
 
     print("    → 'Heute vor X Jahren' von Wikipedia holen...")
-    history_fact = fetch_history_fact()
+    history_fact, history_url = fetch_history_fact()
     print()
 
     now      = datetime.now()
@@ -1710,6 +1737,7 @@ def main():
         archive_url=archive_url,
         signup_url=signup_url,
         history_fact=history_fact,
+        history_url=history_url,
     )
 
     sent   = 0
