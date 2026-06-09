@@ -1,16 +1,14 @@
 import os, json
 
 # ─────────────────────────────────────────────
-# KONFIGURATION – Tab- und Spaltennamen
+# KONFIGURATION – passt zum Apps-Script (Newsletter.gs)
 # ─────────────────────────────────────────────
-# Anmelde-Tabs (werden zusammengefuehrt). Pro Tab: (Tab-Name, moegliche Spaltennamen fuer die Mail)
-SUBSCRIBE_TABS = [
-    ("Tabelle 1", ["Mail-Adresse eintragen", "E-Mail", "Email", "E-Mail-Adresse"]),
-    ("Bestand",   ["E-Mail", "Email", "Mail", "E-Mail-Adresse"]),
-]
-# Abmelde-Tab (wird abgezogen)
-UNSUBSCRIBE_TAB     = "Unsubscribed"
-UNSUBSCRIBE_COLUMNS = ["E-Mail", "Email", "Mail", "E-Mail-Adresse"]
+# Das Apps-Script pflegt EINE Tabelle: Spalte A = E-Mail, Spalte B = Status.
+# Status "aktiv" = bekommt Newsletter, "inaktiv" = abgemeldet.
+SHEET_TAB     = "Tabelle1"   # exakt wie im Apps-Script CONFIG.SHEET_NAME (ohne Leerzeichen!)
+EMAIL_COLUMNS = ["E-Mail", "Email", "Mail", "E-Mail-Adresse"]
+STATUS_COLUMNS = ["Status", "status"]
+ACTIVE_VALUES  = ("aktiv", "active", "ja", "yes", "")  # "" = kein Status gesetzt → als aktiv werten
 
 # ─────────────────────────────────────────────
 
@@ -18,37 +16,16 @@ base     = os.environ.get("RECIPIENT_EMAIL", "")
 sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
 creds    = os.environ.get("GOOGLE_CREDENTIALS", "")
 
-# Start: Empfaenger aus dem Secret (Fallback / zusaetzliche feste Adressen)
+# Start: feste Adressen aus dem Secret (Fallback / Test)
 recipients = {e.strip().lower() for e in base.split(",") if e.strip() and "@" in e}
 
 
-def _emails_from_tab(spreadsheet, tab_name, possible_columns):
-    """Liest alle Mail-Adressen aus einem Tab. Probiert mehrere Spaltennamen.
-    Gibt leere Menge zurueck, wenn der Tab fehlt oder leer ist."""
-    found = set()
-    try:
-        ws = spreadsheet.worksheet(tab_name)
-    except Exception:
-        print(f"  Hinweis: Tab '{tab_name}' nicht gefunden – uebersprungen")
-        return found
-
-    try:
-        rows = ws.get_all_records()
-    except Exception as e:
-        print(f"  Warnung: Tab '{tab_name}' nicht lesbar: {e}")
-        return found
-
-    for row in rows:
-        # ersten passenden Spaltennamen nehmen, der einen Wert hat
-        value = ""
-        for col in possible_columns:
-            if col in row and str(row[col]).strip():
-                value = str(row[col]).strip()
-                break
-        email = value.lower()
-        if email and "@" in email:
-            found.add(email)
-    return found
+def _first_value(row, columns):
+    """Gibt den ersten nicht-leeren Wert aus den moeglichen Spaltennamen zurueck."""
+    for col in columns:
+        if col in row and str(row[col]).strip():
+            return str(row[col]).strip()
+    return ""
 
 
 if sheet_id and creds:
@@ -61,25 +38,32 @@ if sheet_id and creds:
         gc     = gspread.authorize(Credentials.from_service_account_info(info, scopes=scopes))
         ss     = gc.open_by_key(sheet_id)
 
-        # 1) Anmeldungen aus allen Subscribe-Tabs sammeln
-        subscribed = set()
-        for tab_name, cols in SUBSCRIBE_TABS:
-            tab_emails = _emails_from_tab(ss, tab_name, cols)
-            print(f"  Tab '{tab_name}': {len(tab_emails)} Adressen")
-            subscribed |= tab_emails
+        # Tab oeffnen (per Name; faellt auf erstes Blatt zurueck, falls Name abweicht)
+        try:
+            ws = ss.worksheet(SHEET_TAB)
+        except Exception:
+            print(f"  Hinweis: Tab '{SHEET_TAB}' nicht gefunden – nutze erstes Blatt")
+            ws = ss.sheet1
 
-        # 2) Abmeldungen abziehen
-        unsubscribed = _emails_from_tab(ss, UNSUBSCRIBE_TAB, UNSUBSCRIBE_COLUMNS)
-        print(f"  Tab '{UNSUBSCRIBE_TAB}': {len(unsubscribed)} Abmeldungen")
+        rows = ws.get_all_records()
 
-        active = subscribed - unsubscribed
-        recipients |= active
+        active   = 0
+        inactive = 0
+        for row in rows:
+            email  = _first_value(row, EMAIL_COLUMNS).lower()
+            status = _first_value(row, STATUS_COLUMNS).lower()
+            if not email or "@" not in email:
+                continue
+            if status in ACTIVE_VALUES:
+                recipients.add(email)
+                active += 1
+            else:
+                # "inaktiv" o.ae. → sicherstellen, dass die Adresse NICHT drin ist
+                recipients.discard(email)
+                inactive += 1
 
-        # Sicherheitsnetz: auch aus dem Secret stammende Adressen respektieren Abmeldungen
-        recipients -= unsubscribed
-
-        print(f"Sheet geladen: {len(active)} aktive (Sheet) + Secret, "
-              f"{len(unsubscribed)} abgemeldet → {len(recipients)} gesamt")
+        print(f"Sheet geladen: {active} aktiv, {inactive} abgemeldet "
+              f"→ {len(recipients)} Empfaenger gesamt")
 
     except Exception as e:
         print(f"Warnung: Google Sheet nicht erreichbar: {e}")
