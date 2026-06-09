@@ -70,7 +70,7 @@ if sheet_id and creds:
         print(f"FEHLER-DETAIL: {e}")
         import traceback
         traceback.print_exc()
-        print(f"Fallback: {len(recipients)} Empfaenger aus Secret"
+        print(f"Fallback: {len(recipients)} Empfaenger aus Secret")
 else:
     print(f"Kein Sheet konfiguriert – {len(recipients)} Empfaenger aus Secret")
 
