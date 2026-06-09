@@ -1566,56 +1566,33 @@ def fetch_history_fact() -> str:
         return ""
 
 # ─────────────────────────────────────────────
-# EMPFÄNGER-LISTE VOM APPS SCRIPT
+# EMPFÄNGER-LISTE
 # ─────────────────────────────────────────────
-
-SUBSCRIBER_FETCH_TIMEOUT = 20  # Sekunden
-
 
 def fetch_subscribers() -> list[str]:
     """
-    Holt die Empfaengerliste vom Google Apps Script.
-    Fallback: env-Variable RECIPIENT_EMAIL (kommagetrennt).
+    Liest die Empfaengerliste, die scripts/recipients.py vorher aus dem
+    Google Sheet zusammengestellt und in die Umgebungsvariable RECIPIENT_LIST
+    geschrieben hat. Fallback: RECIPIENT_EMAIL (kommagetrennt).
 
     Returns:
         Liste deduplizierter, lowercase E-Mail-Adressen.
 
     Raises:
-        ValueError: wenn weder Apps Script noch Fallback verfuegbar sind.
+        ValueError: wenn keine Empfaenger gefunden werden.
     """
-    list_url = os.environ.get("SUBSCRIBER_LIST_URL", "").strip()
-    token    = os.environ.get("SUBSCRIBER_LIST_TOKEN", "").strip()
+    # ── Versuch 1: von recipients.py vorbereitete Liste ───────────
+    raw = os.environ.get("RECIPIENT_LIST", "")
+    emails = sorted({
+        e.strip().lower()
+        for e in raw.split(",")
+        if e.strip() and "@" in e
+    })
+    if emails:
+        print(f"  ✓ {len(emails)} Empfaenger via RECIPIENT_LIST geladen")
+        return emails
 
-    # ── Versuch 1: Apps Script ─────────────────────────────────────
-    if list_url and token:
-        try:
-            url = f"{list_url}?action=list&token={urllib.parse.quote(token)}"
-            req = urllib.request.Request(url, headers={"User-Agent": "Tageslage/1.0"})
-            with urllib.request.urlopen(req, timeout=SUBSCRIBER_FETCH_TIMEOUT) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-
-            if "error" in data:
-                print(f"  ⚠ Apps Script Fehler: {data['error']}")
-            else:
-                emails = data.get("emails", [])
-                cleaned = sorted({
-                    e.strip().lower()
-                    for e in emails
-                    if isinstance(e, str) and "@" in e
-                })
-                if cleaned:
-                    print(f"  ✓ {len(cleaned)} Empfaenger via Apps Script geladen")
-                    return cleaned
-                print("  ⚠ Apps Script lieferte leere Liste")
-
-        except (urllib.error.URLError, socket.timeout) as e:
-            print(f"  ⚠ Apps Script nicht erreichbar: {e}")
-        except (json.JSONDecodeError, ValueError) as e:
-            print(f"  ⚠ Apps Script Antwort ungueltig: {e}")
-        except Exception as e:
-            print(f"  ⚠ Apps Script Fehler: {e}")
-
-    # ── Versuch 2: Fallback env-Variable ──────────────────────────
+    # ── Versuch 2: Fallback RECIPIENT_EMAIL ───────────────────────
     recipient_raw = os.environ.get("RECIPIENT_EMAIL", "")
     fallback = sorted({
         r.strip().lower()
@@ -1628,7 +1605,8 @@ def fetch_subscribers() -> list[str]:
 
     raise ValueError(
         "Keine Empfaenger gefunden! "
-        "Setze SUBSCRIBER_LIST_URL + SUBSCRIBER_LIST_TOKEN (oder RECIPIENT_EMAIL als Fallback)."
+        "Pruefe, ob scripts/recipients.py vor newsletter.py laeuft und "
+        "RECIPIENT_LIST setzt (oder setze RECIPIENT_EMAIL als Fallback)."
     )
 
 # ─────────────────────────────────────────────
