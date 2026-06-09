@@ -1645,11 +1645,10 @@ def send_email(html_template: str, recipient: str,
         raise ValueError("GMAIL_ADDRESS oder GMAIL_APP_PASSWORD nicht gesetzt!")
 
     if unsubscribe_base:
-        # Apps-Script-Format: ?action=unsubscribe&email=...
+        # Apps-Script (Newsletter.gs) erwartet nur ?email=... (kein action-Parameter)
         sep = "&" if "?" in unsubscribe_base else "?"
         unsubscribe_url = (
-            f"{unsubscribe_base}{sep}action=unsubscribe"
-            f"&email={urllib.parse.quote(recipient)}"
+            f"{unsubscribe_base}{sep}email={urllib.parse.quote(recipient)}"
         )
     else:
         unsubscribe_url = "#"
