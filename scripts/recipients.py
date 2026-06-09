@@ -66,8 +66,11 @@ if sheet_id and creds:
               f"→ {len(recipients)} Empfaenger gesamt")
 
     except Exception as e:
-        print(f"Warnung: Google Sheet nicht erreichbar: {e}")
-        print(f"Fallback: {len(recipients)} Empfaenger aus Secret")
+        print(f"FEHLER-TYP: {type(e).__name__}")
+        print(f"FEHLER-DETAIL: {e}")
+        import traceback
+        traceback.print_exc()
+        print(f"Fallback: {len(recipients)} Empfaenger aus Secret"
 else:
     print(f"Kein Sheet konfiguriert – {len(recipients)} Empfaenger aus Secret")
 
