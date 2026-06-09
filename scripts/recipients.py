@@ -5,8 +5,11 @@ import os, json
 # ─────────────────────────────────────────────
 SHEET_TAB      = "Tabellenblatt1"   # Tab mit E-Mail + Status (NICHT der Formular-Tab "Tabelle1")
 EMAIL_COLUMNS  = ["E-Mail", "Email", "Mail", "E-Mail-Adresse"]
-STATUS_COLUMNS = ["Status", "status"]
-ACTIVE_VALUES  = ("aktiv", "active", "ja", "yes", "")  # "" = kein Status → als aktiv werten
+STATUS_COLUMNS  = ["Status", "status"]
+# Sicherer Ansatz: nur explizit abgemeldete Werte schliessen aus.
+# Alles andere (auch leer, auch Tippfehler) gilt als aktiv – niemand faellt
+# versehentlich raus.
+INACTIVE_VALUES = ("inaktiv", "inactive", "nein", "no", "abgemeldet", "unsubscribed")
 
 # ─────────────────────────────────────────────
 
@@ -55,12 +58,12 @@ if sheet_id and creds:
             status = _first_value(row, STATUS_COLUMNS).lower()
             if not email or "@" not in email:
                 continue
-            if status in ACTIVE_VALUES:
-                recipients.add(email)
-                active += 1
-            else:
+            if status in INACTIVE_VALUES:
                 recipients.discard(email)
                 inactive += 1
+            else:
+                recipients.add(email)
+                active += 1
 
         print("Sheet geladen:", active, "aktiv,", inactive, "abgemeldet ->",
               len(recipients), "Empfaenger gesamt")
