@@ -43,64 +43,68 @@
 
   .cat { padding: 20px 28px; border-bottom: 1px solid var(--border); }
   .cat:last-child { border-bottom: none; }
-  .cat h2 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 0 0 10px; padding-bottom: 10px; border-bottom: 2px solid var(--navy2); }
-  .bullet { display: flex; gap: 8px; font-size: 14px; line-height: 1.6; color: var(--text2); padding: 3px 0; }
-  .bullet .dash { color: var(--blue); font-weight: 600; }
+  .cat h2 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 0 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--navy2); }
 
-  /* ── Article Grid ── */
-  .articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 10px;
-    margin-top: 12px;
-  }
-
-  .article-card {
-    background: var(--linkbox);
-    border: 1px solid #c5d2dd;
-    border-radius: 4px;
-    padding: 12px;
+  /* ── Article List ── */
+  .articles-list { display: flex; flex-direction: column; gap: 1px; margin-bottom: 8px; }
+  
+  .article-row {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 12px 14px;
     cursor: pointer;
-    transition: all .15s ease;
+    transition: all .12s ease;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    min-height: 120px;
   }
-  .article-card:hover {
-    background: #c4d9ed;
-    box-shadow: 0 2px 6px rgba(0,0,0,.08);
-    transform: translateY(-1px);
+  .article-row:hover {
+    background: #f8f9fa;
+    border-color: var(--blue);
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+  }
+
+  .article-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .article-source {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--blue);
   }
 
+  .article-date {
+    font-size: 10px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
   .article-title {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--navy);
     line-height: 1.35;
-    flex: 1;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
   }
 
-  .article-preview {
-    font-size: 11px;
-    color: var(--text2);
-    line-height: 1.3;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  .article-tags {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+  }
+
+  .article-tag {
+    font-size: 9px;
+    background: var(--linkbox);
+    color: var(--blue);
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 0.5px solid #c5d2dd;
   }
 
   /* ── All Articles Section ── */
@@ -111,7 +115,7 @@
   .all-cat h3 { font-size: 13px; color: var(--navy); margin: 8px 0 6px; }
   .all-row { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #f0f2f4; font-size: 13px; }
   .all-row .src { flex: 0 0 110px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #8fa8bc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .all-row a { flex: 1; color: var(--text); text-decoration: none; line-height: 1.4; }
+  .all-row a { flex: 1; color: var(--text); text-decoration: none; line-height: 1.4; cursor: pointer; }
 
   /* ── Archive ── */
   .archive-title { font-size: 16px; font-weight: 700; color: var(--navy); margin: 0 0 12px; }
@@ -132,57 +136,108 @@
 
   .loading { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
 
-  /* ── Panel ── */
-  .panel-overlay {
-    position: fixed; inset: 0; background: rgba(20,30,45,0.45);
-    opacity: 0; visibility: hidden; transition: opacity .25s ease;
-    z-index: 90;
+  /* ── Reader Panel ── */
+  .reader-panel {
+    display: none;
+    background: #fff;
+    border-top: 2px solid var(--border);
+    padding: 16px 28px;
+    margin-top: 12px;
+    animation: slideDown .25s ease;
   }
-  .panel-overlay.open { opacity: 1; visibility: visible; }
-  .panel {
-    position: fixed; top: 0; right: 0; height: 100%; width: 420px; max-width: 90vw;
-    background: #fff; box-shadow: -4px 0 24px rgba(0,0,0,0.18);
-    transform: translateX(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
-    z-index: 100; display: flex; flex-direction: column;
+  .reader-panel.open { display: block; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  .panel.open { transform: translateX(0); }
-  .panel-head { padding: 18px 22px; background: var(--navy); color: #fff; position: relative; flex: 0 0 auto; }
-  .panel-head .psrc { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--light); margin-bottom: 6px; padding-right: 30px; }
-  .panel-head .ptitle { font-size: 17px; font-weight: 700; line-height: 1.35; }
-  .panel-close { position: absolute; top: 14px; right: 16px; background: none; border: none; color: var(--light); font-size: 24px; line-height: 1; cursor: pointer; padding: 0; width: 28px; height: 28px; }
-  .panel-close:hover { color: #fff; }
-  .panel-body { padding: 22px; overflow-y: auto; flex: 1 1 auto; font-size: 14px; line-height: 1.7; color: var(--text2); }
-  .panel-body .pmeta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
-  .panel-foot { padding: 16px 22px; border-top: 1px solid var(--border); flex: 0 0 auto; }
-  .panel-foot a { display: block; text-align: center; background: var(--blue); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px; border-radius: 4px; }
-  .panel-foot a:hover { background: #4a6a7f; opacity: 1; }
-  .clickable { cursor: pointer; }
+
+  .reader-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+
+  .reader-source {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .reader-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--muted);
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .reader-close:hover { color: var(--navy); }
+
+  .reader-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .reader-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text2);
+    margin-bottom: 12px;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  .reader-footer {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .12s;
+  }
+  .btn:hover {
+    background: var(--linkbox);
+    border-color: var(--blue);
+  }
+  .btn.primary {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+  }
+  .btn.primary:hover {
+    background: #4a6a7f;
+  }
 
   @media (max-width: 540px) {
     .arch-item .d { flex-basis: 84px; }
-    .panel { width: 100%; max-width: 100%; }
-    .articles-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    .article-date { display: none; }
   }
 </style>
 </head>
 <body>
-
-<!-- Slide-in-Panel für Artikel-Vorschau -->
-<div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
-<aside class="panel" id="articlePanel" role="dialog" aria-modal="true" aria-label="Artikel-Vorschau">
-  <div class="panel-head">
-    <button class="panel-close" onclick="closePanel()" aria-label="Schließen">&times;</button>
-    <div class="psrc" id="panelSrc"></div>
-    <div class="ptitle" id="panelTitle"></div>
-  </div>
-  <div class="panel-body">
-    <div class="pmeta" id="panelMeta"></div>
-    <div id="panelText"></div>
-  </div>
-  <div class="panel-foot">
-    <a id="panelLink" href="#" target="_blank" rel="noopener">Vollständigen Artikel lesen →</a>
-  </div>
-</aside>
 
 <div class="header">
   <div class="kicker">Dein täglicher Nachrichtenüberblick</div>
@@ -215,6 +270,7 @@
   var cardEl   = document.getElementById('issueCard');
   var searchEl = document.getElementById('searchBox');
   var metaEl   = document.getElementById('metabar');
+  var currentReader = null;
 
   function esc(s) {
     return String(s == null ? '' : s)
@@ -225,46 +281,32 @@
     var p = String(iso).split('-');
     return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
   }
+  function deTime(time) {
+    if (!time) return '';
+    var h = String(time).substring(0, 2);
+    var m = String(time).substring(2, 4);
+    return h + ':' + m;
+  }
   function zeitLabel(z) { return z === 'morgen' ? 'Morgen' : 'Abend'; }
 
-  // ── Panel ──────────────────────────────────────────────
-  function openPanel(el) {
-    var src      = el.getAttribute('data-src') || '';
-    var title    = el.getAttribute('data-title') || '';
-    var url      = el.getAttribute('data-url') || '';
-    var vorschau = (el.getAttribute('data-vorschau') || '').trim();
-
-    document.getElementById('panelSrc').textContent   = src;
-    document.getElementById('panelTitle').textContent = title;
-    document.getElementById('panelMeta').textContent  = src ? ('Quelle: ' + src) : '';
-    var textEl = document.getElementById('panelText');
-    if (vorschau) {
-      textEl.textContent = vorschau;
-      textEl.style.fontStyle = 'normal';
-      textEl.style.color = 'var(--text2)';
-    } else {
-      textEl.textContent = 'Für diesen Artikel liegt keine Vorschau vor. Über den Button unten gelangst du direkt zum vollständigen Beitrag.';
-      textEl.style.fontStyle = 'italic';
-      textEl.style.color = 'var(--muted)';
+  // Close reader
+  function closeReader(el) {
+    if (currentReader) {
+      currentReader.classList.remove('open');
+      currentReader = null;
     }
-    var link = document.getElementById('panelLink');
-    link.href = url || '#';
-    link.textContent = src ? ('Auf ' + src + ' lesen →') : 'Vollständigen Artikel lesen →';
-
-    document.getElementById('articlePanel').classList.add('open');
-    document.getElementById('panelOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
   }
-  function closePanel() {
-    document.getElementById('articlePanel').classList.remove('open');
-    document.getElementById('panelOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closePanel();
-  });
 
-  // ── Ausgabe rendern ──────────────────────────────────────
+  // Open reader
+  function openReader(el, evt) {
+    evt.stopPropagation();
+    if (currentReader === el) { closeReader(); return; }
+    closeReader();
+    el.classList.add('open');
+    currentReader = el;
+  }
+
+  // Render issue
   function renderIssue(d) {
     var h = '';
     h += '<div class="issue-head"><span class="date">' + esc(deDate(d.datum)) + '</span>' +
@@ -291,29 +333,45 @@
 
     (d.kategorien || []).forEach(function (k) {
       h += '<div class="cat"><h2>' + esc(k.name) + '</h2>';
-
+      
       // Bullets
       (k.punkte || []).forEach(function (p) {
-        h += '<div class="bullet"><span class="dash">–</span><span>' +
+        h += '<div style="display:flex;gap:8px;font-size:13px;line-height:1.6;color:var(--text2);padding:6px 0;"><span style="color:var(--blue);font-weight:600;flex-shrink:0;">–</span><span>' +
              esc(String(p).replace(/^•\s*/, '')) + '</span></div>';
       });
 
-      // Article Grid
+      // Article list
       if (k.links && k.links.length) {
-        h += '<div class="articles-grid">';
-        k.links.forEach(function (l) {
+        h += '<div class="articles-list">';
+        var articleId = 0;
+        k.links.forEach(function (l, idx) {
           var hasV = l.vorschau && l.vorschau.trim();
-          h += '<div class="article-card clickable" ' +
-               'onclick="openPanel(this)" ' +
-               'data-src="' + esc(l.quelle) + '" ' +
-               'data-title="' + esc(l.titel) + '" ' +
-               'data-url="' + esc(l.url) + '" ' +
-               'data-vorschau="' + esc(l.vorschau || '') + '">' +
-               '<div class="article-source">' + esc(l.quelle) + '</div>' +
-               '<div class="article-title">' + esc(l.titel) + '</div>';
-          if (hasV) {
-            h += '<div class="article-preview">' + esc(l.vorschau.trim()) + '</div>';
-          }
+          var aid = 'ar_' + Math.random().toString(36).slice(2);
+          h += '<div class="article-row" id="' + aid + '" onclick="openReader(document.getElementById(\'' + aid + '_reader\'), event)">' +
+               '<div class="article-top">' +
+               '<span class="article-source">' + esc(l.quelle) + '</span>' +
+               '<span class="article-date">12.06.26, ' + esc(deTime(l.zeit || '')) + '</span>' +
+               '</div>' +
+               '<div class="article-title">' + esc(l.titel) + '</div>' +
+               '<div class="article-tags">';
+          (l.topics || []).forEach(function (t) {
+            h += '<span class="article-tag">' + esc(t) + '</span>';
+          });
+          h += '</div>';
+          
+          // Reader panel
+          h += '<div class="reader-panel" id="' + aid + '_reader">' +
+               '<div class="reader-head">' +
+               '<span class="reader-source">' + esc(l.quelle) + '</span>' +
+               '<button class="reader-close" onclick="closeReader(document.getElementById(\'' + aid + '_reader\'), event)">✕</button>' +
+               '</div>' +
+               '<div class="reader-title">' + esc(l.titel) + '</div>' +
+               '<div class="reader-text">' + esc(l.vorschau || '(Kein Vorschautext)') + '</div>' +
+               '<div class="reader-footer">' +
+               '<a class="btn primary" href="' + esc(l.url) + '" target="_blank" rel="noopener">🔗 Artikel öffnen</a>' +
+               '</div>' +
+               '</div>';
+          
           h += '</div>';
         });
         h += '</div>';
@@ -331,9 +389,7 @@
         h += '<div class="all-cat"><h3>' + esc(k) + '</h3>';
         d.alle_artikel[k].forEach(function (a) {
           h += '<div class="all-row"><span class="src">' + esc(a.quelle) + '</span>' +
-               '<a class="clickable" onclick="openPanel(this)" ' +
-               'data-src="' + esc(a.quelle) + '" data-title="' + esc(a.titel) + '" ' +
-               'data-url="' + esc(a.url) + '" data-vorschau="' + esc(a.vorschau || '') + '">' +
+               '<a onclick="alert(\'Artikel öffnen: ' + esc(a.url) + '\')" target="_blank" rel="noopener">' +
                esc(a.titel) + '</a></div>';
         });
         h += '</div>';
@@ -341,7 +397,7 @@
       h += '</details>';
     }
 
-    // WM-Block
+    // WM block
     if (d.wm && (d.wm.letztes || (d.wm.heute && d.wm.heute.length) ||
                  (d.wm.naechste && d.wm.naechste.length) || (d.wm.gestern && d.wm.gestern.length) ||
                  (d.wm.heute_fertig && d.wm.heute_fertig.length))) {
@@ -410,7 +466,7 @@
     });
   }
 
-  // ── Archivliste rendern ──────────────────────────────────
+  // Archive list
   function renderList(items) {
     if (!items.length) {
       listEl.innerHTML = '<li class="empty">Keine Ausgaben gefunden.</li>';
@@ -440,7 +496,7 @@
     }));
   });
 
-  // ── Start ────────────────────────────────────────────────
+  // Load data
   fetch('data/index.json').then(function (r) {
     if (!r.ok) throw new Error(r.status);
     return r.json();
@@ -460,14 +516,12 @@
     } else if (INDEX.length) {
       loadIssue(INDEX[0].datei, false);
     } else {
-      cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden – ' +
-        'die erste erscheint nach dem nächsten Newsletter-Lauf.</div>';
+      cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden.</div>';
     }
   }).catch(function () {
     metaEl.textContent = 'Archiv noch nicht verfügbar';
     listEl.innerHTML = '<li class="empty">Noch keine Daten vorhanden.</li>';
-    cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden – ' +
-      'die erste erscheint nach dem nächsten Newsletter-Lauf.</div>';
+    cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden.</div>';
   });
 })();
 </script>
