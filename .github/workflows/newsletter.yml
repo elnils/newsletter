@@ -1,40 +1,42 @@
 name: Tageslage Newsletter
-# schedule resync
+
+# Geplanter Abruf erfolgt extern über cron-job.org (per workflow_dispatch).
 on:
-#  schedule:
-#    - cron: "31 5 * * *"
-#    - cron: "31 14 * * *"
-# hier könnte ein Cron job stehen wird aber abgerufen über cron-job.org
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write   # noetig, damit der Commit von docs/ gepusht werden darf
 
 jobs:
   send-newsletter:
     runs-on: ubuntu-latest
     steps:
 
+      # 1) Repo auschecken
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 2) Python bereitstellen
       - name: Python einrichten
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
+      # 3) Abhaengigkeiten
       - name: Abhaengigkeiten installieren
         run: pip install feedparser groq gspread google-auth
 
+      # 4) Empfaengerliste aus Google Sheet -> schreibt RECIPIENT_LIST
       - name: Empfaengerliste laden
-        id: recipients
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
           GOOGLE_SHEET_ID:    ${{ secrets.GOOGLE_SHEET_ID }}
           RECIPIENT_EMAIL:    ${{ secrets.RECIPIENT_EMAIL }}
         run: python3 scripts/recipients.py
 
+      # 5) Newsletter bauen + versenden + Archiv-JSON nach docs/ schreiben
+      #    (laeuft in scripts/, daher landet docs/ via ../docs in der Wurzel)
       - name: Newsletter ausfuehren
         working-directory: scripts
         env:
@@ -46,16 +48,15 @@ jobs:
           UNSUBSCRIBE_URL:    ${{ secrets.UNSUBSCRIBE_URL }}
         run: python3 newsletter.py
 
-      - name: Alte Archivdateien aufraeumen
-        run: python3 scripts/cleanup.py
-
-      - name: Archiv-Index generieren
-        run: python3 scripts/gen_index.py
-
-      - name: Archiv auf GitHub Pages deployen
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: scripts/archiv
-          destination_dir: archiv
-          keep_files: true
+      # 6) Aktualisiertes Archiv (docs/) committen und pushen
+      - name: Archiv committen
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --cached --quiet; then
+            echo "Keine Archiv-Aenderungen."
+          else
+            git commit -m "Archiv aktualisiert: $(date -u +%Y-%m-%d_%H:%M)"
+            git push
+          fi
