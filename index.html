@@ -11,12 +11,13 @@
     --border: #e8e8e8; --text: #1c1c1e; --text2: #3a3a3c;
     --linkbox: #d4e3ed;
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     margin: 0; padding: 0; background: var(--bg); color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
   }
-  a { color: inherit; }
+  a { color: inherit; text-decoration: none; }
   a:hover { opacity: .8; }
 
   /* ── Header ── */
@@ -30,7 +31,7 @@
   .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
   .card { background: #fff; border: 1px solid #d0d8e0; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.06); overflow: hidden; margin-bottom: 28px; }
 
-  /* ── Ausgabe ── */
+  /* ── Issue Card ── */
   .issue-head { padding: 16px 28px; border-bottom: 2px solid var(--border); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .issue-head .date { font-size: 17px; font-weight: 700; color: var(--navy); }
   .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 2px; }
@@ -46,48 +47,32 @@
   .bullet { display: flex; gap: 8px; font-size: 14px; line-height: 1.6; color: var(--text2); padding: 3px 0; }
   .bullet .dash { color: var(--blue); font-weight: 600; }
 
-  /* ── Article Slider ── */
-  .slider-container {
-    position: relative;
+  /* ── Article Grid ── */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
     margin-top: 12px;
-    overflow: hidden;
   }
-  .slider-wrapper {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 8px 0;
-    -webkit-overflow-scrolling: touch;
-  }
-  .slider-wrapper::-webkit-scrollbar {
-    height: 4px;
-  }
-  .slider-wrapper::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .slider-wrapper::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 2px;
-  }
+
   .article-card {
-    flex: 0 0 280px;
     background: var(--linkbox);
     border: 1px solid #c5d2dd;
     border-radius: 4px;
-    padding: 14px;
+    padding: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all .15s ease;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-height: 140px;
+    gap: 6px;
+    min-height: 120px;
   }
   .article-card:hover {
     background: #c4d9ed;
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
-    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    transform: translateY(-1px);
   }
+
   .article-source {
     font-size: 10px;
     font-weight: 700;
@@ -95,66 +80,30 @@
     letter-spacing: 0.5px;
     color: var(--blue);
   }
+
   .article-title {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--navy);
-    line-height: 1.4;
-    flex: 1;
-  }
-  .article-preview {
-    font-size: 11px;
-    color: var(--text2);
     line-height: 1.35;
+    flex: 1;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-  .slider-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(27, 42, 59, 0.8);
-    color: #fff;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: background 0.2s;
-    z-index: 10;
-  }
-  .slider-nav:hover {
-    background: rgba(27, 42, 59, 1);
-  }
-  .slider-nav.left {
-    left: 4px;
-  }
-  .slider-nav.right {
-    right: 4px;
-  }
-  .slider-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-  .slider-nav.disabled:hover {
-    background: rgba(27, 42, 59, 0.8);
+
+  .article-preview {
+    font-size: 11px;
+    color: var(--text2);
+    line-height: 1.3;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
-  /* ── Old Links (hidden by default) ── */
-  .links { margin-top: 10px; background: var(--linkbox); border-radius: 4px; padding: 7px 0; display: none; }
-  .links a { display: block; padding: 3px 12px; font-size: 12px; line-height: 1.35; color: var(--text2); text-decoration: none; }
-  .links a b { color: var(--navy); }
-  .linkrow { padding: 3px 0; }
-  .linkrow + .linkrow { border-top: 1px solid rgba(0,0,0,0.04); }
-  .preview { padding: 2px 12px 4px; font-size: 11px; line-height: 1.45; color: var(--muted); }
-  .all-row a:hover { color: var(--navy); text-decoration: underline; cursor: help; }
-
+  /* ── All Articles Section ── */
   details.all-articles { margin: 0; border-top: 1px solid var(--border); }
   details.all-articles summary { cursor: pointer; padding: 13px 28px; font-size: 12px; font-weight: 600; color: var(--muted); user-select: none; }
   details.all-articles summary:hover { color: var(--navy); }
@@ -164,7 +113,7 @@
   .all-row .src { flex: 0 0 110px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #8fa8bc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .all-row a { flex: 1; color: var(--text); text-decoration: none; line-height: 1.4; }
 
-  /* ── Archiv ── */
+  /* ── Archive ── */
   .archive-title { font-size: 16px; font-weight: 700; color: var(--navy); margin: 0 0 12px; }
   .search { width: 100%; padding: 10px 14px; font-size: 14px; border: 1px solid #c5d2dd; border-radius: 4px; margin-bottom: 14px; font-family: inherit; }
   .search:focus { outline: none; border-color: var(--blue); }
@@ -183,7 +132,7 @@
 
   .loading { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
 
-  /* ── Slide-in-Panel (Artikel-Vorschau) ── */
+  /* ── Panel ── */
   .panel-overlay {
     position: fixed; inset: 0; background: rgba(20,30,45,0.45);
     opacity: 0; visibility: hidden; transition: opacity .25s ease;
@@ -206,15 +155,13 @@
   .panel-body .pmeta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
   .panel-foot { padding: 16px 22px; border-top: 1px solid var(--border); flex: 0 0 auto; }
   .panel-foot a { display: block; text-align: center; background: var(--blue); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px; border-radius: 4px; }
-  .panel-foot a:hover { background: var(--navy2); opacity: 1; }
+  .panel-foot a:hover { background: #4a6a7f; opacity: 1; }
   .clickable { cursor: pointer; }
 
   @media (max-width: 540px) {
     .arch-item .d { flex-basis: 84px; }
-    .all-row .src { flex-basis: 80px; }
     .panel { width: 100%; max-width: 100%; }
-    .article-card { flex: 0 0 240px; }
-    .slider-nav { width: 28px; height: 28px; font-size: 14px; }
+    .articles-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
   }
 </style>
 </head>
@@ -274,13 +221,13 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
-  function deDate(iso) { // 2026-06-10 → 10.06.2026
+  function deDate(iso) {
     var p = String(iso).split('-');
     return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
   }
   function zeitLabel(z) { return z === 'morgen' ? 'Morgen' : 'Abend'; }
 
-  // ── Slide-in-Panel ──────────────────────────────────────────────
+  // ── Panel ──────────────────────────────────────────────
   function openPanel(el) {
     var src      = el.getAttribute('data-src') || '';
     var title    = el.getAttribute('data-title') || '';
@@ -317,43 +264,7 @@
     if (e.key === 'Escape') closePanel();
   });
 
-  // ── Slider Navigation ──────────────────────────────────────────────
-  function initSlider(container) {
-    var wrapper = container.querySelector('.slider-wrapper');
-    if (!wrapper) return;
-    
-    var leftBtn = container.querySelector('.slider-nav.left');
-    var rightBtn = container.querySelector('.slider-nav.right');
-    
-    function updateNavButtons() {
-      if (leftBtn) {
-        leftBtn.classList.toggle('disabled', wrapper.scrollLeft <= 0);
-      }
-      if (rightBtn) {
-        rightBtn.classList.toggle('disabled', 
-          wrapper.scrollLeft + wrapper.clientWidth >= wrapper.scrollWidth - 5);
-      }
-    }
-    
-    if (leftBtn) {
-      leftBtn.addEventListener('click', function () {
-        wrapper.scrollBy({ left: -300, behavior: 'smooth' });
-        setTimeout(updateNavButtons, 300);
-      });
-    }
-    
-    if (rightBtn) {
-      rightBtn.addEventListener('click', function () {
-        wrapper.scrollBy({ left: 300, behavior: 'smooth' });
-        setTimeout(updateNavButtons, 300);
-      });
-    }
-    
-    wrapper.addEventListener('scroll', updateNavButtons);
-    updateNavButtons();
-  }
-
-  // ── Ausgabe rendern ──────────────────────────────────────────────
+  // ── Ausgabe rendern ──────────────────────────────────────
   function renderIssue(d) {
     var h = '';
     h += '<div class="issue-head"><span class="date">' + esc(deDate(d.datum)) + '</span>' +
@@ -380,15 +291,19 @@
 
     (d.kategorien || []).forEach(function (k) {
       h += '<div class="cat"><h2>' + esc(k.name) + '</h2>';
-      
-      // Render slider if there are links
+
+      // Bullets
+      (k.punkte || []).forEach(function (p) {
+        h += '<div class="bullet"><span class="dash">–</span><span>' +
+             esc(String(p).replace(/^•\s*/, '')) + '</span></div>';
+      });
+
+      // Article Grid
       if (k.links && k.links.length) {
-        h += '<div class="slider-container">';
-        h += '<div class="slider-wrapper" data-category="' + esc(k.name) + '">';
-        
+        h += '<div class="articles-grid">';
         k.links.forEach(function (l) {
           var hasV = l.vorschau && l.vorschau.trim();
-          h += '<div class="article-card" ' +
+          h += '<div class="article-card clickable" ' +
                'onclick="openPanel(this)" ' +
                'data-src="' + esc(l.quelle) + '" ' +
                'data-title="' + esc(l.titel) + '" ' +
@@ -401,19 +316,9 @@
           }
           h += '</div>';
         });
-        
-        h += '</div>';
-        h += '<button class="slider-nav left" aria-label="Vorheriger Artikel">‹</button>';
-        h += '<button class="slider-nav right" aria-label="Nächster Artikel">›</button>';
         h += '</div>';
       }
-      
-      // Render bullet points (old style, kept for reference)
-      (k.punkte || []).forEach(function (p) {
-        h += '<div class="bullet"><span class="dash">–</span><span>' +
-             esc(String(p).replace(/^•\s*/, '')) + '</span></div>';
-      });
-      
+
       h += '</div>';
     });
 
@@ -436,32 +341,26 @@
       h += '</details>';
     }
 
-    // ── WM-Block ans Ende ──────────────────────────────────────────
+    // WM-Block
     if (d.wm && (d.wm.letztes || (d.wm.heute && d.wm.heute.length) ||
                  (d.wm.naechste && d.wm.naechste.length) || (d.wm.gestern && d.wm.gestern.length) ||
                  (d.wm.heute_fertig && d.wm.heute_fertig.length))) {
       var w = d.wm;
       var wh = '<div style="padding:18px 28px;background:#f8f9fa;border-top:2px solid var(--border);">';
       wh += '<div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;">⚽ Fußball-WM 2026</div>';
-
-      // Spielzeile mit fester Zeit-Spalte (Uhrzeiten buendig)
       function spielRow(zeit, paarung, klein) {
         var fs = klein ? '11px' : '13px';
         var col = klein ? 'var(--muted)' : 'var(--text2)';
-        return '<tr><td style="font-size:' + fs + ';line-height:1.7;color:var(--muted);' +
-               'white-space:nowrap;width:52px;vertical-align:top;">' + esc(zeit || '') + '</td>' +
+        return '<tr><td style="font-size:' + fs + ';line-height:1.7;color:var(--muted);white-space:nowrap;width:52px;vertical-align:top;">' + esc(zeit || '') + '</td>' +
                '<td style="font-size:' + fs + ';line-height:1.7;color:' + col + ';">' + esc(paarung || '') + '</td></tr>';
       }
-      var subhead = '<tr><td colspan="2" style="font-size:10px;text-transform:uppercase;' +
-                    'letter-spacing:.5px;color:var(--muted);padding:6px 0 2px;">';
-
+      var subhead = '<tr><td colspan="2" style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:6px 0 2px;">';
       var heuteFertig = w.heute_fertig || [];
       var letztesInHeute = heuteFertig.some(function (s) {
         return w.letztes && s.paarung && s.paarung.indexOf(w.letztes) !== -1;
       });
       if (w.letztes && !letztesInHeute) {
-        wh += '<div style="font-size:13px;line-height:1.7;color:var(--text2);">' +
-              '<span style="color:var(--muted);">Zuletzt:</span> <strong style="color:var(--navy);">' +
+        wh += '<div style="font-size:13px;line-height:1.7;color:var(--text2);"><span style="color:var(--muted);">Zuletzt:</span> <strong style="color:var(--navy);">' +
               esc(w.letztes) + '</strong></div>';
       }
       wh += '<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:2px;">';
@@ -482,7 +381,6 @@
         w.naechste.forEach(function (s) { wh += spielRow(s.zeit, s.paarung, false); });
       }
       wh += '</table>';
-
       if (w.link) {
         wh += '<div style="margin-top:8px;"><a href="' + esc(w.link) +
               '" target="_blank" rel="noopener" style="font-size:11px;font-weight:600;color:var(--blue);text-decoration:none;">' +
@@ -495,12 +393,6 @@
     cardEl.innerHTML = h;
     document.getElementById('headSub').textContent =
       deDate(d.datum) + ' · ' + zeitLabel(d.zeit) + '-Ausgabe';
-    
-    // Initialize all sliders
-    var sliders = cardEl.querySelectorAll('.slider-container');
-    sliders.forEach(function (slider) {
-      initSlider(slider);
-    });
   }
 
   function loadIssue(file, scroll) {
@@ -518,7 +410,7 @@
     });
   }
 
-  // ── Archivliste rendern ──────────────────────────────────────────
+  // ── Archivliste rendern ──────────────────────────────────
   function renderList(items) {
     if (!items.length) {
       listEl.innerHTML = '<li class="empty">Keine Ausgaben gefunden.</li>';
@@ -548,7 +440,7 @@
     }));
   });
 
-  // ── Start ────────────────────────────────────────────────────────
+  // ── Start ────────────────────────────────────────────────
   fetch('data/index.json').then(function (r) {
     if (!r.ok) throw new Error(r.status);
     return r.json();
