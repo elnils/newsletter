@@ -48,6 +48,10 @@
   .links { margin-top: 10px; background: var(--linkbox); border-radius: 4px; padding: 7px 0; }
   .links a { display: block; padding: 3px 12px; font-size: 12px; line-height: 1.35; color: var(--text2); text-decoration: none; }
   .links a b { color: var(--navy); }
+  .linkrow { padding: 3px 0; }
+  .linkrow + .linkrow { border-top: 1px solid rgba(0,0,0,0.04); }
+  .preview { padding: 2px 12px 4px; font-size: 11px; line-height: 1.45; color: var(--muted); }
+  .all-row a:hover { color: var(--navy); text-decoration: underline; cursor: help; }
 
   details.all-articles { margin: 0; border-top: 1px solid var(--border); }
   details.all-articles summary { cursor: pointer; padding: 13px 28px; font-size: 12px; font-weight: 600; color: var(--muted); user-select: none; }
@@ -143,16 +147,13 @@
            inner + ' <span class="src">&middot; Quelle: Wikipedia</span></div>';
     }
 
-    if (d.destatis && (d.destatis.text || d.destatis.zahl)) {
+    if (d.destatis && d.destatis.text) {
       var s = d.destatis;
       var txt = s.url
         ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.text) + '</a>'
         : esc(s.text);
-      var zahlHtml = s.zahl
-        ? '<span style="font-size:22px;font-weight:800;color:var(--navy);margin-right:8px;">' + esc(s.zahl) + '</span>'
-        : '';
       h += '<div class="wiki"><div class="label">📊 Zahl des Tages</div>' +
-           zahlHtml + txt + ' <span class="src">&middot; Quelle: Destatis</span></div>';
+           txt + ' <span class="src">&middot; Quelle: Destatis</span></div>';
     }
 
     (d.kategorien || []).forEach(function (k) {
@@ -164,8 +165,15 @@
       if (k.links && k.links.length) {
         h += '<div class="links">';
         k.links.forEach(function (l) {
+          var hasV = l.vorschau && l.vorschau.trim();
+          h += '<div class="linkrow">';
           h += '<a href="' + esc(l.url) + '" target="_blank" rel="noopener"><b>' +
                esc(l.quelle) + ':</b> ' + esc(l.titel) + '</a>';
+          if (hasV) {
+            h += '<div class="preview">' + esc(l.vorschau.trim()) +
+                 (l.vorschau.length >= 220 ? '…' : '') + '</div>';
+          }
+          h += '</div>';
         });
         h += '</div>';
       }
@@ -180,8 +188,9 @@
       alleKeys.forEach(function (k) {
         h += '<div class="all-cat"><h3>' + esc(k) + '</h3>';
         d.alle_artikel[k].forEach(function (a) {
+          var tip = (a.vorschau && a.vorschau.trim()) ? ' title="' + esc(a.vorschau.trim()) + '"' : '';
           h += '<div class="all-row"><span class="src">' + esc(a.quelle) + '</span>' +
-               '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' +
+               '<a href="' + esc(a.url) + '" target="_blank" rel="noopener"' + tip + '>' +
                esc(a.titel) + '</a></div>';
         });
         h += '</div>';
