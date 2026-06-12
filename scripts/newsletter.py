@@ -539,12 +539,12 @@ GROQ_REASONING_EFFORT    = "low"
 GROQ_FALLBACK_MODEL      = "llama-3.3-70b-versatile"
 
 SIGNUP_URL    = "https://forms.gle/LSavK3JVp3aAsLGm9"
-ARCHIVE_URL   = "https://www.thesignmaker.co.nz/wp-content/smush-webp/2019/04/C16_Work-In-Progress-600x600.png.webp"
+ARCHIVE_URL   = "https://elnils.github.io/newsletter/"
 
 GITHUB_PAGES_BASE_URL = os.environ.get(
     "PAGES_BASE_URL",
-    "https://www.thesignmaker.co.nz/wp-content/smush-webp/2019/04/C16_Work-In-Progress-600x600.png.webp"
-)
+    "https://elnils.github.io/newsletter"
+).rstrip("/")
 
 # ─────────────────────────────────────────────
 # ANKER-ID HELPER
@@ -563,6 +563,50 @@ def _anchor_id(category: str) -> str:
 
 MAX_ARTICLE_AGE_HOURS  = 18   # Artikel älter als X Stunden werden gefiltert
 DUPLICATE_THRESHOLD    = 0.45 # Jaccard-Schwelle: niedriger = strenger gegen Dopplungen
+HISTORY_LOOKBACK_ISSUES = 3   # so viele letzte Ausgaben gegen Wiederholung pruefen
+HISTORY_DEDUP_THRESHOLD = 0.55 # Aehnlichkeit zu alten Titeln, ab der gefiltert wird
+
+# Ausgabe-Verzeichnis fuer das JSON-Archiv. Da newsletter.py in scripts/
+# laeuft, liegt docs/ eine Ebene hoeher (Repo-Wurzel) → Standard "../docs/data".
+# Per Env DOCS_DATA_DIR ueberschreibbar.
+DOCS_DATA_DIR          = os.environ.get("DOCS_DATA_DIR", "../docs/data")
+ARCHIVE_RETENTION_DAYS = 365  # Ausgaben aelter als 1 Jahr werden geloescht
+
+
+def load_recent_titles(data_dir: str = DOCS_DATA_DIR,
+                       lookback: int = HISTORY_LOOKBACK_ISSUES) -> set[str]:
+    """
+    Liest die letzten `lookback` Ausgaben aus dem JSON-Archiv und gibt die
+    normalisierten Titel ihrer Artikel zurueck. Damit lassen sich Themen
+    filtern, die in den Vortagen schon dran waren. Leere Menge wenn kein
+    Archiv vorhanden (erster Lauf).
+    """
+    index_path = os.path.join(data_dir, "index.json")
+    if not os.path.exists(index_path):
+        return set()
+    try:
+        with open(index_path, encoding="utf-8") as f:
+            index = json.load(f)
+    except Exception:
+        return set()
+
+    titles: set[str] = set()
+    for entry in index[:lookback]:   # index ist bereits neueste-zuerst sortiert
+        fpath = os.path.join(data_dir, entry.get("datei", ""))
+        try:
+            with open(fpath, encoding="utf-8") as f:
+                ausgabe = json.load(f)
+        except Exception:
+            continue
+        # Titel aus der vollstaendigen Artikelliste der Ausgabe ziehen
+        for cat_rows in ausgabe.get("alle_artikel", {}).values():
+            for row in cat_rows:
+                t = _normalize_title(row.get("titel", ""))
+                if t:
+                    titles.add(t)
+    if titles:
+        print(f"  ℹ {len(titles)} Titel aus {min(lookback, len(index))} Vorausgabe(n) geladen (Wiederholungsfilter)")
+    return titles
 
 
 def _normalize_title(title: str) -> str:
@@ -603,9 +647,11 @@ def _is_near_duplicate(norm_title: str, seen_norms: set[str],
     return False
 
 
-def fetch_feeds() -> list[dict]:
+def fetch_feeds(recent_titles: set[str] | None = None) -> list[dict]:
     articles    = []
     seen_titles = set()
+    recent_titles = recent_titles or set()
+    repeat_count_total = 0
 
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(FEED_TIMEOUT)
@@ -656,6 +702,13 @@ def fetch_feeds() -> list[dict]:
                         dup_count += 1
                         continue
 
+                    # ── Wiederholung aus Vorausgaben (Tagesfilter) ────
+                    if recent_titles and _is_near_duplicate(
+                        norm, recent_titles, threshold=HISTORY_DEDUP_THRESHOLD
+                    ):
+                        repeat_count_total += 1
+                        continue
+
                     seen_titles.add(norm)
                     articles.append({
                         "source":  source,
@@ -677,6 +730,9 @@ def fetch_feeds() -> list[dict]:
 
     finally:
         socket.setdefaulttimeout(old_timeout)
+
+    if repeat_count_total:
+        print(f"  ℹ {repeat_count_total} Artikel als Wiederholung aus Vorausgaben gefiltert")
 
     return articles[:MAX_ARTICLES_FOR_SUMMARY]
 
@@ -1111,8 +1167,25 @@ FACHLICHE TIEFE (Finanzen/Wirtschaft – besonders wichtig):
 - Bei Zinspolitik praezise und verstaendlich: WER (EZB/Fed), WAS (anheben/senken/halten), um WIE VIEL (Basispunkte/Prozent), auf WELCHES Niveau, und WARUM (Inflation/Konjunktur).
   FALSCH: "Die Zinspolitik bleibt im Fokus der Maerkte." (nichtssagend)
   RICHTIG: "Die EZB haelt den Leitzins bei 2,5 Prozent und begruendet das mit der hartnaeckigen Kerninflation."
+- Sage IMMER "Leitzins", nicht "Hauptrefinanzierungssatz" oder "Hauptrefinanzierungsgeschaeft" – das gelaeufige Wort, nicht der Fachterminus.
+- KEINE konstruierten Ursachenketten. Verknuepfe Zins, Inflation und Ausloeser NUR, wenn alle drei Glieder so im Quelltext stehen.
+  FALSCH (so NIEMALS): "Die EZB erhoeht den Hauptrefinanzierungssatz auf 2,25 Prozent, um die durch die Nahost-Energiekrise angetriebene Inflation zu daempfen."
+    → Dreifach-Kausalkette (Zins ← Inflation ← Nahost-Energie) ist konstruiert und sperrig.
+  RICHTIG: "Die EZB hebt den Leitzins auf 2,25 Prozent an und reagiert damit auf die gestiegene Inflation."
+    → nur der Zusammenhang, der wirklich belegt ist; kurz und klar.
 - Zahlen einordnen: nicht nur "der DAX faellt", sondern "der DAX faellt um 2,1 Prozent auf 18.400 Punkte".
-- Relevanz herstellen: WARUM ist das fuer Anleger oder die Wirtschaft wichtig?"""
+- Relevanz herstellen: WARUM ist das fuer Anleger oder die Wirtschaft wichtig?
+
+NUR DEUTSCH – englische Finanzbegriffe IMMER uebersetzen (haeufiger Fehler!):
+- Schreibe NIEMALS englische Saetze oder englische Fachbegriffe. Alles auf Deutsch.
+  FALSCH (so NIEMALS): "Federal Reserve expectations raise US bond yields, market prices possible rate hike of 25 basis points pushing 10-year yield above 4%."
+  RICHTIG: "Die Erwartung steigender US-Leitzinsen treibt die Renditen US-amerikanischer Staatsanleihen; die Maerkte preisen eine moegliche Anhebung um 25 Basispunkte ein, die Rendite zehnjaehriger Anleihen steigt ueber 4 Prozent."
+- Uebersetzungstabelle Finanzbegriffe:
+  "Federal Reserve / the Fed" → "die US-Notenbank Fed", "bond yield" → "Anleiherendite",
+  "rate hike" → "Zinsanhebung", "rate cut" → "Zinssenkung", "basis points" → "Basispunkte",
+  "yield" → "Rendite", "Treasury" → "US-Staatsanleihe", "market prices in" → "die Maerkte preisen ein",
+  "earnings" → "Quartalszahlen/Gewinn", "guidance" → "Prognose", "sell-off" → "Ausverkauf".
+- Eigennamen bleiben: "Federal Reserve" als Institution ok, aber dann deutsch eingebettet ("die US-Notenbank Federal Reserve")."""
 
         prompt = f"""Fasse die Nachrichten der Kategorie "{category}" in {satz_wort} zusammen.
 
@@ -1129,6 +1202,7 @@ Regeln:
 AUSWAHL (wichtig):
 - Waehle nur UEBERREGIONAL bedeutsame Nachrichten: Bundes-/EU-/Weltpolitik, grosse Konzerne, gesamtwirtschaftliche Themen.
 - IGNORIERE rein lokale oder einzelbetriebliche Meldungen (z.B. "Logistikzentrum einer Handelskette", "Stadtrat beschliesst", "Filiale schliesst") – auch wenn sie in der Liste stehen.
+- JEDES Thema nur EINMAL: Wenn mehrere Schlagzeilen dasselbe Ereignis behandeln (z.B. dieselbe EZB-Zinsentscheidung aus drei Quellen), fasse sie zu EINEM Stichsatz zusammen – niemals zwei Stichsaetze zum selben Ereignis.
 
 SATZBAU (sehr wichtig – haeufige Fehler vermeiden):
 - Jeder Satz muss ALLEIN verstaendlich sein. Keine abgehackten Fragmente.
@@ -1140,6 +1214,11 @@ SATZBAU (sehr wichtig – haeufige Fehler vermeiden):
     → tautologisch (Nordkorea-Besuch beeinflusst Nordkorea-Position) und erfunden.
   RICHTIG: "Chinas Staatschef Xi reist erstmals seit 2019 nach Nordkorea und trifft Machthaber Kim."
 - Nenne einen Effekt NUR, wenn er konkret im Quelltext steht. Sonst beschreibe einfach das Ereignis.
+- EIN Satz = EIN Kerngedanke. Stopfe nicht mehrere Ereignisse in einen Schachtelsatz. Lieber zwei kurze Saetze oder das Nebensaechliche weglassen.
+  FALSCH (so NIEMALS): "Das Weisse Haus verkuendet, dass die USA kurz vor einem Abkommen mit dem Iran stehen und gleichzeitig die geplanten Angriffe auf den Iran absagen, wodurch die Oelpreise fallen."
+    → drei Ereignisse (Abkommen nahe + Angriffe abgesagt + Oelpreise) in einem verschachtelten Satz mit konstruiertem "wodurch".
+  RICHTIG: "Die USA stehen laut Weissem Haus kurz vor einem Atomabkommen mit dem Iran und setzen geplante Militaerschlaege aus."
+    → ein klarer Kerngedanke; der Oelpreis-Effekt entfaellt, wenn er nicht zentral belegt ist.
 
 SCHLECHTE Beispiele – NIEMALS so:
 "• Die internationale Staatengemeinschaft warnt vor negativen Auswirkungen auf die globale Wirtschaft."
@@ -1192,124 +1271,114 @@ Stichsaetze:"""
     return intro, summaries, top_cats, selected_links
 
 # ─────────────────────────────────────────────
-# ARCHIV-HTML
+# ARCHIV ALS JSON (GitHub Pages, docs/)
 # ─────────────────────────────────────────────
 
-def build_archive_html(grouped: dict[str, list[dict]], intro: str,
-                       now: datetime, daytime: str) -> str:
-    date_str = now.strftime("%A, %d. %B %Y")
-    months = {
-        "January": "Januar", "February": "Februar", "March": "März",
-        "April": "April", "May": "Mai", "June": "Juni",
-        "July": "Juli", "August": "August", "September": "September",
-        "October": "Oktober", "November": "November", "December": "Dezember",
+
+def build_archive_json(grouped: dict[str, list[dict]], intro: str,
+                       summaries: dict[str, list[str]],
+                       selected_links: dict[str, list[dict]],
+                       history_fact: str, history_url: str,
+                       now: datetime, daytime: str,
+                       destatis_fact: str = "", destatis_url: str = "",
+                       wm_fact: str = "", wm_url: str = "") -> str:
+    """
+    Schreibt die aktuelle Ausgabe als JSON nach docs/data/ und pflegt
+    docs/data/index.json (Liste aller Ausgaben fuer die Archiv-Webseite).
+    Loescht Ausgaben aelter als ARCHIVE_RETENTION_DAYS.
+    Gibt den Basisnamen der Ausgabe zurueck (z.B. "2026-06-10-morgen").
+    """
+    os.makedirs(DOCS_DATA_DIR, exist_ok=True)
+
+    datum    = now.strftime("%Y-%m-%d")
+    basename = f"{datum}-{daytime}"
+    fname    = f"{basename}.json"
+    fpath    = os.path.join(DOCS_DATA_DIR, fname)
+
+    # ── Newsletter-Inhalte (Zusammenfassungen + kuratierte Links) ──────
+    kategorien = []
+    for cat, bullets in summaries.items():
+        links = [
+            {"quelle": a["source"], "titel": a["title"], "url": a["link"]}
+            for a in selected_links.get(cat, []) if a.get("link")
+        ]
+        kategorien.append({"name": cat, "punkte": bullets, "links": links})
+
+    # ── Vollstaendige Artikelliste (alle Kategorien, kompakt) ──────────
+    alle_artikel = {}
+    for cat, arts in grouped.items():
+        rows = [
+            {"quelle": a["source"], "titel": a["title"], "url": a["link"]}
+            for a in arts if a.get("link")
+        ]
+        if rows:
+            alle_artikel[cat] = rows
+
+    ausgabe = {
+        "datum":      datum,
+        "zeit":       daytime,
+        "erstellt":   now.strftime("%d.%m.%Y %H:%M"),
+        "intro":      intro,
+        "wikipedia":  {"text": history_fact, "url": history_url},
+        "destatis":   {"text": destatis_fact, "url": destatis_url},
+        "wm":         {"text": wm_fact, "url": wm_url},
+        "kategorien": kategorien,
+        "alle_artikel": alle_artikel,
     }
-    days = {
-        "Monday": "Montag", "Tuesday": "Dienstag", "Wednesday": "Mittwoch",
-        "Thursday": "Donnerstag", "Friday": "Freitag",
-        "Saturday": "Samstag", "Sunday": "Sonntag",
+    with open(fpath, "w", encoding="utf-8") as f:
+        json.dump(ausgabe, f, ensure_ascii=False, indent=1)
+
+    # ── index.json pflegen ─────────────────────────────────────────────
+    index_path = os.path.join(DOCS_DATA_DIR, "index.json")
+    index: list[dict] = []
+    if os.path.exists(index_path):
+        try:
+            with open(index_path, encoding="utf-8") as f:
+                index = json.load(f)
+        except Exception:
+            index = []
+
+    # Suchtext: Intro + alle Stichpunkte + beide Datumsformate (lowercase)
+    datum_de = now.strftime("%d.%m.%Y")
+    suchtext = " ".join(
+        [intro, datum, datum_de]
+        + [b for k in kategorien for b in k["punkte"]]
+        + [k["name"] for k in kategorien]
+    ).lower()
+
+    eintrag = {
+        "datei": fname,
+        "datum": datum,
+        "zeit":  daytime,
+        "intro": intro,
+        "suchtext": suchtext,
     }
-    for en, de in {**months, **days}.items():
-        date_str = date_str.replace(en, de)
+    # Re-Run derselben Ausgabe ersetzt den alten Eintrag
+    index = [e for e in index if e.get("datei") != fname]
+    index.append(eintrag)
 
-    daytime_label  = "Morgen" if daytime == "morgen" else "Abend"
-    total_articles = sum(len(v) for v in grouped.values())
+    # ── Aufbewahrung: aelter als ARCHIVE_RETENTION_DAYS loeschen ───────
+    cutoff = (now - timedelta(days=ARCHIVE_RETENTION_DAYS)).strftime("%Y-%m-%d")
+    keep, drop = [], []
+    for e in index:
+        (keep if e.get("datum", "") >= cutoff else drop).append(e)
+    for e in drop:
+        try:
+            os.remove(os.path.join(DOCS_DATA_DIR, e["datei"]))
+        except OSError:
+            pass
+    if drop:
+        print(f"     {len(drop)} alte Ausgabe(n) geloescht (>1 Jahr)")
 
-    FONT         = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-    COLOR_NAVY   = "#1b2a3b"
-    COLOR_NAVY2  = "#2c3e50"
-    COLOR_BLUE   = "#5a7fa0"
-    COLOR_LIGHT  = "#a0b4c4"
-    COLOR_MUTED  = "#7a9bb5"
-    COLOR_BORDER = "#e8e8e8"
-    COLOR_TEXT   = "#1c1c1e"
-    COLOR_TEXT2  = "#3a3a3c"
-    COLOR_LABEL  = "#8fa8bc"
+    # Neueste zuerst (Datum absteigend, Abend vor Morgen am selben Tag)
+    def _rank(e):
+        return (e.get("datum", ""), 1 if e.get("zeit") == "abend" else 0)
+    index = sorted(keep, key=_rank, reverse=True)
 
-    nav_links = ""
-    for cat in grouped:
-        anchor = _anchor_id(cat)
-        nav_links += (
-            f'<a href="#{anchor}" style="display:inline-block;margin:3px 4px;'
-            f'font-size:11px;color:{COLOR_LIGHT};text-decoration:none;'
-            f'border:1px solid #3a5068;padding:3px 9px;border-radius:2px;">{cat}</a>'
-        )
+    with open(index_path, "w", encoding="utf-8") as f:
+        json.dump(index, f, ensure_ascii=False, indent=1)
 
-    cat_blocks = ""
-    all_cats   = list(grouped.items())
-    for idx, (category, articles) in enumerate(all_cats):
-        if not articles:
-            continue
-        anchor        = _anchor_id(category)
-        is_last       = (idx == len(all_cats) - 1)
-        border_bottom = "none" if is_last else f"2px solid {COLOR_BORDER}"
-
-        rows = ""
-        for a in articles:
-            if not a.get("link"):
-                continue
-            rows += (
-                f'<div style="display:flex;align-items:baseline;padding:9px 0;'
-                f'border-bottom:1px solid #f0f2f4;">'
-                f'<span style="flex:0 0 120px;font-size:10px;font-weight:600;'
-                f'text-transform:uppercase;letter-spacing:0.6px;color:{COLOR_LABEL};'
-                f'padding-right:12px;white-space:nowrap;overflow:hidden;'
-                f'text-overflow:ellipsis;">{a["source"]}</span>'
-                f'<a href="{a["link"]}" style="flex:1;font-size:13.5px;'
-                f'color:{COLOR_TEXT};text-decoration:none;line-height:1.45;">'
-                f'{a["title"]}</a>'
-                f'</div>'
-            )
-
-        # <a name="..."> für Anker-Kompatibilität im Browser (Archiv-Seite)
-        cat_blocks += (
-            f'<div style="padding:28px 0;border-bottom:{border_bottom};">'
-            f'<a name="{anchor}" style="display:block;height:0;overflow:hidden;"></a>'
-            f'<div style="display:flex;align-items:center;margin-bottom:16px;'
-            f'padding-bottom:10px;border-bottom:2px solid {COLOR_NAVY2};">'
-            f'<span style="font-size:16px;font-weight:700;color:{COLOR_NAVY};flex:1;">'
-            f'{category}</span>'
-            f'<span style="font-size:11px;color:{COLOR_MUTED};">{len(articles)} Artikel</span>'
-            f'</div>{rows}</div>'
-        )
-
-    intro_plain = re.sub(r"<[^>]+>", "", intro)
-
-    return (
-        '<!DOCTYPE html>\n<html lang="de">\n<head>\n'
-        '  <meta charset="UTF-8">\n'
-        '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-        f'  <title>Tageslage Archiv - {date_str} ({daytime_label})</title>\n'
-        f'  <style>body{{margin:0;padding:0;background:#f0f2f4;font-family:{FONT}}}'
-        f'a{{color:{COLOR_TEXT}}}a:hover{{opacity:.75}}'
-        f'@media(max-width:600px){{.nav-wrap{{display:none}}}}</style>\n'
-        '</head>\n<body>\n'
-        f'<div style="background:{COLOR_NAVY};padding:36px 24px 28px;text-align:center;">'
-        f'<div style="max-width:760px;margin:0 auto;">'
-        f'<div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;'
-        f'color:{COLOR_MUTED};margin-bottom:10px;">Vollständiges Archiv</div>'
-        f'<div style="font-size:30px;font-weight:700;color:#fff;margin-bottom:8px;">Tageslage</div>'
-        f'<div style="font-size:13px;color:{COLOR_LIGHT};margin-bottom:20px;">'
-        f'{date_str} &middot; {daytime_label}-Ausgabe</div>'
-        f'<div class="nav-wrap" style="margin-top:16px;line-height:2;">{nav_links}</div>'
-        f'</div></div>'
-        f'<div style="background:{COLOR_NAVY2};padding:8px 24px;text-align:center;'
-        f'font-size:11px;color:{COLOR_MUTED};">'
-        f'{len(RSS_FEEDS)}&nbsp;Quellen &middot; {total_articles}&nbsp;Artikel '
-        f'&middot; {len(grouped)}&nbsp;Kategorien &middot; KI-kuratiert</div>'
-        f'<div style="background:#fff;border-bottom:1px solid {COLOR_BORDER};">'
-        f'<div style="max-width:760px;margin:0 auto;padding:20px 24px;">'
-        f'<p style="font-size:14px;line-height:1.75;color:{COLOR_TEXT2};'
-        f'margin:0;font-style:italic;">{intro_plain}</p></div></div>'
-        f'<div style="max-width:760px;margin:0 auto;padding:0 24px 40px;">'
-        f'<div style="background:#fff;border:1px solid {COLOR_BORDER};'
-        f'border-top:none;padding:0 32px;">{cat_blocks}</div></div>'
-        f'<div style="background:{COLOR_NAVY};padding:20px 24px;text-align:center;">'
-        f'<p style="font-size:11px;color:{COLOR_MUTED};line-height:1.8;margin:0;">'
-        f'Erstellt am {now.strftime("%d.%m.%Y")} um {now.strftime("%H:%M")} Uhr'
-        f'&nbsp;&middot;&nbsp;Powered by Nils</p></div>'
-        '</body>\n</html>\n'
-    )
+    return basename
 
 # ─────────────────────────────────────────────
 # NEWSLETTER-HTML
@@ -1321,7 +1390,11 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                archive_url: str = "",
                signup_url: str = "",
                history_fact: str = "",
-               history_url: str = "") -> str:
+               history_url: str = "",
+               destatis_fact: str = "",
+               destatis_url: str = "",
+               wm_fact: str = "",
+               wm_url: str = "") -> str:
     """
     Baut den HTML-Newsletter.
     Platzhalter ##UNSUBSCRIBE_URL## wird in send_email() ersetzt.
@@ -1385,6 +1458,56 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
             f'color:{COLOR_TEXT2};">{fact_html}'
             f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Wikipedia</span>'
+            f'</td></tr></table>'
+            f'</td></tr>'
+        )
+
+    # ── "Statistik des Tages" (Destatis) – nur wenn vorhanden ─────────────
+    destatis_html = ""
+    if destatis_fact:
+        if destatis_url:
+            stat_html = (
+                f'<a href="{destatis_url}" style="color:{COLOR_TEXT2};'
+                f'text-decoration:none;border-bottom:1px solid {COLOR_LIGHT};">'
+                f'{destatis_fact}</a>'
+            )
+        else:
+            stat_html = destatis_fact
+        destatis_html = (
+            f'<tr><td style="padding:14px 32px;background:{COLOR_BG};'
+            f'border-bottom:1px solid {COLOR_BORDER};">'
+            f'<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>'
+            f'<td style="font-family:{FONT};font-size:11px;font-weight:700;'
+            f'text-transform:uppercase;letter-spacing:1px;color:{COLOR_BLUE};'
+            f'padding-bottom:4px;">📊 Zahl des Tages</td></tr>'
+            f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
+            f'color:{COLOR_TEXT2};">{stat_html}'
+            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Destatis</span>'
+            f'</td></tr></table>'
+            f'</td></tr>'
+        )
+
+    # ── WM-Block (nur waehrend des Turniers) ─────────────────────────────
+    wm_html = ""
+    if wm_fact:
+        if wm_url:
+            wm_inner = (
+                f'<a href="{wm_url}" style="color:{COLOR_TEXT2};'
+                f'text-decoration:none;border-bottom:1px solid {COLOR_LIGHT};">'
+                f'{wm_fact}</a>'
+            )
+        else:
+            wm_inner = wm_fact
+        wm_html = (
+            f'<tr><td style="padding:14px 32px;background:{COLOR_BG};'
+            f'border-bottom:1px solid {COLOR_BORDER};">'
+            f'<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>'
+            f'<td style="font-family:{FONT};font-size:11px;font-weight:700;'
+            f'text-transform:uppercase;letter-spacing:1px;color:{COLOR_BLUE};'
+            f'padding-bottom:4px;">⚽ Fußball-WM 2026</td></tr>'
+            f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
+            f'color:{COLOR_TEXT2};">{wm_inner}'
+            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Ergebnisse: Sportschau</span>'
             f'</td></tr></table>'
             f'</td></tr>'
         )
@@ -1520,6 +1643,8 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         f'&middot; kuratiert mit KI</td></tr>\n'
         + intro_html
         + history_html
+        + destatis_html
+        + wm_html
         + category_blocks
         + footer_html +
         '</table>\n</td></tr>\n</table>\n</body>\n</html>'
@@ -1590,6 +1715,165 @@ def fetch_history_fact() -> tuple[str, str]:
         return "", ""
     except Exception as e:
         print(f"  ⚠ Wikipedia-Fakt Fehler: {e}")
+        return "", ""
+
+# ─────────────────────────────────────────────
+# STATISTIK DES TAGES – DESTATIS
+# ─────────────────────────────────────────────
+
+# Taegliche Pressemitteilungen des Statistischen Bundesamts (CC: "Verbreitung
+# mit Quellenangabe erwuenscht"). Liefert seriose, deutsche Zahlen.
+DESTATIS_RSS_URL = "https://www.destatis.de/SiteGlobals/Functions/RSSFeed/DE/RSSNewsfeed/Aktuell.xml?nn=241288"
+
+
+def fetch_destatis_stat() -> tuple[str, str]:
+    """
+    Holt die neueste Destatis-Pressemitteilung als "Statistik des Tages".
+    Gibt (Text, Link) zurueck oder ("", "") bei Fehler/nichts Passendem.
+    Nimmt nur PMs von heute/gestern, damit nichts Veraltetes erscheint.
+    """
+    try:
+        feed = feedparser.parse(DESTATIS_RSS_URL)
+        if not feed.entries:
+            print("  ⚠ Destatis: keine Eintraege")
+            return "", ""
+
+        now = datetime.now(timezone.utc)
+        for entry in feed.entries[:5]:
+            title = entry.get("title", "").strip()
+            link  = entry.get("link", "").strip()
+            if not title:
+                continue
+
+            # Nur frische PMs (max ~48h alt), sonst nichts anzeigen
+            ts = entry.get("published_parsed") or entry.get("updated_parsed")
+            if ts:
+                try:
+                    pub = datetime(*ts[:6], tzinfo=timezone.utc)
+                    if (now - pub) > timedelta(hours=48):
+                        continue
+                except Exception:
+                    pass
+
+            # Titel ist meist schon eine kompakte Aussage
+            # (z.B. "Rund 129 300 Ehescheidungen im Jahr 2024")
+            print(f"  ✓ Destatis-Statistik: {title[:50]}")
+            return title, link
+
+        print("  ⚠ Destatis: nichts Aktuelles (max 48h)")
+        return "", ""
+    except Exception as e:
+        print(f"  ⚠ Destatis-Fehler: {e}")
+        return "", ""
+
+# ─────────────────────────────────────────────
+# FUSSBALL-WM 2026 (nur waehrend des Turniers)
+# ─────────────────────────────────────────────
+
+# Public-Domain-Daten von openfootball (kein API-Key, erlaubte raw-Domain).
+# Wird ca. 1x taeglich manuell aktualisiert – fuer 2 Ausgaben/Tag ausreichend.
+WM_JSON_URL    = "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json"
+WM_FETCH_TIMEOUT = 15
+# Turnierfenster: nur in diesem Zeitraum erscheint der WM-Block.
+WM_START_DATE  = "2026-06-11"
+WM_END_DATE    = "2026-07-19"
+
+# Englische → deutsche Laendernamen (nur die WM-Teilnehmer 2026).
+WM_TEAM_DE = {
+    "Mexico": "Mexiko", "South Africa": "Südafrika", "South Korea": "Südkorea",
+    "Czech Republic": "Tschechien", "Canada": "Kanada",
+    "Bosnia & Herzegovina": "Bosnien-Herz.", "Qatar": "Katar", "Switzerland": "Schweiz",
+    "Brazil": "Brasilien", "Morocco": "Marokko", "Haiti": "Haiti", "Scotland": "Schottland",
+    "USA": "USA", "Paraguay": "Paraguay", "Australia": "Australien", "Turkey": "Türkei",
+    "Germany": "Deutschland", "Curaçao": "Curaçao", "Ivory Coast": "Elfenbeinküste",
+    "Ecuador": "Ecuador", "Netherlands": "Niederlande", "Japan": "Japan",
+    "Sweden": "Schweden", "Tunisia": "Tunesien", "Belgium": "Belgien", "Egypt": "Ägypten",
+    "Iran": "Iran", "New Zealand": "Neuseeland", "Spain": "Spanien", "Cape Verde": "Kap Verde",
+    "Saudi Arabia": "Saudi-Arabien", "Uruguay": "Uruguay", "France": "Frankreich",
+    "Senegal": "Senegal", "Iraq": "Irak", "Norway": "Norwegen", "Argentina": "Argentinien",
+    "Algeria": "Algerien", "Austria": "Österreich", "Jordan": "Jordanien",
+    "Portugal": "Portugal", "DR Congo": "DR Kongo", "Uzbekistan": "Usbekistan",
+    "Colombia": "Kolumbien", "England": "England", "Croatia": "Kroatien", "Ghana": "Ghana",
+    "Panama": "Panama",
+}
+
+
+def _wm_team(name: str) -> str:
+    """Englischen Teamnamen ins Deutsche uebersetzen (Fallback: Original)."""
+    return WM_TEAM_DE.get(name.strip(), name.strip())
+
+
+def fetch_wm_info(now: datetime | None = None) -> tuple[str, str]:
+    """
+    Liefert einen kompakten WM-Block (letztes Ergebnis + naechstes Spiel) als
+    (Text, Link) – aber nur waehrend des Turnierzeitraums. Ausserhalb leer.
+    """
+    now = now or datetime.now()
+    today = now.strftime("%Y-%m-%d")
+
+    # ── Turnierfenster pruefen – ausserhalb gar nicht erst laden ──────
+    if not (WM_START_DATE <= today <= WM_END_DATE):
+        return "", ""
+
+    try:
+        req = urllib.request.Request(
+            WM_JSON_URL, headers={"User-Agent": "Tageslage-Newsletter/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=WM_FETCH_TIMEOUT) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        matches = data.get("matches", [])
+        if not matches:
+            return "", ""
+
+        # ── Letztes gespieltes Ergebnis (Datum <= heute, mit Score) ──
+        letztes = None
+        for m in matches:
+            d = m.get("date", "")
+            has_score = m.get("score1") is not None and m.get("score2") is not None
+            if d and d <= today and has_score:
+                if letztes is None or d >= letztes.get("date", ""):
+                    letztes = m
+
+        # ── Naechstes Spiel (Datum >= heute, noch ohne Ergebnis) ─────
+        naechstes = None
+        for m in matches:
+            d = m.get("date", "")
+            has_score = m.get("score1") is not None and m.get("score2") is not None
+            if d and d >= today and not has_score:
+                if naechstes is None or d < naechstes.get("date", ""):
+                    naechstes = m
+
+        teile = []
+        if letztes:
+            t1 = _wm_team(letztes.get("team1", ""))
+            t2 = _wm_team(letztes.get("team2", ""))
+            s1 = letztes.get("score1", "")
+            s2 = letztes.get("score2", "")
+            teile.append(f"Zuletzt: {t1} {s1}:{s2} {t2}")
+        if naechstes:
+            t1 = _wm_team(naechstes.get("team1", ""))
+            t2 = _wm_team(naechstes.get("team2", ""))
+            d  = naechstes.get("date", "")
+            # Datum huebsch: 2026-06-12 → 12.06.
+            try:
+                dd = datetime.strptime(d, "%Y-%m-%d").strftime("%d.%m.")
+            except Exception:
+                dd = d
+            uhr = naechstes.get("time", "")
+            teile.append(f"Als Nächstes: {t1} – {t2} ({dd})")
+
+        if not teile:
+            return "", ""
+
+        text = " · ".join(teile)
+        print(f"  ✓ WM-Info: {text[:60]}")
+        return text, "https://www.sportschau.de/live-und-ergebnisse/fussball/fifa-wm/spiele-und-ergebnisse"
+
+    except (urllib.error.URLError, socket.timeout) as e:
+        print(f"  ⚠ WM-Daten nicht erreichbar: {e}")
+        return "", ""
+    except Exception as e:
+        print(f"  ⚠ WM-Fehler: {e}")
         return "", ""
 
 # ─────────────────────────────────────────────
@@ -1668,6 +1952,13 @@ def send_email(html_template: str, recipient: str,
     msg["From"]    = f"Tageslage <{sender}>"
     msg["To"]      = recipient
 
+    # ── Nativer "Abbestellen"-Button in Gmail/Apple Mail/Outlook ──────────
+    # List-Unsubscribe zeigt den Button neben dem Absender. List-Unsubscribe-Post
+    # erlaubt 1-Klick-Abmeldung (RFC 8058) direkt im Mailclient ohne Seitenaufruf.
+    if unsubscribe_base and unsubscribe_url != "#":
+        msg["List-Unsubscribe"] = f"<{unsubscribe_url}>"
+        msg["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click"
+
     plain = f"Tageslage – {now.strftime('%d.%m.%Y')}\nBitte HTML-Ansicht aktivieren."
     msg.attach(MIMEText(plain, "plain", "utf-8"))
     msg.attach(MIMEText(html_content, "html", "utf-8"))
@@ -1700,7 +1991,8 @@ def main():
     print(f"Empfänger: {len(recipients)}\n")
 
     print("1/5 – RSS-Feeds laden...")
-    articles = fetch_feeds()
+    recent_titles = load_recent_titles()
+    articles = fetch_feeds(recent_titles=recent_titles)
     print(f"     {len(articles)} Artikel gesammelt\n")
 
     print("2/5 – Kategorisieren...")
@@ -1715,20 +2007,25 @@ def main():
 
     print("    → 'Heute vor X Jahren' von Wikipedia holen...")
     history_fact, history_url = fetch_history_fact()
+    print("    → 'Zahl des Tages' von Destatis holen...")
+    destatis_fact, destatis_url = fetch_destatis_stat()
+    print("    → WM-Spielstand holen (nur waehrend Turnier)...")
+    wm_fact, wm_url = fetch_wm_info()
     print()
 
     now      = datetime.now()
     daytime  = "morgen" if now.hour < 13 else "abend"
-    filename = f"{now.strftime('%Y-%m-%d')}-{daytime}.html"
-    archive_url = f"{GITHUB_PAGES_BASE_URL}/archiv/{filename}"
 
-    print("4/5 – Archiv-HTML erstellen...")
-    archive_html = build_archive_html(grouped, intro, now, daytime)
-    archive_path = f"archiv/{filename}"
-    os.makedirs("archiv", exist_ok=True)
-    with open(archive_path, "w", encoding="utf-8") as f:
-        f.write(archive_html)
-    print(f"     {archive_path} geschrieben\n")
+    print("4/5 – Archiv-JSON erstellen...")
+    archive_basename = build_archive_json(
+        grouped, intro, summaries, selected_links,
+        history_fact, history_url, now, daytime,
+        destatis_fact=destatis_fact, destatis_url=destatis_url,
+        wm_fact=wm_fact, wm_url=wm_url,
+    )
+    # Deep-Link: Landing Page oeffnet direkt diese Ausgabe
+    archive_url = f"{GITHUB_PAGES_BASE_URL}/?a={archive_basename}"
+    print(f"     docs/data/{archive_basename}.json geschrieben\n")
 
     print("5/5 – Newsletter versenden...")
     html_template = build_html(
@@ -1738,6 +2035,10 @@ def main():
         signup_url=signup_url,
         history_fact=history_fact,
         history_url=history_url,
+        destatis_fact=destatis_fact,
+        destatis_url=destatis_url,
+        wm_fact=wm_fact,
+        wm_url=wm_url,
     )
 
     sent   = 0
