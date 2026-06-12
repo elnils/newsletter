@@ -566,10 +566,11 @@ DUPLICATE_THRESHOLD    = 0.45 # Jaccard-Schwelle: niedriger = strenger gegen Dop
 HISTORY_LOOKBACK_ISSUES = 3   # so viele letzte Ausgaben gegen Wiederholung pruefen
 HISTORY_DEDUP_THRESHOLD = 0.55 # Aehnlichkeit zu alten Titeln, ab der gefiltert wird
 
-# Ausgabe-Verzeichnis fuer das JSON-Archiv. Da newsletter.py in scripts/
-# laeuft, liegt docs/ eine Ebene hoeher (Repo-Wurzel) → Standard "../docs/data".
+# Ausgabe-Verzeichnis fuer das JSON-Archiv. GitHub Pages liest aus der
+# main-WURZEL, daher liegt data/ in der Repo-Wurzel. Da newsletter.py in
+# scripts/ laeuft, ist das eine Ebene hoeher → "../data".
 # Per Env DOCS_DATA_DIR ueberschreibbar.
-DOCS_DATA_DIR          = os.environ.get("DOCS_DATA_DIR", "../docs/data")
+DOCS_DATA_DIR          = os.environ.get("DOCS_DATA_DIR", "../data")
 ARCHIVE_RETENTION_DAYS = 365  # Ausgaben aelter als 1 Jahr werden geloescht
 
 
@@ -1281,7 +1282,7 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
                        history_fact: str, history_url: str,
                        now: datetime, daytime: str,
                        destatis_fact: str = "", destatis_url: str = "",
-                       wm_fact: str = "", wm_url: str = "") -> str:
+                       destatis_zahl: str = "", wm_info: dict | None = None) -> str:
     """
     Schreibt die aktuelle Ausgabe als JSON nach docs/data/ und pflegt
     docs/data/index.json (Liste aller Ausgaben fuer die Archiv-Webseite).
@@ -1320,8 +1321,8 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
         "erstellt":   now.strftime("%d.%m.%Y %H:%M"),
         "intro":      intro,
         "wikipedia":  {"text": history_fact, "url": history_url},
-        "destatis":   {"text": destatis_fact, "url": destatis_url},
-        "wm":         {"text": wm_fact, "url": wm_url},
+        "destatis":   {"zahl": destatis_zahl, "text": destatis_fact, "url": destatis_url},
+        "wm":         wm_info or {},
         "kategorien": kategorien,
         "alle_artikel": alle_artikel,
     }
@@ -1393,8 +1394,8 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                history_url: str = "",
                destatis_fact: str = "",
                destatis_url: str = "",
-               wm_fact: str = "",
-               wm_url: str = "") -> str:
+               destatis_zahl: str = "",
+               wm_info: dict | None = None) -> str:
     """
     Baut den HTML-Newsletter.
     Platzhalter ##UNSUBSCRIBE_URL## wird in send_email() ersetzt.
@@ -1462,52 +1463,47 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'</td></tr>'
         )
 
-    # ── "Statistik des Tages" (Destatis) – nur wenn vorhanden ─────────────
+    # ── "Zahl des Tages" (Destatis) – grosse Zahl + Text ─────────────────
     destatis_html = ""
     if destatis_fact:
+        # Text ggf. verlinken
         if destatis_url:
-            stat_html = (
+            text_inner = (
                 f'<a href="{destatis_url}" style="color:{COLOR_TEXT2};'
                 f'text-decoration:none;border-bottom:1px solid {COLOR_LIGHT};">'
                 f'{destatis_fact}</a>'
             )
         else:
-            stat_html = destatis_fact
+            text_inner = destatis_fact
+
+        # Wenn eine Zahl erkannt wurde: gross voranstellen
+        if destatis_zahl:
+            zahl_block = (
+                f'<span style="font-family:{FONT};font-size:26px;font-weight:800;'
+                f'color:{COLOR_NAVY};line-height:1.1;display:inline-block;'
+                f'margin-right:10px;vertical-align:middle;">{destatis_zahl}</span>'
+            )
+            body = (
+                f'{zahl_block}'
+                f'<span style="font-family:{FONT};font-size:14px;line-height:1.5;'
+                f'color:{COLOR_TEXT2};vertical-align:middle;">{text_inner}</span>'
+            )
+        else:
+            body = (
+                f'<span style="font-family:{FONT};font-size:13px;line-height:1.6;'
+                f'color:{COLOR_TEXT2};">{text_inner}</span>'
+            )
+
         destatis_html = (
             f'<tr><td style="padding:14px 32px;background:{COLOR_BG};'
             f'border-bottom:1px solid {COLOR_BORDER};">'
             f'<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>'
             f'<td style="font-family:{FONT};font-size:11px;font-weight:700;'
             f'text-transform:uppercase;letter-spacing:1px;color:{COLOR_BLUE};'
-            f'padding-bottom:4px;">📊 Zahl des Tages</td></tr>'
-            f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
-            f'color:{COLOR_TEXT2};">{stat_html}'
-            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Destatis</span>'
-            f'</td></tr></table>'
-            f'</td></tr>'
-        )
-
-    # ── WM-Block (nur waehrend des Turniers) ─────────────────────────────
-    wm_html = ""
-    if wm_fact:
-        if wm_url:
-            wm_inner = (
-                f'<a href="{wm_url}" style="color:{COLOR_TEXT2};'
-                f'text-decoration:none;border-bottom:1px solid {COLOR_LIGHT};">'
-                f'{wm_fact}</a>'
-            )
-        else:
-            wm_inner = wm_fact
-        wm_html = (
-            f'<tr><td style="padding:14px 32px;background:{COLOR_BG};'
-            f'border-bottom:1px solid {COLOR_BORDER};">'
-            f'<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>'
-            f'<td style="font-family:{FONT};font-size:11px;font-weight:700;'
-            f'text-transform:uppercase;letter-spacing:1px;color:{COLOR_BLUE};'
-            f'padding-bottom:4px;">⚽ Fußball-WM 2026</td></tr>'
-            f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
-            f'color:{COLOR_TEXT2};">{wm_inner}'
-            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Ergebnisse: Sportschau</span>'
+            f'padding-bottom:6px;">📊 Zahl des Tages</td></tr>'
+            f'<tr><td>{body}'
+            f'<div style="font-family:{FONT};color:{COLOR_MUTED};font-size:10px;'
+            f'margin-top:4px;">Quelle: Destatis</div>'
             f'</td></tr></table>'
             f'</td></tr>'
         )
@@ -1572,6 +1568,57 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         )
 
     total_articles = sum(len(v) for v in grouped.values())
+
+    # ── WM-Block (ans Ende, nur waehrend des Turniers) ───────────────────
+    wm_html = ""
+    if wm_info and (wm_info.get("letztes") or wm_info.get("heute") or wm_info.get("naechste")):
+        wm_link = wm_info.get("link", "")
+        zeilen = ""
+        # Letztes Ergebnis
+        if wm_info.get("letztes"):
+            zeilen += (
+                f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.7;'
+                f'color:{COLOR_TEXT2};padding:1px 0;">'
+                f'<span style="color:{COLOR_MUTED};">Zuletzt:</span> '
+                f'<strong style="color:{COLOR_NAVY};">{wm_info["letztes"]}</strong>'
+                f'</td></tr>'
+            )
+        # Spiele heute
+        if wm_info.get("heute"):
+            spiele = "<br>".join(wm_info["heute"])
+            zeilen += (
+                f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.7;'
+                f'color:{COLOR_TEXT2};padding:1px 0;">'
+                f'<span style="color:{COLOR_MUTED};">Heute:</span> {spiele}'
+                f'</td></tr>'
+            )
+        elif wm_info.get("naechste"):
+            spiele = "<br>".join(wm_info["naechste"])
+            zeilen += (
+                f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.7;'
+                f'color:{COLOR_TEXT2};padding:1px 0;">'
+                f'<span style="color:{COLOR_MUTED};">Als Nächstes:</span> {spiele}'
+                f'</td></tr>'
+            )
+        # Link zu allen Ergebnissen
+        link_zeile = ""
+        if wm_link:
+            link_zeile = (
+                f'<tr><td style="padding-top:6px;">'
+                f'<a href="{wm_link}" style="font-family:{FONT};font-size:11px;'
+                f'font-weight:600;color:{COLOR_BLUE};text-decoration:none;">'
+                f'Alle Ergebnisse & Spielplan →</a></td></tr>'
+            )
+
+        wm_html = (
+            f'<tr><td style="padding:18px 32px 20px;background:{COLOR_BG};'
+            f'border-top:2px solid {COLOR_BORDER};">'
+            f'<table cellpadding="0" cellspacing="0" border="0" width="100%">'
+            f'<tr><td style="font-family:{FONT};font-size:13px;font-weight:700;'
+            f'color:{COLOR_NAVY};padding-bottom:8px;">⚽ Fußball-WM 2026</td></tr>'
+            f'{zeilen}{link_zeile}'
+            f'</table></td></tr>'
+        )
 
     # ── Footer ────────────────────────────────────────────────────────────
     footer_html = (
@@ -1644,8 +1691,8 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         + intro_html
         + history_html
         + destatis_html
-        + wm_html
         + category_blocks
+        + wm_html
         + footer_html +
         '</table>\n</td></tr>\n</table>\n</body>\n</html>'
     )
@@ -1726,26 +1773,77 @@ def fetch_history_fact() -> tuple[str, str]:
 DESTATIS_RSS_URL = "https://www.destatis.de/SiteGlobals/Functions/RSSFeed/DE/RSSNewsfeed/Aktuell.xml?nn=241288"
 
 
-def fetch_destatis_stat() -> tuple[str, str]:
+def _extract_destatis_number(title: str) -> tuple[str, str]:
     """
-    Holt die neueste Destatis-Pressemitteilung als "Statistik des Tages".
-    Gibt (Text, Link) zurueck oder ("", "") bei Fehler/nichts Passendem.
-    Nimmt nur PMs von heute/gestern, damit nichts Veraltetes erscheint.
+    Versucht aus einem Destatis-Titel die markanteste Zahl herauszuloesen
+    und gibt (zahl, resttext) zurueck. Beispiele:
+      "Rund 129 300 Ehescheidungen im Jahr 2024"
+        → ("129.300", "Ehescheidungen im Jahr 2024")
+      "Inflationsrate im Mai 2026 bei +2,1 %"
+        → ("+2,1 %", "Inflationsrate im Mai 2026")
+      "Exporte im April 2026: -3,2 % zum Vormonat"
+        → ("-3,2 %", "Exporte im April 2026 zum Vormonat")
+    Wenn keine sinnvolle Zahl gefunden wird: ("", title).
+    """
+    t = title.strip()
+
+    # Muster nach Prioritaet: Geldbetraege, Prozent, grosse Zahlen mit Einheit
+    patterns = [
+        # 11 Mrd./Mio. Euro  |  1,5 Milliarden Euro
+        r"([+-]?\d[\d\.\s]*(?:,\d+)?\s*(?:Mrd\.?|Mio\.?|Milliarden|Millionen|Billionen)\s*(?:Euro|€|EUR)?)",
+        # Prozent: +2,1 %  | -3,2 Prozent
+        r"([+-]?\d+(?:,\d+)?\s*(?:%|Prozent))",
+        # grosse Zahl mit Tausender-Leerzeichen: 129 300  | 1 234 567
+        r"(\d{1,3}(?:\s\d{3})+)",
+        # einfache Zahl mit Einheit/Jahr-unabhaengig: 2,3 Millionen etc. schon oben
+        # einzelne groessere Zahl (>=3 Stellen), aber NICHT eine Jahreszahl
+        r"(?<!\d)(\d{3,}(?:,\d+)?)(?!\d)",
+    ]
+
+    for pat in patterns:
+        m = re.search(pat, t)
+        if not m:
+            continue
+        zahl = m.group(1).strip()
+        # Jahreszahlen (1900-2099) als alleinige Zahl ignorieren
+        if re.fullmatch(r"(19|20)\d{2}", zahl.replace(" ", "")):
+            continue
+        # Tausender-Leerzeichen → Punkt (129 300 → 129.300)
+        zahl_fmt = re.sub(r"(\d)\s(\d{3})", r"\1.\2", zahl)
+        zahl_fmt = re.sub(r"(\d)\s(\d{3})", r"\1.\2", zahl_fmt)  # 2x fuer Millionen
+        # Resttext: die Zahl rausschneiden, Fuellwoerter aufraeumen
+        rest = (t[:m.start()] + t[m.end():]).strip()
+        rest = re.sub(r"^\s*(Rund|Etwa|Circa|Ca\.?|Knapp|Mehr als|Fast)\s+", "", rest, flags=re.I)
+        rest = re.sub(r"\s{2,}", " ", rest).strip(" :–-,")
+        # Hae­ngende Praepositionen/Fuellwoerter am Rand entfernen
+        rest = re.sub(r"\s+(bei|auf|um|von|im|zum|zur|mit|fuer)\s*$", "", rest, flags=re.I).strip(" :–-,")
+        rest = re.sub(r"^(bei|auf|um|von|im|zum|zur|mit|fuer|steigen|steigt|sinkt|sinken|liegt|liegen)\s+", "", rest, flags=re.I).strip(" :–-,")
+        if rest:
+            return zahl_fmt, rest
+
+    return "", t
+
+
+def fetch_destatis_stat() -> tuple[str, str, str]:
+    """
+    Holt die neueste Destatis-Pressemitteilung als "Zahl des Tages".
+    Gibt (zahl, text, link) zurueck – die Zahl wird im Newsletter gross
+    dargestellt, der Text daneben. Bei fehlender Zahl ist zahl="" und der
+    Titel steht komplett im Text. ("","","") bei Fehler/nichts Aktuellem.
     """
     try:
         feed = feedparser.parse(DESTATIS_RSS_URL)
         if not feed.entries:
             print("  ⚠ Destatis: keine Eintraege")
-            return "", ""
+            return "", "", ""
 
         now = datetime.now(timezone.utc)
-        for entry in feed.entries[:5]:
+        for entry in feed.entries[:6]:
             title = entry.get("title", "").strip()
             link  = entry.get("link", "").strip()
             if not title:
                 continue
 
-            # Nur frische PMs (max ~48h alt), sonst nichts anzeigen
             ts = entry.get("published_parsed") or entry.get("updated_parsed")
             if ts:
                 try:
@@ -1755,16 +1853,24 @@ def fetch_destatis_stat() -> tuple[str, str]:
                 except Exception:
                     pass
 
-            # Titel ist meist schon eine kompakte Aussage
-            # (z.B. "Rund 129 300 Ehescheidungen im Jahr 2024")
-            print(f"  ✓ Destatis-Statistik: {title[:50]}")
-            return title, link
+            zahl, text = _extract_destatis_number(title)
+            # Bevorzugt PMs MIT erkennbarer Zahl – sonst naechste pruefen
+            if zahl:
+                print(f"  ✓ Destatis: {zahl} – {text[:45]}")
+                return zahl, text, link
+            # keine Zahl: merken, aber weitersuchen ob eine bessere kommt
+            fallback = (("", title, link))
 
-        print("  ⚠ Destatis: nichts Aktuelles (max 48h)")
-        return "", ""
+        # keine PM mit klarer Zahl gefunden → erste frische als Text
+        try:
+            return fallback
+        except NameError:
+            print("  ⚠ Destatis: nichts Aktuelles (max 48h)")
+            return "", "", ""
     except Exception as e:
         print(f"  ⚠ Destatis-Fehler: {e}")
-        return "", ""
+        return "", "", ""
+
 
 # ─────────────────────────────────────────────
 # FUSSBALL-WM 2026 (nur waehrend des Turniers)
@@ -1803,17 +1909,43 @@ def _wm_team(name: str) -> str:
     return WM_TEAM_DE.get(name.strip(), name.strip())
 
 
-def fetch_wm_info(now: datetime | None = None) -> tuple[str, str]:
+# Top-Nationen (engl. Namen wie im Feed) – fuer "nur Topspiele" bei vollem
+# Spieltag. Deutschland immer dabei, plus Titelanwaerter/grosse Fussballlaender.
+WM_TOP_TEAMS = {
+    "Germany", "Spain", "France", "England", "Brazil", "Argentina",
+    "Portugal", "Netherlands", "Italy", "Belgium", "Croatia", "USA",
+}
+
+
+def _wm_is_top(m: dict) -> bool:
+    """True, wenn mindestens eine Top-Nation am Spiel beteiligt ist."""
+    return m.get("team1", "") in WM_TOP_TEAMS or m.get("team2", "") in WM_TOP_TEAMS
+
+
+def fetch_wm_info(now: datetime | None = None) -> dict:
     """
-    Liefert einen kompakten WM-Block (letztes Ergebnis + naechstes Spiel) als
-    (Text, Link) – aber nur waehrend des Turnierzeitraums. Ausserhalb leer.
+    Liefert WM-Infos als strukturiertes Dict – nur waehrend des Turniers,
+    sonst {}. Felder:
+      letztes:  "Kanada 2:0 Bosnien" (oder "")
+      heute:    Liste ["21:00 Kanada – Bosnien", ...] (Spiele heute)
+      naechste: Liste (Fallback: kommende Spiele, falls heute keine)
+      link:     Sportschau-Ergebnislink
     """
     now = now or datetime.now()
     today = now.strftime("%Y-%m-%d")
+    link = "https://www.sportschau.de/live-und-ergebnisse/fussball/fifa-wm/spiele-und-ergebnisse"
 
-    # ── Turnierfenster pruefen – ausserhalb gar nicht erst laden ──────
     if not (WM_START_DATE <= today <= WM_END_DATE):
-        return "", ""
+        return {}
+
+    def _has_score(m):
+        return m.get("score1") is not None and m.get("score2") is not None
+
+    def _uhr(m):
+        # "21:00 UTC-6" → "21:00"; leere/unbekannte Zeit → ""
+        raw = str(m.get("time", "")).strip()
+        mt = re.match(r"(\d{1,2}:\d{2})", raw)
+        return mt.group(1) if mt else ""
 
     try:
         req = urllib.request.Request(
@@ -1823,58 +1955,79 @@ def fetch_wm_info(now: datetime | None = None) -> tuple[str, str]:
             data = json.loads(resp.read().decode("utf-8"))
         matches = data.get("matches", [])
         if not matches:
-            return "", ""
+            return {}
 
-        # ── Letztes gespieltes Ergebnis (Datum <= heute, mit Score) ──
+        # ── Letztes gespieltes Ergebnis ──────────────────────────────
+        letztes_str = ""
         letztes = None
         for m in matches:
             d = m.get("date", "")
-            has_score = m.get("score1") is not None and m.get("score2") is not None
-            if d and d <= today and has_score:
+            if d and d <= today and _has_score(m):
                 if letztes is None or d >= letztes.get("date", ""):
                     letztes = m
-
-        # ── Naechstes Spiel (Datum >= heute, noch ohne Ergebnis) ─────
-        naechstes = None
-        for m in matches:
-            d = m.get("date", "")
-            has_score = m.get("score1") is not None and m.get("score2") is not None
-            if d and d >= today and not has_score:
-                if naechstes is None or d < naechstes.get("date", ""):
-                    naechstes = m
-
-        teile = []
         if letztes:
-            t1 = _wm_team(letztes.get("team1", ""))
-            t2 = _wm_team(letztes.get("team2", ""))
-            s1 = letztes.get("score1", "")
-            s2 = letztes.get("score2", "")
-            teile.append(f"Zuletzt: {t1} {s1}:{s2} {t2}")
-        if naechstes:
-            t1 = _wm_team(naechstes.get("team1", ""))
-            t2 = _wm_team(naechstes.get("team2", ""))
-            d  = naechstes.get("date", "")
-            # Datum huebsch: 2026-06-12 → 12.06.
-            try:
-                dd = datetime.strptime(d, "%Y-%m-%d").strftime("%d.%m.")
-            except Exception:
-                dd = d
-            uhr = naechstes.get("time", "")
-            teile.append(f"Als Nächstes: {t1} – {t2} ({dd})")
+            letztes_str = (
+                f"{_wm_team(letztes.get('team1',''))} "
+                f"{letztes.get('score1')}:{letztes.get('score2')} "
+                f"{_wm_team(letztes.get('team2',''))}"
+            )
 
-        if not teile:
-            return "", ""
+        # ── Spiele HEUTE (noch ohne Ergebnis) ────────────────────────
+        heute_raw = [
+            m for m in matches
+            if m.get("date", "") == today and not _has_score(m)
+        ]
+        # Bei vollem Spieltag (>2 Spiele) auf Topspiele begrenzen, damit der
+        # Block kompakt bleibt. Sind es 2 oder weniger, alle zeigen.
+        if len(heute_raw) > 2:
+            top = [m for m in heute_raw if _wm_is_top(m)]
+            if top:
+                heute_raw = top[:3]   # max. 3 Topspiele
+        heute = []
+        for m in heute_raw:
+            u  = _uhr(m)
+            t1 = _wm_team(m.get("team1", ""))
+            t2 = _wm_team(m.get("team2", ""))
+            heute.append((u, f"{(u + ' ') if u else ''}{t1} – {t2}"))
+        heute.sort(key=lambda x: x[0])
+        heute_list = [s for _, s in heute]
 
-        text = " · ".join(teile)
-        print(f"  ✓ WM-Info: {text[:60]}")
-        return text, "https://www.sportschau.de/live-und-ergebnisse/fussball/fifa-wm/spiele-und-ergebnisse"
+        # ── Fallback: naechste Spiele (falls heute keine mehr) ───────
+        naechste_list = []
+        if not heute_list:
+            kommende = sorted(
+                [m for m in matches if m.get("date", "") > today and not _has_score(m)],
+                key=lambda m: (m.get("date", ""), _uhr(m))
+            )
+            for m in kommende[:2]:
+                d = m.get("date", "")
+                try:
+                    dd = datetime.strptime(d, "%Y-%m-%d").strftime("%d.%m.")
+                except Exception:
+                    dd = d
+                u  = _uhr(m)
+                t1 = _wm_team(m.get("team1", ""))
+                t2 = _wm_team(m.get("team2", ""))
+                zeit = f"{dd}{(' ' + u) if u else ''}"
+                naechste_list.append(f"{zeit} {t1} – {t2}")
+
+        if not (letztes_str or heute_list or naechste_list):
+            return {}
+
+        print(f"  ✓ WM-Info: zuletzt '{letztes_str}', heute {len(heute_list)} Spiel(e)")
+        return {
+            "letztes":  letztes_str,
+            "heute":    heute_list,
+            "naechste": naechste_list,
+            "link":     link,
+        }
 
     except (urllib.error.URLError, socket.timeout) as e:
         print(f"  ⚠ WM-Daten nicht erreichbar: {e}")
-        return "", ""
+        return {}
     except Exception as e:
         print(f"  ⚠ WM-Fehler: {e}")
-        return "", ""
+        return {}
 
 # ─────────────────────────────────────────────
 # EMPFÄNGER-LISTE
@@ -1884,7 +2037,8 @@ def fetch_subscribers() -> list[str]:
     """
     Liest die Empfaengerliste, die scripts/recipients.py vorher aus dem
     Google Sheet zusammengestellt und in die Umgebungsvariable RECIPIENT_LIST
-    geschrieben hat. Fallback: RECIPIENT_EMAIL (kommagetrennt).
+    (bzw. die Datei $GITHUB_ENV) geschrieben hat.
+    Fallback: RECIPIENT_EMAIL (kommagetrennt).
 
     Returns:
         Liste deduplizierter, lowercase E-Mail-Adressen.
@@ -1892,24 +2046,37 @@ def fetch_subscribers() -> list[str]:
     Raises:
         ValueError: wenn keine Empfaenger gefunden werden.
     """
-    # ── Versuch 1: von recipients.py vorbereitete Liste ───────────
-    raw = os.environ.get("RECIPIENT_LIST", "")
-    emails = sorted({
-        e.strip().lower()
-        for e in raw.split(",")
-        if e.strip() and "@" in e
-    })
+    def _parse(raw: str) -> list[str]:
+        return sorted({
+            e.strip().lower()
+            for e in raw.split(",")
+            if e.strip() and "@" in e
+        })
+
+    # ── Versuch 1: RECIPIENT_LIST aus dem Environment ─────────────
+    emails = _parse(os.environ.get("RECIPIENT_LIST", ""))
     if emails:
         print(f"  ✓ {len(emails)} Empfaenger via RECIPIENT_LIST geladen")
         return emails
 
-    # ── Versuch 2: Fallback RECIPIENT_EMAIL ───────────────────────
-    recipient_raw = os.environ.get("RECIPIENT_EMAIL", "")
-    fallback = sorted({
-        r.strip().lower()
-        for r in recipient_raw.split(",")
-        if r.strip() and "@" in r
-    })
+    # ── Versuch 2: RECIPIENT_LIST direkt aus der $GITHUB_ENV-Datei ──
+    # Falls die YAML die Variable nicht in den naechsten Step durchreicht,
+    # lesen wir die von recipients.py geschriebene Zeile selbst aus.
+    gh_env = os.environ.get("GITHUB_ENV", "")
+    if gh_env and os.path.exists(gh_env):
+        try:
+            with open(gh_env, encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("RECIPIENT_LIST="):
+                        emails = _parse(line.split("=", 1)[1])
+                        if emails:
+                            print(f"  ✓ {len(emails)} Empfaenger aus GITHUB_ENV-Datei geladen")
+                            return emails
+        except Exception as e:
+            print(f"  ⚠ GITHUB_ENV nicht lesbar: {e}")
+
+    # ── Versuch 3: Fallback RECIPIENT_EMAIL ───────────────────────
+    fallback = _parse(os.environ.get("RECIPIENT_EMAIL", ""))
     if fallback:
         print(f"  ✓ {len(fallback)} Empfaenger via RECIPIENT_EMAIL (Fallback)")
         return fallback
@@ -2008,9 +2175,9 @@ def main():
     print("    → 'Heute vor X Jahren' von Wikipedia holen...")
     history_fact, history_url = fetch_history_fact()
     print("    → 'Zahl des Tages' von Destatis holen...")
-    destatis_fact, destatis_url = fetch_destatis_stat()
+    destatis_zahl, destatis_fact, destatis_url = fetch_destatis_stat()
     print("    → WM-Spielstand holen (nur waehrend Turnier)...")
-    wm_fact, wm_url = fetch_wm_info()
+    wm_info = fetch_wm_info()
     print()
 
     now      = datetime.now()
@@ -2021,7 +2188,7 @@ def main():
         grouped, intro, summaries, selected_links,
         history_fact, history_url, now, daytime,
         destatis_fact=destatis_fact, destatis_url=destatis_url,
-        wm_fact=wm_fact, wm_url=wm_url,
+        destatis_zahl=destatis_zahl, wm_info=wm_info,
     )
     # Deep-Link: Landing Page oeffnet direkt diese Ausgabe
     archive_url = f"{GITHUB_PAGES_BASE_URL}/?a={archive_basename}"
@@ -2037,8 +2204,8 @@ def main():
         history_url=history_url,
         destatis_fact=destatis_fact,
         destatis_url=destatis_url,
-        wm_fact=wm_fact,
-        wm_url=wm_url,
+        destatis_zahl=destatis_zahl,
+        wm_info=wm_info,
     )
 
     sent   = 0
