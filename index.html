@@ -2,255 +2,153 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tageslage – Newsletter-Archiv</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tageslage – Presseschau-Archiv</title>
 <style>
   :root {
     --navy: #1b2a3b; --navy2: #2c3e50; --blue: #5a7fa0;
-    --light: #a0b4c4; --muted: #7a9bb5; --bg: #f0f2f4;
-    --border: #e8e8e8; --text: #1c1c1e; --text2: #3a3a3c;
-    --linkbox: #d4e3ed;
+    --light: #a0b4c4; --muted: #7a9bb5; --bg: #eef1f4;
+    --border: #e2e6ea; --text: #1c1c1e; --text2: #3a3a3c;
+    --linkbox: #d4e3ed; --card: #ffffff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    background: var(--bg); color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 14px; line-height: 1.5;
   }
   a { color: inherit; text-decoration: none; }
-  a:hover { opacity: .8; }
 
-  /* ── Header ── */
-  .header { background: var(--navy); padding: 36px 24px 28px; text-align: center; }
-  .header .kicker { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .header h1 { font-size: 30px; font-weight: 700; color: #fff; letter-spacing: -0.5px; margin: 0 0 8px; }
-  .header .sub { font-size: 13px; color: var(--light); }
-  .metabar { background: var(--navy2); padding: 7px 24px; text-align: center; font-size: 11px; color: var(--muted); }
+  .topbar { background: var(--navy); color: #fff; padding: 14px 20px; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 6px rgba(0,0,0,.15); }
+  .topbar-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .brand { font-size: 20px; font-weight: 700; letter-spacing: -.3px; }
+  .brand .dot { color: var(--blue); }
+  .topbar .meta { font-size: 11px; color: var(--light); margin-left: auto; }
 
-  /* ── Container ── */
-  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
-  .card { background: #fff; border: 1px solid #d0d8e0; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.06); overflow: hidden; margin-bottom: 28px; }
+  .issuebar { background: var(--navy2); padding: 8px 20px; position: sticky; top: 49px; z-index: 49; }
+  .issuebar-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 8px; overflow-x: auto; }
+  .issuebar select { background: #fff; border: none; border-radius: 4px; padding: 6px 10px; font-size: 13px; font-family: inherit; color: var(--navy); font-weight: 600; cursor: pointer; min-width: 230px; }
+  .issuebar .nav-btn { background: rgba(255,255,255,.12); color: #fff; border: none; border-radius: 4px; padding: 6px 11px; font-size: 13px; cursor: pointer; white-space: nowrap; }
+  .issuebar .nav-btn:hover { background: rgba(255,255,255,.22); }
+  .issuebar .nav-btn:disabled { opacity: .35; cursor: default; }
 
-  /* ── Issue Card ── */
-  .issue-head { padding: 16px 28px; border-bottom: 2px solid var(--border); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-  .issue-head .date { font-size: 17px; font-weight: 700; color: var(--navy); }
-  .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 2px; }
-  .intro { padding: 18px 28px; border-bottom: 2px solid var(--border); font-size: 14px; line-height: 1.85; color: var(--text2); }
-  .wiki { padding: 13px 28px; background: #f8f9fa; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.6; color: var(--text2); }
-  .wiki .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 4px; }
-  .wiki a { color: var(--text2); text-decoration: none; border-bottom: 1px solid var(--light); }
-  .wiki .src { color: var(--muted); font-size: 10px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 18px 16px 60px; }
 
-  .cat { padding: 20px 28px; border-bottom: 1px solid var(--border); }
-  .cat:last-child { border-bottom: none; }
-  .cat h2 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 0 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--navy2); }
+  .lead { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; }
+  .lead .date { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 8px; }
+  .lead .intro { font-size: 15px; line-height: 1.7; color: var(--text2); }
+  .specials { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .special { flex: 1 1 240px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 15px; font-size: 13px; line-height: 1.55; color: var(--text2); }
+  .special .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 5px; }
+  .special a { color: var(--text2); border-bottom: 1px solid var(--light); }
+  .special .src { color: var(--muted); font-size: 10px; }
 
-  /* ── Article List ── */
-  .articles-list { display: flex; flex-direction: column; gap: 1px; margin-bottom: 8px; }
-  
-  .article-row {
-    background: #fff;
-    border: 1px solid var(--border);
-    padding: 12px 14px;
-    cursor: pointer;
-    transition: all .12s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .article-row:hover {
-    background: #f8f9fa;
-    border-color: var(--blue);
-    box-shadow: 0 2px 4px rgba(0,0,0,.05);
-  }
+  .filters { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+  .chip { background: var(--card); border: 1px solid #cdd6df; color: var(--navy); border-radius: 20px; padding: 6px 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .12s; white-space: nowrap; }
+  .chip:hover { border-color: var(--blue); }
+  .chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .chip .cnt { opacity: .6; font-weight: 400; margin-left: 4px; }
 
-  .article-top {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+  .section { margin-bottom: 26px; }
+  .section h2 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .section .summary { font-size: 13px; color: var(--text2); line-height: 1.6; margin-bottom: 12px; padding-left: 2px; }
+  .section .summary .s-row { display: flex; gap: 7px; padding: 2px 0; }
+  .section .summary .s-dash { color: var(--blue); font-weight: 700; }
 
-  .article-source {
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--blue);
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+  .ncard { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 13px 15px; cursor: pointer; transition: all .14s; display: flex; flex-direction: column; gap: 7px; }
+  .ncard:hover { border-color: var(--blue); box-shadow: 0 3px 10px rgba(0,0,0,.07); transform: translateY(-1px); }
+  .ncard .src { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--blue); }
+  .ncard .ttl { font-size: 13.5px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .ncard .prev { font-size: 12px; color: var(--muted); line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-  .article-date {
-    font-size: 10px;
-    color: var(--muted);
-    margin-left: auto;
-  }
+  details.allbox { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-top: 8px; }
+  details.allbox summary { cursor: pointer; padding: 13px 18px; font-size: 13px; font-weight: 600; color: var(--muted); user-select: none; }
+  details.allbox summary:hover { color: var(--navy); }
+  .allcat { padding: 6px 18px 14px; }
+  .allcat h4 { font-size: 12px; color: var(--navy); margin: 10px 0 6px; }
+  .allrow { display: flex; gap: 10px; align-items: baseline; padding: 5px 0; border-bottom: 1px solid #f0f2f4; cursor: pointer; }
+  .allrow:hover .arl { color: var(--blue); }
+  .allrow .ars { flex: 0 0 100px; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .allrow .arl { flex: 1; font-size: 13px; color: var(--text); line-height: 1.4; }
 
-  .article-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    line-height: 1.35;
-  }
+  .wm { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; margin-top: 16px; }
+  .wm h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .wm table { width: 100%; border-collapse: collapse; }
+  .wm .sub { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: 6px 0 2px; }
+  .wm .zeit { font-size: 13px; color: var(--muted); white-space: nowrap; width: 54px; vertical-align: top; }
+  .wm .paar { font-size: 13px; color: var(--text2); }
+  .wm .paar.small { font-size: 11px; color: var(--muted); }
+  .wm .zuletzt { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
+  .wm .link { margin-top: 8px; }
+  .wm .link a { font-size: 11px; font-weight: 600; color: var(--blue); }
 
-  .article-tags {
-    display: flex;
-    gap: 3px;
-    flex-wrap: wrap;
-  }
-
-  .article-tag {
-    font-size: 9px;
-    background: var(--linkbox);
-    color: var(--blue);
-    padding: 1px 5px;
-    border-radius: 3px;
-    border: 0.5px solid #c5d2dd;
-  }
-
-  /* ── All Articles Section ── */
-  details.all-articles { margin: 0; border-top: 1px solid var(--border); }
-  details.all-articles summary { cursor: pointer; padding: 13px 28px; font-size: 12px; font-weight: 600; color: var(--muted); user-select: none; }
-  details.all-articles summary:hover { color: var(--navy); }
-  .all-cat { padding: 10px 28px 16px; }
-  .all-cat h3 { font-size: 13px; color: var(--navy); margin: 8px 0 6px; }
-  .all-row { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #f0f2f4; font-size: 13px; }
-  .all-row .src { flex: 0 0 110px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #8fa8bc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .all-row a { flex: 1; color: var(--text); text-decoration: none; line-height: 1.4; cursor: pointer; }
-
-  /* ── Archive ── */
-  .archive-title { font-size: 16px; font-weight: 700; color: var(--navy); margin: 0 0 12px; }
-  .search { width: 100%; padding: 10px 14px; font-size: 14px; border: 1px solid #c5d2dd; border-radius: 4px; margin-bottom: 14px; font-family: inherit; }
+  .archive { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; margin-top: 22px; }
+  .archive h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .search { width: 100%; padding: 10px 14px; font-size: 14px; border: 1px solid #c5d2dd; border-radius: 6px; margin-bottom: 12px; font-family: inherit; }
   .search:focus { outline: none; border-color: var(--blue); }
-  .arch-list { list-style: none; margin: 0; padding: 0; }
+  .arch-list { list-style: none; }
   .arch-item { border-bottom: 1px solid var(--border); }
   .arch-item:last-child { border-bottom: none; }
-  .arch-item button { width: 100%; text-align: left; background: none; border: none; padding: 12px 6px; cursor: pointer; font-family: inherit; display: flex; gap: 12px; align-items: baseline; }
+  .arch-item button { width: 100%; text-align: left; background: none; border: none; padding: 11px 4px; cursor: pointer; font-family: inherit; display: flex; gap: 12px; align-items: baseline; }
   .arch-item button:hover { background: #f6f8fa; }
   .arch-item .d { flex: 0 0 95px; font-size: 13px; font-weight: 700; color: var(--navy); white-space: nowrap; }
-  .arch-item .z { flex: 0 0 56px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--blue); }
-  .arch-item .t { flex: 1; font-size: 13px; color: var(--text2); line-height: 1.45; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-  .empty { padding: 20px 6px; font-size: 13px; color: var(--muted); }
+  .arch-item .z { flex: 0 0 52px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--blue); }
+  .arch-item .t { flex: 1; font-size: 13px; color: var(--text2); line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .empty { padding: 16px 4px; font-size: 13px; color: var(--muted); }
 
-  .footer { background: var(--navy); padding: 20px 24px; text-align: center; font-size: 11px; color: var(--muted); line-height: 1.8; }
-  .footer a { color: var(--light); }
+  .footer { text-align: center; font-size: 11px; color: var(--muted); line-height: 1.8; padding: 24px; }
+  .loading { text-align: center; padding: 50px; color: var(--muted); }
 
-  .loading { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+  .overlay { position: fixed; inset: 0; background: rgba(20,30,45,.45); opacity: 0; visibility: hidden; transition: opacity .25s; z-index: 90; }
+  .overlay.open { opacity: 1; visibility: visible; }
+  .reader { position: fixed; top: 0; right: 0; height: 100%; width: 440px; max-width: 92vw; background: #fff; box-shadow: -4px 0 28px rgba(0,0,0,.2); transform: translateX(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); z-index: 100; display: flex; flex-direction: column; }
+  .reader.open { transform: translateX(0); }
+  .reader-head { background: var(--navy); color: #fff; padding: 20px 22px; position: relative; }
+  .reader-head .rsrc { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--light); margin-bottom: 7px; padding-right: 34px; }
+  .reader-head .rttl { font-size: 18px; font-weight: 700; line-height: 1.35; }
+  .reader-x { position: absolute; top: 16px; right: 18px; background: none; border: none; color: var(--light); font-size: 26px; line-height: 1; cursor: pointer; width: 30px; height: 30px; }
+  .reader-x:hover { color: #fff; }
+  .reader-nav { display: flex; border-bottom: 1px solid var(--border); }
+  .reader-nav button { flex: 1; background: none; border: none; padding: 10px; font-size: 12px; font-weight: 600; color: var(--blue); cursor: pointer; font-family: inherit; }
+  .reader-nav button:hover { background: #f6f8fa; }
+  .reader-nav button:disabled { opacity: .3; cursor: default; }
+  .reader-nav button:first-child { border-right: 1px solid var(--border); }
+  .reader-body { padding: 22px; overflow-y: auto; flex: 1; font-size: 14.5px; line-height: 1.75; color: var(--text2); }
+  .reader-body .rmeta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px; }
+  .reader-foot { padding: 16px 22px; border-top: 1px solid var(--border); }
+  .reader-foot a { display: block; text-align: center; background: var(--blue); color: #fff; font-size: 14px; font-weight: 600; padding: 13px; border-radius: 6px; }
+  .reader-foot a:hover { background: var(--navy2); }
 
-  /* ── Reader Panel ── */
-  .reader-panel {
-    display: none;
-    background: #fff;
-    border-top: 2px solid var(--border);
-    padding: 16px 28px;
-    margin-top: 12px;
-    animation: slideDown .25s ease;
-  }
-  .reader-panel.open { display: block; }
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reader-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    gap: 10px;
-  }
-
-  .reader-source {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--blue);
-  }
-
-  .reader-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: var(--muted);
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .reader-close:hover { color: var(--navy); }
-
-  .reader-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
-
-  .reader-text {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text2);
-    margin-bottom: 12px;
-    max-height: 180px;
-    overflow-y: auto;
-  }
-
-  .reader-footer {
-    display: flex;
-    gap: 8px;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 8px 12px;
-    border: 1px solid var(--border);
-    background: #fff;
-    color: var(--blue);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .12s;
-  }
-  .btn:hover {
-    background: var(--linkbox);
-    border-color: var(--blue);
-  }
-  .btn.primary {
-    background: var(--blue);
-    color: #fff;
-    border-color: var(--blue);
-  }
-  .btn.primary:hover {
-    background: #4a6a7f;
-  }
-
-  @media (max-width: 540px) {
-    .arch-item .d { flex-basis: 84px; }
-    .article-date { display: none; }
+  @media (max-width: 600px) {
+    .reader { width: 100%; max-width: 100%; }
+    .grid { grid-template-columns: 1fr; }
+    .issuebar select { min-width: 150px; }
   }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="kicker">Dein täglicher Nachrichtenüberblick</div>
-  <h1>Tageslage</h1>
-  <div class="sub" id="headSub">Newsletter-Archiv</div>
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Tageslage<span class="dot">.</span></span>
+    <span class="meta" id="metabar">Lade …</span>
+  </div>
 </div>
-<div class="metabar" id="metabar">Lade Ausgaben …</div>
+
+<div class="issuebar">
+  <div class="issuebar-inner">
+    <button class="nav-btn" id="prevIssue" title="Neuere Ausgabe">←</button>
+    <select id="issueSelect"></select>
+    <button class="nav-btn" id="nextIssue" title="Ältere Ausgabe">→</button>
+  </div>
+</div>
 
 <div class="wrap">
-  <div class="card" id="issueCard"><div class="loading">Ausgabe wird geladen …</div></div>
+  <div id="issueArea"><div class="loading">Ausgabe wird geladen …</div></div>
 
-  <div class="card" style="padding:20px 28px;">
-    <div class="archive-title">📚 Archiv – alle Ausgaben</div>
+  <div class="archive">
+    <h3>📚 Alle Ausgaben durchsuchen</h3>
     <input type="search" class="search" id="searchBox"
            placeholder="Suchen (z.B. EZB, Zölle, 10.06.2026) …" autocomplete="off">
     <ul class="arch-list" id="archList"><li class="empty">Lade …</li></ul>
@@ -258,19 +156,45 @@
 </div>
 
 <div class="footer">
-  Tageslage – automatisch erstellter Nachrichten-Newsletter<br>
-  Historische Fakten: Wikipedia (CC BY-SA) &middot; Powered by Nils
+  Tageslage – automatisch erstellte Presseschau · KI-kuratiert<br>
+  Historische Fakten: Wikipedia (CC BY-SA) · Zahlen: Destatis · Powered by Nils
 </div>
+
+<div class="overlay" id="overlay" onclick="Reader.close()"></div>
+<aside class="reader" id="reader" role="dialog" aria-modal="true">
+  <div class="reader-head">
+    <button class="reader-x" onclick="Reader.close()" aria-label="Schließen">&times;</button>
+    <div class="rsrc" id="rSrc"></div>
+    <div class="rttl" id="rTtl"></div>
+  </div>
+  <div class="reader-nav">
+    <button id="rPrev" onclick="Reader.step(-1)">← Voriger</button>
+    <button id="rNext" onclick="Reader.step(1)">Nächster →</button>
+  </div>
+  <div class="reader-body">
+    <div class="rmeta" id="rMeta"></div>
+    <div id="rText"></div>
+  </div>
+  <div class="reader-foot">
+    <a id="rLink" href="#" target="_blank" rel="noopener">Artikel öffnen →</a>
+  </div>
+</aside>
 
 <script>
 (function () {
   'use strict';
   var INDEX = [];
-  var listEl   = document.getElementById('archList');
-  var cardEl   = document.getElementById('issueCard');
-  var searchEl = document.getElementById('searchBox');
-  var metaEl   = document.getElementById('metabar');
-  var currentReader = null;
+  var current = null;
+  var currentFile = null;
+  var activeFilter = 'alle';
+  var readerList = [];
+  var readerPos = 0;
+
+  var elIssue  = document.getElementById('issueArea');
+  var elList   = document.getElementById('archList');
+  var elSearch = document.getElementById('searchBox');
+  var elMeta   = document.getElementById('metabar');
+  var elSelect = document.getElementById('issueSelect');
 
   function esc(s) {
     return String(s == null ? '' : s)
@@ -281,247 +205,281 @@
     var p = String(iso).split('-');
     return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
   }
-  function deTime(time) {
-    if (!time) return '';
-    var h = String(time).substring(0, 2);
-    var m = String(time).substring(2, 4);
-    return h + ':' + m;
-  }
   function zeitLabel(z) { return z === 'morgen' ? 'Morgen' : 'Abend'; }
 
-  // Close reader
-  function closeReader(el) {
-    if (currentReader) {
-      currentReader.classList.remove('open');
-      currentReader = null;
+  var Reader = {
+    open: function (list, pos) {
+      readerList = list; readerPos = pos;
+      this.render();
+      document.getElementById('reader').classList.add('open');
+      document.getElementById('overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    },
+    close: function () {
+      document.getElementById('reader').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    },
+    step: function (dir) {
+      var np = readerPos + dir;
+      if (np < 0 || np >= readerList.length) return;
+      readerPos = np; this.render();
+    },
+    render: function () {
+      var a = readerList[readerPos] || {};
+      document.getElementById('rSrc').textContent  = a.quelle || '';
+      document.getElementById('rTtl').textContent  = a.titel || '';
+      document.getElementById('rMeta').textContent =
+        (a.quelle ? 'Quelle: ' + a.quelle : '') +
+        (a.kategorie ? '  ·  ' + a.kategorie : '');
+      var txt = document.getElementById('rText');
+      var v = (a.vorschau || '').trim();
+      if (v) { txt.textContent = v; txt.style.fontStyle = 'normal'; txt.style.color = 'var(--text2)'; }
+      else { txt.textContent = 'Für diesen Artikel liegt keine Vorschau vor. Über den Button unten gelangst du zum vollständigen Beitrag.'; txt.style.fontStyle = 'italic'; txt.style.color = 'var(--muted)'; }
+      var link = document.getElementById('rLink');
+      link.href = a.url || '#';
+      link.textContent = a.quelle ? ('Auf ' + a.quelle + ' lesen →') : 'Artikel öffnen →';
+      document.getElementById('rPrev').disabled = (readerPos <= 0);
+      document.getElementById('rNext').disabled = (readerPos >= readerList.length - 1);
     }
-  }
+  };
+  window.Reader = Reader;
+  document.addEventListener('keydown', function (e) {
+    if (!document.getElementById('reader').classList.contains('open')) return;
+    if (e.key === 'Escape') Reader.close();
+    if (e.key === 'ArrowLeft') Reader.step(-1);
+    if (e.key === 'ArrowRight') Reader.step(1);
+  });
 
-  // Open reader
-  function openReader(el, evt) {
-    evt.stopPropagation();
-    if (currentReader === el) { closeReader(); return; }
-    closeReader();
-    el.classList.add('open');
-    currentReader = el;
-  }
-
-  // Render issue
   function renderIssue(d) {
+    current = d;
+    activeFilter = 'alle';
     var h = '';
-    h += '<div class="issue-head"><span class="date">' + esc(deDate(d.datum)) + '</span>' +
-         '<span class="badge">' + esc(zeitLabel(d.zeit)) + '-Ausgabe</span></div>';
-    if (d.intro) h += '<div class="intro">' + esc(d.intro) + '</div>';
 
+    h += '<div class="lead">';
+    h += '<div class="date">' + esc(deDate(d.datum)) + ' · ' + esc(zeitLabel(d.zeit)) + '-Ausgabe</div>';
+    if (d.intro) h += '<div class="intro">' + esc(d.intro) + '</div>';
+    h += '</div>';
+
+    var sp = '';
     if (d.wikipedia && d.wikipedia.text) {
       var w = d.wikipedia;
-      var inner = w.url
-        ? '<a href="' + esc(w.url) + '" target="_blank" rel="noopener">' + esc(w.text) + '</a>'
-        : esc(w.text);
-      h += '<div class="wiki"><div class="label">📅 An diesem Tag</div>' +
-           inner + ' <span class="src">&middot; Quelle: Wikipedia</span></div>';
+      sp += '<div class="special"><div class="lbl">📅 An diesem Tag</div>' +
+            (w.url ? '<a href="' + esc(w.url) + '" target="_blank" rel="noopener">' + esc(w.text) + '</a>' : esc(w.text)) +
+            ' <span class="src">· Wikipedia</span></div>';
     }
-
     if (d.destatis && d.destatis.text) {
-      var s = d.destatis;
-      var txt = s.url
-        ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.text) + '</a>'
-        : esc(s.text);
-      h += '<div class="wiki"><div class="label">📊 Zahl des Tages</div>' +
-           txt + ' <span class="src">&middot; Quelle: Destatis</span></div>';
+      var ds = d.destatis;
+      sp += '<div class="special"><div class="lbl">📊 Zahl des Tages</div>' +
+            (ds.url ? '<a href="' + esc(ds.url) + '" target="_blank" rel="noopener">' + esc(ds.text) + '</a>' : esc(ds.text)) +
+            ' <span class="src">· Destatis</span></div>';
+    }
+    if (sp) h += '<div class="specials">' + sp + '</div>';
+
+    var cats = (d.kategorien || []).filter(function (k) { return k.links && k.links.length; });
+    if (cats.length) {
+      h += '<div class="filters" id="filters">';
+      var totalArt = cats.reduce(function (s, k) { return s + k.links.length; }, 0);
+      h += '<span class="chip active" data-f="alle">Alle <span class="cnt">' + totalArt + '</span></span>';
+      cats.forEach(function (k) {
+        h += '<span class="chip" data-f="' + esc(k.name) + '">' + esc(k.name) +
+             ' <span class="cnt">' + k.links.length + '</span></span>';
+      });
+      h += '</div>';
     }
 
-    (d.kategorien || []).forEach(function (k) {
-      h += '<div class="cat"><h2>' + esc(k.name) + '</h2>';
-      
-      // Bullets
-      (k.punkte || []).forEach(function (p) {
-        h += '<div style="display:flex;gap:8px;font-size:13px;line-height:1.6;color:var(--text2);padding:6px 0;"><span style="color:var(--blue);font-weight:600;flex-shrink:0;">–</span><span>' +
-             esc(String(p).replace(/^•\s*/, '')) + '</span></div>';
-      });
-
-      // Article list
-      if (k.links && k.links.length) {
-        h += '<div class="articles-list">';
-        var articleId = 0;
-        k.links.forEach(function (l, idx) {
-          var hasV = l.vorschau && l.vorschau.trim();
-          var aid = 'ar_' + Math.random().toString(36).slice(2);
-          h += '<div class="article-row" id="' + aid + '" onclick="openReader(document.getElementById(\'' + aid + '_reader\'), event)">' +
-               '<div class="article-top">' +
-               '<span class="article-source">' + esc(l.quelle) + '</span>' +
-               '<span class="article-date">12.06.26, ' + esc(deTime(l.zeit || '')) + '</span>' +
-               '</div>' +
-               '<div class="article-title">' + esc(l.titel) + '</div>' +
-               '<div class="article-tags">';
-          (l.topics || []).forEach(function (t) {
-            h += '<span class="article-tag">' + esc(t) + '</span>';
-          });
-          h += '</div>';
-          
-          // Reader panel
-          h += '<div class="reader-panel" id="' + aid + '_reader">' +
-               '<div class="reader-head">' +
-               '<span class="reader-source">' + esc(l.quelle) + '</span>' +
-               '<button class="reader-close" onclick="closeReader(document.getElementById(\'' + aid + '_reader\'), event)">✕</button>' +
-               '</div>' +
-               '<div class="reader-title">' + esc(l.titel) + '</div>' +
-               '<div class="reader-text">' + esc(l.vorschau || '(Kein Vorschautext)') + '</div>' +
-               '<div class="reader-footer">' +
-               '<a class="btn primary" href="' + esc(l.url) + '" target="_blank" rel="noopener">🔗 Artikel öffnen</a>' +
-               '</div>' +
-               '</div>';
-          
-          h += '</div>';
-        });
-        h += '</div>';
-      }
-
-      h += '</div>';
-    });
+    h += '<div id="sections">';
+    cats.forEach(function (k) { h += renderSection(k); });
+    h += '</div>';
 
     var alleKeys = d.alle_artikel ? Object.keys(d.alle_artikel) : [];
     if (alleKeys.length) {
       var total = alleKeys.reduce(function (s, k) { return s + d.alle_artikel[k].length; }, 0);
-      h += '<details class="all-articles"><summary>Alle ' + total +
-           ' Artikel dieser Ausgabe anzeigen ▾</summary>';
+      h += '<details class="allbox"><summary>Alle ' + total + ' gesammelten Artikel dieser Ausgabe ▾</summary>';
       alleKeys.forEach(function (k) {
-        h += '<div class="all-cat"><h3>' + esc(k) + '</h3>';
-        d.alle_artikel[k].forEach(function (a) {
-          h += '<div class="all-row"><span class="src">' + esc(a.quelle) + '</span>' +
-               '<a onclick="alert(\'Artikel öffnen: ' + esc(a.url) + '\')" target="_blank" rel="noopener">' +
-               esc(a.titel) + '</a></div>';
+        h += '<div class="allcat"><h4>' + esc(k) + '</h4>';
+        d.alle_artikel[k].forEach(function (a, i) {
+          h += '<div class="allrow" data-cat="' + esc(k) + '" data-i="' + i + '">' +
+               '<span class="ars">' + esc(a.quelle) + '</span>' +
+               '<span class="arl">' + esc(a.titel) + '</span></div>';
         });
         h += '</div>';
       });
       h += '</details>';
     }
 
-    // WM block
-    if (d.wm && (d.wm.letztes || (d.wm.heute && d.wm.heute.length) ||
-                 (d.wm.naechste && d.wm.naechste.length) || (d.wm.gestern && d.wm.gestern.length) ||
-                 (d.wm.heute_fertig && d.wm.heute_fertig.length))) {
-      var w = d.wm;
-      var wh = '<div style="padding:18px 28px;background:#f8f9fa;border-top:2px solid var(--border);">';
-      wh += '<div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;">⚽ Fußball-WM 2026</div>';
-      function spielRow(zeit, paarung, klein) {
-        var fs = klein ? '11px' : '13px';
-        var col = klein ? 'var(--muted)' : 'var(--text2)';
-        return '<tr><td style="font-size:' + fs + ';line-height:1.7;color:var(--muted);white-space:nowrap;width:52px;vertical-align:top;">' + esc(zeit || '') + '</td>' +
-               '<td style="font-size:' + fs + ';line-height:1.7;color:' + col + ';">' + esc(paarung || '') + '</td></tr>';
-      }
-      var subhead = '<tr><td colspan="2" style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:6px 0 2px;">';
-      var heuteFertig = w.heute_fertig || [];
-      var letztesInHeute = heuteFertig.some(function (s) {
-        return w.letztes && s.paarung && s.paarung.indexOf(w.letztes) !== -1;
-      });
-      if (w.letztes && !letztesInHeute) {
-        wh += '<div style="font-size:13px;line-height:1.7;color:var(--text2);"><span style="color:var(--muted);">Zuletzt:</span> <strong style="color:var(--navy);">' +
-              esc(w.letztes) + '</strong></div>';
-      }
-      wh += '<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:2px;">';
-      if (heuteFertig.length) {
-        wh += subhead + 'Heute bereits gespielt</td></tr>';
-        heuteFertig.forEach(function (s) { wh += spielRow(s.zeit, s.paarung, false); });
-      }
-      var gestern = (w.gestern || []).filter(function (g) { return g !== w.letztes; });
-      if (gestern.length) {
-        wh += subhead + 'Ergebnisse gestern</td></tr>';
-        gestern.forEach(function (g) { wh += spielRow('', g, true); });
-      }
-      if (w.heute && w.heute.length) {
-        wh += subhead + 'Heute</td></tr>';
-        w.heute.forEach(function (s) { wh += spielRow(s.zeit, s.paarung, false); });
-      } else if (w.naechste && w.naechste.length) {
-        wh += subhead + 'Als Nächstes</td></tr>';
-        w.naechste.forEach(function (s) { wh += spielRow(s.zeit, s.paarung, false); });
-      }
-      wh += '</table>';
-      if (w.link) {
-        wh += '<div style="margin-top:8px;"><a href="' + esc(w.link) +
-              '" target="_blank" rel="noopener" style="font-size:11px;font-weight:600;color:var(--blue);text-decoration:none;">' +
-              'Alle Ergebnisse & Spielplan →</a></div>';
-      }
-      wh += '</div>';
-      h += wh;
-    }
+    h += renderWM(d.wm);
 
-    cardEl.innerHTML = h;
-    document.getElementById('headSub').textContent =
-      deDate(d.datum) + ' · ' + zeitLabel(d.zeit) + '-Ausgabe';
+    elIssue.innerHTML = h;
+    bindIssueEvents();
+    document.title = 'Tageslage – ' + deDate(d.datum);
+  }
+
+  function renderSection(k) {
+    var h = '<div class="section" data-cat="' + esc(k.name) + '"><h2>' + esc(k.name) + '</h2>';
+    if (k.punkte && k.punkte.length) {
+      h += '<div class="summary">';
+      k.punkte.forEach(function (p) {
+        h += '<div class="s-row"><span class="s-dash">–</span><span>' +
+             esc(String(p).replace(/^•\s*/, '')) + '</span></div>';
+      });
+      h += '</div>';
+    }
+    h += '<div class="grid">';
+    k.links.forEach(function (l, i) {
+      var hasV = l.vorschau && l.vorschau.trim();
+      h += '<div class="ncard" data-cat="' + esc(k.name) + '" data-i="' + i + '">' +
+           '<span class="src">' + esc(l.quelle) + '</span>' +
+           '<span class="ttl">' + esc(l.titel) + '</span>' +
+           (hasV ? '<span class="prev">' + esc(l.vorschau.trim()) + '</span>' : '') +
+           '</div>';
+    });
+    h += '</div></div>';
+    return h;
+  }
+
+  function renderWM(wm) {
+    if (!wm) return '';
+    var has = wm.letztes || (wm.heute && wm.heute.length) || (wm.naechste && wm.naechste.length) ||
+              (wm.gestern && wm.gestern.length) || (wm.heute_fertig && wm.heute_fertig.length);
+    if (!has) return '';
+    function row(zeit, paar, small) {
+      return '<tr><td class="zeit">' + esc(zeit || '') + '</td>' +
+             '<td class="paar' + (small ? ' small' : '') + '">' + esc(paar || '') + '</td></tr>';
+    }
+    var h = '<div class="wm"><h3>⚽ Fußball-WM 2026</h3>';
+    var hf = wm.heute_fertig || [];
+    var letztesInHf = hf.some(function (s) { return wm.letztes && s.paarung && s.paarung.indexOf(wm.letztes) !== -1; });
+    if (wm.letztes && !letztesInHf) {
+      h += '<div class="zuletzt"><span style="color:var(--muted);">Zuletzt:</span> <strong style="color:var(--navy);">' + esc(wm.letztes) + '</strong></div>';
+    }
+    h += '<table>';
+    if (hf.length) { h += '<tr><td colspan="2" class="sub">Heute bereits gespielt</td></tr>'; hf.forEach(function (s) { h += row(s.zeit, s.paarung, false); }); }
+    var gestern = (wm.gestern || []).filter(function (g) { return g !== wm.letztes; });
+    if (gestern.length) { h += '<tr><td colspan="2" class="sub">Ergebnisse gestern</td></tr>'; gestern.forEach(function (g) { h += row('', g, true); }); }
+    if (wm.heute && wm.heute.length) { h += '<tr><td colspan="2" class="sub">Heute</td></tr>'; wm.heute.forEach(function (s) { h += row(s.zeit, s.paarung, false); }); }
+    else if (wm.naechste && wm.naechste.length) { h += '<tr><td colspan="2" class="sub">Als Nächstes</td></tr>'; wm.naechste.forEach(function (s) { h += row(s.zeit, s.paarung, false); }); }
+    h += '</table>';
+    if (wm.link) h += '<div class="link"><a href="' + esc(wm.link) + '" target="_blank" rel="noopener">Alle Ergebnisse & Spielplan →</a></div>';
+    h += '</div>';
+    return h;
+  }
+
+  function bindIssueEvents() {
+    var chips = elIssue.querySelectorAll('.chip');
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.classList.remove('active'); });
+        c.classList.add('active');
+        activeFilter = c.getAttribute('data-f');
+        elIssue.querySelectorAll('.section').forEach(function (sec) {
+          var show = (activeFilter === 'alle') || (sec.getAttribute('data-cat') === activeFilter);
+          sec.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+    elIssue.querySelectorAll('.ncard').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var cat = card.getAttribute('data-cat');
+        var i   = parseInt(card.getAttribute('data-i'), 10);
+        var k = (current.kategorien || []).filter(function (x) { return x.name === cat; })[0];
+        if (!k) return;
+        var list = k.links.map(function (l) {
+          return { quelle: l.quelle, titel: l.titel, url: l.url, vorschau: l.vorschau, kategorie: cat };
+        });
+        Reader.open(list, i);
+      });
+    });
+
+    elIssue.querySelectorAll('.allrow').forEach(function (row) {
+      row.addEventListener('click', function () {
+        var cat = row.getAttribute('data-cat');
+        var i   = parseInt(row.getAttribute('data-i'), 10);
+        var arr = current.alle_artikel[cat] || [];
+        var list = arr.map(function (a) {
+          return { quelle: a.quelle, titel: a.titel, url: a.url, vorschau: a.vorschau, kategorie: cat };
+        });
+        Reader.open(list, i);
+      });
+    });
   }
 
   function loadIssue(file, scroll) {
-    cardEl.innerHTML = '<div class="loading">Ausgabe wird geladen …</div>';
+    elIssue.innerHTML = '<div class="loading">Ausgabe wird geladen …</div>';
     fetch('data/' + file).then(function (r) {
-      if (!r.ok) throw new Error(r.status);
-      return r.json();
+      if (!r.ok) throw new Error(r.status); return r.json();
     }).then(function (d) {
+      currentFile = file;
       renderIssue(d);
+      elSelect.value = file;
+      updateNavButtons();
       if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
       var base = file.replace(/\.json$/, '');
       try { history.replaceState(null, '', '?a=' + base); } catch (e) {}
     }).catch(function () {
-      cardEl.innerHTML = '<div class="loading">Ausgabe konnte nicht geladen werden.</div>';
+      elIssue.innerHTML = '<div class="loading">Ausgabe konnte nicht geladen werden.</div>';
     });
   }
 
-  // Archive list
+  function updateNavButtons() {
+    var idx = INDEX.findIndex(function (e) { return e.datei === currentFile; });
+    document.getElementById('prevIssue').disabled = (idx <= 0);
+    document.getElementById('nextIssue').disabled = (idx < 0 || idx >= INDEX.length - 1);
+  }
+  document.getElementById('prevIssue').addEventListener('click', function () {
+    var idx = INDEX.findIndex(function (e) { return e.datei === currentFile; });
+    if (idx > 0) loadIssue(INDEX[idx - 1].datei, true);
+  });
+  document.getElementById('nextIssue').addEventListener('click', function () {
+    var idx = INDEX.findIndex(function (e) { return e.datei === currentFile; });
+    if (idx >= 0 && idx < INDEX.length - 1) loadIssue(INDEX[idx + 1].datei, true);
+  });
+  elSelect.addEventListener('change', function () { loadIssue(elSelect.value, true); });
+
   function renderList(items) {
-    if (!items.length) {
-      listEl.innerHTML = '<li class="empty">Keine Ausgaben gefunden.</li>';
-      return;
-    }
+    if (!items.length) { elList.innerHTML = '<li class="empty">Keine Ausgaben gefunden.</li>'; return; }
     var h = '';
     items.forEach(function (e) {
       h += '<li class="arch-item"><button data-file="' + esc(e.datei) + '">' +
            '<span class="d">' + esc(deDate(e.datum)) + '</span>' +
            '<span class="z">' + esc(zeitLabel(e.zeit)) + '</span>' +
-           '<span class="t">' + esc(e.intro || '') + '</span>' +
-           '</button></li>';
+           '<span class="t">' + esc(e.intro || '') + '</span></button></li>';
     });
-    listEl.innerHTML = h;
+    elList.innerHTML = h;
   }
-
-  listEl.addEventListener('click', function (ev) {
+  elList.addEventListener('click', function (ev) {
     var btn = ev.target.closest('button[data-file]');
     if (btn) loadIssue(btn.getAttribute('data-file'), true);
   });
-
-  searchEl.addEventListener('input', function () {
-    var q = searchEl.value.trim().toLowerCase();
-    if (!q) { renderList(INDEX); return; }
-    renderList(INDEX.filter(function (e) {
-      return (e.suchtext || '').indexOf(q) !== -1;
-    }));
+  elSearch.addEventListener('input', function () {
+    var q = elSearch.value.trim().toLowerCase();
+    renderList(q ? INDEX.filter(function (e) { return (e.suchtext || '').indexOf(q) !== -1; }) : INDEX);
   });
 
-  // Load data
+  function fillSelect() {
+    elSelect.innerHTML = INDEX.map(function (e) {
+      return '<option value="' + esc(e.datei) + '">' + esc(deDate(e.datum)) + ' · ' + esc(zeitLabel(e.zeit)) + '</option>';
+    }).join('');
+  }
+
   fetch('data/index.json').then(function (r) {
-    if (!r.ok) throw new Error(r.status);
-    return r.json();
+    if (!r.ok) throw new Error(r.status); return r.json();
   }).then(function (idx) {
     INDEX = idx || [];
-    metaEl.textContent = INDEX.length + ' Ausgabe' + (INDEX.length === 1 ? '' : 'n') +
-      ' im Archiv · 1 Jahr Aufbewahrung · KI-kuratiert';
+    elMeta.textContent = INDEX.length + ' Ausgabe' + (INDEX.length === 1 ? '' : 'n') + ' · KI-kuratiert';
+    fillSelect();
     renderList(INDEX);
-
     var params = new URLSearchParams(location.search);
     var wanted = params.get('a');
-    var match = wanted && INDEX.filter(function (e) {
-      return e.datei === wanted + '.json';
-    })[0];
-    if (match) {
-      loadIssue(match.datei, false);
-    } else if (INDEX.length) {
-      loadIssue(INDEX[0].datei, false);
-    } else {
-      cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden.</div>';
-    }
+    var match = wanted && INDEX.filter(function (e) { return e.datei === wanted + '.json'; })[0];
+    if (match) loadIssue(match.datei, false);
+    else if (INDEX.length) loadIssue(INDEX[0].datei, false);
+    else elIssue.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden.</div>';
   }).catch(function () {
-    metaEl.textContent = 'Archiv noch nicht verfügbar';
-    listEl.innerHTML = '<li class="empty">Noch keine Daten vorhanden.</li>';
-    cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden.</div>';
+    elMeta.textContent = 'Archiv noch nicht verfügbar';
+    elList.innerHTML = '<li class="empty">Noch keine Daten vorhanden.</li>';
+    elIssue.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden.</div>';
   });
 })();
 </script>
