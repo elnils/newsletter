@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tageslage – Newsletter-Archiv</title>
+<style>
+  :root {
+    --navy: #1b2a3b; --navy2: #2c3e50; --blue: #5a7fa0;
+    --light: #a0b4c4; --muted: #7a9bb5; --bg: #f0f2f4;
+    --border: #e8e8e8; --text: #1c1c1e; --text2: #3a3a3c;
+    --linkbox: #d4e3ed;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+  a { color: inherit; }
+  a:hover { opacity: .8; }
+
+  /* ── Header ── */
+  .header { background: var(--navy); padding: 36px 24px 28px; text-align: center; }
+  .header .kicker { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .header h1 { font-size: 30px; font-weight: 700; color: #fff; letter-spacing: -0.5px; margin: 0 0 8px; }
+  .header .sub { font-size: 13px; color: var(--light); }
+  .metabar { background: var(--navy2); padding: 7px 24px; text-align: center; font-size: 11px; color: var(--muted); }
+
+  /* ── Container ── */
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
+  .card { background: #fff; border: 1px solid #d0d8e0; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.06); overflow: hidden; margin-bottom: 28px; }
+
+  /* ── Ausgabe ── */
+  .issue-head { padding: 16px 28px; border-bottom: 2px solid var(--border); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .issue-head .date { font-size: 17px; font-weight: 700; color: var(--navy); }
+  .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 2px; }
+  .intro { padding: 18px 28px; border-bottom: 2px solid var(--border); font-size: 14px; line-height: 1.85; color: var(--text2); }
+  .wiki { padding: 13px 28px; background: #f8f9fa; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.6; color: var(--text2); }
+  .wiki .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 4px; }
+  .wiki a { color: var(--text2); text-decoration: none; border-bottom: 1px solid var(--light); }
+  .wiki .src { color: var(--muted); font-size: 10px; }
+
+  .cat { padding: 20px 28px; border-bottom: 1px solid var(--border); }
+  .cat:last-child { border-bottom: none; }
+  .cat h2 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 0 0 10px; padding-bottom: 10px; border-bottom: 2px solid var(--navy2); }
+  .bullet { display: flex; gap: 8px; font-size: 14px; line-height: 1.6; color: var(--text2); padding: 3px 0; }
+  .bullet .dash { color: var(--blue); font-weight: 600; }
+  .links { margin-top: 10px; background: var(--linkbox); border-radius: 4px; padding: 7px 0; }
+  .links a { display: block; padding: 3px 12px; font-size: 12px; line-height: 1.35; color: var(--text2); text-decoration: none; }
+  .links a b { color: var(--navy); }
+
+  details.all-articles { margin: 0; border-top: 1px solid var(--border); }
+  details.all-articles summary { cursor: pointer; padding: 13px 28px; font-size: 12px; font-weight: 600; color: var(--muted); user-select: none; }
+  details.all-articles summary:hover { color: var(--navy); }
+  .all-cat { padding: 10px 28px 16px; }
+  .all-cat h3 { font-size: 13px; color: var(--navy); margin: 8px 0 6px; }
+  .all-row { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #f0f2f4; font-size: 13px; }
+  .all-row .src { flex: 0 0 110px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #8fa8bc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .all-row a { flex: 1; color: var(--text); text-decoration: none; line-height: 1.4; }
+
+  /* ── Archiv ── */
+  .archive-title { font-size: 16px; font-weight: 700; color: var(--navy); margin: 0 0 12px; }
+  .search { width: 100%; padding: 10px 14px; font-size: 14px; border: 1px solid #c5d2dd; border-radius: 4px; margin-bottom: 14px; font-family: inherit; }
+  .search:focus { outline: none; border-color: var(--blue); }
+  .arch-list { list-style: none; margin: 0; padding: 0; }
+  .arch-item { border-bottom: 1px solid var(--border); }
+  .arch-item:last-child { border-bottom: none; }
+  .arch-item button { width: 100%; text-align: left; background: none; border: none; padding: 12px 6px; cursor: pointer; font-family: inherit; display: flex; gap: 12px; align-items: baseline; }
+  .arch-item button:hover { background: #f6f8fa; }
+  .arch-item .d { flex: 0 0 95px; font-size: 13px; font-weight: 700; color: var(--navy); white-space: nowrap; }
+  .arch-item .z { flex: 0 0 56px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--blue); }
+  .arch-item .t { flex: 1; font-size: 13px; color: var(--text2); line-height: 1.45; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .empty { padding: 20px 6px; font-size: 13px; color: var(--muted); }
+
+  .footer { background: var(--navy); padding: 20px 24px; text-align: center; font-size: 11px; color: var(--muted); line-height: 1.8; }
+  .footer a { color: var(--light); }
+
+  .loading { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+  @media (max-width: 540px) {
+    .arch-item .d { flex-basis: 84px; }
+    .all-row .src { flex-basis: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="kicker">Dein täglicher Nachrichtenüberblick</div>
+  <h1>Tageslage</h1>
+  <div class="sub" id="headSub">Newsletter-Archiv</div>
+</div>
+<div class="metabar" id="metabar">Lade Ausgaben …</div>
+
+<div class="wrap">
+  <div class="card" id="issueCard"><div class="loading">Ausgabe wird geladen …</div></div>
+
+  <div class="card" style="padding:20px 28px;">
+    <div class="archive-title">📚 Archiv – alle Ausgaben</div>
+    <input type="search" class="search" id="searchBox"
+           placeholder="Suchen (z.B. EZB, Zölle, 10.06.2026) …" autocomplete="off">
+    <ul class="arch-list" id="archList"><li class="empty">Lade …</li></ul>
+  </div>
+</div>
+
+<div class="footer">
+  Tageslage – automatisch erstellter Nachrichten-Newsletter<br>
+  Historische Fakten: Wikipedia (CC BY-SA) &middot; Powered by Nils
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var INDEX = [];
+  var listEl   = document.getElementById('archList');
+  var cardEl   = document.getElementById('issueCard');
+  var searchEl = document.getElementById('searchBox');
+  var metaEl   = document.getElementById('metabar');
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function deDate(iso) { // 2026-06-10 → 10.06.2026
+    var p = String(iso).split('-');
+    return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
+  }
+  function zeitLabel(z) { return z === 'morgen' ? 'Morgen' : 'Abend'; }
+
+  // ── Ausgabe rendern ──────────────────────────────────────────────
+  function renderIssue(d) {
+    var h = '';
+    h += '<div class="issue-head"><span class="date">' + esc(deDate(d.datum)) + '</span>' +
+         '<span class="badge">' + esc(zeitLabel(d.zeit)) + '-Ausgabe</span></div>';
+    if (d.intro) h += '<div class="intro">' + esc(d.intro) + '</div>';
+
+    if (d.wikipedia && d.wikipedia.text) {
+      var w = d.wikipedia;
+      var inner = w.url
+        ? '<a href="' + esc(w.url) + '" target="_blank" rel="noopener">' + esc(w.text) + '</a>'
+        : esc(w.text);
+      h += '<div class="wiki"><div class="label">📅 An diesem Tag</div>' +
+           inner + ' <span class="src">&middot; Quelle: Wikipedia</span></div>';
+    }
+
+    if (d.destatis && d.destatis.text) {
+      var s = d.destatis;
+      var sinner = s.url
+        ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.text) + '</a>'
+        : esc(s.text);
+      h += '<div class="wiki"><div class="label">📊 Zahl des Tages</div>' +
+           sinner + ' <span class="src">&middot; Quelle: Destatis</span></div>';
+    }
+
+    if (d.wm && d.wm.text) {
+      var m = d.wm;
+      var minner = m.url
+        ? '<a href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.text) + '</a>'
+        : esc(m.text);
+      h += '<div class="wiki"><div class="label">⚽ Fußball-WM 2026</div>' +
+           minner + ' <span class="src">&middot; Ergebnisse: Sportschau</span></div>';
+    }
+
+    (d.kategorien || []).forEach(function (k) {
+      h += '<div class="cat"><h2>' + esc(k.name) + '</h2>';
+      (k.punkte || []).forEach(function (p) {
+        h += '<div class="bullet"><span class="dash">–</span><span>' +
+             esc(String(p).replace(/^•\s*/, '')) + '</span></div>';
+      });
+      if (k.links && k.links.length) {
+        h += '<div class="links">';
+        k.links.forEach(function (l) {
+          h += '<a href="' + esc(l.url) + '" target="_blank" rel="noopener"><b>' +
+               esc(l.quelle) + ':</b> ' + esc(l.titel) + '</a>';
+        });
+        h += '</div>';
+      }
+      h += '</div>';
+    });
+
+    var alleKeys = d.alle_artikel ? Object.keys(d.alle_artikel) : [];
+    if (alleKeys.length) {
+      var total = alleKeys.reduce(function (s, k) { return s + d.alle_artikel[k].length; }, 0);
+      h += '<details class="all-articles"><summary>Alle ' + total +
+           ' Artikel dieser Ausgabe anzeigen ▾</summary>';
+      alleKeys.forEach(function (k) {
+        h += '<div class="all-cat"><h3>' + esc(k) + '</h3>';
+        d.alle_artikel[k].forEach(function (a) {
+          h += '<div class="all-row"><span class="src">' + esc(a.quelle) + '</span>' +
+               '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' +
+               esc(a.titel) + '</a></div>';
+        });
+        h += '</div>';
+      });
+      h += '</details>';
+    }
+    cardEl.innerHTML = h;
+    document.getElementById('headSub').textContent =
+      deDate(d.datum) + ' · ' + zeitLabel(d.zeit) + '-Ausgabe';
+  }
+
+  function loadIssue(file, scroll) {
+    cardEl.innerHTML = '<div class="loading">Ausgabe wird geladen …</div>';
+    fetch('data/' + file).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function (d) {
+      renderIssue(d);
+      if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+      var base = file.replace(/\.json$/, '');
+      try { history.replaceState(null, '', '?a=' + base); } catch (e) {}
+    }).catch(function () {
+      cardEl.innerHTML = '<div class="loading">Ausgabe konnte nicht geladen werden.</div>';
+    });
+  }
+
+  // ── Archivliste rendern ──────────────────────────────────────────
+  function renderList(items) {
+    if (!items.length) {
+      listEl.innerHTML = '<li class="empty">Keine Ausgaben gefunden.</li>';
+      return;
+    }
+    var h = '';
+    items.forEach(function (e) {
+      h += '<li class="arch-item"><button data-file="' + esc(e.datei) + '">' +
+           '<span class="d">' + esc(deDate(e.datum)) + '</span>' +
+           '<span class="z">' + esc(zeitLabel(e.zeit)) + '</span>' +
+           '<span class="t">' + esc(e.intro || '') + '</span>' +
+           '</button></li>';
+    });
+    listEl.innerHTML = h;
+  }
+
+  listEl.addEventListener('click', function (ev) {
+    var btn = ev.target.closest('button[data-file]');
+    if (btn) loadIssue(btn.getAttribute('data-file'), true);
+  });
+
+  searchEl.addEventListener('input', function () {
+    var q = searchEl.value.trim().toLowerCase();
+    if (!q) { renderList(INDEX); return; }
+    renderList(INDEX.filter(function (e) {
+      return (e.suchtext || '').indexOf(q) !== -1;
+    }));
+  });
+
+  // ── Start ────────────────────────────────────────────────────────
+  fetch('data/index.json').then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function (idx) {
+    INDEX = idx || [];
+    metaEl.textContent = INDEX.length + ' Ausgabe' + (INDEX.length === 1 ? '' : 'n') +
+      ' im Archiv · 1 Jahr Aufbewahrung · KI-kuratiert';
+    renderList(INDEX);
+
+    var params = new URLSearchParams(location.search);
+    var wanted = params.get('a');
+    var match = wanted && INDEX.filter(function (e) {
+      return e.datei === wanted + '.json';
+    })[0];
+    if (match) {
+      loadIssue(match.datei, false);
+    } else if (INDEX.length) {
+      loadIssue(INDEX[0].datei, false);
+    } else {
+      cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden – ' +
+        'die erste erscheint nach dem nächsten Newsletter-Lauf.</div>';
+    }
+  }).catch(function () {
+    metaEl.textContent = 'Archiv noch nicht verfügbar';
+    listEl.innerHTML = '<li class="empty">Noch keine Daten vorhanden.</li>';
+    cardEl.innerHTML = '<div class="loading">Noch keine Ausgaben vorhanden – ' +
+      'die erste erscheint nach dem nächsten Newsletter-Lauf.</div>';
+  });
+})();
+</script>
+</body>
+</html>
