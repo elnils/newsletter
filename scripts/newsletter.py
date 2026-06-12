@@ -839,7 +839,11 @@ UEBERSETZUNG (viele Quellen sind englisch):
   "administration" → "Regierung", "billion" → "Milliarde" (nicht "Billion"!), "trillion" → "Billion".
 - ACHTUNG falsche Freunde: englisch "billion" = deutsch "Milliarde"; englisch "trillion" = deutsch "Billion".
 - Eigennamen, Firmen und Institutionen bleiben im Original (z.B. "Federal Reserve", "Supreme Court", "House of Representatives").
-- Keine englische Satzstellung, keine Anglizismen wie "realisieren" (statt "erkennen"), "kontrollieren" (statt "steuern")."""
+- Keine englische Satzstellung, keine Anglizismen wie "realisieren" (statt "erkennen"), "kontrollieren" (statt "steuern").
+- Holprige Behoerden-/Partei-Wortschoepfungen aus der Quelle NICHT uebernehmen, sondern in normales Deutsch aufloesen.
+  FALSCH: "Die SPD-Entsandte forderte..." → RICHTIG: "Die SPD-Abgeordnete forderte..." oder "Die Vertreterin der SPD forderte..."
+  FALSCH: "Der Regierungsentsandte" → RICHTIG: "Der Regierungsvertreter".
+  Setze KEINE Anfuehrungszeichen, um ein holpriges Wort zu kennzeichnen – formuliere es einfach sauber. Anfuehrungszeichen nur fuer echte, woertliche Zitate, die du sicher dem Quelltext entnimmst; im Zweifel KEINE Anfuehrungszeichen."""
 
 # Modul-weites Flag: aktuell aktives Modell. Startet mit GROQ_MODEL.
 # Sobald GROQ_MODEL einmal versagt, wird dies dauerhaft auf den Fallback
@@ -1220,6 +1224,11 @@ SATZBAU (sehr wichtig – haeufige Fehler vermeiden):
     → drei Ereignisse (Abkommen nahe + Angriffe abgesagt + Oelpreise) in einem verschachtelten Satz mit konstruiertem "wodurch".
   RICHTIG: "Die USA stehen laut Weissem Haus kurz vor einem Atomabkommen mit dem Iran und setzen geplante Militaerschlaege aus."
     → ein klarer Kerngedanke; der Oelpreis-Effekt entfaellt, wenn er nicht zentral belegt ist.
+- ABSICHT und FOLGE nicht verwechseln. Ein Akteur "laesst" eine Marktreaktion nicht absichtlich geschehen – sie ist eine FOLGE seiner Handlung. Formuliere Folgen als Folge ("daraufhin", "in der Folge", "danach"), nicht als Handlung des Akteurs.
+  FALSCH (so NIEMALS): "Das Weisse Haus laesst die Oelpreise fallen."
+    → suggeriert, die Regierung steuere den Oelpreis absichtlich; tatsaechlich ist der Preisrueckgang nur eine Reaktion.
+  RICHTIG: "Nach der Entspannung im Iran-Konflikt fallen die Oelpreise." oder "Die Oelpreise sinken daraufhin."
+    → der Preisrueckgang erscheint als Folge, nicht als Absicht des Akteurs.
 
 SCHLECHTE Beispiele – NIEMALS so:
 "• Die internationale Staatengemeinschaft warnt vor negativen Auswirkungen auf die globale Wirtschaft."
@@ -1553,40 +1562,71 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
     # ── WM-Block (ans Ende, nur waehrend des Turniers) ───────────────────
     wm_html = ""
-    if wm_info and (wm_info.get("letztes") or wm_info.get("heute") or wm_info.get("naechste")):
+    if wm_info and (wm_info.get("letztes") or wm_info.get("heute")
+                    or wm_info.get("naechste") or wm_info.get("gestern")):
         wm_link = wm_info.get("link", "")
+
+        def _spiel_row(zeit: str, paarung: str, klein: bool = False) -> str:
+            """Eine Spielzeile mit fester Zeit-Spalte (Uhrzeiten buendig)."""
+            fs = "11px" if klein else "13px"
+            col = COLOR_MUTED if klein else COLOR_TEXT2
+            return (
+                f'<tr>'
+                f'<td style="font-family:{FONT};font-size:{fs};line-height:1.7;'
+                f'color:{COLOR_MUTED};white-space:nowrap;width:52px;'
+                f'vertical-align:top;padding:1px 0;">{zeit}</td>'
+                f'<td style="font-family:{FONT};font-size:{fs};line-height:1.7;'
+                f'color:{col};padding:1px 0;">{paarung}</td>'
+                f'</tr>'
+            )
+
         zeilen = ""
-        # Letztes Ergebnis
+
+        # Letztes Ergebnis (hervorgehoben)
         if wm_info.get("letztes"):
             zeilen += (
-                f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.7;'
-                f'color:{COLOR_TEXT2};padding:1px 0;">'
+                f'<tr><td colspan="2" style="font-family:{FONT};font-size:13px;'
+                f'line-height:1.7;color:{COLOR_TEXT2};padding:1px 0;">'
                 f'<span style="color:{COLOR_MUTED};">Zuletzt:</span> '
                 f'<strong style="color:{COLOR_NAVY};">{wm_info["letztes"]}</strong>'
                 f'</td></tr>'
             )
-        # Spiele heute
+
+        # Gestrige Ergebnisse (klein, eingerueckt) – ausser dem schon als
+        # "Zuletzt" gezeigten, damit nichts doppelt steht
+        gestern = [g for g in wm_info.get("gestern", []) if g != wm_info.get("letztes")]
+        if gestern:
+            zeilen += (
+                f'<tr><td colspan="2" style="font-family:{FONT};font-size:10px;'
+                f'text-transform:uppercase;letter-spacing:0.5px;color:{COLOR_MUTED};'
+                f'padding:6px 0 2px;">Ergebnisse gestern</td></tr>'
+            )
+            for g in gestern:
+                zeilen += _spiel_row("", g, klein=True)
+
+        # Spiele heute (Zeit eingerueckt)
         if wm_info.get("heute"):
-            spiele = "<br>".join(wm_info["heute"])
             zeilen += (
-                f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.7;'
-                f'color:{COLOR_TEXT2};padding:1px 0;">'
-                f'<span style="color:{COLOR_MUTED};">Heute:</span> {spiele}'
-                f'</td></tr>'
+                f'<tr><td colspan="2" style="font-family:{FONT};font-size:10px;'
+                f'text-transform:uppercase;letter-spacing:0.5px;color:{COLOR_MUTED};'
+                f'padding:6px 0 2px;">Heute</td></tr>'
             )
+            for s in wm_info["heute"]:
+                zeilen += _spiel_row(s.get("zeit", ""), s.get("paarung", ""))
         elif wm_info.get("naechste"):
-            spiele = "<br>".join(wm_info["naechste"])
             zeilen += (
-                f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.7;'
-                f'color:{COLOR_TEXT2};padding:1px 0;">'
-                f'<span style="color:{COLOR_MUTED};">Als Nächstes:</span> {spiele}'
-                f'</td></tr>'
+                f'<tr><td colspan="2" style="font-family:{FONT};font-size:10px;'
+                f'text-transform:uppercase;letter-spacing:0.5px;color:{COLOR_MUTED};'
+                f'padding:6px 0 2px;">Als Nächstes</td></tr>'
             )
+            for s in wm_info["naechste"]:
+                zeilen += _spiel_row(s.get("zeit", ""), s.get("paarung", ""))
+
         # Link zu allen Ergebnissen
         link_zeile = ""
         if wm_link:
             link_zeile = (
-                f'<tr><td style="padding-top:6px;">'
+                f'<tr><td colspan="2" style="padding-top:8px;">'
                 f'<a href="{wm_link}" style="font-family:{FONT};font-size:11px;'
                 f'font-weight:600;color:{COLOR_BLUE};text-decoration:none;">'
                 f'Alle Ergebnisse & Spielplan →</a></td></tr>'
@@ -1596,8 +1636,9 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'<tr><td style="padding:18px 32px 20px;background:{COLOR_BG};'
             f'border-top:2px solid {COLOR_BORDER};">'
             f'<table cellpadding="0" cellspacing="0" border="0" width="100%">'
-            f'<tr><td style="font-family:{FONT};font-size:13px;font-weight:700;'
-            f'color:{COLOR_NAVY};padding-bottom:8px;">⚽ Fußball-WM 2026</td></tr>'
+            f'<tr><td colspan="2" style="font-family:{FONT};font-size:13px;'
+            f'font-weight:700;color:{COLOR_NAVY};padding-bottom:8px;">'
+            f'⚽ Fußball-WM 2026</td></tr>'
             f'{zeilen}{link_zeile}'
             f'</table></td></tr>'
         )
@@ -1896,7 +1937,13 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
         if not matches:
             return {}
 
-        # ── Letztes gespieltes Ergebnis ──────────────────────────────
+        # "Gestern" bestimmen (fuer die gestrigen Ergebnisse)
+        try:
+            yest = (now - timedelta(days=1)).strftime("%Y-%m-%d")
+        except Exception:
+            yest = ""
+
+        # ── Letztes gespieltes Ergebnis (fuer "Zuletzt") ─────────────
         letztes_str = ""
         letztes = None
         for m in matches:
@@ -1911,13 +1958,25 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
                 f"{_wm_team(letztes.get('team2',''))}"
             )
 
-        # ── Spiele HEUTE (noch ohne Ergebnis) ────────────────────────
+        # ── Alle Ergebnisse von GESTERN (klein darunter) ─────────────
+        gestern_list = []
+        if yest:
+            gestern_spiele = sorted(
+                [m for m in matches if m.get("date", "") == yest and _has_score(m)],
+                key=lambda m: _uhr(m)
+            )
+            for m in gestern_spiele:
+                gestern_list.append(
+                    f"{_wm_team(m.get('team1',''))} "
+                    f"{m.get('score1')}:{m.get('score2')} "
+                    f"{_wm_team(m.get('team2',''))}"
+                )
+
+        # ── Spiele HEUTE (noch ohne Ergebnis), Zeit + Paarung getrennt ─
         heute_raw = [
             m for m in matches
             if m.get("date", "") == today and not _has_score(m)
         ]
-        # Bei vollem Spieltag (>2 Spiele) auf Topspiele begrenzen, damit der
-        # Block kompakt bleibt. Sind es 2 oder weniger, alle zeigen.
         if len(heute_raw) > 2:
             top = [m for m in heute_raw if _wm_is_top(m)]
             if top:
@@ -1927,9 +1986,9 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
             u  = _uhr(m)
             t1 = _wm_team(m.get("team1", ""))
             t2 = _wm_team(m.get("team2", ""))
-            heute.append((u, f"{(u + ' ') if u else ''}{t1} – {t2}"))
-        heute.sort(key=lambda x: x[0])
-        heute_list = [s for _, s in heute]
+            heute.append({"zeit": u, "paarung": f"{t1} – {t2}"})
+        heute.sort(key=lambda x: x["zeit"])
+        heute_list = heute
 
         # ── Fallback: naechste Spiele (falls heute keine mehr) ───────
         naechste_list = []
@@ -1948,14 +2007,15 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
                 t1 = _wm_team(m.get("team1", ""))
                 t2 = _wm_team(m.get("team2", ""))
                 zeit = f"{dd}{(' ' + u) if u else ''}"
-                naechste_list.append(f"{zeit} {t1} – {t2}")
+                naechste_list.append({"zeit": zeit, "paarung": f"{t1} – {t2}"})
 
-        if not (letztes_str or heute_list or naechste_list):
+        if not (letztes_str or heute_list or naechste_list or gestern_list):
             return {}
 
-        print(f"  ✓ WM-Info: zuletzt '{letztes_str}', heute {len(heute_list)} Spiel(e)")
+        print(f"  ✓ WM-Info: zuletzt '{letztes_str}', heute {len(heute_list)}, gestern {len(gestern_list)}")
         return {
             "letztes":  letztes_str,
+            "gestern":  gestern_list,
             "heute":    heute_list,
             "naechste": naechste_list,
             "link":     link,
