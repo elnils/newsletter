@@ -51,19 +51,30 @@ if sheet_id and creds:
 
         rows = ws.get_all_records()
 
-        active   = 0
-        inactive = 0
+        # Status pro Adresse sammeln. Bei Dubletten (gleiche Adresse mehrfach
+        # im Sheet, z.B. durch An-/Abmelde-Tests) gilt: AKTIV gewinnt.
+        # Begruendung: Eine echte Abmeldung aendert per Apps-Script die
+        # BESTEHENDE Zeile auf "inaktiv" – erzeugt also keine Dublette.
+        # Dubletten (aktiv + inaktiv nebeneinander) stammen daher aus Tests
+        # oder manuellen Eintraegen; dort ist "aktiv" der gewollte Zustand.
+        status_per_email: dict[str, bool] = {}   # email -> ist_aktiv
         for row in rows:
             email  = _first_value(row, EMAIL_COLUMNS).lower()
             status = _first_value(row, STATUS_COLUMNS).lower()
             if not email or "@" not in email:
                 continue
-            if status in INACTIVE_VALUES:
-                recipients.discard(email)
-                inactive += 1
-            else:
+            ist_aktiv = status not in INACTIVE_VALUES
+            # einmal aktiv => bleibt aktiv
+            status_per_email[email] = status_per_email.get(email, False) or ist_aktiv
+
+        active   = sum(1 for v in status_per_email.values() if v)
+        inactive = sum(1 for v in status_per_email.values() if not v)
+
+        for email, ist_aktiv in status_per_email.items():
+            if ist_aktiv:
                 recipients.add(email)
-                active += 1
+            else:
+                recipients.discard(email)   # auch Secret-Adressen respektieren Abmeldung
 
         print("Sheet geladen:", active, "aktiv,", inactive, "abgemeldet ->",
               len(recipients), "Empfaenger gesamt")
