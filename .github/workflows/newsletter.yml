@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # noetig, damit der Commit von docs/ gepusht werden darf
+  contents: write   # noetig, damit der Commit von index.html/data/ gepusht werden darf
 
 jobs:
   send-newsletter:
@@ -35,8 +35,8 @@ jobs:
           RECIPIENT_EMAIL:    ${{ secrets.RECIPIENT_EMAIL }}
         run: python3 scripts/recipients.py
 
-      # 5) Newsletter bauen + versenden + Archiv-JSON nach docs/ schreiben
-      #    (laeuft in scripts/, daher landet docs/ via ../docs in der Wurzel)
+      # 5) Newsletter bauen + versenden + Archiv-JSON nach data/ schreiben
+      #    (laeuft in scripts/, daher landet data/ via ../data in der Repo-Wurzel)
       - name: Newsletter ausfuehren
         working-directory: scripts
         env:
@@ -48,12 +48,13 @@ jobs:
           UNSUBSCRIBE_URL:    ${{ secrets.UNSUBSCRIBE_URL }}
         run: python3 newsletter.py
 
-      # 6) Aktualisiertes Archiv (docs/) committen und pushen
+      # 6) Aktualisiertes Archiv (data/) committen und in main pushen
+      #    Pages liest "main (nur main)" aus der Wurzel -> data/ + index.html
       - name: Archiv committen
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
+          git add data/
           if git diff --cached --quiet; then
             echo "Keine Archiv-Aenderungen."
           else
