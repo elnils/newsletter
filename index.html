@@ -100,28 +100,47 @@
   .footer { text-align: center; font-size: 11px; color: var(--muted); line-height: 1.8; padding: 24px; }
   .loading { text-align: center; padding: 50px; color: var(--muted); }
 
-  .overlay { position: fixed; inset: 0; background: rgba(20,30,45,.45); opacity: 0; visibility: hidden; transition: opacity .25s; z-index: 90; }
-  .overlay.open { opacity: 1; visibility: visible; }
-  .reader { position: fixed; top: 0; right: 0; height: 100%; width: 440px; max-width: 92vw; background: #fff; box-shadow: -4px 0 28px rgba(0,0,0,.2); transform: translateX(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); z-index: 100; display: flex; flex-direction: column; }
-  .reader.open { transform: translateX(0); }
-  .reader-head { background: var(--navy); color: #fff; padding: 20px 22px; position: relative; }
-  .reader-head .rsrc { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--light); margin-bottom: 7px; padding-right: 34px; }
-  .reader-head .rttl { font-size: 18px; font-weight: 700; line-height: 1.35; }
-  .reader-x { position: absolute; top: 16px; right: 18px; background: none; border: none; color: var(--light); font-size: 26px; line-height: 1; cursor: pointer; width: 30px; height: 30px; }
-  .reader-x:hover { color: #fff; }
-  .reader-nav { display: flex; border-bottom: 1px solid var(--border); }
-  .reader-nav button { flex: 1; background: none; border: none; padding: 10px; font-size: 12px; font-weight: 600; color: var(--blue); cursor: pointer; font-family: inherit; }
-  .reader-nav button:hover { background: #f6f8fa; }
-  .reader-nav button:disabled { opacity: .3; cursor: default; }
-  .reader-nav button:first-child { border-right: 1px solid var(--border); }
-  .reader-body { padding: 22px; overflow-y: auto; flex: 1; font-size: 14.5px; line-height: 1.75; color: var(--text2); }
-  .reader-body .rmeta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px; }
-  .reader-foot { padding: 16px 22px; border-top: 1px solid var(--border); }
-  .reader-foot a { display: block; text-align: center; background: var(--blue); color: #fff; font-size: 14px; font-weight: 600; padding: 13px; border-radius: 6px; }
-  .reader-foot a:hover { background: var(--navy2); }
+  /* ── Karte im offenen Zustand ── */
+  .ncard.open { border-color: var(--blue); box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+  .ncard.open .ttl { color: var(--blue); }
+
+  /* ── Inline-Vorschau (sanft unter der Karte) ── */
+  .inline-prev {
+    grid-column: 1 / -1;          /* volle Breite im Raster */
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .3s ease, opacity .25s ease, margin .3s ease;
+    margin: 0;
+  }
+  .inline-prev.open {
+    max-height: 600px;
+    opacity: 1;
+    margin: 2px 0 8px;
+  }
+  .inline-prev-inner {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--blue);
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+  .inline-prev .ip-meta { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--blue); margin-bottom: 8px; }
+  .inline-prev .ip-text { font-size: 13.5px; line-height: 1.7; color: var(--text2); margin-bottom: 14px; }
+  .inline-prev .ip-text.empty { font-style: italic; color: var(--muted); }
+  .inline-prev .ip-link { display: inline-block; background: var(--blue); color: #fff; font-size: 13px; font-weight: 600; padding: 9px 16px; border-radius: 5px; }
+  .inline-prev .ip-link:hover { background: var(--navy2); }
+
+  /* ── Inline-Vorschau in der "Alle Artikel"-Liste ── */
+  .allrow-prev { overflow: hidden; max-height: 0; opacity: 0; transition: max-height .3s ease, opacity .25s ease; }
+  .allrow-prev.open { max-height: 400px; opacity: 1; }
+  .allrow-prev-inner { background: #f8fafc; border-left: 3px solid var(--blue); border-radius: 4px; padding: 12px 14px; margin: 4px 0 8px; }
+  .allrow-prev .ip-text { font-size: 13px; line-height: 1.6; color: var(--text2); margin-bottom: 10px; }
+  .allrow-prev .ip-text.empty { font-style: italic; color: var(--muted); }
+  .allrow-prev .ip-link { display: inline-block; background: var(--blue); color: #fff; font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 4px; }
+  .allrow.open .arl { color: var(--blue); font-weight: 600; }
 
   @media (max-width: 600px) {
-    .reader { width: 100%; max-width: 100%; }
     .grid { grid-template-columns: 1fr; }
     .issuebar select { min-width: 150px; }
   }
@@ -160,26 +179,6 @@
   Historische Fakten: Wikipedia (CC BY-SA) · Zahlen: Destatis · Powered by Nils
 </div>
 
-<div class="overlay" id="overlay" onclick="Reader.close()"></div>
-<aside class="reader" id="reader" role="dialog" aria-modal="true">
-  <div class="reader-head">
-    <button class="reader-x" onclick="Reader.close()" aria-label="Schließen">&times;</button>
-    <div class="rsrc" id="rSrc"></div>
-    <div class="rttl" id="rTtl"></div>
-  </div>
-  <div class="reader-nav">
-    <button id="rPrev" onclick="Reader.step(-1)">← Voriger</button>
-    <button id="rNext" onclick="Reader.step(1)">Nächster →</button>
-  </div>
-  <div class="reader-body">
-    <div class="rmeta" id="rMeta"></div>
-    <div id="rText"></div>
-  </div>
-  <div class="reader-foot">
-    <a id="rLink" href="#" target="_blank" rel="noopener">Artikel öffnen →</a>
-  </div>
-</aside>
-
 <script>
 (function () {
   'use strict';
@@ -187,8 +186,6 @@
   var current = null;
   var currentFile = null;
   var activeFilter = 'alle';
-  var readerList = [];
-  var readerPos = 0;
 
   var elIssue  = document.getElementById('issueArea');
   var elList   = document.getElementById('archList');
@@ -207,49 +204,18 @@
   }
   function zeitLabel(z) { return z === 'morgen' ? 'Morgen' : 'Abend'; }
 
-  var Reader = {
-    open: function (list, pos) {
-      readerList = list; readerPos = pos;
-      this.render();
-      document.getElementById('reader').classList.add('open');
-      document.getElementById('overlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    },
-    close: function () {
-      document.getElementById('reader').classList.remove('open');
-      document.getElementById('overlay').classList.remove('open');
-      document.body.style.overflow = '';
-    },
-    step: function (dir) {
-      var np = readerPos + dir;
-      if (np < 0 || np >= readerList.length) return;
-      readerPos = np; this.render();
-    },
-    render: function () {
-      var a = readerList[readerPos] || {};
-      document.getElementById('rSrc').textContent  = a.quelle || '';
-      document.getElementById('rTtl').textContent  = a.titel || '';
-      document.getElementById('rMeta').textContent =
-        (a.quelle ? 'Quelle: ' + a.quelle : '') +
-        (a.kategorie ? '  ·  ' + a.kategorie : '');
-      var txt = document.getElementById('rText');
-      var v = (a.vorschau || '').trim();
-      if (v) { txt.textContent = v; txt.style.fontStyle = 'normal'; txt.style.color = 'var(--text2)'; }
-      else { txt.textContent = 'Für diesen Artikel liegt keine Vorschau vor. Über den Button unten gelangst du zum vollständigen Beitrag.'; txt.style.fontStyle = 'italic'; txt.style.color = 'var(--muted)'; }
-      var link = document.getElementById('rLink');
-      link.href = a.url || '#';
-      link.textContent = a.quelle ? ('Auf ' + a.quelle + ' lesen →') : 'Artikel öffnen →';
-      document.getElementById('rPrev').disabled = (readerPos <= 0);
-      document.getElementById('rNext').disabled = (readerPos >= readerList.length - 1);
-    }
-  };
-  window.Reader = Reader;
-  document.addEventListener('keydown', function (e) {
-    if (!document.getElementById('reader').classList.contains('open')) return;
-    if (e.key === 'Escape') Reader.close();
-    if (e.key === 'ArrowLeft') Reader.step(-1);
-    if (e.key === 'ArrowRight') Reader.step(1);
-  });
+  /* ─────────── Inline-Vorschau ─────────── */
+  function previewInner(a) {
+    var v = (a.vorschau || '').trim();
+    var textHtml = v
+      ? '<div class="ip-text">' + esc(v) + '</div>'
+      : '<div class="ip-text empty">Für diesen Artikel liegt keine Vorschau vor. Über den Button gelangst du zum vollständigen Beitrag.</div>';
+    var meta = a.quelle ? '<div class="ip-meta">' + esc(a.quelle) + '</div>' : '';
+    var btn = '<a class="ip-link" href="' + esc(a.url || '#') + '" target="_blank" rel="noopener">' +
+              (a.quelle ? 'Auf ' + esc(a.quelle) + ' lesen →' : 'Artikel öffnen →') + '</a>';
+    return meta + textHtml + btn;
+  }
+
 
   function renderIssue(d) {
     current = d;
@@ -301,7 +267,8 @@
         d.alle_artikel[k].forEach(function (a, i) {
           h += '<div class="allrow" data-cat="' + esc(k) + '" data-i="' + i + '">' +
                '<span class="ars">' + esc(a.quelle) + '</span>' +
-               '<span class="arl">' + esc(a.titel) + '</span></div>';
+               '<span class="arl">' + esc(a.titel) + '</span></div>' +
+               '<div class="allrow-prev" data-for="all-' + esc(k) + '-' + i + '"></div>';
         });
         h += '</div>';
       });
@@ -332,7 +299,8 @@
            '<span class="src">' + esc(l.quelle) + '</span>' +
            '<span class="ttl">' + esc(l.titel) + '</span>' +
            (hasV ? '<span class="prev">' + esc(l.vorschau.trim()) + '</span>' : '') +
-           '</div>';
+           '</div>' +
+           '<div class="inline-prev" data-for="' + esc(k.name) + '-' + i + '"></div>';
     });
     h += '</div></div>';
     return h;
@@ -379,28 +347,51 @@
       });
     });
 
+    // Karten-Klick → Inline-Vorschau darunter aufklappen
     elIssue.querySelectorAll('.ncard').forEach(function (card) {
       card.addEventListener('click', function () {
         var cat = card.getAttribute('data-cat');
         var i   = parseInt(card.getAttribute('data-i'), 10);
         var k = (current.kategorien || []).filter(function (x) { return x.name === cat; })[0];
         if (!k) return;
-        var list = k.links.map(function (l) {
-          return { quelle: l.quelle, titel: l.titel, url: l.url, vorschau: l.vorschau, kategorie: cat };
-        });
-        Reader.open(list, i);
+        var a = k.links[i];
+        if (!a) return;
+        var prevEl = card.nextElementSibling;  // das inline-prev direkt nach der Karte
+        var isOpen = prevEl.classList.contains('open');
+
+        // Andere offene Vorschauen in diesem Grid schließen
+        var grid = card.parentNode;
+        grid.querySelectorAll('.inline-prev.open').forEach(function (el) { el.classList.remove('open'); el.innerHTML = ''; });
+        grid.querySelectorAll('.ncard.open').forEach(function (el) { el.classList.remove('open'); });
+
+        if (!isOpen) {
+          prevEl.innerHTML = '<div class="inline-prev-inner">' + previewInner(a) + '</div>';
+          prevEl.classList.add('open');
+          card.classList.add('open');
+        }
       });
     });
 
+    // "Alle Artikel"-Zeile → Inline-Vorschau darunter
     elIssue.querySelectorAll('.allrow').forEach(function (row) {
       row.addEventListener('click', function () {
         var cat = row.getAttribute('data-cat');
         var i   = parseInt(row.getAttribute('data-i'), 10);
         var arr = current.alle_artikel[cat] || [];
-        var list = arr.map(function (a) {
-          return { quelle: a.quelle, titel: a.titel, url: a.url, vorschau: a.vorschau, kategorie: cat };
-        });
-        Reader.open(list, i);
+        var a = arr[i];
+        if (!a) return;
+        var prevEl = row.nextElementSibling;
+        var isOpen = prevEl.classList.contains('open');
+
+        var container = row.parentNode;
+        container.querySelectorAll('.allrow-prev.open').forEach(function (el) { el.classList.remove('open'); el.innerHTML = ''; });
+        container.querySelectorAll('.allrow.open').forEach(function (el) { el.classList.remove('open'); });
+
+        if (!isOpen) {
+          prevEl.innerHTML = '<div class="allrow-prev-inner">' + previewInner(a) + '</div>';
+          prevEl.classList.add('open');
+          row.classList.add('open');
+        }
       });
     });
   }
