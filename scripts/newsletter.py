@@ -1332,7 +1332,7 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
     for cat, bullets in summaries.items():
         links = [
             {"quelle": a["source"], "titel": a["title"], "url": a["link"],
-             "vorschau": (a.get("summary") or "")[:220]}
+             "vorschau": (a.get("summary") or "")[:500]}
             for a in selected_links.get(cat, []) if a.get("link")
         ]
         kategorien.append({"name": cat, "punkte": bullets, "links": links})
@@ -1342,7 +1342,7 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
     for cat, arts in grouped.items():
         rows = [
             {"quelle": a["source"], "titel": a["title"], "url": a["link"],
-             "vorschau": (a.get("summary") or "")[:220]}
+             "vorschau": (a.get("summary") or "")[:500]}
             for a in arts if a.get("link")
         ]
         if rows:
