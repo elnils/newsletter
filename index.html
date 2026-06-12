@@ -80,13 +80,58 @@
   .footer a { color: var(--light); }
 
   .loading { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+
+  /* ── Slide-in-Panel (Artikel-Vorschau) ── */
+  .panel-overlay {
+    position: fixed; inset: 0; background: rgba(20,30,45,0.45);
+    opacity: 0; visibility: hidden; transition: opacity .25s ease;
+    z-index: 90;
+  }
+  .panel-overlay.open { opacity: 1; visibility: visible; }
+  .panel {
+    position: fixed; top: 0; right: 0; height: 100%; width: 420px; max-width: 90vw;
+    background: #fff; box-shadow: -4px 0 24px rgba(0,0,0,0.18);
+    transform: translateX(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
+    z-index: 100; display: flex; flex-direction: column;
+  }
+  .panel.open { transform: translateX(0); }
+  .panel-head { padding: 18px 22px; background: var(--navy); color: #fff; position: relative; flex: 0 0 auto; }
+  .panel-head .psrc { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--light); margin-bottom: 6px; padding-right: 30px; }
+  .panel-head .ptitle { font-size: 17px; font-weight: 700; line-height: 1.35; }
+  .panel-close { position: absolute; top: 14px; right: 16px; background: none; border: none; color: var(--light); font-size: 24px; line-height: 1; cursor: pointer; padding: 0; width: 28px; height: 28px; }
+  .panel-close:hover { color: #fff; }
+  .panel-body { padding: 22px; overflow-y: auto; flex: 1 1 auto; font-size: 14px; line-height: 1.7; color: var(--text2); }
+  .panel-body .pmeta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
+  .panel-foot { padding: 16px 22px; border-top: 1px solid var(--border); flex: 0 0 auto; }
+  .panel-foot a { display: block; text-align: center; background: var(--blue); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px; border-radius: 4px; }
+  .panel-foot a:hover { background: var(--navy2); opacity: 1; }
+  .clickable { cursor: pointer; }
+
   @media (max-width: 540px) {
     .arch-item .d { flex-basis: 84px; }
     .all-row .src { flex-basis: 80px; }
+    .panel { width: 100%; max-width: 100%; }
   }
 </style>
 </head>
 <body>
+
+<!-- Slide-in-Panel für Artikel-Vorschau -->
+<div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
+<aside class="panel" id="articlePanel" role="dialog" aria-modal="true" aria-label="Artikel-Vorschau">
+  <div class="panel-head">
+    <button class="panel-close" onclick="closePanel()" aria-label="Schließen">&times;</button>
+    <div class="psrc" id="panelSrc"></div>
+    <div class="ptitle" id="panelTitle"></div>
+  </div>
+  <div class="panel-body">
+    <div class="pmeta" id="panelMeta"></div>
+    <div id="panelText"></div>
+  </div>
+  <div class="panel-foot">
+    <a id="panelLink" href="#" target="_blank" rel="noopener">Vollständigen Artikel lesen →</a>
+  </div>
+</aside>
 
 <div class="header">
   <div class="kicker">Dein täglicher Nachrichtenüberblick</div>
@@ -131,6 +176,44 @@
   }
   function zeitLabel(z) { return z === 'morgen' ? 'Morgen' : 'Abend'; }
 
+  // ── Slide-in-Panel ──────────────────────────────────────────────
+  function openPanel(el) {
+    var src      = el.getAttribute('data-src') || '';
+    var title    = el.getAttribute('data-title') || '';
+    var url      = el.getAttribute('data-url') || '';
+    var vorschau = (el.getAttribute('data-vorschau') || '').trim();
+
+    document.getElementById('panelSrc').textContent   = src;
+    document.getElementById('panelTitle').textContent = title;
+    document.getElementById('panelMeta').textContent  = src ? ('Quelle: ' + src) : '';
+    var textEl = document.getElementById('panelText');
+    if (vorschau) {
+      textEl.textContent = vorschau;
+      textEl.style.fontStyle = 'normal';
+      textEl.style.color = 'var(--text2)';
+    } else {
+      textEl.textContent = 'Für diesen Artikel liegt keine Vorschau vor. Über den Button unten gelangst du direkt zum vollständigen Beitrag.';
+      textEl.style.fontStyle = 'italic';
+      textEl.style.color = 'var(--muted)';
+    }
+    var link = document.getElementById('panelLink');
+    link.href = url || '#';
+    link.textContent = src ? ('Auf ' + src + ' lesen →') : 'Vollständigen Artikel lesen →';
+
+    document.getElementById('articlePanel').classList.add('open');
+    document.getElementById('panelOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel() {
+    document.getElementById('articlePanel').classList.remove('open');
+    document.getElementById('panelOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePanel();
+  });
+
+
   // ── Ausgabe rendern ──────────────────────────────────────────────
   function renderIssue(d) {
     var h = '';
@@ -167,11 +250,13 @@
         k.links.forEach(function (l) {
           var hasV = l.vorschau && l.vorschau.trim();
           h += '<div class="linkrow">';
-          h += '<a href="' + esc(l.url) + '" target="_blank" rel="noopener"><b>' +
-               esc(l.quelle) + ':</b> ' + esc(l.titel) + '</a>';
+          h += '<a class="clickable" onclick="openPanel(this)" ' +
+               'data-src="' + esc(l.quelle) + '" data-title="' + esc(l.titel) + '" ' +
+               'data-url="' + esc(l.url) + '" data-vorschau="' + esc(l.vorschau || '') + '">' +
+               '<b>' + esc(l.quelle) + ':</b> ' + esc(l.titel) + '</a>';
           if (hasV) {
             h += '<div class="preview">' + esc(l.vorschau.trim()) +
-                 (l.vorschau.length >= 220 ? '…' : '') + '</div>';
+                 (l.vorschau.length >= 500 ? '…' : '') + '</div>';
           }
           h += '</div>';
         });
@@ -188,9 +273,10 @@
       alleKeys.forEach(function (k) {
         h += '<div class="all-cat"><h3>' + esc(k) + '</h3>';
         d.alle_artikel[k].forEach(function (a) {
-          var tip = (a.vorschau && a.vorschau.trim()) ? ' title="' + esc(a.vorschau.trim()) + '"' : '';
           h += '<div class="all-row"><span class="src">' + esc(a.quelle) + '</span>' +
-               '<a href="' + esc(a.url) + '" target="_blank" rel="noopener"' + tip + '>' +
+               '<a class="clickable" onclick="openPanel(this)" ' +
+               'data-src="' + esc(a.quelle) + '" data-title="' + esc(a.titel) + '" ' +
+               'data-url="' + esc(a.url) + '" data-vorschau="' + esc(a.vorschau || '') + '">' +
                esc(a.titel) + '</a></div>';
         });
         h += '</div>';
@@ -200,7 +286,8 @@
 
     // ── WM-Block ans Ende ──────────────────────────────────────────
     if (d.wm && (d.wm.letztes || (d.wm.heute && d.wm.heute.length) ||
-                 (d.wm.naechste && d.wm.naechste.length) || (d.wm.gestern && d.wm.gestern.length))) {
+                 (d.wm.naechste && d.wm.naechste.length) || (d.wm.gestern && d.wm.gestern.length) ||
+                 (d.wm.heute_fertig && d.wm.heute_fertig.length))) {
       var w = d.wm;
       var wh = '<div style="padding:18px 28px;background:#f8f9fa;border-top:2px solid var(--border);">';
       wh += '<div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;">⚽ Fußball-WM 2026</div>';
@@ -216,12 +303,20 @@
       var subhead = '<tr><td colspan="2" style="font-size:10px;text-transform:uppercase;' +
                     'letter-spacing:.5px;color:var(--muted);padding:6px 0 2px;">';
 
-      if (w.letztes) {
+      var heuteFertig = w.heute_fertig || [];
+      var letztesInHeute = heuteFertig.some(function (s) {
+        return w.letztes && s.paarung && s.paarung.indexOf(w.letztes) !== -1;
+      });
+      if (w.letztes && !letztesInHeute) {
         wh += '<div style="font-size:13px;line-height:1.7;color:var(--text2);">' +
               '<span style="color:var(--muted);">Zuletzt:</span> <strong style="color:var(--navy);">' +
               esc(w.letztes) + '</strong></div>';
       }
       wh += '<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:2px;">';
+      if (heuteFertig.length) {
+        wh += subhead + 'Heute bereits gespielt</td></tr>';
+        heuteFertig.forEach(function (s) { wh += spielRow(s.zeit, s.paarung, false); });
+      }
       var gestern = (w.gestern || []).filter(function (g) { return g !== w.letztes; });
       if (gestern.length) {
         wh += subhead + 'Ergebnisse gestern</td></tr>';
