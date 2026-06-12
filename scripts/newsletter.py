@@ -1282,7 +1282,7 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
                        history_fact: str, history_url: str,
                        now: datetime, daytime: str,
                        destatis_fact: str = "", destatis_url: str = "",
-                       destatis_zahl: str = "", wm_info: dict | None = None) -> str:
+                       wm_info: dict | None = None) -> str:
     """
     Schreibt die aktuelle Ausgabe als JSON nach docs/data/ und pflegt
     docs/data/index.json (Liste aller Ausgaben fuer die Archiv-Webseite).
@@ -1300,7 +1300,8 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
     kategorien = []
     for cat, bullets in summaries.items():
         links = [
-            {"quelle": a["source"], "titel": a["title"], "url": a["link"]}
+            {"quelle": a["source"], "titel": a["title"], "url": a["link"],
+             "vorschau": (a.get("summary") or "")[:220]}
             for a in selected_links.get(cat, []) if a.get("link")
         ]
         kategorien.append({"name": cat, "punkte": bullets, "links": links})
@@ -1309,7 +1310,8 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
     alle_artikel = {}
     for cat, arts in grouped.items():
         rows = [
-            {"quelle": a["source"], "titel": a["title"], "url": a["link"]}
+            {"quelle": a["source"], "titel": a["title"], "url": a["link"],
+             "vorschau": (a.get("summary") or "")[:220]}
             for a in arts if a.get("link")
         ]
         if rows:
@@ -1321,7 +1323,7 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
         "erstellt":   now.strftime("%d.%m.%Y %H:%M"),
         "intro":      intro,
         "wikipedia":  {"text": history_fact, "url": history_url},
-        "destatis":   {"zahl": destatis_zahl, "text": destatis_fact, "url": destatis_url},
+        "destatis":   {"text": destatis_fact, "url": destatis_url},
         "wm":         wm_info or {},
         "kategorien": kategorien,
         "alle_artikel": alle_artikel,
@@ -1394,7 +1396,6 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                history_url: str = "",
                destatis_fact: str = "",
                destatis_url: str = "",
-               destatis_zahl: str = "",
                wm_info: dict | None = None) -> str:
     """
     Baut den HTML-Newsletter.
@@ -1463,10 +1464,9 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'</td></tr>'
         )
 
-    # ── "Zahl des Tages" (Destatis) – grosse Zahl + Text ─────────────────
+    # ── "Zahl des Tages" (Destatis) – schlicht, eine Zeile ───────────────
     destatis_html = ""
     if destatis_fact:
-        # Text ggf. verlinken
         if destatis_url:
             text_inner = (
                 f'<a href="{destatis_url}" style="color:{COLOR_TEXT2};'
@@ -1476,34 +1476,16 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         else:
             text_inner = destatis_fact
 
-        # Wenn eine Zahl erkannt wurde: gross voranstellen
-        if destatis_zahl:
-            zahl_block = (
-                f'<span style="font-family:{FONT};font-size:26px;font-weight:800;'
-                f'color:{COLOR_NAVY};line-height:1.1;display:inline-block;'
-                f'margin-right:10px;vertical-align:middle;">{destatis_zahl}</span>'
-            )
-            body = (
-                f'{zahl_block}'
-                f'<span style="font-family:{FONT};font-size:14px;line-height:1.5;'
-                f'color:{COLOR_TEXT2};vertical-align:middle;">{text_inner}</span>'
-            )
-        else:
-            body = (
-                f'<span style="font-family:{FONT};font-size:13px;line-height:1.6;'
-                f'color:{COLOR_TEXT2};">{text_inner}</span>'
-            )
-
         destatis_html = (
             f'<tr><td style="padding:14px 32px;background:{COLOR_BG};'
             f'border-bottom:1px solid {COLOR_BORDER};">'
             f'<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>'
             f'<td style="font-family:{FONT};font-size:11px;font-weight:700;'
             f'text-transform:uppercase;letter-spacing:1px;color:{COLOR_BLUE};'
-            f'padding-bottom:6px;">📊 Zahl des Tages</td></tr>'
-            f'<tr><td>{body}'
-            f'<div style="font-family:{FONT};color:{COLOR_MUTED};font-size:10px;'
-            f'margin-top:4px;">Quelle: Destatis</div>'
+            f'padding-bottom:4px;">📊 Zahl des Tages</td></tr>'
+            f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
+            f'color:{COLOR_TEXT2};">{text_inner}'
+            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Destatis</span>'
             f'</td></tr></table>'
             f'</td></tr>'
         )
@@ -1773,77 +1755,43 @@ def fetch_history_fact() -> tuple[str, str]:
 DESTATIS_RSS_URL = "https://www.destatis.de/SiteGlobals/Functions/RSSFeed/DE/RSSNewsfeed/Aktuell.xml?nn=241288"
 
 
-def _extract_destatis_number(title: str) -> tuple[str, str]:
+# Schlagzeilen, die keine inhaltliche Zahl/Aussage transportieren, sondern
+# Methodik/Termine/Organisatorisches – die ueberspringen wir.
+_DESTATIS_SKIP = (
+    "neues system", "umstellung", "methodik", "methodisch", "revision",
+    "klassifikation", "basisjahr", "umbasierung", "pressekonferenz",
+    "pressetermin", "veroeffentlichungskalender", "statistik der woche",
+    "tag der", "jahresbericht", "pressetermine", "wird eingestellt",
+    "neu berechnet", "umgestellt", "qualitaetsbericht",
+)
+
+
+def fetch_destatis_stat() -> tuple[str, str]:
     """
-    Versucht aus einem Destatis-Titel die markanteste Zahl herauszuloesen
-    und gibt (zahl, resttext) zurueck. Beispiele:
-      "Rund 129 300 Ehescheidungen im Jahr 2024"
-        → ("129.300", "Ehescheidungen im Jahr 2024")
-      "Inflationsrate im Mai 2026 bei +2,1 %"
-        → ("+2,1 %", "Inflationsrate im Mai 2026")
-      "Exporte im April 2026: -3,2 % zum Vormonat"
-        → ("-3,2 %", "Exporte im April 2026 zum Vormonat")
-    Wenn keine sinnvolle Zahl gefunden wird: ("", title).
-    """
-    t = title.strip()
-
-    # Muster nach Prioritaet: Geldbetraege, Prozent, grosse Zahlen mit Einheit
-    patterns = [
-        # 11 Mrd./Mio. Euro  |  1,5 Milliarden Euro
-        r"([+-]?\d[\d\.\s]*(?:,\d+)?\s*(?:Mrd\.?|Mio\.?|Milliarden|Millionen|Billionen)\s*(?:Euro|€|EUR)?)",
-        # Prozent: +2,1 %  | -3,2 Prozent
-        r"([+-]?\d+(?:,\d+)?\s*(?:%|Prozent))",
-        # grosse Zahl mit Tausender-Leerzeichen: 129 300  | 1 234 567
-        r"(\d{1,3}(?:\s\d{3})+)",
-        # einfache Zahl mit Einheit/Jahr-unabhaengig: 2,3 Millionen etc. schon oben
-        # einzelne groessere Zahl (>=3 Stellen), aber NICHT eine Jahreszahl
-        r"(?<!\d)(\d{3,}(?:,\d+)?)(?!\d)",
-    ]
-
-    for pat in patterns:
-        m = re.search(pat, t)
-        if not m:
-            continue
-        zahl = m.group(1).strip()
-        # Jahreszahlen (1900-2099) als alleinige Zahl ignorieren
-        if re.fullmatch(r"(19|20)\d{2}", zahl.replace(" ", "")):
-            continue
-        # Tausender-Leerzeichen → Punkt (129 300 → 129.300)
-        zahl_fmt = re.sub(r"(\d)\s(\d{3})", r"\1.\2", zahl)
-        zahl_fmt = re.sub(r"(\d)\s(\d{3})", r"\1.\2", zahl_fmt)  # 2x fuer Millionen
-        # Resttext: die Zahl rausschneiden, Fuellwoerter aufraeumen
-        rest = (t[:m.start()] + t[m.end():]).strip()
-        rest = re.sub(r"^\s*(Rund|Etwa|Circa|Ca\.?|Knapp|Mehr als|Fast)\s+", "", rest, flags=re.I)
-        rest = re.sub(r"\s{2,}", " ", rest).strip(" :–-,")
-        # Hae­ngende Praepositionen/Fuellwoerter am Rand entfernen
-        rest = re.sub(r"\s+(bei|auf|um|von|im|zum|zur|mit|fuer)\s*$", "", rest, flags=re.I).strip(" :–-,")
-        rest = re.sub(r"^(bei|auf|um|von|im|zum|zur|mit|fuer|steigen|steigt|sinkt|sinken|liegt|liegen)\s+", "", rest, flags=re.I).strip(" :–-,")
-        if rest:
-            return zahl_fmt, rest
-
-    return "", t
-
-
-def fetch_destatis_stat() -> tuple[str, str, str]:
-    """
-    Holt die neueste Destatis-Pressemitteilung als "Zahl des Tages".
-    Gibt (zahl, text, link) zurueck – die Zahl wird im Newsletter gross
-    dargestellt, der Text daneben. Bei fehlender Zahl ist zahl="" und der
-    Titel steht komplett im Text. ("","","") bei Fehler/nichts Aktuellem.
+    Holt die neueste sinnvolle Destatis-Pressemitteilung als "Zahl des Tages".
+    Gibt die Original-Schlagzeile unveraendert zurueck (Destatis formuliert
+    die meist schon als kompakte, verstaendliche Aussage) plus den Link.
+    Ueberspringt rein methodische/organisatorische Meldungen.
+    Rueckgabe: (text, link) oder ("", "") bei Fehler/nichts Passendem.
     """
     try:
         feed = feedparser.parse(DESTATIS_RSS_URL)
         if not feed.entries:
             print("  ⚠ Destatis: keine Eintraege")
-            return "", "", ""
+            return "", ""
 
         now = datetime.now(timezone.utc)
-        for entry in feed.entries[:6]:
+        for entry in feed.entries[:8]:
             title = entry.get("title", "").strip()
             link  = entry.get("link", "").strip()
             if not title:
                 continue
 
+            # Methodik-/Organisations-Meldungen ueberspringen
+            if any(skip in title.lower() for skip in _DESTATIS_SKIP):
+                continue
+
+            # Nur frische PMs (max ~48h alt)
             ts = entry.get("published_parsed") or entry.get("updated_parsed")
             if ts:
                 try:
@@ -1853,23 +1801,14 @@ def fetch_destatis_stat() -> tuple[str, str, str]:
                 except Exception:
                     pass
 
-            zahl, text = _extract_destatis_number(title)
-            # Bevorzugt PMs MIT erkennbarer Zahl – sonst naechste pruefen
-            if zahl:
-                print(f"  ✓ Destatis: {zahl} – {text[:45]}")
-                return zahl, text, link
-            # keine Zahl: merken, aber weitersuchen ob eine bessere kommt
-            fallback = (("", title, link))
+            print(f"  ✓ Destatis: {title[:55]}")
+            return title, link
 
-        # keine PM mit klarer Zahl gefunden → erste frische als Text
-        try:
-            return fallback
-        except NameError:
-            print("  ⚠ Destatis: nichts Aktuelles (max 48h)")
-            return "", "", ""
+        print("  ⚠ Destatis: nichts Sinnvolles/Aktuelles gefunden")
+        return "", ""
     except Exception as e:
         print(f"  ⚠ Destatis-Fehler: {e}")
-        return "", "", ""
+        return "", ""
 
 
 # ─────────────────────────────────────────────
@@ -2175,7 +2114,7 @@ def main():
     print("    → 'Heute vor X Jahren' von Wikipedia holen...")
     history_fact, history_url = fetch_history_fact()
     print("    → 'Zahl des Tages' von Destatis holen...")
-    destatis_zahl, destatis_fact, destatis_url = fetch_destatis_stat()
+    destatis_fact, destatis_url = fetch_destatis_stat()
     print("    → WM-Spielstand holen (nur waehrend Turnier)...")
     wm_info = fetch_wm_info()
     print()
@@ -2188,7 +2127,7 @@ def main():
         grouped, intro, summaries, selected_links,
         history_fact, history_url, now, daytime,
         destatis_fact=destatis_fact, destatis_url=destatis_url,
-        destatis_zahl=destatis_zahl, wm_info=wm_info,
+        wm_info=wm_info,
     )
     # Deep-Link: Landing Page oeffnet direkt diese Ausgabe
     archive_url = f"{GITHUB_PAGES_BASE_URL}/?a={archive_basename}"
@@ -2204,7 +2143,6 @@ def main():
         history_url=history_url,
         destatis_fact=destatis_fact,
         destatis_url=destatis_url,
-        destatis_zahl=destatis_zahl,
         wm_info=wm_info,
     )
 
