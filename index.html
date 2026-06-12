@@ -62,6 +62,19 @@
   .ncard .ttl { font-size: 13.5px; font-weight: 600; color: var(--navy); line-height: 1.4; }
   .ncard .prev { font-size: 12px; color: var(--muted); line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
+  /* ── Quellen-Filter (Feature C) ── */
+  .srcfilter { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+  .sf-chip { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 14px; border: 1px solid #cdd6df; color: var(--muted); background: var(--card); cursor: pointer; transition: all .12s; }
+  .sf-chip:hover { border-color: var(--blue); color: var(--navy); }
+  .sf-chip.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+  /* ── Mehr zum Thema (Feature A) ── */
+  details.morebox { margin-top: 10px; }
+  details.morebox summary { cursor: pointer; font-size: 12.5px; font-weight: 600; color: var(--blue); padding: 8px 2px; user-select: none; list-style: none; }
+  details.morebox summary:hover { color: var(--navy); }
+  details.morebox summary::-webkit-details-marker { display: none; }
+  .morebox-grid { margin-top: 8px; }
+
   details.allbox { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-top: 8px; }
   details.allbox summary { cursor: pointer; padding: 13px 18px; font-size: 13px; font-weight: 600; color: var(--muted); user-select: none; }
   details.allbox summary:hover { color: var(--navy); }
@@ -140,9 +153,62 @@
   .allrow-prev .ip-link { display: inline-block; background: var(--blue); color: #fff; font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 4px; }
   .allrow.open .arl { color: var(--blue); font-weight: 600; }
 
+  /* ── Tablet ── */
+  @media (max-width: 760px) {
+    .wrap { padding: 14px 12px 50px; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  }
+
+  /* ── Mobil (iPhone / Android) ── */
   @media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; }
-    .issuebar select { min-width: 150px; }
+    body { font-size: 15px; }            /* etwas größer für Lesbarkeit */
+    .topbar { padding: 12px 16px; padding-top: max(12px, env(safe-area-inset-top)); }
+    .topbar-inner { gap: 8px; }
+    .brand { font-size: 18px; }
+    .topbar .meta { font-size: 10px; width: 100%; margin-left: 0; order: 3; }
+    .issuebar { top: auto; position: static; padding: 8px 12px; }   /* nicht sticky → mehr Platz */
+    .issuebar-inner { gap: 6px; }
+    .issuebar select { min-width: 0; flex: 1; font-size: 14px; padding: 9px 10px; }
+    .issuebar .nav-btn { padding: 9px 13px; font-size: 15px; }       /* größere Tap-Targets */
+
+    .wrap { padding: 12px 10px 50px; }
+    .lead { padding: 15px 16px; border-radius: 10px; }
+    .lead .intro { font-size: 15px; }
+    .specials { flex-direction: column; gap: 8px; }
+    .special { flex: 1 1 auto; }
+
+    /* Themen-Chips: horizontal scrollbar statt Umbruch-Chaos */
+    .filters { flex-wrap: nowrap; overflow-x: auto; gap: 6px; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .filters::-webkit-scrollbar { display: none; }
+    .chip { flex: 0 0 auto; padding: 9px 15px; font-size: 14px; }   /* Touch-freundlich */
+
+    .section h2 { font-size: 17px; }
+    .grid { grid-template-columns: 1fr; gap: 9px; }
+    .ncard { padding: 14px 16px; }
+    .ncard:hover { transform: none; }                                /* kein Hover-Wackeln auf Touch */
+    .ncard .ttl { font-size: 15px; }
+    .ncard .prev { font-size: 13px; }
+
+    .inline-prev-inner { padding: 15px 16px; }
+    .inline-prev .ip-text { font-size: 15px; }
+    .inline-prev .ip-link, .allrow-prev .ip-link { padding: 11px 18px; font-size: 14px; }  /* großer Tap-Button */
+
+    .allrow { padding: 9px 0; }                                      /* mehr Platz zum Tippen */
+    .allrow .ars { flex-basis: 78px; }
+    .allcat { padding: 6px 14px 14px; }
+
+    .archive { padding: 16px 16px; }
+    .arch-item button { padding: 13px 4px; }                         /* Touch-freundlich */
+    .arch-item .d { flex-basis: 84px; }
+
+    .wrap, .footer { padding-bottom: max(50px, env(safe-area-inset-bottom)); }  /* iPhone-Home-Indicator */
+  }
+
+  /* ── Sehr schmal (kleine Androids) ── */
+  @media (max-width: 360px) {
+    .brand { font-size: 16px; }
+    .ncard .ttl { font-size: 14px; }
+    .arch-item .z { display: none; }
   }
 </style>
 </head>
@@ -198,6 +264,11 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
+  // Entfernt rohes HTML aus alten Daten (Schutz: <a href>, <p> etc.), das
+  // sonst als Code erscheint. Neue Daten sind schon serverseitig bereinigt.
+  function clean(s) {
+    return String(s == null ? '' : s).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  }
   function deDate(iso) {
     var p = String(iso).split('-');
     return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
@@ -206,7 +277,7 @@
 
   /* ─────────── Inline-Vorschau ─────────── */
   function previewInner(a) {
-    var v = (a.vorschau || '').trim();
+    var v = clean(a.vorschau || '');
     var textHtml = v
       ? '<div class="ip-text">' + esc(v) + '</div>'
       : '<div class="ip-text empty">Für diesen Artikel liegt keine Vorschau vor. Über den Button gelangst du zum vollständigen Beitrag.</div>';
@@ -267,7 +338,7 @@
         d.alle_artikel[k].forEach(function (a, i) {
           h += '<div class="allrow" data-cat="' + esc(k) + '" data-i="' + i + '">' +
                '<span class="ars">' + esc(a.quelle) + '</span>' +
-               '<span class="arl">' + esc(a.titel) + '</span></div>' +
+               '<span class="arl">' + esc(clean(a.titel)) + '</span></div>' +
                '<div class="allrow-prev" data-for="all-' + esc(k) + '-' + i + '"></div>';
         });
         h += '</div>';
@@ -288,21 +359,55 @@
       h += '<div class="summary">';
       k.punkte.forEach(function (p) {
         h += '<div class="s-row"><span class="s-dash">–</span><span>' +
-             esc(String(p).replace(/^•\s*/, '')) + '</span></div>';
+             esc(clean(String(p).replace(/^•\s*/, ''))) + '</span></div>';
       });
       h += '</div>';
     }
+
+    // Feature C: Quellen-Filter (nur wenn mehrere Quellen vorhanden)
+    var allArts = (k.links || []).concat(k.weitere || []);
+    var quellen = [];
+    allArts.forEach(function (a) { if (a.quelle && quellen.indexOf(a.quelle) === -1) quellen.push(a.quelle); });
+    if (quellen.length > 1) {
+      h += '<div class="srcfilter" data-cat="' + esc(k.name) + '">';
+      h += '<span class="sf-chip active" data-src="alle">Alle Quellen</span>';
+      quellen.forEach(function (q) {
+        h += '<span class="sf-chip" data-src="' + esc(q) + '">' + esc(q) + '</span>';
+      });
+      h += '</div>';
+    }
+
+    // Kuratierte Karten
     h += '<div class="grid">';
     k.links.forEach(function (l, i) {
-      var hasV = l.vorschau && l.vorschau.trim();
-      h += '<div class="ncard" data-cat="' + esc(k.name) + '" data-i="' + i + '">' +
+      var prev = clean(l.vorschau || '');
+      h += '<div class="ncard" data-cat="' + esc(k.name) + '" data-i="' + i + '" data-src="' + esc(l.quelle) + '">' +
            '<span class="src">' + esc(l.quelle) + '</span>' +
-           '<span class="ttl">' + esc(l.titel) + '</span>' +
-           (hasV ? '<span class="prev">' + esc(l.vorschau.trim()) + '</span>' : '') +
+           '<span class="ttl">' + esc(clean(l.titel)) + '</span>' +
+           (prev ? '<span class="prev">' + esc(prev) + '</span>' : '') +
            '</div>' +
-           '<div class="inline-prev" data-for="' + esc(k.name) + '-' + i + '"></div>';
+           '<div class="inline-prev"></div>';
     });
-    h += '</div></div>';
+    h += '</div>';
+
+    // Feature A: "Mehr zum Thema" – weitere (nicht kuratierte) Artikel
+    if (k.weitere && k.weitere.length) {
+      h += '<details class="morebox"><summary>+ ' + k.weitere.length +
+           ' weitere Artikel zu ' + esc(k.name.replace(/^[^\s]+\s/, '')) + ' ▾</summary>';
+      h += '<div class="grid morebox-grid">';
+      k.weitere.forEach(function (l, i) {
+        var prev = clean(l.vorschau || '');
+        h += '<div class="ncard" data-cat="' + esc(k.name) + '" data-w="' + i + '" data-src="' + esc(l.quelle) + '">' +
+             '<span class="src">' + esc(l.quelle) + '</span>' +
+             '<span class="ttl">' + esc(clean(l.titel)) + '</span>' +
+             (prev ? '<span class="prev">' + esc(prev) + '</span>' : '') +
+             '</div>' +
+             '<div class="inline-prev"></div>';
+      });
+      h += '</div></details>';
+    }
+
+    h += '</div>';
     return h;
   }
 
@@ -351,15 +456,19 @@
     elIssue.querySelectorAll('.ncard').forEach(function (card) {
       card.addEventListener('click', function () {
         var cat = card.getAttribute('data-cat');
-        var i   = parseInt(card.getAttribute('data-i'), 10);
         var k = (current.kategorien || []).filter(function (x) { return x.name === cat; })[0];
         if (!k) return;
-        var a = k.links[i];
+        // kuratiert (data-i) oder weitere (data-w)?
+        var a;
+        if (card.hasAttribute('data-w')) {
+          a = (k.weitere || [])[parseInt(card.getAttribute('data-w'), 10)];
+        } else {
+          a = (k.links || [])[parseInt(card.getAttribute('data-i'), 10)];
+        }
         if (!a) return;
-        var prevEl = card.nextElementSibling;  // das inline-prev direkt nach der Karte
+        var prevEl = card.nextElementSibling;
         var isOpen = prevEl.classList.contains('open');
 
-        // Andere offene Vorschauen in diesem Grid schließen
         var grid = card.parentNode;
         grid.querySelectorAll('.inline-prev.open').forEach(function (el) { el.classList.remove('open'); el.innerHTML = ''; });
         grid.querySelectorAll('.ncard.open').forEach(function (el) { el.classList.remove('open'); });
@@ -369,6 +478,25 @@
           prevEl.classList.add('open');
           card.classList.add('open');
         }
+      });
+    });
+
+    // Feature C: Quellen-Filter pro Sektion
+    elIssue.querySelectorAll('.srcfilter').forEach(function (sf) {
+      var section = sf.closest('.section');
+      sf.querySelectorAll('.sf-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          sf.querySelectorAll('.sf-chip').forEach(function (x) { x.classList.remove('active'); });
+          chip.classList.add('active');
+          var src = chip.getAttribute('data-src');
+          section.querySelectorAll('.ncard').forEach(function (card) {
+            var show = (src === 'alle') || (card.getAttribute('data-src') === src);
+            card.style.display = show ? '' : 'none';
+            // zugehörige offene Vorschau ggf. mit ausblenden
+            var pv = card.nextElementSibling;
+            if (pv && pv.classList.contains('inline-prev')) pv.style.display = show ? '' : 'none';
+          });
+        });
       });
     });
 
