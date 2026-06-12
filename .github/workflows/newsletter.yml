@@ -5,13 +5,12 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # noetig, damit der Commit von index.html/data/ gepusht werden darf
+  contents: write   # noetig, damit der Commit von data/ gepusht werden darf
 
 jobs:
   send-newsletter:
     runs-on: ubuntu-latest
     steps:
-
       # 1) Repo auschecken
       - name: Checkout
         uses: actions/checkout@v4
