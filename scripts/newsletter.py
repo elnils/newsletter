@@ -20,6 +20,28 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from groq import Groq
 
+try:
+    from zoneinfo import ZoneInfo
+    _BERLIN_TZ = ZoneInfo("Europe/Berlin")
+except Exception:
+    _BERLIN_TZ = None
+
+
+def jetzt_de() -> datetime:
+    """
+    Aktuelle Uhrzeit in deutscher Zeit (Europe/Berlin, automatisch MESZ/MEZ).
+    GitHub-Actions-Server laufen in UTC – ohne diese Umrechnung wuerde der
+    Newsletter z.B. "3:33 Uhr" statt "5:33 Uhr" anzeigen und die Tageslogik
+    (Morgen/Abend) sowie der WM-Tagesvergleich liefen in der falschen Zone.
+    Rueckgabe ist ein "naiver" datetime (ohne tzinfo) in deutscher Lokalzeit,
+    damit der restliche Code unveraendert damit rechnen kann.
+    """
+    if _BERLIN_TZ is not None:
+        return datetime.now(_BERLIN_TZ).replace(tzinfo=None)
+    # Fallback: fe‌ster MESZ-Offset (Sommerzeit), falls zoneinfo fehlt
+    return datetime.now(timezone.utc).replace(tzinfo=None) + timedelta(hours=2)
+
+
 # ─────────────────────────────────────────────
 # KONFIGURATION
 # ─────────────────────────────────────────────
@@ -1017,7 +1039,7 @@ def generate_intro(grouped: dict[str, list[dict]], client: Groq,
 
     topics_text = "\n".join(f"- {t}" for t in top_topics)
 
-    today_str = datetime.now().strftime("%d.%m.%Y")
+    today_str = jetzt_de().strftime("%d.%m.%Y")
     quellentreue = QUELLENTREUE_REGELN.format(today=today_str)
 
     prompt = f"""Du schreibst die Einleitung eines deutschen Nachrichten-Newsletters.
@@ -1152,7 +1174,7 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
             for a in articles[:ARTICLES_PER_CATEGORY]
         ])
 
-        today_str = datetime.now().strftime("%d.%m.%Y")
+        today_str = jetzt_de().strftime("%d.%m.%Y")
         quellentreue = QUELLENTREUE_REGELN.format(today=today_str)
 
         satz_wort = "einem deutschen Stichsatz" if n_bullets == 1 else "genau 2 deutschen Stichsaetzen"
@@ -1410,7 +1432,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     Baut den HTML-Newsletter.
     Platzhalter ##UNSUBSCRIBE_URL## wird in send_email() ersetzt.
     """
-    now      = datetime.now()
+    now      = jetzt_de()
     daytime  = "Morgen" if now.hour < 13 else "Abend"
     date_str = now.strftime("%A, %d. %B %Y")
 
@@ -1563,7 +1585,8 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     # ── WM-Block (ans Ende, nur waehrend des Turniers) ───────────────────
     wm_html = ""
     if wm_info and (wm_info.get("letztes") or wm_info.get("heute")
-                    or wm_info.get("naechste") or wm_info.get("gestern")):
+                    or wm_info.get("naechste") or wm_info.get("gestern")
+                    or wm_info.get("heute_fertig")):
         wm_link = wm_info.get("link", "")
 
         def _spiel_row(zeit: str, paarung: str, klein: bool = False) -> str:
@@ -1580,45 +1603,51 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                 f'</tr>'
             )
 
-        zeilen = ""
+        def _subhead(text: str) -> str:
+            return (
+                f'<tr><td colspan="2" style="font-family:{FONT};font-size:10px;'
+                f'text-transform:uppercase;letter-spacing:0.5px;color:{COLOR_MUTED};'
+                f'padding:6px 0 2px;">{text}</td></tr>'
+            )
 
-        # Letztes Ergebnis (hervorgehoben)
-        if wm_info.get("letztes"):
+        zeilen = ""
+        heute_fertig = wm_info.get("heute_fertig", [])
+
+        # "Zuletzt" nur zeigen, wenn es NICHT ohnehin unter "heute gespielt"
+        # auftaucht (sonst doppelt). Bei fruehen Morgenspielen steht das
+        # Ergebnis dann sauber unter "Heute bereits gespielt".
+        letztes = wm_info.get("letztes", "")
+        letztes_in_heute = any(letztes and letztes in s.get("paarung", "")
+                               for s in heute_fertig)
+        if letztes and not letztes_in_heute:
             zeilen += (
                 f'<tr><td colspan="2" style="font-family:{FONT};font-size:13px;'
                 f'line-height:1.7;color:{COLOR_TEXT2};padding:1px 0;">'
                 f'<span style="color:{COLOR_MUTED};">Zuletzt:</span> '
-                f'<strong style="color:{COLOR_NAVY};">{wm_info["letztes"]}</strong>'
+                f'<strong style="color:{COLOR_NAVY};">{letztes}</strong>'
                 f'</td></tr>'
             )
 
-        # Gestrige Ergebnisse (klein, eingerueckt) – ausser dem schon als
-        # "Zuletzt" gezeigten, damit nichts doppelt steht
-        gestern = [g for g in wm_info.get("gestern", []) if g != wm_info.get("letztes")]
+        # Heute bereits gespielt (mit Uhrzeit + Ergebnis)
+        if heute_fertig:
+            zeilen += _subhead("Heute bereits gespielt")
+            for s in heute_fertig:
+                zeilen += _spiel_row(s.get("zeit", ""), s.get("paarung", ""))
+
+        # Gestrige Ergebnisse (klein) – ohne das schon als "Zuletzt" gezeigte
+        gestern = [g for g in wm_info.get("gestern", []) if g != letztes]
         if gestern:
-            zeilen += (
-                f'<tr><td colspan="2" style="font-family:{FONT};font-size:10px;'
-                f'text-transform:uppercase;letter-spacing:0.5px;color:{COLOR_MUTED};'
-                f'padding:6px 0 2px;">Ergebnisse gestern</td></tr>'
-            )
+            zeilen += _subhead("Ergebnisse gestern")
             for g in gestern:
                 zeilen += _spiel_row("", g, klein=True)
 
-        # Spiele heute (Zeit eingerueckt)
+        # Spiele heute (noch offen, Zeit eingerueckt)
         if wm_info.get("heute"):
-            zeilen += (
-                f'<tr><td colspan="2" style="font-family:{FONT};font-size:10px;'
-                f'text-transform:uppercase;letter-spacing:0.5px;color:{COLOR_MUTED};'
-                f'padding:6px 0 2px;">Heute</td></tr>'
-            )
+            zeilen += _subhead("Heute")
             for s in wm_info["heute"]:
                 zeilen += _spiel_row(s.get("zeit", ""), s.get("paarung", ""))
         elif wm_info.get("naechste"):
-            zeilen += (
-                f'<tr><td colspan="2" style="font-family:{FONT};font-size:10px;'
-                f'text-transform:uppercase;letter-spacing:0.5px;color:{COLOR_MUTED};'
-                f'padding:6px 0 2px;">Als Nächstes</td></tr>'
-            )
+            zeilen += _subhead("Als Nächstes")
             for s in wm_info["naechste"]:
                 zeilen += _spiel_row(s.get("zeit", ""), s.get("paarung", ""))
 
@@ -1735,7 +1764,7 @@ def fetch_history_fact() -> tuple[str, str]:
     deutschen Wikipedia (CC BY-SA). Gibt (Text, Wikipedia-URL) zurück
     oder ("", "") bei Fehler/keinem passenden Eintrag (dann faellt der Block weg).
     """
-    now = datetime.now()
+    now = jetzt_de()
     url = WIKIPEDIA_ONTHISDAY_URL.format(
         month=now.strftime("%m"), day=now.strftime("%d")
     )
@@ -1902,6 +1931,41 @@ def _wm_is_top(m: dict) -> bool:
     return m.get("team1", "") in WM_TOP_TEAMS or m.get("team2", "") in WM_TOP_TEAMS
 
 
+# Deutschland ist im WM-Zeitraum (Juni/Juli) in MESZ = UTC+2.
+WM_GERMAN_OFFSET = 2
+
+
+def _wm_to_german(date_str: str, time_str: str) -> tuple[str, str]:
+    """
+    Rechnet eine Spielzeit aus dem Feed in deutsche Zeit (MESZ) um.
+    Eingabe: date_str "2026-06-12", time_str z.B. "21:00 UTC-6" oder "21:00".
+    Rueckgabe: (deutsches_datum, deutsche_uhrzeit) z.B. ("2026-06-13", "05:00").
+    Bei fehlender Zeitzone wird der Wert unveraendert zurueckgegeben (Annahme:
+    schon lokal/ohne Angabe), bei fehlender Zeit ("date", "").
+    """
+    raw = str(time_str or "").strip()
+    mt = re.match(r"(\d{1,2}):(\d{2})", raw)
+    if not mt:
+        return date_str, ""
+    hh, mm = int(mt.group(1)), int(mt.group(2))
+
+    # Zeitzone aus "UTC-6", "UTC+1", "UTC" lesen
+    tz = re.search(r"UTC\s*([+-]\d{1,2})?", raw)
+    if not tz:
+        # keine Zeitzonenangabe → unveraendert lassen
+        return date_str, f"{hh:02d}:{mm:02d}"
+    local_offset = int(tz.group(1)) if tz.group(1) else 0
+
+    try:
+        dt = datetime.strptime(date_str, "%Y-%m-%d").replace(hour=hh, minute=mm)
+    except Exception:
+        return date_str, f"{hh:02d}:{mm:02d}"
+
+    # In deutsche Zeit verschieben: -lokaler Offset (→UTC) +deutscher Offset
+    dt_de = dt + timedelta(hours=(WM_GERMAN_OFFSET - local_offset))
+    return dt_de.strftime("%Y-%m-%d"), dt_de.strftime("%H:%M")
+
+
 def fetch_wm_info(now: datetime | None = None) -> dict:
     """
     Liefert WM-Infos als strukturiertes Dict – nur waehrend des Turniers,
@@ -1911,7 +1975,7 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
       naechste: Liste (Fallback: kommende Spiele, falls heute keine)
       link:     Sportschau-Ergebnislink
     """
-    now = now or datetime.now()
+    now = now or jetzt_de()
     today = now.strftime("%Y-%m-%d")
     link = "https://www.sportschau.de/live-und-ergebnisse/fussball/fifa-wm/spiele-und-ergebnisse"
 
@@ -1920,12 +1984,6 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
 
     def _has_score(m):
         return m.get("score1") is not None and m.get("score2") is not None
-
-    def _uhr(m):
-        # "21:00 UTC-6" → "21:00"; leere/unbekannte Zeit → ""
-        raw = str(m.get("time", "")).strip()
-        mt = re.match(r"(\d{1,2}:\d{2})", raw)
-        return mt.group(1) if mt else ""
 
     try:
         req = urllib.request.Request(
@@ -1937,7 +1995,18 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
         if not matches:
             return {}
 
-        # "Gestern" bestimmen (fuer die gestrigen Ergebnisse)
+        # Jedes Spiel vorab mit DEUTSCHEM Datum + Uhrzeit anreichern.
+        # Dadurch verschiebt sich z.B. ein 21:00-Spiel in Mexiko (UTC-6)
+        # korrekt auf den naechsten Tag 05:00 deutscher Zeit.
+        for m in matches:
+            d_de, u_de = _wm_to_german(m.get("date", ""), m.get("time", ""))
+            m["_date_de"] = d_de
+            m["_uhr_de"]  = u_de
+
+        def _uhr(m):
+            return m.get("_uhr_de", "")
+
+        # "Gestern" bestimmen (deutsches Datum)
         try:
             yest = (now - timedelta(days=1)).strftime("%Y-%m-%d")
         except Exception:
@@ -1947,9 +2016,9 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
         letztes_str = ""
         letztes = None
         for m in matches:
-            d = m.get("date", "")
+            d = m.get("_date_de", "")
             if d and d <= today and _has_score(m):
-                if letztes is None or d >= letztes.get("date", ""):
+                if letztes is None or d >= letztes.get("_date_de", ""):
                     letztes = m
         if letztes:
             letztes_str = (
@@ -1962,7 +2031,7 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
         gestern_list = []
         if yest:
             gestern_spiele = sorted(
-                [m for m in matches if m.get("date", "") == yest and _has_score(m)],
+                [m for m in matches if m.get("_date_de", "") == yest and _has_score(m)],
                 key=lambda m: _uhr(m)
             )
             for m in gestern_spiele:
@@ -1972,10 +2041,29 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
                     f"{_wm_team(m.get('team2',''))}"
                 )
 
+        # ── Spiele HEUTE, die schon ein Ergebnis haben (frueh morgens) ─
+        #    Schliesst die Luecke: ein Spiel um 03:00 DE ist 'heute', aber
+        #    schon fertig – es ist weder 'gestern' noch 'heute offen'.
+        heute_fertig_list = []
+        heute_fertig = sorted(
+            [m for m in matches if m.get("_date_de", "") == today and _has_score(m)],
+            key=lambda m: _uhr(m)
+        )
+        for m in heute_fertig:
+            u = _uhr(m)
+            heute_fertig_list.append({
+                "zeit": u,
+                "paarung": (
+                    f"{_wm_team(m.get('team1',''))} "
+                    f"{m.get('score1')}:{m.get('score2')} "
+                    f"{_wm_team(m.get('team2',''))}"
+                )
+            })
+
         # ── Spiele HEUTE (noch ohne Ergebnis), Zeit + Paarung getrennt ─
         heute_raw = [
             m for m in matches
-            if m.get("date", "") == today and not _has_score(m)
+            if m.get("_date_de", "") == today and not _has_score(m)
         ]
         if len(heute_raw) > 2:
             top = [m for m in heute_raw if _wm_is_top(m)]
@@ -1990,15 +2078,15 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
         heute.sort(key=lambda x: x["zeit"])
         heute_list = heute
 
-        # ── Fallback: naechste Spiele (falls heute keine mehr) ───────
+        # ── Fallback: naechste Spiele (falls heute keine offenen mehr) ─
         naechste_list = []
         if not heute_list:
             kommende = sorted(
-                [m for m in matches if m.get("date", "") > today and not _has_score(m)],
-                key=lambda m: (m.get("date", ""), _uhr(m))
+                [m for m in matches if m.get("_date_de", "") > today and not _has_score(m)],
+                key=lambda m: (m.get("_date_de", ""), _uhr(m))
             )
             for m in kommende[:2]:
-                d = m.get("date", "")
+                d = m.get("_date_de", "")
                 try:
                     dd = datetime.strptime(d, "%Y-%m-%d").strftime("%d.%m.")
                 except Exception:
@@ -2009,16 +2097,19 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
                 zeit = f"{dd}{(' ' + u) if u else ''}"
                 naechste_list.append({"zeit": zeit, "paarung": f"{t1} – {t2}"})
 
-        if not (letztes_str or heute_list or naechste_list or gestern_list):
+        if not (letztes_str or heute_list or naechste_list
+                or gestern_list or heute_fertig_list):
             return {}
 
-        print(f"  ✓ WM-Info: zuletzt '{letztes_str}', heute {len(heute_list)}, gestern {len(gestern_list)}")
+        print(f"  ✓ WM-Info: zuletzt '{letztes_str}', heute offen {len(heute_list)}, "
+              f"heute fertig {len(heute_fertig_list)}, gestern {len(gestern_list)}")
         return {
-            "letztes":  letztes_str,
-            "gestern":  gestern_list,
-            "heute":    heute_list,
-            "naechste": naechste_list,
-            "link":     link,
+            "letztes":       letztes_str,
+            "gestern":       gestern_list,
+            "heute_fertig":  heute_fertig_list,
+            "heute":         heute_list,
+            "naechste":      naechste_list,
+            "link":          link,
         }
 
     except (urllib.error.URLError, socket.timeout) as e:
@@ -2109,7 +2200,7 @@ def send_email(html_template: str, recipient: str,
         unsubscribe_url = "#"
     html_content = html_template.replace("##UNSUBSCRIBE_URL##", unsubscribe_url)
 
-    now     = datetime.now()
+    now     = jetzt_de()
     daytime = "Morgen" if now.hour < 13 else "Abend"
     subject = f"Tageslage – {now.strftime('%d.%m.%Y')} ({daytime}-Ausgabe)"
 
@@ -2146,7 +2237,7 @@ def send_email(html_template: str, recipient: str,
 
 def main():
     print(f"\n{'='*50}")
-    print(f"  TAGESLAGE – {datetime.now().strftime('%d.%m.%Y %H:%M')}")
+    print(f"  TAGESLAGE – {jetzt_de().strftime('%d.%m.%Y %H:%M')}")
     print(f"{'='*50}\n")
 
     unsubscribe_base = os.environ.get("UNSUBSCRIBE_URL", "")
@@ -2179,7 +2270,7 @@ def main():
     wm_info = fetch_wm_info()
     print()
 
-    now      = datetime.now()
+    now      = jetzt_de()
     daytime  = "morgen" if now.hour < 13 else "abend"
 
     print("4/5 – Archiv-JSON erstellen...")
