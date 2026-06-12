@@ -632,6 +632,28 @@ def load_recent_titles(data_dir: str = DOCS_DATA_DIR,
     return titles
 
 
+def _strip_html(text: str) -> str:
+    """
+    Entfernt HTML-Tags und dekodiert HTML-Entities aus RSS-summary/title.
+    Viele Feeds liefern HTML (z.B. <a href>, <p>, <img>) im Summary-Feld,
+    das sonst als roher Code im Newsletter/Archiv erscheint.
+    """
+    if not text:
+        return ""
+    import html as _html
+    # CDATA-Wrapper entfernen, Inhalt behalten
+    text = re.sub(r"(?s)<!\[CDATA\[(.*?)\]\]>", r"\1", text)
+    # <script>/<style>-Inhalte komplett raus
+    text = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", text)
+    # alle restlichen Tags entfernen
+    text = re.sub(r"(?s)<[^>]+>", " ", text)
+    # HTML-Entities dekodieren (&amp; &quot; &#8217; etc.)
+    text = _html.unescape(text)
+    # Mehrfach-Whitespace zusammenfassen
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
 def _normalize_title(title: str) -> str:
     t = title.lower().strip()
     t = re.sub(r"[^\w\s]", "", t)
@@ -704,8 +726,8 @@ def fetch_feeds(recent_titles: set[str] | None = None) -> list[dict]:
                         old_count += 1
                         continue
 
-                    title   = entry.get("title", "").strip()
-                    summary = entry.get("summary", entry.get("description", "")).strip()
+                    title   = _strip_html(entry.get("title", ""))
+                    summary = _strip_html(entry.get("summary", entry.get("description", "")))
                     link    = entry.get("link", "")
                     # 600 statt 400: mehr Originalkontext für die KI → weniger Halluzinationen
                     summary = summary[:600] if summary else ""
@@ -1330,12 +1352,23 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
     # ── Newsletter-Inhalte (Zusammenfassungen + kuratierte Links) ──────
     kategorien = []
     for cat, bullets in summaries.items():
+        kuratiert = [a for a in selected_links.get(cat, []) if a.get("link")]
         links = [
             {"quelle": a["source"], "titel": a["title"], "url": a["link"],
              "vorschau": (a.get("summary") or "")[:500]}
-            for a in selected_links.get(cat, []) if a.get("link")
+            for a in kuratiert
         ]
-        kategorien.append({"name": cat, "punkte": bullets, "links": links})
+        # "Mehr zum Thema": restliche Artikel DERSELBEN Kategorie, die nicht
+        # kuratiert wurden – damit der Scrape-Aufwand sichtbar genutzt wird.
+        kuratiert_urls = {a["link"] for a in kuratiert}
+        weitere = [
+            {"quelle": a["source"], "titel": a["title"], "url": a["link"],
+             "vorschau": (a.get("summary") or "")[:500]}
+            for a in grouped.get(cat, [])
+            if a.get("link") and a["link"] not in kuratiert_urls
+        ]
+        kategorien.append({"name": cat, "punkte": bullets,
+                           "links": links, "weitere": weitere})
 
     # ── Vollstaendige Artikelliste (alle Kategorien, kompakt) ──────────
     alle_artikel = {}
