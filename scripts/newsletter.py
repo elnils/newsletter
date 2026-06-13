@@ -619,7 +619,7 @@ def _anchor_id(category: str) -> str:
 
 MAX_ARTICLE_AGE_HOURS  = 18   # Artikel älter als X Stunden werden gefiltert
 DUPLICATE_THRESHOLD    = 0.45 # Jaccard-Schwelle: niedriger = strenger gegen Dopplungen
-HISTORY_LOOKBACK_ISSUES = 3   # so viele letzte Ausgaben gegen Wiederholung pruefen
+HISTORY_LOOKBACK_DAYS   = 2    # Ausgaben der letzten X KALENDERTAGE gegen Wiederholung pruefen
 HISTORY_DEDUP_THRESHOLD = 0.55 # Aehnlichkeit zu alten Titeln, ab der gefiltert wird
 
 # Ausgabe-Verzeichnis fuer das JSON-Archiv. GitHub Pages liest aus der
@@ -631,12 +631,12 @@ ARCHIVE_RETENTION_DAYS = 365  # Ausgaben aelter als 1 Jahr werden geloescht
 
 
 def load_recent_titles(data_dir: str = DOCS_DATA_DIR,
-                       lookback: int = HISTORY_LOOKBACK_ISSUES) -> set[str]:
+                       max_age_days: int = HISTORY_LOOKBACK_DAYS) -> set[str]:
     """
-    Liest die letzten `lookback` Ausgaben aus dem JSON-Archiv und gibt die
-    normalisierten Titel ihrer Artikel zurueck. Damit lassen sich Themen
-    filtern, die in den Vortagen schon dran waren. Leere Menge wenn kein
-    Archiv vorhanden (erster Lauf).
+    Liest die Ausgaben der letzten `max_age_days` KALENDERTAGE aus dem Archiv
+    und gibt die normalisierten Artikel-Titel zurueck. Filtert nach echtem
+    Datum, nicht nach Anzahl Lauefe – mehrere Testlaeufe am selben Tag
+    verfaelschen den naechsten Tag also nicht. Leere Menge wenn kein Archiv.
     """
     index_path = os.path.join(data_dir, "index.json")
     if not os.path.exists(index_path):
@@ -647,30 +647,40 @@ def load_recent_titles(data_dir: str = DOCS_DATA_DIR,
     except Exception:
         return set()
 
+    heute = jetzt_de().date()
     titles: set[str] = set()
-    for entry in index[:lookback]:   # index ist bereits neueste-zuerst sortiert
+    n_ausgaben = 0
+    for entry in index:
+        d = _parse_ausgabe_datum(entry.get("datum", ""))
+        if d is None or (heute - d).days > max_age_days or (heute - d).days < 0:
+            continue
         fpath = os.path.join(data_dir, entry.get("datei", ""))
         try:
             with open(fpath, encoding="utf-8") as f:
                 ausgabe = json.load(f)
         except Exception:
             continue
-        # Titel aus der vollstaendigen Artikelliste der Ausgabe ziehen
+        n_ausgaben += 1
         for cat_rows in ausgabe.get("alle_artikel", {}).values():
             for row in cat_rows:
                 t = _normalize_title(row.get("titel", ""))
                 if t:
                     titles.add(t)
     if titles:
-        print(f"  ℹ {len(titles)} Titel aus {min(lookback, len(index))} Vorausgabe(n) geladen (Wiederholungsfilter)")
+        print(f"  ℹ {len(titles)} Titel aus {n_ausgaben} Ausgabe(n) der letzten "
+              f"{max_age_days} Tage geladen (Wiederholungsfilter)")
     return titles
 
 
-def load_recent_topics(data_dir: str = DOCS_DATA_DIR, lookback: int = 2) -> str:
+def load_recent_topics(data_dir: str = DOCS_DATA_DIR, max_age_days: int = 2) -> str:
     """
-    Liest die Intros (= Kernthemen) der letzten `lookback` Ausgaben und gibt
-    sie als kompakten Text zurueck. Dient der KI als 'das war zuletzt dran'-
-    Kontext, um inhaltliche Wiederholungen zu vermeiden. "" wenn kein Archiv.
+    Liest die Intros (= Kernthemen) der Ausgaben der letzten `max_age_days`
+    KALENDERTAGE und gibt sie als kompakten Text zurueck. Dient der KI als
+    'das war zuletzt dran'-Kontext gegen inhaltliche Wiederholung.
+
+    Wichtig: Es zaehlt das echte DATUM, nicht die Anzahl der Lauefe. Mehrere
+    Testlaeufe am selben Tag blaehen den Filter nicht auf und beeinflussen
+    den naechsten Tag nicht zusaetzlich. "" wenn kein Archiv.
     """
     index_path = os.path.join(data_dir, "index.json")
     if not os.path.exists(index_path):
@@ -681,15 +691,34 @@ def load_recent_topics(data_dir: str = DOCS_DATA_DIR, lookback: int = 2) -> str:
     except Exception:
         return ""
 
+    heute = jetzt_de().date()
     intros = []
-    for entry in index[:lookback]:
+    gesehen = set()
+    for entry in index:
+        d = _parse_ausgabe_datum(entry.get("datum", ""))
+        if d is None or (heute - d).days > max_age_days or (heute - d).days < 0:
+            continue
         intro = (entry.get("intro") or "").strip()
-        if intro:
+        if intro and intro not in gesehen:
+            gesehen.add(intro)
             intros.append("- " + intro)
     return "\n".join(intros)
 
 
+def _parse_ausgabe_datum(datum: str):
+    """Parst das 'datum'-Feld (YYYY-MM-DD) einer Ausgabe zu date oder None."""
+    try:
+        return datetime.strptime(datum[:10], "%Y-%m-%d").date()
+    except Exception:
+        return None
 
+
+def _strip_html(text: str) -> str:
+    """
+    Entfernt HTML-Tags und dekodiert HTML-Entities aus RSS-summary/title.
+    Viele Feeds liefern HTML (z.B. <a href>, <p>, <img>) im Summary-Feld,
+    das sonst als roher Code im Newsletter/Archiv erscheint.
+    """
     if not text:
         return ""
     import html as _html
@@ -830,6 +859,50 @@ def fetch_feeds(recent_titles: set[str] | None = None) -> list[dict]:
 
     if repeat_count_total:
         print(f"  ℹ {repeat_count_total} Artikel als Wiederholung aus Vorausgaben gefiltert")
+
+    # ── NOTFALL-MODUS ────────────────────────────────────────────────
+    # Wenn der normale Abruf zu wenige Artikel liefert (viele Feeds down,
+    # alles als zu alt/Wiederholung gefiltert), nicht mit fast leerer
+    # Ausgabe scheitern: zweiter Durchlauf OHNE Alters- und
+    # Wiederholungsfilter, damit ueberhaupt Inhalt da ist.
+    MIN_ARTICLES = 15
+    if len(articles) < MIN_ARTICLES:
+        print(f"  ⚠ Nur {len(articles)} Artikel – Notfall-Modus: "
+              f"Alters-/Wiederholungsfilter werden gelockert")
+        socket.setdefaulttimeout(FEED_TIMEOUT)
+        try:
+            for source, url in feed_items:
+                try:
+                    feed = feedparser.parse(url)
+                    if feed.bozo and not feed.entries:
+                        continue
+                    count = 0
+                    for entry in feed.entries:
+                        if count >= MAX_ARTICLES_PER_FEED:
+                            break
+                        title   = _strip_html(entry.get("title", ""))
+                        summary = _strip_html(entry.get("summary", entry.get("description", "")))
+                        link    = entry.get("link", "")
+                        summary = summary[:600] if summary else ""
+                        if not title:
+                            continue
+                        norm = _normalize_title(title)
+                        if norm in seen_titles:          # nur exakte Dubletten meiden
+                            continue
+                        seen_titles.add(norm)
+                        articles.append({
+                            "source": source, "title": title,
+                            "summary": summary, "link": link,
+                        })
+                        count += 1
+                except Exception:
+                    continue
+        finally:
+            socket.setdefaulttimeout(old_timeout)
+        print(f"  ℹ Notfall-Modus: jetzt {len(articles)} Artikel")
+
+    if not articles:
+        print("  ✗✗ KRITISCH: kein einziger Artikel abrufbar – Netzwerk/Feeds prüfen!")
 
     return articles[:MAX_ARTICLES_FOR_SUMMARY]
 
