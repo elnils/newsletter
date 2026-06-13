@@ -569,6 +569,40 @@ GITHUB_PAGES_BASE_URL = os.environ.get(
 ).rstrip("/")
 
 # ─────────────────────────────────────────────
+# LINK-TRACKING (vorbereitet, standardmaessig AUS)
+# ─────────────────────────────────────────────
+# Wenn TRACKING_BASE_URL gesetzt ist (z.B. ein eigener Redirect-Endpunkt),
+# werden alle Artikel-Links durch diesen Endpunkt geleitet, der den Klick
+# protokolliert und dann weiterleitet. Ohne gesetzte Variable bleiben die
+# Links unveraendert (kein Tracking) – DSGVO-konform per Default aus.
+#
+# Erwartetes Endpunkt-Verhalten (spaeter zu bauen, z.B. als Apps Script /
+# Cloudflare Worker):  GET {TRACKING_BASE_URL}?u=<ziel-url>&c=<kategorie>
+#   &s=<quelle>&e=<empfaenger-id>&a=<ausgabe>  → loggt + 302-Redirect auf u.
+TRACKING_BASE_URL = os.environ.get("TRACKING_BASE_URL", "").strip()
+
+
+def track_url(target: str, *, category: str = "", source: str = "",
+              recipient: str = "", issue: str = "") -> str:
+    """
+    Bereitet einen Artikel-Link fuer optionales Klick-Tracking auf.
+    - Ohne TRACKING_BASE_URL: gibt die Original-URL unveraendert zurueck.
+    - Mit TRACKING_BASE_URL: baut eine Redirect-URL, die den Klick einem
+      Ziel, einer Kategorie, Quelle, ggf. Empfaenger und Ausgabe zuordnet.
+    Der Empfaenger-Platzhalter ##RECIPIENT_ID## kann (wie ##UNSUBSCRIBE_URL##)
+    spaeter pro Empfaenger in send_email ersetzt werden.
+    """
+    if not target or not TRACKING_BASE_URL:
+        return target
+    params = {"u": target}
+    if category:  params["c"] = category
+    if source:    params["s"] = source
+    if issue:     params["a"] = issue
+    # Empfaenger-ID als Platzhalter, falls nicht direkt uebergeben
+    params["e"] = recipient or "##RECIPIENT_ID##"
+    return TRACKING_BASE_URL + "?" + urllib.parse.urlencode(params, safe="#")
+
+# ─────────────────────────────────────────────
 # ANKER-ID HELPER
 # ─────────────────────────────────────────────
 
@@ -632,12 +666,30 @@ def load_recent_titles(data_dir: str = DOCS_DATA_DIR,
     return titles
 
 
-def _strip_html(text: str) -> str:
+def load_recent_topics(data_dir: str = DOCS_DATA_DIR, lookback: int = 2) -> str:
     """
-    Entfernt HTML-Tags und dekodiert HTML-Entities aus RSS-summary/title.
-    Viele Feeds liefern HTML (z.B. <a href>, <p>, <img>) im Summary-Feld,
-    das sonst als roher Code im Newsletter/Archiv erscheint.
+    Liest die Intros (= Kernthemen) der letzten `lookback` Ausgaben und gibt
+    sie als kompakten Text zurueck. Dient der KI als 'das war zuletzt dran'-
+    Kontext, um inhaltliche Wiederholungen zu vermeiden. "" wenn kein Archiv.
     """
+    index_path = os.path.join(data_dir, "index.json")
+    if not os.path.exists(index_path):
+        return ""
+    try:
+        with open(index_path, encoding="utf-8") as f:
+            index = json.load(f)
+    except Exception:
+        return ""
+
+    intros = []
+    for entry in index[:lookback]:
+        intro = (entry.get("intro") or "").strip()
+        if intro:
+            intros.append("- " + intro)
+    return "\n".join(intros)
+
+
+
     if not text:
         return ""
     import html as _html
@@ -857,6 +909,17 @@ QUELLENTREUE_REGELN = """QUELLENTREUE (oberste Prioritaet, ueberschreibt alle an
     Quelltext "russischer Praesident droht" → "Der Kreml droht" oder "Moskau droht"
     Quelltext "EU-Kommissionspraesident kuendigt an" → "Die EU-Kommission kuendigt an"
 - Niemals Anreden wie "der/die" oder Genderformen ("Minister:in") verwenden – immer Institution.
+
+HANDELNDE STELLE EXAKT (sehr wichtig – Ministerium/Minister/Person nie verwechseln):
+- Uebernimm die handelnde Stelle GENAU so praezise wie im Quelltext – nicht allgemeiner, nicht spezifischer, nicht ausgetauscht.
+- Ein Ministerium, ein Minister und eine einzelne Person sind DREI VERSCHIEDENE Akteure. Niemals das eine durch das andere ersetzen.
+- Erfinde NIE eine konkrete Behoerde/ein Ministerium, das nicht woertlich im Quelltext steht.
+  FALSCH: Quelltext sagt "die Regierung plant" → NICHT "das Bundesinnenministerium plant" (Ministerium frei erfunden).
+  FALSCH: Quelltext nennt eine Person/Sprecher → NICHT zu "das Ministerium" verallgemeinern, wenn der Text die Person meint.
+  FALSCH: Quelltext sagt "Innenminister" → NICHT "Bundesinnenministerium" und auch nicht ein anderes Ministerium.
+  RICHTIG: Steht "Innenminister" ohne Namen → "Das Innenministerium" (gleiche Stelle, nur ohne Person).
+  RICHTIG: Steht "die Bundesregierung" → "Die Bundesregierung" (nicht auf ein bestimmtes Ministerium verengen).
+- Im Zweifel die ALLGEMEINERE Stelle aus dem Quelltext nehmen, aber NIE eine konkretere erfinden.
 
 NIEMALS META-KOMMENTARE schreiben:
 - VERBOTEN: "ist nicht erwaehnt", "laut Quelltext", "Quelle sagt", "im Artikel steht"
@@ -1167,6 +1230,11 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
     _active_model = GROQ_MODEL
     print(f"  → Modell: {GROQ_MODEL} (Fallback: {GROQ_FALLBACK_MODEL})")
 
+    # Themen der letzten Ausgaben laden (gegen inhaltliche Wiederholung)
+    recent_topics = load_recent_topics()
+    if recent_topics:
+        print("  ℹ Themen der Vorausgaben geladen (gegen Wiederholung)")
+
     print("  → Top-Kategorien wählen...")
     top_cats = select_top_categories(grouped, client, n=TOP_CATEGORIES_COUNT)
 
@@ -1236,9 +1304,21 @@ NUR DEUTSCH – englische Finanzbegriffe IMMER uebersetzen (haeufiger Fehler!):
   "earnings" → "Quartalszahlen/Gewinn", "guidance" → "Prognose", "sell-off" → "Ausverkauf".
 - Eigennamen bleiben: "Federal Reserve" als Institution ok, aber dann deutsch eingebettet ("die US-Notenbank Federal Reserve")."""
 
+        # Wiederholungs-Hinweis: was in den Vorausgaben schon dran war
+        wiederholung_block = ""
+        if recent_topics:
+            wiederholung_block = f"""
+
+KEINE WIEDERHOLUNG ZU VORAUSGABEN (wichtig):
+Diese Themen waren in den letzten Ausgaben bereits zentral:
+{recent_topics}
+- Greife ein solches Thema nur auf, wenn es heute eine WESENTLICHE NEUE Entwicklung gibt – und mache die Neuigkeit explizit ("nun", "neu", konkrete neue Zahl/Entscheidung).
+- Gibt es nichts substanziell Neues, waehle stattdessen ein anderes, frisches Thema dieser Kategorie."""
+
         prompt = f"""Fasse die Nachrichten der Kategorie "{category}" in {satz_wort} zusammen.
 
 {quellentreue}
+{wiederholung_block}
 
 Regeln:
 {regel_anzahl}
@@ -1252,6 +1332,14 @@ AUSWAHL (wichtig):
 - Waehle nur UEBERREGIONAL bedeutsame Nachrichten: Bundes-/EU-/Weltpolitik, grosse Konzerne, gesamtwirtschaftliche Themen.
 - IGNORIERE rein lokale oder einzelbetriebliche Meldungen (z.B. "Logistikzentrum einer Handelskette", "Stadtrat beschliesst", "Filiale schliesst") – auch wenn sie in der Liste stehen.
 - JEDES Thema nur EINMAL: Wenn mehrere Schlagzeilen dasselbe Ereignis behandeln (z.B. dieselbe EZB-Zinsentscheidung aus drei Quellen), fasse sie zu EINEM Stichsatz zusammen – niemals zwei Stichsaetze zum selben Ereignis.
+- ROTER FADEN: Waehle die Nachrichten, die zum Kern dieser Kategorie gehoeren und fuer einen ueberregionalen Tagesueberblick wirklich zaehlen. Lieber wenige wichtige als viele beliebige.
+
+QUELLENANGABE IM TEXT (neu):
+- Setze hinter jede Aussage die Quelle in eckigen Klammern mit dem Quellennamen, GENAU wie er in der Liste vor dem Titel steht: z.B. [FAZ], [Reuters], [Handelsblatt].
+- So kann der Leser die Aussage den Links darunter zuordnen.
+- Wenn EIN Stichsatz Aspekte aus MEHREREN Quellen verbindet, trenne die Aspekte sauber und setze hinter jeden Aspekt seine Quelle:
+  Beispiel: "Die EZB senkt den Leitzins auf 2,0 Prozent [Handelsblatt]; die Maerkte reagieren mit Kursgewinnen [Reuters]."
+- Erfinde KEINE Quelle. Nutze nur Quellennamen, die in der Liste unten tatsaechlich vorkommen. Wenn du dir bei der Zuordnung unsicher bist, nutze nur die eine Quelle, aus der die Aussage stammt.
 
 SATZBAU (sehr wichtig – haeufige Fehler vermeiden):
 - Jeder Satz muss ALLEIN verstaendlich sein. Keine abgehackten Fragmente.
@@ -1590,9 +1678,10 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'style="margin-top:10px;background:#d4e3ed;border-radius:4px;padding:4px 0;">'
         )
         for i, a in enumerate(clean):
+            link_href = track_url(a["link"], category=category, source=a["source"])
             links_html += (
                 f'<tr><td style="padding:3px 12px;">'
-                f'<a href="{a["link"]}" style="text-decoration:none;font-family:{FONT};'
+                f'<a href="{link_href}" style="text-decoration:none;font-family:{FONT};'
                 f'font-size:12px;line-height:1.3;color:{COLOR_TEXT2};">'
                 f'<span style="font-weight:700;color:{COLOR_NAVY};">{a["source"]}:</span>'
                 f'&nbsp;{a["title"]}'
@@ -2129,11 +2218,26 @@ def _adapt_worldcupjson(raw: list) -> list:
     return out
 
 
+def _only_2026(matches: list) -> list:
+    """
+    Behaelt nur Spiele im 2026-Turnierfenster. Schuetzt davor, dass eine
+    Quelle versehentlich Daten eines alten Turniers (z.B. WM 2022,
+    Finale Frankreich–Argentinien) liefert. Spiele ohne gueltiges
+    2026-Datum werden verworfen.
+    """
+    out = []
+    for m in matches:
+        d = (m.get("date") or "")[:10]
+        if WM_START_DATE <= d <= WM_END_DATE:
+            out.append(m)
+    return out
+
+
 def _load_wm_matches() -> list:
     """
     Laedt die WM-Spiele: zuerst von worldcupjson.net (live, ~5-Min-Updates),
-    bei Fehler Fallback auf openfootball (public domain, ~1x/Tag).
-    Rueckgabe: Liste im openfootball-Format oder [].
+    bei Fehler/alten Daten Fallback auf openfootball (public domain, ~1x/Tag).
+    Es werden NUR Spiele im 2026-Turnierfenster zurueckgegeben.
     """
     # 1) PRIMAER: worldcupjson.net
     try:
@@ -2143,11 +2247,12 @@ def _load_wm_matches() -> list:
         with urllib.request.urlopen(req, timeout=WM_FETCH_TIMEOUT) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         raw = data if isinstance(data, list) else data.get("matches", data.get("data", []))
-        adapted = _adapt_worldcupjson(raw)
+        adapted = _only_2026(_adapt_worldcupjson(raw))
         if adapted:
-            print(f"  ✓ WM-Quelle: worldcupjson.net ({len(adapted)} Spiele)")
+            print(f"  ✓ WM-Quelle: worldcupjson.net ({len(adapted)} Spiele 2026)")
             return adapted
-        print("  ⚠ worldcupjson.net lieferte keine Spiele – Fallback openfootball")
+        # Quelle erreichbar, aber keine 2026-Spiele (z.B. nur alte 2022-Daten)
+        print("  ⚠ worldcupjson.net ohne 2026-Spiele – Fallback openfootball")
     except Exception as e:
         print(f"  ⚠ worldcupjson.net nicht erreichbar ({e}) – Fallback openfootball")
 
@@ -2158,8 +2263,8 @@ def _load_wm_matches() -> list:
         )
         with urllib.request.urlopen(req, timeout=WM_FETCH_TIMEOUT) as resp:
             data = json.loads(resp.read().decode("utf-8"))
-        matches = data.get("matches", [])
-        print(f"  ✓ WM-Quelle: openfootball ({len(matches)} Spiele)")
+        matches = _only_2026(data.get("matches", []))
+        print(f"  ✓ WM-Quelle: openfootball ({len(matches)} Spiele 2026)")
         return matches
     except Exception as e:
         print(f"  ⚠ openfootball nicht erreichbar ({e})")
