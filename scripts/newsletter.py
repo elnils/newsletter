@@ -1335,6 +1335,7 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
                        history_fact: str, history_url: str,
                        now: datetime, daytime: str,
                        destatis_fact: str = "", destatis_url: str = "",
+                       destatis_quelle: str = "",
                        wm_info: dict | None = None) -> str:
     """
     Schreibt die aktuelle Ausgabe als JSON nach docs/data/ und pflegt
@@ -1387,7 +1388,7 @@ def build_archive_json(grouped: dict[str, list[dict]], intro: str,
         "erstellt":   now.strftime("%d.%m.%Y %H:%M"),
         "intro":      intro,
         "wikipedia":  {"text": history_fact, "url": history_url},
-        "destatis":   {"text": destatis_fact, "url": destatis_url},
+        "destatis":   {"text": destatis_fact, "url": destatis_url, "quelle": destatis_quelle or "Destatis"},
         "wm":         wm_info or {},
         "kategorien": kategorien,
         "alle_artikel": alle_artikel,
@@ -1460,6 +1461,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
                history_url: str = "",
                destatis_fact: str = "",
                destatis_url: str = "",
+               destatis_quelle: str = "",
                wm_info: dict | None = None) -> str:
     """
     Baut den HTML-Newsletter.
@@ -1549,7 +1551,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'padding-bottom:4px;">📊 Zahl des Tages</td></tr>'
             f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
             f'color:{COLOR_TEXT2};">{text_inner}'
-            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Destatis</span>'
+            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: {destatis_quelle or "Destatis"}</span>'
             f'</td></tr></table>'
             f'</td></tr>'
         )
@@ -1619,7 +1621,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     wm_html = ""
     if wm_info and (wm_info.get("letztes") or wm_info.get("heute")
                     or wm_info.get("naechste") or wm_info.get("gestern")
-                    or wm_info.get("heute_fertig")):
+                    or wm_info.get("heute_fertig") or wm_info.get("ausstehend")):
         wm_link = wm_info.get("link", "")
 
         def _spiel_row(zeit: str, paarung: str, klein: bool = False) -> str:
@@ -1666,6 +1668,12 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             zeilen += _subhead("Heute bereits gespielt")
             for s in heute_fertig:
                 zeilen += _spiel_row(s.get("zeit", ""), s.get("paarung", ""))
+
+        # Angepfiffen/vorbei, aber Ergebnis noch nicht im Feed
+        if wm_info.get("ausstehend"):
+            zeilen += _subhead("Ergebnis folgt")
+            for s in wm_info["ausstehend"]:
+                zeilen += _spiel_row(s.get("zeit", ""), s.get("paarung", ""), klein=True)
 
         # Gestrige Ergebnisse (klein) – ohne das schon als "Zuletzt" gezeigte
         gestern = [g for g in wm_info.get("gestern", []) if g != letztes]
@@ -1869,57 +1877,121 @@ _DESTATIS_SKIP = (
 )
 
 
-def fetch_destatis_stat() -> tuple[str, str]:
-    """
-    Holt die neueste sinnvolle Destatis-Pressemitteilung als "Zahl des Tages".
-    Gibt die Original-Schlagzeile unveraendert zurueck (Destatis formuliert
-    die meist schon als kompakte, verstaendliche Aussage) plus den Link.
-    Ueberspringt rein methodische/organisatorische Meldungen.
-    Rueckgabe: (text, link) oder ("", "") bei Fehler/nichts Passendem.
-    """
+OWID_ATOM_URL    = "https://ourworldindata.org/atom.xml"
+EUROSTAT_RSS_URL = "https://ec.europa.eu/eurostat/cache/RSS/rss_estat_news.xml"
+
+
+def _entry_date(entry) -> datetime | None:
+    """Liest das Veroeffentlichungsdatum eines Feed-Eintrags (UTC)."""
+    ts = entry.get("published_parsed") or entry.get("updated_parsed")
+    if ts:
+        try:
+            return datetime(*ts[:6], tzinfo=timezone.utc)
+        except Exception:
+            return None
+    return None
+
+
+def _src_destatis() -> tuple[str, str, str, datetime] | None:
+    """Neueste sinnvolle Destatis-Meldung → (text, link, quelle, datum)."""
     try:
         feed = feedparser.parse(DESTATIS_RSS_URL)
-        if not feed.entries:
-            print("  ⚠ Destatis: keine Eintraege")
-            return "", ""
-
         now = datetime.now(timezone.utc)
         for entry in feed.entries[:8]:
-            title = entry.get("title", "").strip()
+            title = _strip_html(entry.get("title", ""))
+            link  = entry.get("link", "").strip()
+            if not title or any(skip in title.lower() for skip in _DESTATIS_SKIP):
+                continue
+            dt = _entry_date(entry) or now
+            if (now - dt) > timedelta(hours=72):
+                continue
+            print(f"  ✓ Destatis: {title[:50]} ({dt.date()})")
+            return title, link, "Destatis", dt
+    except Exception as e:
+        print(f"  ⚠ Destatis-Fehler: {e}")
+    return None
+
+
+def _src_owid() -> tuple[str, str, str, datetime] | None:
+    """Neuester OWID-Artikel → (text, link, quelle, datum). CC-BY."""
+    try:
+        feed = feedparser.parse(OWID_ATOM_URL)
+        now = datetime.now(timezone.utc)
+        for entry in feed.entries[:5]:
+            title = _strip_html(entry.get("title", ""))
             link  = entry.get("link", "").strip()
             if not title:
                 continue
-
-            # Methodik-/Organisations-Meldungen ueberspringen
-            if any(skip in title.lower() for skip in _DESTATIS_SKIP):
+            dt = _entry_date(entry) or now
+            if (now - dt) > timedelta(days=14):
                 continue
-
-            # Nur frische PMs (max ~48h alt)
-            ts = entry.get("published_parsed") or entry.get("updated_parsed")
-            if ts:
-                try:
-                    pub = datetime(*ts[:6], tzinfo=timezone.utc)
-                    if (now - pub) > timedelta(hours=48):
-                        continue
-                except Exception:
-                    pass
-
-            print(f"  ✓ Destatis: {title[:55]}")
-            return title, link
-
-        print("  ⚠ Destatis: nichts Sinnvolles/Aktuelles gefunden")
-        return "", ""
+            print(f"  ✓ OWID: {title[:50]} ({dt.date()})")
+            return title, link, "Our World in Data", dt
     except Exception as e:
-        print(f"  ⚠ Destatis-Fehler: {e}")
-        return "", ""
+        print(f"  ⚠ OWID-Fehler: {e}")
+    return None
+
+
+# Eurostat-Meldungen, die keine inhaltliche Zahl transportieren
+_EUROSTAT_SKIP = (
+    "calendar", "release calendar", "correction", "press conference",
+    "methodolog", "revision", "now available", "user survey", "vacancy",
+)
+
+
+def _src_eurostat() -> tuple[str, str, str, datetime] | None:
+    """Neueste Eurostat-News → (text, link, quelle, datum). Frei mit Quellenangabe."""
+    try:
+        feed = feedparser.parse(EUROSTAT_RSS_URL)
+        now = datetime.now(timezone.utc)
+        for entry in feed.entries[:8]:
+            title = _strip_html(entry.get("title", ""))
+            link  = entry.get("link", "").strip()
+            if not title or any(skip in title.lower() for skip in _EUROSTAT_SKIP):
+                continue
+            dt = _entry_date(entry) or now
+            if (now - dt) > timedelta(hours=72):
+                continue
+            print(f"  ✓ Eurostat: {title[:50]} ({dt.date()})")
+            return title, link, "Eurostat", dt
+    except Exception as e:
+        print(f"  ⚠ Eurostat-Fehler: {e}")
+    return None
+
+
+def fetch_destatis_stat() -> tuple[str, str, str]:
+    """
+    'Zahl des Tages' – nimmt die AKTUELLSTE verfuegbare Quelle (Destatis,
+    Eurostat, Our World in Data). So ist die Rubrik jeden Tag frisch und
+    wechselt automatisch zur Quelle mit den neuesten Daten.
+    Rueckgabe: (text, link, quelle) oder ("","","") wenn nichts Passendes.
+    """
+    kandidaten = []
+    for fn in (_src_destatis, _src_eurostat, _src_owid):
+        r = fn()
+        if r:
+            kandidaten.append(r)
+
+    if not kandidaten:
+        print("  ⚠ Zahl des Tages: keine Quelle lieferte etwas")
+        return "", "", ""
+
+    # Neueste gewinnt (nach Veroeffentlichungsdatum)
+    kandidaten.sort(key=lambda r: r[3], reverse=True)
+    text, link, quelle, dt = kandidaten[0]
+    print(f"  → Zahl des Tages: {quelle} (neueste, {dt.date()})")
+    return text, link, quelle
 
 
 # ─────────────────────────────────────────────
 # FUSSBALL-WM 2026 (nur waehrend des Turniers)
 # ─────────────────────────────────────────────
 
-# Public-Domain-Daten von openfootball (kein API-Key, erlaubte raw-Domain).
-# Wird ca. 1x taeglich manuell aktualisiert – fuer 2 Ausgaben/Tag ausreichend.
+# PRIMAER: worldcupjson.net – aktualisiert ~alle 5 Min waehrend Live-Spielen,
+# hat ein 'status'-Feld (completed/in_progress/future) → zuverlaessige Ergebnisse.
+# Rate-Limit 10 Anfragen/60s; wir machen nur 1 Anfrage pro Lauf → unkritisch.
+WM_LIVE_URL    = "https://worldcupjson.net/matches?details=false"
+# FALLBACK: openfootball (public domain), ~1x taeglich – falls Live-Quelle ausfaellt.
 WM_JSON_URL    = "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json"
 WM_FETCH_TIMEOUT = 15
 # Turnierfenster: nur in diesem Zeitraum erscheint der WM-Block.
@@ -1942,6 +2014,8 @@ WM_TEAM_DE = {
     "Algeria": "Algerien", "Austria": "Österreich", "Jordan": "Jordanien",
     "Portugal": "Portugal", "DR Congo": "DR Kongo", "Uzbekistan": "Usbekistan",
     "Colombia": "Kolumbien", "England": "England", "Croatia": "Kroatien", "Ghana": "Ghana",
+    "Italy": "Italien", "Belgium": "Belgien", "Poland": "Polen", "Denmark": "Dänemark",
+    "Nigeria": "Nigeria", "Cameroon": "Kamerun", "Serbia": "Serbien", "Greece": "Griechenland",
     "Panama": "Panama",
 }
 
@@ -1999,6 +2073,99 @@ def _wm_to_german(date_str: str, time_str: str) -> tuple[str, str]:
     return dt_de.strftime("%Y-%m-%d"), dt_de.strftime("%H:%M")
 
 
+def _adapt_worldcupjson(raw: list) -> list:
+    """
+    Uebersetzt das worldcupjson.net-Format ins openfootball-Format,
+    damit die restliche Logik unveraendert funktioniert.
+
+    worldcupjson.net liefert pro Spiel u.a.:
+      home_team: {country/name, goals}, away_team: {...},
+      datetime (ISO mit Zeitzone), status ("completed"/"in_progress"/"future")
+    Ziel-Format (openfootball):
+      {team1, team2, score1, score2, date, time, _status}
+    """
+    out = []
+    for m in raw:
+        ht = m.get("home_team") or {}
+        at = m.get("away_team") or {}
+        t1 = ht.get("country") or ht.get("name") or ht.get("code") or ""
+        t2 = at.get("country") or at.get("name") or at.get("code") or ""
+        if not t1 or not t2:
+            continue
+
+        status = (m.get("status") or "").lower()
+        # Tore nur uebernehmen, wenn Spiel laeuft/beendet (sonst sind sie 0/None)
+        s1 = s2 = None
+        if status in ("completed", "in progress", "in_progress"):
+            s1 = ht.get("goals")
+            s2 = at.get("goals")
+
+        # Datum + Uhrzeit aus ISO-datetime (z.B. "2026-06-13T19:00:00-06:00")
+        dt_iso = m.get("datetime") or m.get("date") or ""
+        date_part, time_part = "", ""
+        if dt_iso:
+            # Datum
+            date_part = dt_iso[:10]
+            # Uhrzeit + Offset → ins openfootball-Stil "HH:MM UTC±X" bringen,
+            # damit _wm_to_german korrekt umrechnet
+            try:
+                # ISO: ...THH:MM:SS±HH:MM
+                tpart = dt_iso[11:16]            # "19:00"
+                tz = dt_iso[19:]                 # "-06:00" oder "Z" oder ""
+                if tz in ("", "Z"):
+                    time_part = f"{tpart} UTC"
+                else:
+                    off_h = int(tz[:3])          # -06
+                    time_part = f"{tpart} UTC{off_h:+d}"
+            except Exception:
+                time_part = ""
+
+        out.append({
+            "team1": t1, "team2": t2,
+            "score1": s1, "score2": s2,
+            "date": date_part, "time": time_part,
+            "_status": status,
+        })
+    return out
+
+
+def _load_wm_matches() -> list:
+    """
+    Laedt die WM-Spiele: zuerst von worldcupjson.net (live, ~5-Min-Updates),
+    bei Fehler Fallback auf openfootball (public domain, ~1x/Tag).
+    Rueckgabe: Liste im openfootball-Format oder [].
+    """
+    # 1) PRIMAER: worldcupjson.net
+    try:
+        req = urllib.request.Request(
+            WM_LIVE_URL, headers={"User-Agent": "Tageslage-Newsletter/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=WM_FETCH_TIMEOUT) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        raw = data if isinstance(data, list) else data.get("matches", data.get("data", []))
+        adapted = _adapt_worldcupjson(raw)
+        if adapted:
+            print(f"  ✓ WM-Quelle: worldcupjson.net ({len(adapted)} Spiele)")
+            return adapted
+        print("  ⚠ worldcupjson.net lieferte keine Spiele – Fallback openfootball")
+    except Exception as e:
+        print(f"  ⚠ worldcupjson.net nicht erreichbar ({e}) – Fallback openfootball")
+
+    # 2) FALLBACK: openfootball
+    try:
+        req = urllib.request.Request(
+            WM_JSON_URL, headers={"User-Agent": "Tageslage-Newsletter/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=WM_FETCH_TIMEOUT) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        matches = data.get("matches", [])
+        print(f"  ✓ WM-Quelle: openfootball ({len(matches)} Spiele)")
+        return matches
+    except Exception as e:
+        print(f"  ⚠ openfootball nicht erreichbar ({e})")
+        return []
+
+
 def fetch_wm_info(now: datetime | None = None) -> dict:
     """
     Liefert WM-Infos als strukturiertes Dict – nur waehrend des Turniers,
@@ -2019,12 +2186,7 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
         return m.get("score1") is not None and m.get("score2") is not None
 
     try:
-        req = urllib.request.Request(
-            WM_JSON_URL, headers={"User-Agent": "Tageslage-Newsletter/1.0"}
-        )
-        with urllib.request.urlopen(req, timeout=WM_FETCH_TIMEOUT) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-        matches = data.get("matches", [])
+        matches = _load_wm_matches()
         if not matches:
             return {}
 
@@ -2093,11 +2255,18 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
                 )
             })
 
-        # ── Spiele HEUTE (noch ohne Ergebnis), Zeit + Paarung getrennt ─
-        heute_raw = [
+        # ── Heutige Spiele OHNE Ergebnis nach Anstosszeit trennen ──────
+        #    "kommend": Anstoss liegt noch in der Zukunft
+        #    "ausstehend": Anstoss schon vorbei, aber Ergebnis noch nicht im
+        #                  Feed (openfootball aktualisiert nur ~1x/Tag)
+        jetzt_hm = now.strftime("%H:%M")
+        heute_offen = [
             m for m in matches
             if m.get("_date_de", "") == today and not _has_score(m)
         ]
+        heute_raw       = [m for m in heute_offen if _uhr(m) and _uhr(m) >= jetzt_hm]
+        heute_ausstehend = [m for m in heute_offen if _uhr(m) and _uhr(m) < jetzt_hm]
+
         if len(heute_raw) > 2:
             top = [m for m in heute_raw if _wm_is_top(m)]
             if top:
@@ -2110,6 +2279,14 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
             heute.append({"zeit": u, "paarung": f"{t1} – {t2}"})
         heute.sort(key=lambda x: x["zeit"])
         heute_list = heute
+
+        # Ausstehende (Anstoss vorbei, Ergebnis fehlt noch)
+        ausstehend_list = []
+        for m in sorted(heute_ausstehend, key=lambda m: _uhr(m)):
+            ausstehend_list.append({
+                "zeit": _uhr(m),
+                "paarung": f"{_wm_team(m.get('team1',''))} – {_wm_team(m.get('team2',''))}"
+            })
 
         # ── Fallback: naechste Spiele (falls heute keine offenen mehr) ─
         naechste_list = []
@@ -2131,15 +2308,16 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
                 naechste_list.append({"zeit": zeit, "paarung": f"{t1} – {t2}"})
 
         if not (letztes_str or heute_list or naechste_list
-                or gestern_list or heute_fertig_list):
+                or gestern_list or heute_fertig_list or ausstehend_list):
             return {}
 
         print(f"  ✓ WM-Info: zuletzt '{letztes_str}', heute offen {len(heute_list)}, "
-              f"heute fertig {len(heute_fertig_list)}, gestern {len(gestern_list)}")
+              f"ausstehend {len(ausstehend_list)}, fertig {len(heute_fertig_list)}, gestern {len(gestern_list)}")
         return {
             "letztes":       letztes_str,
             "gestern":       gestern_list,
             "heute_fertig":  heute_fertig_list,
+            "ausstehend":    ausstehend_list,
             "heute":         heute_list,
             "naechste":      naechste_list,
             "link":          link,
@@ -2298,7 +2476,7 @@ def main():
     print("    → 'Heute vor X Jahren' von Wikipedia holen...")
     history_fact, history_url = fetch_history_fact()
     print("    → 'Zahl des Tages' von Destatis holen...")
-    destatis_fact, destatis_url = fetch_destatis_stat()
+    destatis_fact, destatis_url, destatis_quelle = fetch_destatis_stat()
     print("    → WM-Spielstand holen (nur waehrend Turnier)...")
     wm_info = fetch_wm_info()
     print()
@@ -2311,6 +2489,7 @@ def main():
         grouped, intro, summaries, selected_links,
         history_fact, history_url, now, daytime,
         destatis_fact=destatis_fact, destatis_url=destatis_url,
+        destatis_quelle=destatis_quelle,
         wm_info=wm_info,
     )
     # Deep-Link: Landing Page oeffnet direkt diese Ausgabe
@@ -2327,6 +2506,7 @@ def main():
         history_url=history_url,
         destatis_fact=destatis_fact,
         destatis_url=destatis_url,
+        destatis_quelle=destatis_quelle,
         wm_info=wm_info,
     )
 
