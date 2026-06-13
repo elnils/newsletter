@@ -1189,13 +1189,16 @@ def generate_intro(grouped: dict[str, list[dict]], client: Groq,
     Generiert zwei flüssige deutsche Sätze, die die wichtigsten Themen
     des Tages zusammenfassen. Kein HTML, keine Links.
     """
+    # Schlagzeilen nummerieren + flache Liste fuer spaetere Quellen-Aufloesung
+    intro_artikel = []
     top_topics = []
     for cat in top_cats[:6]:
         articles = grouped.get(cat, [])
         for a in articles[:2]:
-            top_topics.append(f"[{cat}] {a['title']}")
+            intro_artikel.append(a)
+            top_topics.append(f"[{len(intro_artikel)}] ({a['source']}) {a['title']}")
 
-    topics_text = "\n".join(f"- {t}" for t in top_topics)
+    topics_text = "\n".join(top_topics)
 
     today_str = jetzt_de().strftime("%d.%m.%Y")
     quellentreue = QUELLENTREUE_REGELN.format(today=today_str)
@@ -1216,6 +1219,12 @@ STRIKTE Regeln:
 - Pro Satz MAXIMAL 2 Subjekte – nicht zusammenstopfen. Lieber klar als ueberladen.
 - Jeder Satz startet mit einem konkreten Subjekt – NIE mit "Die Lage", "Es", "Der Tag", "Heute"
 - VERBOTEN: "gepragt von", "im Zeichen von", "Debatten", "Diskussionen", "Entwicklungen", "Themen", "Lage", "Geschehen", "Spannungen"
+
+QUELLENANGABE (mit Nummern):
+- Jede Schlagzeile unten hat vorne eine Nummer in eckigen Klammern, z.B. [2].
+- Setze hinter jede Aussage die NUMMER der Schlagzeile, auf die sie sich stuetzt: z.B. "...senkt den Leitzins [2]."
+- Schreibe NUR die Nummer in die Klammern, NICHT den Quellennamen.
+- Nutze nur Nummern, die unten wirklich vorkommen. Erfinde keine.
 
 GUTE Beispiele (zwei Saetze, Rollen genannt, Laender kurz):
 "EZB-Chefin Lagarde senkt den Leitzins um 25 Basispunkte; der DAX legt um 1,2 Prozent zu. Das Weisse Haus kuendigt zugleich neue Zoelle auf EU-Stahl an."
@@ -1239,7 +1248,9 @@ Zwei Saetze:"""
         text = text.strip().strip('"').strip("'")
         text = " ".join(line.strip() for line in text.split("\n") if line.strip())
         text = re.sub(r"\s+", " ", text).strip()
-        if text and not text.endswith((".", "!", "?")):
+        # [Nr] → ‹‹SRC|Quelle|URL›› (wie bei den Kategorie-Bullets)
+        text = _aufloesen_quellen(text, intro_artikel)
+        if text and not text.rstrip().endswith((".", "!", "?", "›")):
             text += "."
         return text or "Die wichtigsten Nachrichten des Tages im Überblick."
     except Exception as e:
@@ -1291,6 +1302,45 @@ Beispiel:
 # ZUSAMMENFASSUNGEN
 # ─────────────────────────────────────────────
 
+def _aufloesen_quellen(text: str, kat_artikel: list[dict]) -> str:
+    """
+    Ersetzt von der KI gesetzte Artikel-Nummern [3] durch einen neutralen
+    Marker ‹‹SRC|Quelle|URL›› (eindeutig, da nummeriert – kein Raten).
+    Newsletter-HTML und Archiv-Frontend wandeln den Marker dann jeweils in
+    einen dezenten, anklickbaren Quellen-Hinweis um.
+    Unbekannte/ungueltige Nummern werden entfernt (keine toten [x] im Text).
+    """
+    def ersetze(match):
+        try:
+            nr = int(match.group(1))
+        except Exception:
+            return ""
+        if 1 <= nr <= len(kat_artikel):
+            a = kat_artikel[nr - 1]
+            quelle = a.get("source", "")
+            url    = a.get("link", "")
+            if quelle:
+                return f"‹‹SRC|{quelle}|{url}››"
+        return ""  # ungueltige Nummer → still entfernen
+
+    # [3] oder [3, 7] oder [3,7] aufloesen (auch mehrere Nummern in Klammern)
+    def ersetze_gruppe(match):
+        inner = match.group(1)
+        teile = [t.strip() for t in inner.split(",") if t.strip().isdigit()]
+        if not teile:
+            return match.group(0)  # keine Zahl → unveraendert lassen
+        out = ""
+        for t in teile:
+            out += ersetze(re.match(r"(\d+)", t))
+        return out
+
+    text = re.sub(r"\[(\d+(?:\s*,\s*\d+)*)\]", ersetze_gruppe, text)
+    # doppelte Leerzeichen durch Ersetzungen bereinigen
+    text = re.sub(r"\s+([;.,])", r"\1", text)   # Leerzeichen vor Satzzeichen
+    text = re.sub(r"  +", " ", text).strip()
+    return text
+
+
 def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, list[str]], list[str], dict[str, list[dict]]]:
     global _active_model
     api_key = os.environ.get("GROQ_API_KEY")
@@ -1331,10 +1381,14 @@ def summarize_with_groq(grouped: dict[str, list[dict]]) -> tuple[str, dict[str, 
         n_bullets = 1 if len(articles) == 1 else 2
 
         # 400 Zeichen Summary (statt 200): mehr Originalkontext = weniger Halluzinationen
+        # Artikel durchnummerieren, damit die KI EINDEUTIG referenzieren kann
+        # (Quellenname allein ist nicht eindeutig, wenn eine Quelle mehrfach
+        # vorkommt). Die KI schreibt [Nr], wir loesen Nr → korrekte URL auf.
+        kat_artikel = articles[:ARTICLES_PER_CATEGORY]
         articles_text = "\n".join([
-            f"- [{a['source']}] {a['title']}"
+            f"[{i+1}] ({a['source']}) {a['title']}"
             + (f": {a['summary'][:400]}" if a["summary"] else "")
-            for a in articles[:ARTICLES_PER_CATEGORY]
+            for i, a in enumerate(kat_artikel)
         ])
 
         today_str = jetzt_de().strftime("%d.%m.%Y")
@@ -1407,12 +1461,13 @@ AUSWAHL (wichtig):
 - JEDES Thema nur EINMAL: Wenn mehrere Schlagzeilen dasselbe Ereignis behandeln (z.B. dieselbe EZB-Zinsentscheidung aus drei Quellen), fasse sie zu EINEM Stichsatz zusammen – niemals zwei Stichsaetze zum selben Ereignis.
 - ROTER FADEN: Waehle die Nachrichten, die zum Kern dieser Kategorie gehoeren und fuer einen ueberregionalen Tagesueberblick wirklich zaehlen. Lieber wenige wichtige als viele beliebige.
 
-QUELLENANGABE IM TEXT (neu):
-- Setze hinter jede Aussage die Quelle in eckigen Klammern mit dem Quellennamen, GENAU wie er in der Liste vor dem Titel steht: z.B. [FAZ], [Reuters], [Handelsblatt].
-- So kann der Leser die Aussage den Links darunter zuordnen.
-- Wenn EIN Stichsatz Aspekte aus MEHREREN Quellen verbindet, trenne die Aspekte sauber und setze hinter jeden Aspekt seine Quelle:
-  Beispiel: "Die EZB senkt den Leitzins auf 2,0 Prozent [Handelsblatt]; die Maerkte reagieren mit Kursgewinnen [Reuters]."
-- Erfinde KEINE Quelle. Nutze nur Quellennamen, die in der Liste unten tatsaechlich vorkommen. Wenn du dir bei der Zuordnung unsicher bist, nutze nur die eine Quelle, aus der die Aussage stammt.
+QUELLENANGABE IM TEXT (wichtig – mit Nummern):
+- Jeder Artikel in der Liste unten hat vorne eine Nummer in eckigen Klammern, z.B. [3].
+- Setze hinter jede Aussage die NUMMER des Artikels, aus dem die Aussage stammt: z.B. "...senkt den Leitzins [3]."
+- Schreibe NUR die Nummer in den Klammern, NICHT den Quellennamen. Beispiel richtig: [3]. Falsch: [FAZ] oder [3 FAZ].
+- Wenn EIN Stichsatz Aspekte aus MEHREREN Artikeln verbindet, trenne die Aspekte sauber und setze hinter jeden Aspekt seine Nummer:
+  Beispiel: "Die EZB senkt den Leitzins auf 2,0 Prozent [3]; die Maerkte reagieren mit Kursgewinnen [7]."
+- Nutze nur Nummern, die in der Liste unten wirklich vorkommen. Erfinde keine Nummern. Im Zweifel die Nummer des Artikels, der die Aussage am direktesten belegt.
 
 SATZBAU (sehr wichtig – haeufige Fehler vermeiden):
 - Jeder Satz muss ALLEIN verstaendlich sein. Keine abgehackten Fragmente.
@@ -1458,6 +1513,8 @@ Stichsaetze:"""
                 if line.strip() and line.strip()[0] in ("•", "-", "*")
             ]
             bullet_points = ["• " + bp.lstrip("•-* ").strip() for bp in bullet_points]
+            # [Nr] → ‹‹SRC|Quelle|URL›› auflösen (eindeutige Zuordnung)
+            bullet_points = [_aufloesen_quellen(bp, kat_artikel) for bp in bullet_points]
             if bullet_points:
                 summaries[category] = bullet_points[:n_bullets]
                 print(f"  ✓ {category}: {len(summaries[category])} Punkte")
@@ -1657,11 +1714,31 @@ def build_html(intro: str, summaries: dict[str, list[str]],
     COLOR_TEXT   = "#1c1c1e"
     COLOR_TEXT2  = "#3a3a3c"
 
+    # ‹‹SRC|Quelle|URL›› → dezenter Quellen-Link (gleiche Textfarbe, nur
+    # unterstrichen, nicht knallig gefaerbt). Klick fuehrt zum Artikel.
+    def _render_src(s: str) -> str:
+        def repl(m):
+            quelle = m.group(1).strip()
+            url    = m.group(2).strip()
+            if not quelle:
+                return ""
+            label = f"[{quelle}]"
+            if not url:
+                return f'<span style="color:{COLOR_MUTED};">{label}</span>'
+            href = track_url(url, source=quelle)
+            return (
+                f'<a href="{href}" style="color:{COLOR_MUTED};'
+                f'text-decoration:underline;text-decoration-color:{COLOR_LIGHT};'
+                f'font-size:11px;">{label}</a>'
+            )
+        # nbsp vor der Quelle für etwas Abstand
+        return re.sub(r"‹‹SRC\|([^|]*)\|([^›]*)››", lambda m: "&nbsp;" + repl(m), s)
+
     # ── Intro-Block ──────────────────────────────────────────────────────
     intro_html = (
         f'<tr><td style="padding:20px 32px 18px;border-bottom:2px solid {COLOR_BORDER};">'
         f'<p style="font-family:{FONT};font-size:14px;line-height:1.9;'
-        f'color:{COLOR_TEXT2};margin:0;">{intro}</p>'
+        f'color:{COLOR_TEXT2};margin:0;">{_render_src(intro)}</p>'
         f'</td></tr>'
     )
 
@@ -1686,7 +1763,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'padding-bottom:4px;">📅 An diesem Tag</td></tr>'
             f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
             f'color:{COLOR_TEXT2};">{fact_html}'
-            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: Wikipedia</span>'
+            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Wikipedia</span>'
             f'</td></tr></table>'
             f'</td></tr>'
         )
@@ -1712,7 +1789,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
             f'padding-bottom:4px;">📊 Zahl des Tages</td></tr>'
             f'<tr><td style="font-family:{FONT};font-size:13px;line-height:1.6;'
             f'color:{COLOR_TEXT2};">{text_inner}'
-            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; Quelle: {destatis_quelle or "Destatis"}</span>'
+            f'<span style="color:{COLOR_MUTED};font-size:10px;"> &middot; {destatis_quelle or "Destatis"}</span>'
             f'</td></tr></table>'
             f'</td></tr>'
         )
@@ -1726,7 +1803,7 @@ def build_html(intro: str, summaries: dict[str, list[str]],
 
         bullets_html = ""
         for b in bullets:
-            text = b.lstrip("• ").strip()
+            text = _render_src(b.lstrip("• ").strip())
             bullets_html += (
                 f'<tr>'
                 f'<td style="font-family:{FONT};font-size:14px;line-height:1.6;'
@@ -1787,16 +1864,17 @@ def build_html(intro: str, summaries: dict[str, list[str]],
         wm_link = wm_info.get("link", "")
 
         def _spiel_row(zeit: str, paarung: str, klein: bool = False) -> str:
-            """Eine Spielzeile mit fester Zeit-Spalte (Uhrzeiten buendig)."""
-            fs = "11px" if klein else "13px"
+            """Eine Spielzeile mit fester Zeit-Spalte (Uhrzeiten buendig).
+            Einheitliche Schriftgroesse (13px) fuer alle Spiele – der Parameter
+            'klein' steuert nur noch die Textfarbe (dezenter fuer Ergebnisse)."""
             col = COLOR_MUTED if klein else COLOR_TEXT2
             return (
                 f'<tr>'
-                f'<td style="font-family:{FONT};font-size:{fs};line-height:1.7;'
+                f'<td style="font-family:{FONT};font-size:13px;line-height:1.7;'
                 f'color:{COLOR_MUTED};white-space:nowrap;width:52px;'
-                f'vertical-align:top;padding:1px 0;">{zeit}</td>'
-                f'<td style="font-family:{FONT};font-size:{fs};line-height:1.7;'
-                f'color:{col};padding:1px 0;">{paarung}</td>'
+                f'vertical-align:top;padding:2px 0;">{zeit}</td>'
+                f'<td style="font-family:{FONT};font-size:13px;line-height:1.7;'
+                f'color:{col};padding:2px 0;">{paarung}</td>'
                 f'</tr>'
             )
 
@@ -2054,6 +2132,11 @@ def _entry_date(entry) -> datetime | None:
     return None
 
 
+# "Zahl des Tages" nur wenn WIRKLICH frisch (max. gestern/heute). Sonst
+# lieber ganz weglassen, statt eine bekannte alte Zahl zu zeigen.
+ZAHL_MAX_AGE_HOURS = 36
+
+
 def _src_destatis() -> tuple[str, str, str, datetime] | None:
     """Neueste sinnvolle Destatis-Meldung → (text, link, quelle, datum)."""
     try:
@@ -2065,7 +2148,7 @@ def _src_destatis() -> tuple[str, str, str, datetime] | None:
             if not title or any(skip in title.lower() for skip in _DESTATIS_SKIP):
                 continue
             dt = _entry_date(entry) or now
-            if (now - dt) > timedelta(hours=72):
+            if (now - dt) > timedelta(hours=ZAHL_MAX_AGE_HOURS):
                 continue
             print(f"  ✓ Destatis: {title[:50]} ({dt.date()})")
             return title, link, "Destatis", dt
@@ -2085,7 +2168,7 @@ def _src_owid() -> tuple[str, str, str, datetime] | None:
             if not title:
                 continue
             dt = _entry_date(entry) or now
-            if (now - dt) > timedelta(days=14):
+            if (now - dt) > timedelta(hours=ZAHL_MAX_AGE_HOURS):
                 continue
             print(f"  ✓ OWID: {title[:50]} ({dt.date()})")
             return title, link, "Our World in Data", dt
@@ -2112,7 +2195,7 @@ def _src_eurostat() -> tuple[str, str, str, datetime] | None:
             if not title or any(skip in title.lower() for skip in _EUROSTAT_SKIP):
                 continue
             dt = _entry_date(entry) or now
-            if (now - dt) > timedelta(hours=72):
+            if (now - dt) > timedelta(hours=ZAHL_MAX_AGE_HOURS):
                 continue
             print(f"  ✓ Eurostat: {title[:50]} ({dt.date()})")
             return title, link, "Eurostat", dt
@@ -2445,10 +2528,8 @@ def fetch_wm_info(now: datetime | None = None) -> dict:
         heute_raw       = [m for m in heute_offen if _uhr(m) and _uhr(m) >= jetzt_hm]
         heute_ausstehend = [m for m in heute_offen if _uhr(m) and _uhr(m) < jetzt_hm]
 
-        if len(heute_raw) > 2:
-            top = [m for m in heute_raw if _wm_is_top(m)]
-            if top:
-                heute_raw = top[:3]   # max. 3 Topspiele
+        # Alle heutigen Spiele zeigen (an vollen Spieltagen sind das ruhig
+        # viele) – nur nach Anstosszeit sortiert.
         heute = []
         for m in heute_raw:
             u  = _uhr(m)
