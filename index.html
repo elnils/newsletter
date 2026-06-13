@@ -91,7 +91,7 @@
   .wm .sub { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: 6px 0 2px; }
   .wm .zeit { font-size: 13px; color: var(--muted); white-space: nowrap; width: 54px; vertical-align: top; }
   .wm .paar { font-size: 13px; color: var(--text2); }
-  .wm .paar.small { font-size: 11px; color: var(--muted); }
+  .wm .paar.small { color: var(--muted); }
   .wm .zuletzt { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
   .wm .link { margin-top: 8px; }
   .wm .link a { font-size: 11px; font-weight: 600; color: var(--blue); }
@@ -242,7 +242,7 @@
 
 <div class="footer">
   Tageslage – automatisch erstellte Presseschau · KI-kuratiert<br>
-  Historische Fakten: Wikipedia (CC BY-SA) · Zahlen: Destatis · Powered by Nils
+  Historische Fakten: Wikipedia (CC BY-SA) · Zahlen: Destatis & Our World in Data (CC BY) · Powered by Nils
 </div>
 
 <script>
@@ -275,6 +275,23 @@
   }
   function zeitLabel(z) { return z === 'morgen' ? 'Morgen' : 'Abend'; }
 
+  // Wandelt ‹‹SRC|Quelle|URL›› in einen dezenten, unterstrichenen Quellen-Link.
+  // Escaped zuerst den Text, dann werden die (sicheren) Marker zu Links.
+  function renderSrc(s) {
+    var txt = clean(String(s == null ? '' : s).replace(/^•\s*/, ''));
+    var escaped = txt.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    // Marker liegen jetzt escaped als ‹‹SRC|...|...›› vor (Zeichen ‹› bleiben)
+    return escaped.replace(/‹‹SRC\|([^|]*)\|([^›]*)››/g, function (m, quelle, url) {
+      quelle = quelle.trim();
+      if (!quelle) return '';
+      var label = '[' + quelle + ']';
+      if (!url) return '<span style="color:var(--muted);font-size:.85em;">&nbsp;' + label + '</span>';
+      return '&nbsp;<a href="' + url + '" target="_blank" rel="noopener" ' +
+             'style="color:var(--muted);text-decoration:underline;text-decoration-color:var(--light);font-size:.85em;">' +
+             label + '</a>';
+    });
+  }
+
   /* ─────────── Inline-Vorschau ─────────── */
   function previewInner(a) {
     var v = clean(a.vorschau || '');
@@ -295,7 +312,7 @@
 
     h += '<div class="lead">';
     h += '<div class="date">' + esc(deDate(d.datum)) + ' · ' + esc(zeitLabel(d.zeit)) + '-Ausgabe</div>';
-    if (d.intro) h += '<div class="intro">' + esc(d.intro) + '</div>';
+    if (d.intro) h += '<div class="intro">' + renderSrc(d.intro) + '</div>';
     h += '</div>';
 
     var sp = '';
@@ -308,8 +325,8 @@
     if (d.destatis && d.destatis.text) {
       var ds = d.destatis;
       sp += '<div class="special"><div class="lbl">📊 Zahl des Tages</div>' +
-            (ds.url ? '<a href="' + esc(ds.url) + '" target="_blank" rel="noopener">' + esc(ds.text) + '</a>' : esc(ds.text)) +
-            ' <span class="src">· Destatis</span></div>';
+            (ds.url ? '<a href="' + esc(ds.url) + '" target="_blank" rel="noopener">' + esc(clean(ds.text)) + '</a>' : esc(clean(ds.text))) +
+            ' <span class="src">· ' + esc(ds.quelle || 'Destatis') + '</span></div>';
     }
     if (sp) h += '<div class="specials">' + sp + '</div>';
 
@@ -359,7 +376,7 @@
       h += '<div class="summary">';
       k.punkte.forEach(function (p) {
         h += '<div class="s-row"><span class="s-dash">–</span><span>' +
-             esc(clean(String(p).replace(/^•\s*/, ''))) + '</span></div>';
+             renderSrc(p) + '</span></div>';
       });
       h += '</div>';
     }
@@ -414,7 +431,8 @@
   function renderWM(wm) {
     if (!wm) return '';
     var has = wm.letztes || (wm.heute && wm.heute.length) || (wm.naechste && wm.naechste.length) ||
-              (wm.gestern && wm.gestern.length) || (wm.heute_fertig && wm.heute_fertig.length);
+              (wm.gestern && wm.gestern.length) || (wm.heute_fertig && wm.heute_fertig.length) ||
+              (wm.ausstehend && wm.ausstehend.length);
     if (!has) return '';
     function row(zeit, paar, small) {
       return '<tr><td class="zeit">' + esc(zeit || '') + '</td>' +
@@ -428,6 +446,7 @@
     }
     h += '<table>';
     if (hf.length) { h += '<tr><td colspan="2" class="sub">Heute bereits gespielt</td></tr>'; hf.forEach(function (s) { h += row(s.zeit, s.paarung, false); }); }
+    if (wm.ausstehend && wm.ausstehend.length) { h += '<tr><td colspan="2" class="sub">Ergebnis folgt</td></tr>'; wm.ausstehend.forEach(function (s) { h += row(s.zeit, s.paarung, true); }); }
     var gestern = (wm.gestern || []).filter(function (g) { return g !== wm.letztes; });
     if (gestern.length) { h += '<tr><td colspan="2" class="sub">Ergebnisse gestern</td></tr>'; gestern.forEach(function (g) { h += row('', g, true); }); }
     if (wm.heute && wm.heute.length) { h += '<tr><td colspan="2" class="sub">Heute</td></tr>'; wm.heute.forEach(function (s) { h += row(s.zeit, s.paarung, false); }); }
