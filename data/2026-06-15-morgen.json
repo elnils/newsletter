@@ -1,0 +1,2320 @@
+{
+ "datum": "2026-06-15",
+ "zeit": "morgen",
+ "erstellt": "15.06.2026 05:35",
+ "intro": "Iran veröffentlicht Details zu geplantem »Deal« mit den USA ‹‹SRC|Zeit Online|https://www.zeit.de/politik/ausland/2026-06/iran-usa-abkommen-details-frieden-verhandlungen››. Russische Angriffe treffen Kiew, wobei das berühmte Höhlenkloster in Brand gerät ‹‹SRC|Tagesspiegel|https://www.tagesspiegel.de/internationales/ukraine-krieg-russische-angriffe-auf-kiew-beruhmtes-hohlenkloster-brennt-15714532.html››.",
+ "wikipedia": {
+  "text": "Vor 200 Jahren (1826): Der osmanische Sultan Mah­mud II. lässt das sich einer Armee­reform wider­setzende Janitscharen­korps gewalt­sam auflösen.",
+  "url": "https://de.wikipedia.org/wiki/Osmanisches_Reich"
+ },
+ "destatis": {
+  "text": "Where do migrants live, and where were they born?",
+  "url": "https://ourworldindata.org/where-do-migrants-live-and-where-were-they-born",
+  "quelle": "Our World in Data"
+ },
+ "wm": {
+  "letztes": "",
+  "gestern": [],
+  "heute_fertig": [],
+  "ausstehend": [
+   {
+    "zeit": "01:00",
+    "paarung": "Elfenbeinküste – Ecuador"
+   },
+   {
+    "zeit": "04:00",
+    "paarung": "Schweden – Tunesien"
+   }
+  ],
+  "heute": [
+   {
+    "zeit": "18:00",
+    "paarung": "Spanien – Kap Verde"
+   },
+   {
+    "zeit": "21:00",
+    "paarung": "Belgien – Ägypten"
+   }
+  ],
+  "naechste": [],
+  "link": "https://www.sportschau.de/live-und-ergebnisse/fussball/fifa-wm/spiele-und-ergebnisse"
+ },
+ "kategorien": [
+  {
+   "name": "🌐 Großmächte & Geopolitik",
+   "punkte": [
+    "• US und Iran vereinbaren unter Vermittlung Pakistans ein Rahmenabkommen, das die Seeblockade beendet und Kämpfe im Libanon stoppt ‹‹SRC|Zeit Online|https://www.zeit.de/politik/ausland/2026-06/irankrieg-usa-iran-einigung-pakistan-friedensabkommen››.",
+    "• Das Abkommen verlängert den Waffenstillstand um 60 Tage, öffnet die Straße von Hormus für Handel und leitet Nuklearverhandlungen ein ‹‹SRC|FT US|https://www.ft.com/content/3bc9f664-dcad-4c2e-b745-91bb4e0fa934››."
+   ],
+   "links": [
+    {
+     "quelle": "Zeit Online",
+     "titel": "Irankrieg: USA und Iran einigen sich auf Rahmenabkommen für Kriegsende",
+     "url": "https://www.zeit.de/politik/ausland/2026-06/irankrieg-usa-iran-einigung-pakistan-friedensabkommen",
+     "vorschau": "Unter Vermittlung Pakistans haben der Iran und die USA einen Weg zum Kriegsende vereinbart. Die Kämpfe im Libanon sollen enden. Trump ordnete ein Ende der Seeblockade an."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Nahost-Konflikt: Einigung in Nahost treibt Börsen in Japan und Südkorea an",
+     "url": "https://www.tagesspiegel.de/wirtschaft/nahost-konflikt-einigung-in-nahost-treibt-borsen-in-japan-und-sudkorea-an-15714539.html",
+     "vorschau": "Nach der Einigung zwischen den USA und dem Iran legen die Leitindizes Nikkei und Kospi kräftig zu. Gleichzeitig fallen die Ölpreise deutlich."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Iran War Live Updates: U.S. and Iran Reach Cease-Fire Agreement",
+     "url": "https://www.nytimes.com/live/2026/06/14/world/iran-war-trump-us",
+     "vorschau": "The deal was expected to halt fighting for 60 days, open the Strait of Hormuz and lift the U.S. naval blockade on Iranian ports. But it would leave the thorniest nuclear issues for another day."
+    },
+    {
+     "quelle": "FT US",
+     "titel": "What is in the US-Iran deal?",
+     "url": "https://www.ft.com/content/3bc9f664-dcad-4c2e-b745-91bb4e0fa934",
+     "vorschau": "Agreement will extend ceasefire by 60 days, reopen the Strait of Hormuz and begin nuclear negotiations"
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Iran und USA: Iran veröffentlicht Details zu geplantem »Deal«",
+     "url": "https://www.zeit.de/politik/ausland/2026-06/iran-usa-abkommen-details-frieden-verhandlungen",
+     "vorschau": "Der Iran und die USA haben sich laut iranischen Angaben auf 14 Punkte verständigt. Sie sollen angeblich auch eine Milliardenhilfe der USA für den Wiederaufbau enthalten."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Zeit Online",
+     "titel": "An Trumps Geburtstag: Rahmenabkommen im Iran-Krieg steht - Wie es jetzt weitergeht",
+     "url": "https://www.zeit.de/news/2026-06/14/hoffnung-auf-baldige-unterzeichnung-eines-usa-iran-deals",
+     "vorschau": ""
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "Oil Prices Tumble After Trump Announces Deal With Iran",
+     "url": "https://www.nytimes.com/2026/06/14/business/oil-stocks-gas-iran.html",
+     "vorschau": "Oil prices fell and stocks gained on Sunday evening on the hope that a deal would allow more energy and other goods to flow through the Strait of Hormuz."
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "Merger Cleared, David Ellison to Join Trump at U.F.C. Bouts",
+     "url": "https://www.nytimes.com/2026/06/14/business/media/trump-ufc-david-ellison.html",
+     "vorschau": "A U.F.C. fight on President Trump’s birthday will now double as a capstone for Paramount’s successful effort to secure Justice Department approval for a mega media merger."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Backlash Is Growing Over Kevin O’Leary’s Data Center. He Is Blaming China.",
+     "url": "https://www.wsj.com/us-news/backlash-is-growing-over-kevin-olearys-data-center-he-is-blaming-china-d885f1b4?mod=rss_Technology",
+     "vorschau": "The “Shark Tank” panelist has criticized his detractors on TV and social media as tools of Beijing. Some locals in Utah say the tactic is backfiring."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Opinion | The Race for Hypersonic Missiles",
+     "url": "https://www.wsj.com/opinion/the-race-for-hypersonic-missiles-bc321799?mod=rss_Technology",
+     "vorschau": "The U.S. is catching up to China thanks in part to Colorado-based Ursa Major."
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "Trump hosts UFC cage fight on the White House lawn",
+     "url": "https://www.bbc.com/news/articles/c892xnwg5vlo?at_medium=RSS&at_campaign=rss",
+     "vorschau": "Thousands are expected at the mixed martial arts fight, which coincides with Trump's 80th birthday."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Deadlocked Wars: How Major Powers Misread the Regions They Attacked",
+     "url": "https://www.nytimes.com/2026/06/14/world/europe/us-iran-russia-ukraine.html",
+     "vorschau": "Russia and the United States projected their own centralized views onto Ukraine and Iran, analysts said. As a result, the smaller countries trapped larger ones in a costly confrontation."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "U.S. and Iran Reach Agreement to Reopen Strait and Begin Nuclear Talks",
+     "url": "https://www.nytimes.com/2026/06/14/world/middleeast/us-iran-deal-strait-of-hormuz.html",
+     "vorschau": "The accord halts hostilities in the war that began in February but leaves unresolved the critical issue of Iran’s nuclear program."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Trump Claims Strait Will Be ‘Permanently Toll-Free’ Under Agreement With Iran",
+     "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-iran-deal-strait-of-hormuz.html",
+     "vorschau": "In a call to The New York Times, President Trump praised Russia’s and China’s leaders and described Israel’s prime minister as “a very difficult guy.”"
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "In Israel, Broad Discontent Even Before Deal’s Details Are Known",
+     "url": "https://www.nytimes.com/2026/06/14/world/middleeast/israel-us-iran-deal.html",
+     "vorschau": "Israelis across the political spectrum have said the agreement appears to leave fundamental security threats posed by Iran unaddressed."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Israel Strikes Beirut Outskirts as Fighting With Hezbollah Escalates",
+     "url": "https://www.nytimes.com/2026/06/14/world/middleeast/israel-strikes-beirut-hezbollah.html",
+     "vorschau": "The attacks complicated an already delicate moment as President Trump and Iran appeared to be edging toward finalizing a framework peace agreement."
+    },
+    {
+     "quelle": "FT US",
+     "titel": "Trump stages show of political domination with White House UFC bout",
+     "url": "https://www.ft.com/content/11f71770-5872-4769-9ea5-a21f12151e10",
+     "vorschau": "US president hosts Maga mixed martial arts spectacle on his 80th birthday"
+    },
+    {
+     "quelle": "FT US",
+     "titel": "Trump settles for a truce of convenience with Iran",
+     "url": "https://www.ft.com/content/e51b0af8-40ed-4828-969d-fc8827e37551",
+     "vorschau": "The US president promised ‘unconditional surrender’, but the Islamic republic survived with its leverage enhanced"
+    },
+    {
+     "quelle": "FT US",
+     "titel": "Macron to pull out the stops to keep Trump at G7 gathering",
+     "url": "https://www.ft.com/content/c6e9173b-0426-486b-bbba-124aeb28ee89",
+     "vorschau": "First rich nations summit since Iran war launched, a make-or-break British by-election, Warsh chairs his first FOMC meeting"
+    },
+    {
+     "quelle": "DPA",
+     "titel": "Iran: Rahmenabkommen unter Führung von Chamenei finalisiert Von dpa-AFX - Investing.com Deutsch",
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPMkRLaUg5ZVhlZUticTJQb0I3RmYwUUtYZTgzLWxPUExzSmVGYnJkYk1WZmFPckgteEROTUNEcGFPZkV3S2R5QW9oeV9vQjRpYlFPTlM0TkhGZFFLdVo5MmxxSUtjV2xSQ1FER0ZDWk9yc1JBbVdoS1AwazdDcndlb2NZVGZiZUdMb2hUSjJHU1hTVU9iaC1rNDc5MS1PVFNCMDVZMlRZX2Qtc2hjd2c?oc=5",
+     "vorschau": "Iran: Rahmenabkommen unter Führung von Chamenei finalisiert Von dpa-AFX Investing.com Deutsch"
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Trump hosts White House cage fights to mark 80th birthday",
+     "url": "https://www.dw.com/en/trump-hosts-white-house-cage-fights-to-mark-80th-birthday/a-77546507?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "The US president is set to watch seven fights with an audience of 4,000 people inside a specially built arena on the White House lawn. Critics say the unprecendented spectacle is in poor taste amid the ongoing Iran war."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Ukraine targets Russia's industrial facilities in massive strike",
+     "url": "https://www.dw.com/en/ukraine-targets-russia-s-industrial-facilities-in-massive-strike/a-77542738?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Unverified footage on social media showed that a key chemical plant in Russia may have been hit. Meanwhile, the Uk has intercepted a Russian shadow fleet tanker."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Iran-Liveblog: Merz gratuliert Trump zu \"diplomatischem Durchbruch\"",
+     "url": "https://www.tagesschau.de/newsticker/liveblog-iran-montag-126.html",
+     "vorschau": "Bundeskanzler Merz hat die Einigung zwischen den USA und Iran begrüßt und US-Präsident Trump zu einem \"diplomatischen Durchbruch\" gratuliert. Die Straße von Hormus soll laut USA erst am Freitag geöffnet werden."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Trump verkündet Einigung auf Friedensabkommen mit Iran",
+     "url": "https://www.tagesschau.de/ausland/asien/iran-abkommen-usa-krieg-100.html",
+     "vorschau": "Die USA und Iran haben sich nach Angaben von US-Präsident Trump auf ein Rahmenabkommen für ein Ende des Krieges geeinigt. Die Blockade der Straße von Hormus werde aufgehoben. Zuvor hatte auch Vermittler Pakistan eine Einigung vermeldet."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Krieg in Nahost: Trump ermahnt Israel nach Angriff im Libanon",
+     "url": "https://www.tagesschau.de/ausland/usa-trump-iran-israel-libanon-100.html",
+     "vorschau": "US-Präsident Trump hat einen Angriff Israels auf den Libanon deutlich verurteilt. Hintergrund ist die Sorge, dass sich die mögliche Unterzeichnung einer Vereinbarung mit Iran verzögert - die war eigentlich für heute vorgesehen."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Warum in Albanien gegen Ivanka Trump protestiert wird",
+     "url": "https://www.tagesschau.de/ausland/europa/albanien-sazan-100.html",
+     "vorschau": "Seit Wochen gehen viele Albaner gegen ein Bauprojekt von Trump-Tochter Ivanka auf die Straßen. Der Protest gegen das geplante Luxusresort auf der Insel Sazan mischt sich mit allgemeiner Kritik an der Regierung. Was dahintersteckt."
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "Finland confronts drone incursions as defence spending set to soar",
+     "url": "https://www.euractiv.com/news/finland-confronts-drone-incursions-as-defence-spending-set-to-soar/",
+     "vorschau": "Its 1,300-km border with Russia sharpens security concerns"
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "US-Iran peace deal announced with ‘permanent’ end to military action",
+     "url": "https://www.euractiv.com/news/trump-says-hormuz-will-reopen-after-iran-peace-deal-signed-friday/",
+     "vorschau": "\"Ships of the World, start your engines. Let the oil flow!\" US President Donald Trump said on Sunday, as he marked his 80th birthday"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "A Place Where Some AI Stocks Are Still Cheap: China",
+     "url": "https://www.wsj.com/finance/stocks/a-place-where-some-ai-stocks-are-still-cheap-china-22559ee9?mod=rss_markets_main",
+     "vorschau": "The country offers a different way to play the boom, with relative bargains to be found, but volatile geopolitics are a challenge."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Charlie Javice Has Been Seeking a Pardon From Trump After Defrauding JPMorgan",
+     "url": "https://www.wsj.com/finance/charlie-javice-has-been-seeking-a-pardon-from-trump-after-defrauding-jpmorgan-0b4e61db?mod=rss_markets_main",
+     "vorschau": "The entrepreneur sold her startup Frank to the bank for $175 million and was sentenced in September to over seven years in prison for fraud."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Australia news live: Victoria to require device-free time in schools; experts back Labor’s tax reforms in Senate review",
+     "url": "https://www.theguardian.com/australia-news/live/2026/jun/15/australia-news-live-experts-push-back-at-call-for-shark-cull-after-attack-university-students-report-freedom-of-speech-fears",
+     "vorschau": "Follow today’s news live Get our breaking news email , free app or daily news podcast The prime minister and foreign minister have issued a lengthier statement welcoming the agreement made by the US and Iran, and called for continued restraint to avoid further escalation. President Donald Trump made the announcement he had signed a deal this morning, saying the strait of Hormuz would be reopened. Continued restraint and constructive engagement will be essential to prevent further escalation and "
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Trump reportedly tells Putin he is prepared to help end war in Ukraine",
+     "url": "https://www.theguardian.com/us-news/2026/jun/14/trump-putin-call-ukraine-russia-iran-war",
+     "vorschau": "Trump also says in ‘friendly and frank’ phone call that US is nearing peace deal with Iran, according to Putin adviser Donald Trump told Vladimir Putin that ending Russia’s ongoing war in Ukraine was critical and that he was prepared to help, reported Russia’s TASS news agency. During a phone call on Sunday, Trump also informed the Russian president that the US was nearing a peace deal with Iran as the US-Israel war against the country continues, according to Yuri Ushakov, a Putin adviser. The c"
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Police stop Tommy Robinson on his way back to London from Russian trip",
+     "url": "https://www.theguardian.com/uk-news/2026/jun/14/police-stop-tommy-robinson-way-back-london-from-russia",
+     "vorschau": "Met seizes far-right activist’s phones after he disembarks flight at Heathrow under counter-terrorism provisions British police say they stopped the far-right activist Tommy Robinson and seized his phones as he returned from a trip to Russia. Robinson, whose real name is Stephen Yaxley-Lennon, met Elon Musk’s father in Moscow during his trip. Continue reading..."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "US-Iran peace deal could see strait of Hormuz open on Friday ‘under Iranian arrangements’, says state media – Middle East crisis live",
+     "url": "https://www.theguardian.com/world/live/2026/jun/14/iran-us-middle-east-crisis-donald-trump-peace-deal-strait-hormuz-open-pakistan-latest-news-updates",
+     "vorschau": "The US president confirmed the agreement as Pakistan’s prime minister said the official signing will be in Geneva on 19 June Full report: peace deal between US and Iran, Pakistan says, with strait of Hormuz to reopen Iranian hardliners in vociferous push to reject US peace deal Israel says it has struck Beirut’s south suburbs, with explosions heard in the city. The Israeli military claimed the attacks on the Lebanese capital were in response to Hezbollah firing into Israeli territory. The milita"
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "U.F.C. Viewing Party Draws Thousands to White House Ellipse",
+     "url": "https://www.nytimes.com/2026/06/14/us/politics/ufc-white-house-freedom-250-watch-party.html",
+     "vorschau": "People from all over the country came to Washington on Sunday for a unique viewing party of the Ultimate Fighting Championship bouts being held on the South Lawn of the White House."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "Trump’s U.F.C. Event Comes as Backing of Young Men, Once a Strength, Wanes",
+     "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-ufc-politics-midterms.html",
+     "vorschau": "Some Republicans see a political opening in Sunday’s fights at the White House. Democrats say they see a distraction from more pressing matters."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "How to Watch the U.F.C. 250 Freedom Fights at the White House",
+     "url": "https://www.nytimes.com/2026/06/14/us/politics/how-to-watch-ufc-freedom-250.html",
+     "vorschau": "Seven bouts will take place in an arena created on the South Lawn for the Ultimate Fighting Championship event, which coincides with President Trump’s 80th birthday."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "Trump Owns Shares in Company Hosting U.F.C. Bout as Part of His Vast Holdings",
+     "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-ufc-tko-group.html",
+     "vorschau": "The Trump Organization says the president has no control over his stock positions, including that of TKO Group, which runs the Ultimate Fighting Championship."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "For His 80th Birthday, Trump Brings the Fight to the White House Lawn",
+     "url": "https://www.nytimes.com/2026/06/14/us/ufc-trump-white-house.html",
+     "vorschau": "Presidential historians say the U.F.C. event, which was estimated to cost more than $60 million, is unprecedented."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "Trump at 80: A President ‘Really Uncomfortable’ With Aging",
+     "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-age-birthday-80.html",
+     "vorschau": "Even for a president known for imposing his own reality on every situation, Mr. Trump has not outrun scrutiny over his age."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "Legal and Lobbying Costs Surge as Universities Face Trump Pressure",
+     "url": "https://www.nytimes.com/2026/06/14/us/legal-lobbying-cost-university-college-trump.html",
+     "vorschau": "Some universities’ tax returns showed that their legal bills had more than doubled. Others reported that their spending on lobbying had risen at least fivefold."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "President Trump Endorses Mike Collins in Georgia Senate Runoff",
+     "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-mike-collins-georgia-senate-runoff.html",
+     "vorschau": "Mr. Trump backed Mr. Collins over Derek Dooley, a former football coach supported by Gov. Brian Kemp, a Republican whose relationship with the president is strained."
+    },
+    {
+     "quelle": "Google USA Politik",
+     "titel": "Golden ticket: Trump’s allies in Congress get coveted seats at White House cage fight - Washington Examiner",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPMmtHMC02VlNZM0NlcXMzbmc3TXpiNFlxVFIzZjRtTGtfN0FleDlLTUxzd0l0ZHVFb3JfWGtOMmlSbUxrQW1DeVUzXzFRQUVibkdqR242ejFqMllDSVhmVFllLUFNOGM2YTl5QWF5UGM4eGNxcWg4THZWSW44c05xZGp2NEtxanlKTGVsTXJvSjV5aGItWlIyRm9LZzdJaWZkS1oycTBB?oc=5",
+     "vorschau": "Golden ticket: Trump’s allies in Congress get coveted seats at White House cage fight Washington Examiner"
+    },
+    {
+     "quelle": "Guardian Business",
+     "titel": "Me, worry? For US small businesses, Trump’s tariffs are now a non-issue",
+     "url": "https://www.theguardian.com/business/2026/jun/14/small-business-trump-tariffs",
+     "vorschau": "A year ago it was the hot topic, but business owners have seen there’s a limit to the president’s royal decrees In two weeks, I’m speaking to a group of companies in the packaging industry about issues affecting their businesses this year. I’m going to discuss the economy, navigating higher costs, leveraging new tax legislation, AI and what companies are doing to find and retain workers in a volatile job market. You know what I won’t be talking about? Tariffs. Continue reading..."
+    },
+    {
+     "quelle": "FT World",
+     "titel": "China slams Indonesia investment climate over nickel curbs",
+     "url": "https://www.ft.com/content/a25da305-f018-43a6-bb8c-c7a42024672e",
+     "vorschau": "Regulatory changes could threaten $50bn of investment, embassy warns"
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Strait of Hormuz oil backlog could take weeks to clear after US-Iran deal",
+     "url": "https://www.ft.com/content/c2d4e116-c49a-4f6b-9b2e-d10d37e4c2e8",
+     "vorschau": "Prices slip even as analysts warn flows may be slow to recover and remain vulnerable to renewed disruption"
+    },
+    {
+     "quelle": "FT World",
+     "titel": "FirstFT: Trump says US-Iran deal reached to reopen Strait of Hormuz and extend ceasefire",
+     "url": "https://www.ft.com/content/423e2773-96ab-45d1-94b7-e61d360c282e",
+     "vorschau": "Also in today’s newsletter: China preps digital payments system and Swiss voters reject proposal to cap population at 10mn"
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Trump tells Israel and Hizbollah to ‘stand down’ as he pushes for Iran deal",
+     "url": "https://www.ft.com/content/ce9286fb-b37c-4113-9ec3-0464144c4977",
+     "vorschau": "US president has said he expects Washington and Tehran to seal a deal to reopen the Strait of Hormuz on Sunday"
+    },
+    {
+     "quelle": "Deutschlandfunk",
+     "titel": "Iran-USA-Abkommen - Was dem Frieden noch im Weg steht",
+     "url": "https://www.deutschlandfunk.de/iran-usa-rahmenabkommen-friedensschluss-krieg-100.html",
+     "vorschau": "Seit Monaten bekriegen sich die USA und der Iran. Jetzt scheint ein Rahmenabkommen für einen Friedensschluss bevorzustehen. Doch die Signale sind widersprüchlich. Und es ist fraglich, ob damit letztlich wirklich Frieden erreicht werden kann."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "U.S. and Iran Have Reached a Deal to Stop Fighting, Reopen Shipping",
+     "url": "https://www.wsj.com/world/middle-east/iran-threatens-to-pull-out-of-talks-after-israel-strikes-beiruts-outskirts-d0390e22",
+     "vorschau": "Signing is planned for Friday, marking a potential breakthrough in a war that has roiled the global economy."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "WSJ Politics Special Edition: Trump’s Iran Deal Will Hinge on These Things",
+     "url": "https://www.wsj.com/world/middle-east/wsj-politics-special-edition-trumps-iran-deal-will-hinge-on-these-things-bb2cddfb",
+     "vorschau": "Here are the main issues to watch to see if this agreement is for real."
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Trump veers toward exit in Iran war but risks loom - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcEZVelNtYmlvYmYzR3RtY1ViZ0EzNzU2LTdEcjctWGo0WnhBejRXVG5aVXNBT2VGQWdwWHhNdW90djhTV0VHN0FmcmZjZVJSYThHVzhPcTJ6TDlEdV9NSElZbk9fVWNEN3VlazRLeWtTaXEwb3Z4M1VMeTRTOGRCMWJ3MFByc1dmamxmVklVWVRYUQ?oc=5",
+     "vorschau": "Trump veers toward exit in Iran war but risks loom Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Global leaders react to announcement of US-Iran peace agreement - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNSHhmT0tyLWlGWWFSeU5NbDBDQmxIbHhRa2tJbGp1UDdBWGFHcmctYXJlYkJXWHJwSE03QVp2Y0JHWkdVT0oxSnJUVDlYWG5JSGEyOWQ0aGtQT2lkYmtKN3B2WGo3UnoxMnZObUR4T1FMREYyczRwRjFvMmJZQ21Ec1VLSlFvYzdIQ01OanA4aG9jMzA4WDl5RXNua1Q1VUxGN2htaVAycU54b01CaW1TQg?oc=5",
+     "vorschau": "Global leaders react to announcement of US-Iran peace agreement Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "US, Iran reach preliminary agreement to end war, signing set for Friday - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYkM0aHUzN3lFUGRoNGhaYnA0aXFMTVdPYUlUWXlocnpiZUZCUWhZbFNoTDVSNGJVbTM2bnN0aUdXaXUtYjBzX21SX2xoUjFwWUgyMDNsNVhwS1NMekItUDFGYmxoRXAyNzlUekpFTjVUU2Y2aWZTajVGV3JvcllPVXRub2lJZUFSVElrbk1ncEt1YjRnZEFLRFN4V293cW8xYTFULU93MkRBc3g2LU4wbktn?oc=5",
+     "vorschau": "US, Iran reach preliminary agreement to end war, signing set for Friday Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Russia's Putin sends birthday greetings to 'bright, remarkable' Trump - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaVBBZWZHRmc2VEFmNXJmZlFGaUE3WEJCVVBDWXVTcVhuRzVWUVdncS1oU3g2dWp6VjBxbW4wbGduTFlvc1RJbnNzcXF6RkhEMWlqQWRWTHc1MFl0cVdYZWtlVkc1UzZLZzRtSjQ3TDdhSUdrZmxzUWpFUV95bmJOd19RNURpMGcyN0dBejZ4bk1VS2hPU01fYTNLMGdPLVN4blJ2YTZucw?oc=5",
+     "vorschau": "Russia's Putin sends birthday greetings to 'bright, remarkable' Trump Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "In Tijuana, Iran's tiny diaspora agrees on little — except Team Melli - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOZFJ4RE8zYXgybG1hUm1tejBnSzNXYm9uNS1rOWkzZGlHcjhvUW1fVWZaNVh2aGJuTzRQNEpKcjN0U2NLTV9QbVlRa0hRUllHaEVja19fZ3c3NTZfbHBZN3FseXppLXJVam8zeVVfN2JzV2FDRGYtWlBOWEZDWEczM1RabW9BZ01ZWWJwanp3c25RaWlSSE55dVJzYXZCWkJJb3NsVUVlZDVMVWd6bVMw?oc=5",
+     "vorschau": "In Tijuana, Iran's tiny diaspora agrees on little — except Team Melli Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Iran's manager, striker pledge to play for all Iranians despite protests - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOdlFyaXFBVDZhRUM1cVl3dWYxUXRYeENHbFBicmFhY3JoWEs1MC1PNEh0Qm9vZ0NYU21NOWtfeldEUEdlWEpqLWJIYjdhRm5ieFRsS3piS1hlU0tXenhMSTk0SHBTNzJ0V0l0U2k2SG9RMXNhZG9hZ0EweERTUHdVdnN1QW9lZkJOZThWWGpHQkFwSEVmTDNqSDZBQzVkQ1lEMFJNTG9YUmZOVnBUZVpuSHN5aw?oc=5",
+     "vorschau": "Iran's manager, striker pledge to play for all Iranians despite protests Reuters"
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Donald Trump’s least favorite country might just win Donald Trump’s World Cup",
+     "url": "https://www.politico.eu/article/donald-trump-least-spain-win-world-cup/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Tournament favorite Spain is at odds with the U.S. president over Iran, Gaza, defense spending, immigration and green energy."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Omer Bartovs Israel-Buch: Der Zionismus soll schuld sein?",
+     "url": "https://www.faz.net/aktuell/feuilleton/buecher/sachbuch/israelpalaestina-historiker-omer-bartov-macht-den-zionismus-zum-schuldigen-200846814.html",
+     "vorschau": "Der Historiker Omer Bartov erklärt die Katastrophe im Nahen Osten aus den Fehlstellungen des Zionismus. Sein Buch nutzt er für einen Frontalangriff auf das Holocaustgedenken."
+    }
+   ]
+  },
+  {
+   "name": "⚽ Sport",
+   "punkte": [
+    "• Deutschland besiegt Curaçao mit 7:1 in Gruppe E der WM, DFB‑Team gilt als klarer Favorit ‹‹SRC|Tagesschau|https://www.tagesschau.de/sport/wm-deutschland-curacao-livestream-100.html››.",
+    "• Iranische Nationalmannschaft kommt trotz Visa‑Problemen in Los Angeles an, Trainer und Spieler kritisieren erschwerte Vorbereitung ‹‹SRC|Zeit Online|https://www.zeit.de/sport/2026-05/fussball-wm-2026-liveblog››."
+   ],
+   "links": [
+    {
+     "quelle": "Zeit Online",
+     "titel": "Fußball: Das war die WM-Nacht: Jubel bei Ivorern und Lob für DFB-Team",
+     "url": "https://www.zeit.de/news/2026-06/15/das-war-die-wm-nacht-jubel-bei-ivorern-und-lob-fuer-dfb-team",
+     "vorschau": ""
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Fußball-WM 2026: Iranische Nationalmannschaft in den USA eingetroffen",
+     "url": "https://www.zeit.de/sport/2026-05/fussball-wm-2026-liveblog",
+     "vorschau": "Das Team des Iran ist zum WM-Auftakt in Los Angeles angekommen. Trainer und Spieler beklagen, dass die Visa-Bestimmungen die Vorbereitung erschwert hätten. Das Liveblog"
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Fußball-WM: Irans Kapitän: „Spüre die Spannungen seit dem ersten Moment“",
+     "url": "https://www.tagesspiegel.de/sport/fussball-wm-irans-kapitan-spure-die-spannungen-seit-dem-ersten-moment-15714575.html",
+     "vorschau": "Anreise am Spieltag, Rückreise noch vor dem Schlafengehen: So wenig Zeit wie möglich sollten Irans Fußballer bei der WM in den USA verbringen. Nun scheint es doch etwas besser zu sein."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Germany start 2026 World Cup with win over Curacao",
+     "url": "https://www.dw.com/en/germany-start-2026-world-cup-with-win-over-curacao/a-77538843?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "For the first time since they won the tournament in 2014, Germany won their opening game at the World Cup."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Livestream: Deutschland gegen Curaçao bei der Fußball-WM",
+     "url": "https://www.tagesschau.de/sport/wm-deutschland-curacao-livestream-100.html",
+     "vorschau": "In der Gruppe E der Fußball-Weltmeisterschaft hat Deutschland gegen Debütant Curaçao mit 7:1 gewonnen. Das DFB-Team galt als klarer Favorit. Verfolgen Sie die Berichterstattung im Ersten hier im Livestream."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Zeit Online",
+     "titel": "Fußball-Nationalmannschaft: Neuers Ratschläge und die Erinnerungen an den WM-Sieg 2014",
+     "url": "https://www.zeit.de/news/2026-06/15/neuers-ratschlaege-und-die-erinnerungen-an-den-wm-sieg-2014",
+     "vorschau": ""
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Fußball-WM: Vater ermordet, Bruder entführt: Das ist Iraks WM-Held",
+     "url": "https://www.tagesspiegel.de/sport/fussball-wm-vater-ermordet-bruder-entfuhrt-das-ist-iraks-wm-held-15714611.html",
+     "vorschau": "Die WM-Ambitionen der Iraker ruhen auf Stürmer Aymen Hussein. Hinter seinem Aufstieg steckt eine Geschichte voller Schmerz und Verlust. Früh verliert der Offensivspieler seinen Vater und Bruder."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Fußball-Nationalmannschaft: Nagelsmanns Belohnung und eine klare Hummels-Prognose",
+     "url": "https://www.tagesspiegel.de/sport/fussball-nationalmannschaft-nagelsmanns-belohnung-und-eine-klare-hummels-prognose-15714591.html",
+     "vorschau": "Nach der Tor-Party gegen Curaçao reist der DFB-Tross sofort zurück ins WM-Basiscamp. Während des Fluges gewinnt auch die Elfenbeinküste. Wie es an den kommenden Tagen nun weitergeht."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Fußball-WM: Japaner räumen im Stadion auf - und ein NFL-Star hilft mit",
+     "url": "https://www.tagesspiegel.de/sport/fussball-wm-japaner-raumen-im-stadion-auf-und-ein-nfl-star-hilft-mit-15714588.html",
+     "vorschau": "Seit Japans WM-Premiere gibt es diese Bilder: Die Fans der Samurai Blue sammeln ihren Müll im Stadion selbst ein. NFL-Quarterback Jameis Winston fühlt sich davon offenbar inspiriert."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Formel 1 in Barcelona: „Roter Hammer“: Pressestimmen zu Hamiltons Ferrari-Debütsieg",
+     "url": "https://www.tagesspiegel.de/sport/formel-1-in-barcelona-roter-hammer-pressestimmen-zu-hamiltons-ferrari-debutsieg-15714577.html",
+     "vorschau": "„König Lewis regiert wieder“: Mit seinem ersten Grand-Prix-Sieg im Ferrari meldet sich Lewis Hamilton zurück im WM-Rennen. Die internationalen Medien schwärmen."
+    },
+    {
+     "quelle": "Wirtschaftswoche",
+     "titel": "Matchwornshirt: Der Geruch der Sieger",
+     "url": "https://www.wiwo.de/unternehmen/handel/zonderwijk-matchwornshirt-wm-2026/100231668.html",
+     "vorschau": "Zwei niederländische Brüder versteigern getragene Trikots von Ronaldo, Messi, Mbappé, Wirtz und Co. Bei der letzten Fußball-WM in Katar kooperierten sie mit zwei Nationen – beim aktuellen Turnier mit 15."
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "BBC Sport pundits choose England World Cup XIs - who would you pick?",
+     "url": "https://www.bbc.com/sport/football/articles/c8r2l12jjz7o?at_medium=RSS&at_campaign=rss",
+     "vorschau": "Thomas Tuchel will pick his first England World Cup team on Wednesday, when the Three Lions take on Croatia. BBC Sport pundits choose their starting XIs - who would you pick?"
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "Japan come from behind twice to draw with Netherlands",
+     "url": "https://www.bbc.com/sport/football/videos/cnv9dzl62g6o?at_medium=RSS&at_campaign=rss",
+     "vorschau": "Daichi Kamada's late header rescues a deserved point for Japan against the Netherlands in their opening World Cup game in Dallas."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Curaçao Is the Smallest Country Ever to Reach the World Cup",
+     "url": "https://www.nytimes.com/2026/06/14/world/americas/world-cup-curacao-netherlands-soccer.html",
+     "vorschau": "Competing for the first time, Curaçao is brimming with joy. Most of the Caribbean nation’s team was born and raised in the Netherlands, but residents say the players represent them."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "War and the World Cup",
+     "url": "https://www.nytimes.com/2026/06/14/world/world-cup-iran-lebanon-trump-birthday.html",
+     "vorschau": "The Iranian government has always used the national team to project soft power. That puts players and fans who oppose the regime in a tough spot."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "The Secrets of a Soccer-Turf Master",
+     "url": "https://www.nytimes.com/2026/06/14/science/world-cup-turf-sorochan.html",
+     "vorschau": "John Sorochan, a turf scientist at the University of Tennessee, has led the yearslong, multimillion-dollar effort to develop perfect playing fields for the 2026 World Cup."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Manuel Neuer: The aura of a record-breaking goalkeeper",
+     "url": "https://www.dw.com/en/manuel-neuer-the-aura-of-a-record-breaking-goalkeeper/a-77538894?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Germany's hopes at the 2026 World Cup are connected to world-class goalkeeper Manuel Neuer's fitness and form."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "New York Knicks win first NBA championship in 53 years",
+     "url": "https://www.dw.com/en/new-york-knicks-win-first-nba-championship-in-53-years/a-77543316?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Series MVP Jalen Brunson has led the New York Knicks to another comeback victory over the San Antonio Spurs. The win secured the franchise's third NBA championship, and its first since 1973."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "Team Curaçao Arrives at the World Cup With Much of the Island in Tow.",
+     "url": "https://www.nytimes.com/2026/06/14/us/team-curacao-world-cup-fans.html",
+     "vorschau": "Qualifying for the world’s biggest sporting event meant everything for residents of the Caribbean island country."
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Second-half goal frenzy lights up World Cup prospects for Dutch and Japan - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQcFoxNHFZYmROT2pRY1diNTJJRy1SZVl5X2kyamtfc1hGaURqeERKN2dMODZIcE4xNWxxSEJXMV9lc3NUN2U1SkpBWlFjQVFkTExRNlJGUWNxTm5hSnpHZzJUWjg5ZXF4eUxCbVE2ekVObHJqWTh6ODI1aUxuVE92eUZoZFJtVmFEN0xSMFBJVHU1NHF0YjNGcmpsQ19sQjJ0M04wTzk5ZnNWeHJfTHoyYUgzUk9kdw?oc=5",
+     "vorschau": "Second-half goal frenzy lights up World Cup prospects for Dutch and Japan Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "New Zealand brush aside politics ahead of World Cup opener against Iran - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPaEpuaTR2ekRoV3JqTl9JNHVoQXRDWkhiOUVnOU1VbmVFMk9UZWlyaDQyRm84ZUlfRmtCT2dWdUZCa2FrSk9pc1JhV1dQdXdXRkw1ZUZZMEtkYzB1dy0tTl90M2U3cEpCc3NINlpRbkpKbDJCVEsxYlVkX1BINHRSSnJrOXk4QWl1bDJWNGM1U0RBQ0Vtdl9qSzVBLUIzeVQ3MXlJQ05EM0lSSEI0SjMwLTZ2WHN1UVV0d0E?oc=5",
+     "vorschau": "New Zealand brush aside politics ahead of World Cup opener against Iran Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Germany's World Cup universe back in order with demolition of Curacao - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQaVhfR0hmRktFWXhvYnNodXdPNWYwZ2lKZDlsVmRtdTBydzZXVUVXa3NqaGw3UVdsQzVyWG9oX2tfeE1zZlpxMC1Bb25yTk5UZkpDY2FQV0ptRUppdEZveDI0UnhlZlVSSTgxVzBJaTZpX08xUUpVSk5BNzNzTTJlWW9XTDBpWi1YbWVzeUMxY2hmMGV6S3R2SnlPQ0w1RFFkb3N2V1luSVhDbU04REF3YUNn?oc=5",
+     "vorschau": "Germany's World Cup universe back in order with demolition of Curacao Reuters"
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "7:1-Sieg zum WM-Auftakt: Deutscher Höhenflug gegen Curaçao",
+     "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/fussball-wm-2026-deutschland-besiegt-curacao-deutlich-zum-auftakt-200815719.html",
+     "vorschau": "Mit viel Schub in die WM: Die deutsche Fußball-Nationalmannschaft besiegt Curaçao deutlich und stößt dadurch die Tür Richtung K.-o.-Runde schon weit auf. Eine Mahnung gibt es aber mit auf den Weg."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Liveblog Fußball-WM 2026: Klopp bereut „Noch“-Spruch: „Hätte mir aufs Maul hauen können“",
+     "url": "https://www.faz.net/aktuell/sport/fussball-wm/liveblog-zur-fussball-wm-2026-klopp-bereut-noch-spruch-und-bittet-um-entschuldigung-faz-200749933.html",
+     "vorschau": "Liveblog zur FIFA Fußball-Weltmeisterschaft 2026 vom 11.06. bis 19.07.2026 in den USA, Kanada und Mexiko | FAZ"
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "DFB-Team in Einzelkritik: Neuers Wade und Bizeps halten – Undav als Quotenstürmer",
+     "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/deutschland-in-einzelkritik-nach-curacao-spiel-bei-fussball-wm-2026-200815737.html",
+     "vorschau": "Das 7:1 der DFB-Elf beim WM-Start gegen Curaçao ist kein „Manuel-Neuer-Spiel“. Brown rechtfertigt das Vertrauen. Musiala ist nicht bei 100 Prozent. Und Sané zeigt, warum Karl erste Wahl gewesen wäre."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Fußball: Elfenbeinküste siegt spät bei Alu-Festival gegen Ecuador",
+     "url": "https://www.faz.net/aktuell/sport/fussball-wm/elfenbeinkueste-amad-diallo-trifft-spaet-gegen-ecuador-accg-200815781.html",
+     "vorschau": "Die weiteren deutschen Vorrundengegner liefern sich ein intensives Duell, schwächeln aber im Abschluss - bis ein Joker doch noch sticht. Gegen beide Teams dürfte auf die DFB-Elf einiges zukommen."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Was ist möglich bei der WM?: Die Chance der deutschen Potentialmannschaft",
+     "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/deutschland-bei-fussball-wm-2026-die-grosse-chance-der-potentialmannschaft-200923853.html",
+     "vorschau": "Weltmeister? Dafür gibt es auf zu wenigen Positionen Verlässlichkeit auf höchstem Niveau. Helfen könnten den Deutschen die Umstände – wenn Bundestrainer Julian Nagelsmann keinen Fehler macht."
+    }
+   ]
+  },
+  {
+   "name": "🌍 Außenpolitik",
+   "punkte": [
+    "• Die USA und Iran vereinbaren am Freitag ein Abkommen zur Wiedereröffnung der Straße von Hormus und zur Beendigung der US‑Blockade iranischer Häfen ‹‹SRC|FT US|https://www.ft.com/content/76bed6e5-ab1f-43ff-a6c0-ae5e7cdbf3c1››.",
+    "• Die neue bulgarische Regierung verbietet staatliche Waffenlieferungen an die Ukraine, während kommerzielle Exporte weiterhin erlaubt bleiben ‹‹SRC|Deutsche Welle|https://www.dw.com/en/why-is-bulgaria-banning-arms-supplies-to-ukraine/a-77523515?maca=en-rss-en-all-1573-rdf››."
+   ],
+   "links": [
+    {
+     "quelle": "FT US",
+     "titel": "Iran and US agree deal to open Strait of Hormuz and extend ceasefire",
+     "url": "https://www.ft.com/content/76bed6e5-ab1f-43ff-a6c0-ae5e7cdbf3c1",
+     "vorschau": "Leaders to sign agreement on Friday for reopening of waterway and end to US naval blockade of Iranian ports"
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Why is Bulgaria banning arms supplies to Ukraine?",
+     "url": "https://www.dw.com/en/why-is-bulgaria-banning-arms-supplies-to-ukraine/a-77523515?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Bulgaria's new government has banned state arms supplies to Ukraine. The ban does not, however, affect commercial exports, raising the question as to whether the move was aimed more at a domestic audience than at Kyiv."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Peace deal between US and Iran announced, with strait of Hormuz expected to reopen",
+     "url": "https://www.theguardian.com/world/2026/jun/14/trump-calls-for-restraint-israel-airstrikes-beirut-us-iran-peace-deal",
+     "vorschau": "Exact terms of the deal not clear amid differing claims from both sides on when access to the global shipping route would be restored Middle East crisis – live updates A peace deal between the US and Iran has been reached following nearly four months of fighting in the region, Donald Trump and senior Iranian officials have said. Iranian deputy foreign minister Kazem Gharibabadi confirmed the agreement in televised comments in the early hours of Monday, saying it puts an “immediate end” to the co"
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Iran war: Pakistan announces US-Iran peace deal reached",
+     "url": "https://www.dw.com/en/iran-war-pakistan-announces-us-iran-peace-deal-reached/live-77540182?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Pakistani PM Shehbaz Sharif has announced a peace deal between the US and Iran, with a signing ceremony on June 19. Sharif said both sides would terminate military operations, including in Lebanon. DW has more."
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "Arrest made after seizure of Russian oil tanker in Channel",
+     "url": "https://www.bbc.com/news/articles/cevlxg72kyvo?at_medium=RSS&at_campaign=rss",
+     "vorschau": "National Crime Agency officers detain an Indian national on suspicion of sanctions offences."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "NYT Business",
+     "titel": "The G7 Summit Is Dogged by Chaos and Divided by Trump",
+     "url": "https://www.nytimes.com/2026/06/14/world/europe/g7-summit-evian-trump.html",
+     "vorschau": "Group of 7 meetings once embodied the effort to sustain the global diplomatic order. This year’s gathering, starting on Monday, symbolizes its fragmentation."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Ukraine-Krieg: Russische Angriffe auf Kiew - berühmtes Höhlenkloster brennt",
+     "url": "https://www.tagesspiegel.de/internationales/ukraine-krieg-russische-angriffe-auf-kiew-beruhmtes-hohlenkloster-brennt-15714532.html",
+     "vorschau": "Die russische Armee feuert wieder Raketen auf die ukrainische Hauptstadt Kiew. Auch ein zum Weltkulturerbe zählendes Hauptheiligtum der ukrainischen und russischen orthodoxen Kirchen wird beschädigt."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Spitzentreffen am Genfersee: Worum es beim G7-Gipfel geht",
+     "url": "https://www.tagesspiegel.de/internationales/spitzentreffen-am-genfersee-worum-es-beim-g7-gipfel-geht-15714585.html",
+     "vorschau": "Kriege und Krisen stehen wieder einmal im Mittelpunkt, wenn Merz, Trump und Co. sich treffen. Der Gipfel startet mit einem Hoffnungssignal. Ob er ein Erfolg wird, hängt vor allem von einem ab."
+    },
+    {
+     "quelle": "Wirtschaftswoche",
+     "titel": "Gipfeltreffen: Großer Anti-G7-Protest – Genf im Ausnahmezustand",
+     "url": "https://www.wiwo.de/politik/ausland/gipfel-in-frankreich-grosser-anti-g7-protest-genf-im-ausnahmezustand/100232894.html",
+     "vorschau": "In Genf demonstrieren Tausende gegen den G7-Gipfel und für verschiedene Anliegen. Die Stadt verstärkt die Sicherheitsmaßnahmen – aus Sorge vor Ausschreitungen wie 2003."
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "Watch: Protesters clash with police ahead of G7 summit in Geneva",
+     "url": "https://www.bbc.com/news/videos/crkvek3dnrgo?at_medium=RSS&at_campaign=rss",
+     "vorschau": "Swiss police deployed a water cannon and fired tear gas to disperse anti-G7 protesters after clashes."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "UK Forces Seize Russian Shadow Fleet Oil Tanker",
+     "url": "https://www.nytimes.com/2026/06/14/world/europe/uk-russia-shadow-fleet-oil-tanker-channel.html",
+     "vorschau": "Britain’s Defense Ministry said it was the first time that British forces had acted alone to stop a ship in the fleet, a collection of vessels that Russia uses to move fuel and evade sanctions."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Police fire tear gas at anti-G7 protesters in Geneva",
+     "url": "https://www.dw.com/en/police-fire-tear-gas-at-anti-g7-protesters-in-geneva/a-77548464?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Protesters in Geneva clashed with police, set a car on fire and smashed the windows of a bank to show their opposition to the G7 summit taking place across the border in France."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Mehrere Tote nach russischen Angriffen auf Kiew und Charkiw",
+     "url": "https://www.tagesschau.de/ausland/europa/ukraine-russland-angriffe-164.html",
+     "vorschau": "Russland hat die Ukraine erneut massiv angegriffen. Mindestens fünf Menschen wurden getötet. In der Hauptstadt Kiew standen Teile des Höhlenklosters in Flammen - ein UNESCO-Weltkulturerbe."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Tausende protestieren in Genf gegen G7-Gipfel",
+     "url": "https://www.tagesschau.de/ausland/europa/g7-protest-genf-100.html",
+     "vorschau": "Vor dem G7-Gipfel im französischen Évian sind mehrere Tausend Menschen in Genf gegen die Politik der mächtigen Industrienationen auf die Straße gegangen. Nach mehreren Vorfällen ordnete die Polizei die Auflösung der Demonstration an."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Ukrainische Drohnen treffen Industrieanlagen und Wohnhaus in Russland",
+     "url": "https://www.tagesschau.de/ausland/europa/ukraine-russland-angriffe-162.html",
+     "vorschau": "Erneut hat die Ukraine Russlands Kriegswirtschaft mit Drohnenangriffen empfindliche Schläge versetzt. Getroffen wurden ein Chemiebetrieb und ein Treibstoffdepot. Eine Drohne schlug aber auch in einem Wohnhaus ein."
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "Clashes as thousands protest in Geneva ahead of G7 summit in France",
+     "url": "https://www.euractiv.com/news/clashes-as-thousands-protest-in-geneva-ahead-of-g7-summit-in-france/",
+     "vorschau": "Thousands had turned out in the Swiss city, to protest against the gathering of top world leaders, which starts across Lake Geneva in France on Monday"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Singapore Dollar, Other Asian FX Strengthen as Risk Appetite Returns",
+     "url": "https://www.wsj.com/finance/currencies/asian-currencies-mostly-strengthen-on-u-s-iran-interim-peace-deal-78c42dff?mod=rss_markets_main",
+     "vorschau": "The Singapore dollar and other Asian currencies strengthened against the U.S. dollar as risk appetite returns following the U.S.-Iran agreement on an interim peace deal."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Kyiv monastery set on fire in night of Russian attacks across Ukraine",
+     "url": "https://www.theguardian.com/world/2026/jun/15/kyiv-pechersk-lavra-monastery-on-fire-russian-attacks-ukraine",
+     "vorschau": "Dormition Cathedral of Kyiv Pechersk Lavra, one of Ukraine’s most significant religious sites, and residential buildings hit across capital Ukraine has come under a massive Russian missile and drone attack with waves of explosions echoing through the capital, Kyiv, in the early hours of Monday morning as air raids killed at least five people across the country. Among targets hit in the sustained wave of strikes were the city’s historic Dormition Cathedral within the Kyiv Pechersk Lavra, one of U"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "UK, France, Germany and Italy ready to lift Iran sanctions after US-Iran deal - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdl9QNzQwRkp1UnY0alA3UGVJUENYYm9zbDhFUUw4dUJud09TNVFfS1IyOS04YU9aR25qYlM4Ukx0YzkwRDdaam0zYVg2N1B3OHBuN0ZVc2tBQm1JN2dCQnplUWU2S0wtckItUzJWbXdQZkJMcVhtSlU2TFl3c0cwOERyRnhVc0pvajlQLTRLcXZqTG95LVlfZlZRaDE0eUZhSllRTjZHaV9IOG40dURvRU4zZHdTcUpx?oc=5",
+     "vorschau": "UK, France, Germany and Italy ready to lift Iran sanctions after US-Iran deal Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Gold rises 2% after US, Iran reach peace deal - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQdDRBZ2VtTERRLW5oS1J0MVZvWlJBTkNiNFJpcGJ2RmM1bmYwQXMtMWI1dlFVb1ptZGpNYURkZ0VGaFRZeFNPZ3NMZkVRMzZTV2hfYTlXOFFQMUpDQ0c5bnFjeXR5bDlXYlRXVFlvR3NUNkRBNklJT2wwREhMN2I4aXhNMHp4SnBoS1lnR1NjaDhvcUl1R2pULW5PbE4?oc=5",
+     "vorschau": "Gold rises 2% after US, Iran reach peace deal Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Dollar hits 10-day low as US, Iran reach peace deal - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNejMtS3JFZU9GNXp1dF9iVjU3V0hyWDQ1M0Y2NEZlbVFyd3JQXzVCek5kbEdIRHltT1RiX0cza051RzJVUm1neDQ3Q3V6SGJIVE9LVnRNNGFKR1JXTXRjNmMtLTdqNGh1SFhpTzE0ajN5aU9jUG0xUG44dTVEYVdFWFpuQXZpX2NKek5tMGtLZmFVeGItV0xjM3NOc2JCNUZqMURPVDNfMXZRNzBi?oc=5",
+     "vorschau": "Dollar hits 10-day low as US, Iran reach peace deal Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Indian shares set to join global rally on Gulf peace deal, oil slides - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNU3lDNnVlM09ySTctX1FqakhQekxUSGNwVUlpajRHN3FlWnh1d0VIVjU4dVBXeE1qclZRYnRzak0tMWs2UlNmVnBUdFJKZ1BzcDJNR3duM25neFlTc25Xc0FrdXRRaFhSeG5OZXJWNE02M1BTdkk3N1dieWczSzhZZG0tQUxjLUpHaklrRTkzQTNxRUVoOFlwa0JIMWVrdkY4Sl9WakJhZm14dU5vTHAw?oc=5",
+     "vorschau": "Indian shares set to join global rally on Gulf peace deal, oil slides Reuters"
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "UK allies ‘stressed’ about Starmer’s future as he returns to world stage at G7",
+     "url": "https://www.politico.eu/article/uk-allies-stressed-about-starmers-future-as-he-returns-to-world-stage-at-g7/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Britain's prime minister has one more chance to impress in France as his main rival faces a key election test this week."
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Macron’s last big diplomatic test: Keep Trump engaged in the G7",
+     "url": "https://www.politico.eu/article/emmanuel-macron-last-diplomatic-test-manage-trump-europe/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Expectations from the summit in Évian are low and the goal is to keep the U.S. president involved in conversations on Ukraine and Iran."
+    }
+   ]
+  },
+  {
+   "name": "💻 Tech & KI",
+   "punkte": [
+    "• Anthropic entsendet ein Team nach Washington, um ein Abkommen zur Aufhebung von Exportbeschränkungen zu erzielen, die den Betrieb seiner leistungsstärksten KI‑Modelle eingestellt hatten ‹‹SRC|WSJ US|https://www.wsj.com/tech/ai/anthropic-dispatches-staff-to-d-c-racing-to-resolve-ai-export-restrictions-71303d42?mod=rss_Technology››.",
+    "• Infineon eröffnet sein viertes Chipwerk in Dresden, das der Vorstand als Punktlandung bezeichnet, während die Börse die Ankündigung unterschiedlich bewertet ‹‹SRC|FAZ|https://www.faz.net/aktuell/wirtschaft/infineon-eroeffnet-in-dresden-eine-fabrik-wie-eine-festung-accg-200919533.html››."
+   ],
+   "links": [
+    {
+     "quelle": "WSJ US",
+     "titel": "Anthropic Dispatches Staff to D.C., Racing to Resolve AI Export Restrictions",
+     "url": "https://www.wsj.com/tech/ai/anthropic-dispatches-staff-to-d-c-racing-to-resolve-ai-export-restrictions-71303d42?mod=rss_Technology",
+     "vorschau": "Startup is seeking a deal to end export restrictions that led to shutdown of its most powerful AI models."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Opinion | AI Can Do Math, but Is It Really Math?",
+     "url": "https://www.wsj.com/opinion/ai-can-do-math-but-is-it-really-math-a7db34be?mod=rss_Technology",
+     "vorschau": "A breakthrough from an OpenAI model would have meant nothing without humans to make sense of it."
+    },
+    {
+     "quelle": "Handelsblatt Finanzen",
+     "titel": "IPO: Was der SpaceX-Börsengang für OpenAI und Anthropic bedeutet",
+     "url": "https://www.handelsblatt.com/finanzen/maerkte/aktien/spacex-was-der-boersengang-fuer-openai-und-anthropic-bedeutet/100231694.html",
+     "vorschau": "Die Billionenbewertung der Weltraumfirma hatte am ersten Handelstag Bestand. Bald könnten die nächsten IPOs folgen. Dabei kommt es aufs Tempo an, sagen Experten."
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "EU turns to US-powered AI to rank job candidates",
+     "url": "https://www.euractiv.com/news/eu-turns-to-us-powered-ai-to-rank-job-candidates/",
+     "vorschau": "With its ever-growing list of candidates, the European Commission is preparing to deploy an AI tool powered by Anthropic's model to short-list them"
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Halbleiter: Eine Fabrik wie eine Festung",
+     "url": "https://www.faz.net/aktuell/wirtschaft/infineon-eroeffnet-in-dresden-eine-fabrik-wie-eine-festung-accg-200919533.html",
+     "vorschau": "Der deutsche Chiphersteller Infineon steht vor der Eröffnung seines neuen Werks in Dresden, das vierte vor Ort. Der Vorstand nennt es eine Punktlandung. Die Börse macht sich ihren eigenen Reim."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "WSJ US",
+     "titel": "Siri’s New Brain",
+     "url": "https://www.wsj.com/tech/siris-new-brain-eb28fe50?mod=rss_Technology",
+     "vorschau": "Plus, Anthropic’s Fable woes, Meta’s big teacher bonuses and the terrifying rise of deepfake porn."
+    },
+    {
+     "quelle": "Wirtschaftswoche",
+     "titel": "Iran: Sind diese Signale Zeichen für eine bevorstehende Hormus-Öffnung oder einen Hackerangriff?",
+     "url": "https://www.wiwo.de/technologie/digitale-welt/strasse-von-hormus-zeichen-fuer-eine-bevorstehende-hormus-oeffnung-oder-einen-hackerangriff/100232878.html",
+     "vorschau": "Kurzzeitig wurde am Wochenende ein System von US-Navigationsbojen online geschaltet. Sie könnten dazu dienen, den enormen Verkehr in der Meerenge zu bewältigen, oder nur Folge eines Hackerangriffs sein."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Ransomware: „Der schlimmste Fehler ist ein CEO, der fragt: Wie zahle ich?“",
+     "url": "https://www.handelsblatt.com/technik/it-internet/ransomware-das-ist-keine-it-panne-das-ist-chefsache/100229829.html",
+     "vorschau": "Cyber-Attacken legen ganze Produktionen lahm und treffen zunehmend auch den Mittelstand. Zwei Experten erklären, wie Firmen mit Erpressern verhandeln sollten – und sich besser schützen können."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Deutscher Anwaltstag: Die große Verunsicherung",
+     "url": "https://www.faz.net/aktuell/wirtschaft/deutscher-anwaltstag-ki-veraendert-die-rechtswelt-200925134.html",
+     "vorschau": "Während die Anwaltschaft in Freiburg debattiert, machen Anthropic und Open AI längst Ernst. Wer jetzt zaudert, verliert – und wer ohne Sorgfalt auf KI setzt, riskiert mehr als nur den Anschluss."
+    }
+   ]
+  },
+  {
+   "name": "💰 Wirtschaft",
+   "punkte": [
+    "• Die Eon-Chef Birnbaum erklärt, dass ein Komplettschutz der Stromnetze vor Angriffen nicht möglich sei, der Konzern bereite jedoch Maßnahmen zur Störungsbewältigung vor ‹‹SRC|Tagesspiegel|https://www.tagesspiegel.de/wirtschaft/anschlage-auf-stromleitungen-eon-chef-komplettschutz-der-stromnetze-nicht-moglich-15714583.html››.",
+    "• Die Schweizer Volksabstimmung lehnt eine Migrationsgrenze ab, sodass Unternehmen weiterhin Arbeitskräfte aus der EU beziehen können und das neue Vertragspaket politischen Rückenwind erhält ‹‹SRC|FAZ|https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/schweizer-wirtschaft-erleichtert-ueber-ja-zu-europa-accg-200928806.html››."
+   ],
+   "links": [
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Anschläge auf Stromleitungen: Eon-Chef: Komplettschutz der Stromnetze nicht möglich",
+     "url": "https://www.tagesspiegel.de/wirtschaft/anschlage-auf-stromleitungen-eon-chef-komplettschutz-der-stromnetze-nicht-moglich-15714583.html",
+     "vorschau": "Eon-Chef Birnbaum sieht keinen vollständigen Schutz der Stromnetze vor Angriffen. Wie der Konzern dennoch auf Störungen vorbereitet sein will."
+    },
+    {
+     "quelle": "DPA",
+     "titel": "dpa-AFX-Überblick: UNTERNEHMEN - Die wichtigsten Meldungen vom Wochenende - 14.06.26 - News - Ariva",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNZm51TWZtd18wU1M0T0hsQkxKdGRTQlJMQzVWYnBJcUY3bEVwLWNybW56MlZqMkg2YUpmWUllckpDVW13YVpCSlVNVUl1VTFScjVJcXVnQzR4N2NZU045RHFyUEh5bGpqSWNaS1duNzZoWTVEZGw3cm0wQ0c4YmpTRWdYZUZiT2EyaGRSOUZkVzNDaF9qd2c?oc=5",
+     "vorschau": "dpa-AFX-Überblick: UNTERNEHMEN - Die wichtigsten Meldungen vom Wochenende - 14.06.26 - News Ariva"
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "EU membership would free Iceland from krona ‘inflation machine’, campaigner says",
+     "url": "https://www.euractiv.com/news/eu-membership-would-free-iceland-from-krona-inflation-machine-campaigner-says/",
+     "vorschau": "'At the moment, we have no seat at the table,' Magnússon, leader of Iceland’s pro-EU movement, told Euractiv"
+    },
+    {
+     "quelle": "Deutschlandfunk",
+     "titel": "Kommentar zur Aufrüstung - Deutschland beunruhigt seine Nachbarn",
+     "url": "https://www.deutschlandfunk.de/deutschland-wirtschaftskrise-aufruestung-sicherheitspolitik-kommentar-100.html",
+     "vorschau": "In der deutschen Rüstungsindustrie herrscht gerade Goldgräberstimmung. Doch die Mischung aus Aufrüstung, Wirtschaftskrise und erstarkendem Rechtsextremismus weckt bei unseren Nachbarländern unangenehme historische Erinnerungen. Ein Kommentar von Stephan Detjen"
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "VolksAbstimmung: „Nein“ zur Migrationsgrenze lässt die Schweizer Wirtschaft aufatmen",
+     "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/schweizer-wirtschaft-erleichtert-ueber-ja-zu-europa-accg-200928806.html",
+     "vorschau": "Die Unternehmen können nun weiterhin problemlos auf Arbeitskräfte in der Europäischen Union zurückgreifen. Zugleich erhält das neue Vertragspaket mit der EU politischen Rückenwind."
+    }
+   ],
+   "weitere": []
+  }
+ ],
+ "alle_artikel": {
+  "🏛️ Innenpolitik": [
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Wegner und Schwarz-Rot immer unbeliebter: Berliner CDU liegt in Umfrage klar vorn – die Linke wird schwächer",
+    "url": "https://www.tagesspiegel.de/berlin/wegner-und-schwarz-rot-immer-unbeliebter-berliner-cdu-liegt-in-umfrage-klar-vorn--die-linke-wird-schwacher-15713709.html",
+    "vorschau": "Die Unzufriedenheit mit Kai Wegner und seiner Regierung hat nochmals zugenommen. Trotzdem liegt die CDU in einer neuen Umfrage vorn. Auch, weil andere Parteien schwächeln."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Abgeordnetenbezüge: Bundestag spart bei Diäten – einige Länder erhöhen",
+    "url": "https://www.wiwo.de/politik/deutschland/abgeordnetenbezuege-bundestag-spart-bei-diaeten-einige-laender-erhoehen/100232859.html",
+    "vorschau": "Der Bundestag setzt ein Sparsignal und streicht die Diätenerhöhung. In einigen Bundesländern steigen die Abgeordnetenbezüge dagegen wie geplant – oft automatisch und ohne Abstimmung."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Diplomatie: Friedrich Merz sucht noch nach der richtigen Distanz zu China",
+    "url": "https://www.wiwo.de/politik/europa/friedrich-merz-und-china-deutschlands-balanceakt-zwischen-handel-und-politik/100230434.html",
+    "vorschau": "In der EU wächst die Sorge vor Chinas industrieller Übermacht. Berlin wollte sich einem konfrontativeren Kurs bisher nicht anschließen. Aber das könnte sich jetzt ändern."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Kampagne gegen die Wehrpflicht: Den Dienst nicht schlechtmachen",
+    "url": "https://www.faz.net/aktuell/politik/inland/anti-wehrdienst-kampagnen-den-dienst-nicht-schlechtreden-200928808.html",
+    "vorschau": "„Die Bundesregierung will euch zum Dienst an der Waffe zwingen“, behauptet die Linkspartei. Angstmache funktioniert – nur wovor, ist die Frage."
+   }
+  ],
+  "🌍 Außenpolitik": [
+   {
+    "quelle": "NYT Business",
+    "titel": "The G7 Summit Is Dogged by Chaos and Divided by Trump",
+    "url": "https://www.nytimes.com/2026/06/14/world/europe/g7-summit-evian-trump.html",
+    "vorschau": "Group of 7 meetings once embodied the effort to sustain the global diplomatic order. This year’s gathering, starting on Monday, symbolizes its fragmentation."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Ukraine-Krieg: Russische Angriffe auf Kiew - berühmtes Höhlenkloster brennt",
+    "url": "https://www.tagesspiegel.de/internationales/ukraine-krieg-russische-angriffe-auf-kiew-beruhmtes-hohlenkloster-brennt-15714532.html",
+    "vorschau": "Die russische Armee feuert wieder Raketen auf die ukrainische Hauptstadt Kiew. Auch ein zum Weltkulturerbe zählendes Hauptheiligtum der ukrainischen und russischen orthodoxen Kirchen wird beschädigt."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Spitzentreffen am Genfersee: Worum es beim G7-Gipfel geht",
+    "url": "https://www.tagesspiegel.de/internationales/spitzentreffen-am-genfersee-worum-es-beim-g7-gipfel-geht-15714585.html",
+    "vorschau": "Kriege und Krisen stehen wieder einmal im Mittelpunkt, wenn Merz, Trump und Co. sich treffen. Der Gipfel startet mit einem Hoffnungssignal. Ob er ein Erfolg wird, hängt vor allem von einem ab."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Gipfeltreffen: Großer Anti-G7-Protest – Genf im Ausnahmezustand",
+    "url": "https://www.wiwo.de/politik/ausland/gipfel-in-frankreich-grosser-anti-g7-protest-genf-im-ausnahmezustand/100232894.html",
+    "vorschau": "In Genf demonstrieren Tausende gegen den G7-Gipfel und für verschiedene Anliegen. Die Stadt verstärkt die Sicherheitsmaßnahmen – aus Sorge vor Ausschreitungen wie 2003."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Arrest made after seizure of Russian oil tanker in Channel",
+    "url": "https://www.bbc.com/news/articles/cevlxg72kyvo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "National Crime Agency officers detain an Indian national on suspicion of sanctions offences."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Watch: Protesters clash with police ahead of G7 summit in Geneva",
+    "url": "https://www.bbc.com/news/videos/crkvek3dnrgo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Swiss police deployed a water cannon and fired tear gas to disperse anti-G7 protesters after clashes."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "UK Forces Seize Russian Shadow Fleet Oil Tanker",
+    "url": "https://www.nytimes.com/2026/06/14/world/europe/uk-russia-shadow-fleet-oil-tanker-channel.html",
+    "vorschau": "Britain’s Defense Ministry said it was the first time that British forces had acted alone to stop a ship in the fleet, a collection of vessels that Russia uses to move fuel and evade sanctions."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Iran and US agree deal to open Strait of Hormuz and extend ceasefire",
+    "url": "https://www.ft.com/content/76bed6e5-ab1f-43ff-a6c0-ae5e7cdbf3c1",
+    "vorschau": "Leaders to sign agreement on Friday for reopening of waterway and end to US naval blockade of Iranian ports"
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Iran war: Pakistan announces US-Iran peace deal reached",
+    "url": "https://www.dw.com/en/iran-war-pakistan-announces-us-iran-peace-deal-reached/live-77540182?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Pakistani PM Shehbaz Sharif has announced a peace deal between the US and Iran, with a signing ceremony on June 19. Sharif said both sides would terminate military operations, including in Lebanon. DW has more."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Police fire tear gas at anti-G7 protesters in Geneva",
+    "url": "https://www.dw.com/en/police-fire-tear-gas-at-anti-g7-protesters-in-geneva/a-77548464?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Protesters in Geneva clashed with police, set a car on fire and smashed the windows of a bank to show their opposition to the G7 summit taking place across the border in France."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Why is Bulgaria banning arms supplies to Ukraine?",
+    "url": "https://www.dw.com/en/why-is-bulgaria-banning-arms-supplies-to-ukraine/a-77523515?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Bulgaria's new government has banned state arms supplies to Ukraine. The ban does not, however, affect commercial exports, raising the question as to whether the move was aimed more at a domestic audience than at Kyiv."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Mehrere Tote nach russischen Angriffen auf Kiew und Charkiw",
+    "url": "https://www.tagesschau.de/ausland/europa/ukraine-russland-angriffe-164.html",
+    "vorschau": "Russland hat die Ukraine erneut massiv angegriffen. Mindestens fünf Menschen wurden getötet. In der Hauptstadt Kiew standen Teile des Höhlenklosters in Flammen - ein UNESCO-Weltkulturerbe."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Tausende protestieren in Genf gegen G7-Gipfel",
+    "url": "https://www.tagesschau.de/ausland/europa/g7-protest-genf-100.html",
+    "vorschau": "Vor dem G7-Gipfel im französischen Évian sind mehrere Tausend Menschen in Genf gegen die Politik der mächtigen Industrienationen auf die Straße gegangen. Nach mehreren Vorfällen ordnete die Polizei die Auflösung der Demonstration an."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Ukrainische Drohnen treffen Industrieanlagen und Wohnhaus in Russland",
+    "url": "https://www.tagesschau.de/ausland/europa/ukraine-russland-angriffe-162.html",
+    "vorschau": "Erneut hat die Ukraine Russlands Kriegswirtschaft mit Drohnenangriffen empfindliche Schläge versetzt. Getroffen wurden ein Chemiebetrieb und ein Treibstoffdepot. Eine Drohne schlug aber auch in einem Wohnhaus ein."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Clashes as thousands protest in Geneva ahead of G7 summit in France",
+    "url": "https://www.euractiv.com/news/clashes-as-thousands-protest-in-geneva-ahead-of-g7-summit-in-france/",
+    "vorschau": "Thousands had turned out in the Swiss city, to protest against the gathering of top world leaders, which starts across Lake Geneva in France on Monday"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Singapore Dollar, Other Asian FX Strengthen as Risk Appetite Returns",
+    "url": "https://www.wsj.com/finance/currencies/asian-currencies-mostly-strengthen-on-u-s-iran-interim-peace-deal-78c42dff?mod=rss_markets_main",
+    "vorschau": "The Singapore dollar and other Asian currencies strengthened against the U.S. dollar as risk appetite returns following the U.S.-Iran agreement on an interim peace deal."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Kyiv monastery set on fire in night of Russian attacks across Ukraine",
+    "url": "https://www.theguardian.com/world/2026/jun/15/kyiv-pechersk-lavra-monastery-on-fire-russian-attacks-ukraine",
+    "vorschau": "Dormition Cathedral of Kyiv Pechersk Lavra, one of Ukraine’s most significant religious sites, and residential buildings hit across capital Ukraine has come under a massive Russian missile and drone attack with waves of explosions echoing through the capital, Kyiv, in the early hours of Monday morning as air raids killed at least five people across the country. Among targets hit in the sustained wave of strikes were the city’s historic Dormition Cathedral within the Kyiv Pechersk Lavra, one of U"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Peace deal between US and Iran announced, with strait of Hormuz expected to reopen",
+    "url": "https://www.theguardian.com/world/2026/jun/14/trump-calls-for-restraint-israel-airstrikes-beirut-us-iran-peace-deal",
+    "vorschau": "Exact terms of the deal not clear amid differing claims from both sides on when access to the global shipping route would be restored Middle East crisis – live updates A peace deal between the US and Iran has been reached following nearly four months of fighting in the region, Donald Trump and senior Iranian officials have said. Iranian deputy foreign minister Kazem Gharibabadi confirmed the agreement in televised comments in the early hours of Monday, saying it puts an “immediate end” to the co"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "UK, France, Germany and Italy ready to lift Iran sanctions after US-Iran deal - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdl9QNzQwRkp1UnY0alA3UGVJUENYYm9zbDhFUUw4dUJud09TNVFfS1IyOS04YU9aR25qYlM4Ukx0YzkwRDdaam0zYVg2N1B3OHBuN0ZVc2tBQm1JN2dCQnplUWU2S0wtckItUzJWbXdQZkJMcVhtSlU2TFl3c0cwOERyRnhVc0pvajlQLTRLcXZqTG95LVlfZlZRaDE0eUZhSllRTjZHaV9IOG40dURvRU4zZHdTcUpx?oc=5",
+    "vorschau": "UK, France, Germany and Italy ready to lift Iran sanctions after US-Iran deal Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Gold rises 2% after US, Iran reach peace deal - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQdDRBZ2VtTERRLW5oS1J0MVZvWlJBTkNiNFJpcGJ2RmM1bmYwQXMtMWI1dlFVb1ptZGpNYURkZ0VGaFRZeFNPZ3NMZkVRMzZTV2hfYTlXOFFQMUpDQ0c5bnFjeXR5bDlXYlRXVFlvR3NUNkRBNklJT2wwREhMN2I4aXhNMHp4SnBoS1lnR1NjaDhvcUl1R2pULW5PbE4?oc=5",
+    "vorschau": "Gold rises 2% after US, Iran reach peace deal Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Dollar hits 10-day low as US, Iran reach peace deal - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNejMtS3JFZU9GNXp1dF9iVjU3V0hyWDQ1M0Y2NEZlbVFyd3JQXzVCek5kbEdIRHltT1RiX0cza051RzJVUm1neDQ3Q3V6SGJIVE9LVnRNNGFKR1JXTXRjNmMtLTdqNGh1SFhpTzE0ajN5aU9jUG0xUG44dTVEYVdFWFpuQXZpX2NKek5tMGtLZmFVeGItV0xjM3NOc2JCNUZqMURPVDNfMXZRNzBi?oc=5",
+    "vorschau": "Dollar hits 10-day low as US, Iran reach peace deal Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Indian shares set to join global rally on Gulf peace deal, oil slides - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNU3lDNnVlM09ySTctX1FqakhQekxUSGNwVUlpajRHN3FlWnh1d0VIVjU4dVBXeE1qclZRYnRzak0tMWs2UlNmVnBUdFJKZ1BzcDJNR3duM25neFlTc25Xc0FrdXRRaFhSeG5OZXJWNE02M1BTdkk3N1dieWczSzhZZG0tQUxjLUpHaklrRTkzQTNxRUVoOFlwa0JIMWVrdkY4Sl9WakJhZm14dU5vTHAw?oc=5",
+    "vorschau": "Indian shares set to join global rally on Gulf peace deal, oil slides Reuters"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "UK allies ‘stressed’ about Starmer’s future as he returns to world stage at G7",
+    "url": "https://www.politico.eu/article/uk-allies-stressed-about-starmers-future-as-he-returns-to-world-stage-at-g7/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Britain's prime minister has one more chance to impress in France as his main rival faces a key election test this week."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Macron’s last big diplomatic test: Keep Trump engaged in the G7",
+    "url": "https://www.politico.eu/article/emmanuel-macron-last-diplomatic-test-manage-trump-europe/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Expectations from the summit in Évian are low and the goal is to keep the U.S. president involved in conversations on Ukraine and Iran."
+   }
+  ],
+  "🌐 Großmächte & Geopolitik": [
+   {
+    "quelle": "Zeit Online",
+    "titel": "An Trumps Geburtstag: Rahmenabkommen im Iran-Krieg steht - Wie es jetzt weitergeht",
+    "url": "https://www.zeit.de/news/2026-06/14/hoffnung-auf-baldige-unterzeichnung-eines-usa-iran-deals",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Iran und USA: Iran veröffentlicht Details zu geplantem »Deal«",
+    "url": "https://www.zeit.de/politik/ausland/2026-06/iran-usa-abkommen-details-frieden-verhandlungen",
+    "vorschau": "Der Iran und die USA haben sich laut iranischen Angaben auf 14 Punkte verständigt. Sie sollen angeblich auch eine Milliardenhilfe der USA für den Wiederaufbau enthalten."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Irankrieg: USA und Iran einigen sich auf Rahmenabkommen für Kriegsende",
+    "url": "https://www.zeit.de/politik/ausland/2026-06/irankrieg-usa-iran-einigung-pakistan-friedensabkommen",
+    "vorschau": "Unter Vermittlung Pakistans haben der Iran und die USA einen Weg zum Kriegsende vereinbart. Die Kämpfe im Libanon sollen enden. Trump ordnete ein Ende der Seeblockade an."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Oil Prices Tumble After Trump Announces Deal With Iran",
+    "url": "https://www.nytimes.com/2026/06/14/business/oil-stocks-gas-iran.html",
+    "vorschau": "Oil prices fell and stocks gained on Sunday evening on the hope that a deal would allow more energy and other goods to flow through the Strait of Hormuz."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Merger Cleared, David Ellison to Join Trump at U.F.C. Bouts",
+    "url": "https://www.nytimes.com/2026/06/14/business/media/trump-ufc-david-ellison.html",
+    "vorschau": "A U.F.C. fight on President Trump’s birthday will now double as a capstone for Paramount’s successful effort to secure Justice Department approval for a mega media merger."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Backlash Is Growing Over Kevin O’Leary’s Data Center. He Is Blaming China.",
+    "url": "https://www.wsj.com/us-news/backlash-is-growing-over-kevin-olearys-data-center-he-is-blaming-china-d885f1b4?mod=rss_Technology",
+    "vorschau": "The “Shark Tank” panelist has criticized his detractors on TV and social media as tools of Beijing. Some locals in Utah say the tactic is backfiring."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Opinion | The Race for Hypersonic Missiles",
+    "url": "https://www.wsj.com/opinion/the-race-for-hypersonic-missiles-bc321799?mod=rss_Technology",
+    "vorschau": "The U.S. is catching up to China thanks in part to Colorado-based Ursa Major."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Nahost-Konflikt: Einigung in Nahost treibt Börsen in Japan und Südkorea an",
+    "url": "https://www.tagesspiegel.de/wirtschaft/nahost-konflikt-einigung-in-nahost-treibt-borsen-in-japan-und-sudkorea-an-15714539.html",
+    "vorschau": "Nach der Einigung zwischen den USA und dem Iran legen die Leitindizes Nikkei und Kospi kräftig zu. Gleichzeitig fallen die Ölpreise deutlich."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Trump hosts UFC cage fight on the White House lawn",
+    "url": "https://www.bbc.com/news/articles/c892xnwg5vlo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Thousands are expected at the mixed martial arts fight, which coincides with Trump's 80th birthday."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Iran War Live Updates: U.S. and Iran Reach Cease-Fire Agreement",
+    "url": "https://www.nytimes.com/live/2026/06/14/world/iran-war-trump-us",
+    "vorschau": "The deal was expected to halt fighting for 60 days, open the Strait of Hormuz and lift the U.S. naval blockade on Iranian ports. But it would leave the thorniest nuclear issues for another day."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Deadlocked Wars: How Major Powers Misread the Regions They Attacked",
+    "url": "https://www.nytimes.com/2026/06/14/world/europe/us-iran-russia-ukraine.html",
+    "vorschau": "Russia and the United States projected their own centralized views onto Ukraine and Iran, analysts said. As a result, the smaller countries trapped larger ones in a costly confrontation."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "U.S. and Iran Reach Agreement to Reopen Strait and Begin Nuclear Talks",
+    "url": "https://www.nytimes.com/2026/06/14/world/middleeast/us-iran-deal-strait-of-hormuz.html",
+    "vorschau": "The accord halts hostilities in the war that began in February but leaves unresolved the critical issue of Iran’s nuclear program."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Trump Claims Strait Will Be ‘Permanently Toll-Free’ Under Agreement With Iran",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-iran-deal-strait-of-hormuz.html",
+    "vorschau": "In a call to The New York Times, President Trump praised Russia’s and China’s leaders and described Israel’s prime minister as “a very difficult guy.”"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "In Israel, Broad Discontent Even Before Deal’s Details Are Known",
+    "url": "https://www.nytimes.com/2026/06/14/world/middleeast/israel-us-iran-deal.html",
+    "vorschau": "Israelis across the political spectrum have said the agreement appears to leave fundamental security threats posed by Iran unaddressed."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Israel Strikes Beirut Outskirts as Fighting With Hezbollah Escalates",
+    "url": "https://www.nytimes.com/2026/06/14/world/middleeast/israel-strikes-beirut-hezbollah.html",
+    "vorschau": "The attacks complicated an already delicate moment as President Trump and Iran appeared to be edging toward finalizing a framework peace agreement."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Trump stages show of political domination with White House UFC bout",
+    "url": "https://www.ft.com/content/11f71770-5872-4769-9ea5-a21f12151e10",
+    "vorschau": "US president hosts Maga mixed martial arts spectacle on his 80th birthday"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "What is in the US-Iran deal?",
+    "url": "https://www.ft.com/content/3bc9f664-dcad-4c2e-b745-91bb4e0fa934",
+    "vorschau": "Agreement will extend ceasefire by 60 days, reopen the Strait of Hormuz and begin nuclear negotiations"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Trump settles for a truce of convenience with Iran",
+    "url": "https://www.ft.com/content/e51b0af8-40ed-4828-969d-fc8827e37551",
+    "vorschau": "The US president promised ‘unconditional surrender’, but the Islamic republic survived with its leverage enhanced"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Macron to pull out the stops to keep Trump at G7 gathering",
+    "url": "https://www.ft.com/content/c6e9173b-0426-486b-bbba-124aeb28ee89",
+    "vorschau": "First rich nations summit since Iran war launched, a make-or-break British by-election, Warsh chairs his first FOMC meeting"
+   },
+   {
+    "quelle": "DPA",
+    "titel": "Iran: Rahmenabkommen unter Führung von Chamenei finalisiert Von dpa-AFX - Investing.com Deutsch",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPMkRLaUg5ZVhlZUticTJQb0I3RmYwUUtYZTgzLWxPUExzSmVGYnJkYk1WZmFPckgteEROTUNEcGFPZkV3S2R5QW9oeV9vQjRpYlFPTlM0TkhGZFFLdVo5MmxxSUtjV2xSQ1FER0ZDWk9yc1JBbVdoS1AwazdDcndlb2NZVGZiZUdMb2hUSjJHU1hTVU9iaC1rNDc5MS1PVFNCMDVZMlRZX2Qtc2hjd2c?oc=5",
+    "vorschau": "Iran: Rahmenabkommen unter Führung von Chamenei finalisiert Von dpa-AFX Investing.com Deutsch"
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Trump hosts White House cage fights to mark 80th birthday",
+    "url": "https://www.dw.com/en/trump-hosts-white-house-cage-fights-to-mark-80th-birthday/a-77546507?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "The US president is set to watch seven fights with an audience of 4,000 people inside a specially built arena on the White House lawn. Critics say the unprecendented spectacle is in poor taste amid the ongoing Iran war."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Ukraine targets Russia's industrial facilities in massive strike",
+    "url": "https://www.dw.com/en/ukraine-targets-russia-s-industrial-facilities-in-massive-strike/a-77542738?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Unverified footage on social media showed that a key chemical plant in Russia may have been hit. Meanwhile, the Uk has intercepted a Russian shadow fleet tanker."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Iran-Liveblog: Merz gratuliert Trump zu \"diplomatischem Durchbruch\"",
+    "url": "https://www.tagesschau.de/newsticker/liveblog-iran-montag-126.html",
+    "vorschau": "Bundeskanzler Merz hat die Einigung zwischen den USA und Iran begrüßt und US-Präsident Trump zu einem \"diplomatischen Durchbruch\" gratuliert. Die Straße von Hormus soll laut USA erst am Freitag geöffnet werden."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Trump verkündet Einigung auf Friedensabkommen mit Iran",
+    "url": "https://www.tagesschau.de/ausland/asien/iran-abkommen-usa-krieg-100.html",
+    "vorschau": "Die USA und Iran haben sich nach Angaben von US-Präsident Trump auf ein Rahmenabkommen für ein Ende des Krieges geeinigt. Die Blockade der Straße von Hormus werde aufgehoben. Zuvor hatte auch Vermittler Pakistan eine Einigung vermeldet."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Krieg in Nahost: Trump ermahnt Israel nach Angriff im Libanon",
+    "url": "https://www.tagesschau.de/ausland/usa-trump-iran-israel-libanon-100.html",
+    "vorschau": "US-Präsident Trump hat einen Angriff Israels auf den Libanon deutlich verurteilt. Hintergrund ist die Sorge, dass sich die mögliche Unterzeichnung einer Vereinbarung mit Iran verzögert - die war eigentlich für heute vorgesehen."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Warum in Albanien gegen Ivanka Trump protestiert wird",
+    "url": "https://www.tagesschau.de/ausland/europa/albanien-sazan-100.html",
+    "vorschau": "Seit Wochen gehen viele Albaner gegen ein Bauprojekt von Trump-Tochter Ivanka auf die Straßen. Der Protest gegen das geplante Luxusresort auf der Insel Sazan mischt sich mit allgemeiner Kritik an der Regierung. Was dahintersteckt."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Finland confronts drone incursions as defence spending set to soar",
+    "url": "https://www.euractiv.com/news/finland-confronts-drone-incursions-as-defence-spending-set-to-soar/",
+    "vorschau": "Its 1,300-km border with Russia sharpens security concerns"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "US-Iran peace deal announced with ‘permanent’ end to military action",
+    "url": "https://www.euractiv.com/news/trump-says-hormuz-will-reopen-after-iran-peace-deal-signed-friday/",
+    "vorschau": "\"Ships of the World, start your engines. Let the oil flow!\" US President Donald Trump said on Sunday, as he marked his 80th birthday"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "A Place Where Some AI Stocks Are Still Cheap: China",
+    "url": "https://www.wsj.com/finance/stocks/a-place-where-some-ai-stocks-are-still-cheap-china-22559ee9?mod=rss_markets_main",
+    "vorschau": "The country offers a different way to play the boom, with relative bargains to be found, but volatile geopolitics are a challenge."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Charlie Javice Has Been Seeking a Pardon From Trump After Defrauding JPMorgan",
+    "url": "https://www.wsj.com/finance/charlie-javice-has-been-seeking-a-pardon-from-trump-after-defrauding-jpmorgan-0b4e61db?mod=rss_markets_main",
+    "vorschau": "The entrepreneur sold her startup Frank to the bank for $175 million and was sentenced in September to over seven years in prison for fraud."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Australia news live: Victoria to require device-free time in schools; experts back Labor’s tax reforms in Senate review",
+    "url": "https://www.theguardian.com/australia-news/live/2026/jun/15/australia-news-live-experts-push-back-at-call-for-shark-cull-after-attack-university-students-report-freedom-of-speech-fears",
+    "vorschau": "Follow today’s news live Get our breaking news email , free app or daily news podcast The prime minister and foreign minister have issued a lengthier statement welcoming the agreement made by the US and Iran, and called for continued restraint to avoid further escalation. President Donald Trump made the announcement he had signed a deal this morning, saying the strait of Hormuz would be reopened. Continued restraint and constructive engagement will be essential to prevent further escalation and "
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Trump reportedly tells Putin he is prepared to help end war in Ukraine",
+    "url": "https://www.theguardian.com/us-news/2026/jun/14/trump-putin-call-ukraine-russia-iran-war",
+    "vorschau": "Trump also says in ‘friendly and frank’ phone call that US is nearing peace deal with Iran, according to Putin adviser Donald Trump told Vladimir Putin that ending Russia’s ongoing war in Ukraine was critical and that he was prepared to help, reported Russia’s TASS news agency. During a phone call on Sunday, Trump also informed the Russian president that the US was nearing a peace deal with Iran as the US-Israel war against the country continues, according to Yuri Ushakov, a Putin adviser. The c"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Police stop Tommy Robinson on his way back to London from Russian trip",
+    "url": "https://www.theguardian.com/uk-news/2026/jun/14/police-stop-tommy-robinson-way-back-london-from-russia",
+    "vorschau": "Met seizes far-right activist’s phones after he disembarks flight at Heathrow under counter-terrorism provisions British police say they stopped the far-right activist Tommy Robinson and seized his phones as he returned from a trip to Russia. Robinson, whose real name is Stephen Yaxley-Lennon, met Elon Musk’s father in Moscow during his trip. Continue reading..."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "US-Iran peace deal could see strait of Hormuz open on Friday ‘under Iranian arrangements’, says state media – Middle East crisis live",
+    "url": "https://www.theguardian.com/world/live/2026/jun/14/iran-us-middle-east-crisis-donald-trump-peace-deal-strait-hormuz-open-pakistan-latest-news-updates",
+    "vorschau": "The US president confirmed the agreement as Pakistan’s prime minister said the official signing will be in Geneva on 19 June Full report: peace deal between US and Iran, Pakistan says, with strait of Hormuz to reopen Iranian hardliners in vociferous push to reject US peace deal Israel says it has struck Beirut’s south suburbs, with explosions heard in the city. The Israeli military claimed the attacks on the Lebanese capital were in response to Hezbollah firing into Israeli territory. The milita"
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "U.F.C. Viewing Party Draws Thousands to White House Ellipse",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/ufc-white-house-freedom-250-watch-party.html",
+    "vorschau": "People from all over the country came to Washington on Sunday for a unique viewing party of the Ultimate Fighting Championship bouts being held on the South Lawn of the White House."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Trump’s U.F.C. Event Comes as Backing of Young Men, Once a Strength, Wanes",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-ufc-politics-midterms.html",
+    "vorschau": "Some Republicans see a political opening in Sunday’s fights at the White House. Democrats say they see a distraction from more pressing matters."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "How to Watch the U.F.C. 250 Freedom Fights at the White House",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/how-to-watch-ufc-freedom-250.html",
+    "vorschau": "Seven bouts will take place in an arena created on the South Lawn for the Ultimate Fighting Championship event, which coincides with President Trump’s 80th birthday."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Trump Owns Shares in Company Hosting U.F.C. Bout as Part of His Vast Holdings",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-ufc-tko-group.html",
+    "vorschau": "The Trump Organization says the president has no control over his stock positions, including that of TKO Group, which runs the Ultimate Fighting Championship."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "For His 80th Birthday, Trump Brings the Fight to the White House Lawn",
+    "url": "https://www.nytimes.com/2026/06/14/us/ufc-trump-white-house.html",
+    "vorschau": "Presidential historians say the U.F.C. event, which was estimated to cost more than $60 million, is unprecedented."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Trump at 80: A President ‘Really Uncomfortable’ With Aging",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-age-birthday-80.html",
+    "vorschau": "Even for a president known for imposing his own reality on every situation, Mr. Trump has not outrun scrutiny over his age."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Legal and Lobbying Costs Surge as Universities Face Trump Pressure",
+    "url": "https://www.nytimes.com/2026/06/14/us/legal-lobbying-cost-university-college-trump.html",
+    "vorschau": "Some universities’ tax returns showed that their legal bills had more than doubled. Others reported that their spending on lobbying had risen at least fivefold."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "President Trump Endorses Mike Collins in Georgia Senate Runoff",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/trump-mike-collins-georgia-senate-runoff.html",
+    "vorschau": "Mr. Trump backed Mr. Collins over Derek Dooley, a former football coach supported by Gov. Brian Kemp, a Republican whose relationship with the president is strained."
+   },
+   {
+    "quelle": "Google USA Politik",
+    "titel": "Golden ticket: Trump’s allies in Congress get coveted seats at White House cage fight - Washington Examiner",
+    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPMmtHMC02VlNZM0NlcXMzbmc3TXpiNFlxVFIzZjRtTGtfN0FleDlLTUxzd0l0ZHVFb3JfWGtOMmlSbUxrQW1DeVUzXzFRQUVibkdqR242ejFqMllDSVhmVFllLUFNOGM2YTl5QWF5UGM4eGNxcWg4THZWSW44c05xZGp2NEtxanlKTGVsTXJvSjV5aGItWlIyRm9LZzdJaWZkS1oycTBB?oc=5",
+    "vorschau": "Golden ticket: Trump’s allies in Congress get coveted seats at White House cage fight Washington Examiner"
+   },
+   {
+    "quelle": "Guardian Business",
+    "titel": "Me, worry? For US small businesses, Trump’s tariffs are now a non-issue",
+    "url": "https://www.theguardian.com/business/2026/jun/14/small-business-trump-tariffs",
+    "vorschau": "A year ago it was the hot topic, but business owners have seen there’s a limit to the president’s royal decrees In two weeks, I’m speaking to a group of companies in the packaging industry about issues affecting their businesses this year. I’m going to discuss the economy, navigating higher costs, leveraging new tax legislation, AI and what companies are doing to find and retain workers in a volatile job market. You know what I won’t be talking about? Tariffs. Continue reading..."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "China slams Indonesia investment climate over nickel curbs",
+    "url": "https://www.ft.com/content/a25da305-f018-43a6-bb8c-c7a42024672e",
+    "vorschau": "Regulatory changes could threaten $50bn of investment, embassy warns"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Strait of Hormuz oil backlog could take weeks to clear after US-Iran deal",
+    "url": "https://www.ft.com/content/c2d4e116-c49a-4f6b-9b2e-d10d37e4c2e8",
+    "vorschau": "Prices slip even as analysts warn flows may be slow to recover and remain vulnerable to renewed disruption"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "FirstFT: Trump says US-Iran deal reached to reopen Strait of Hormuz and extend ceasefire",
+    "url": "https://www.ft.com/content/423e2773-96ab-45d1-94b7-e61d360c282e",
+    "vorschau": "Also in today’s newsletter: China preps digital payments system and Swiss voters reject proposal to cap population at 10mn"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Trump tells Israel and Hizbollah to ‘stand down’ as he pushes for Iran deal",
+    "url": "https://www.ft.com/content/ce9286fb-b37c-4113-9ec3-0464144c4977",
+    "vorschau": "US president has said he expects Washington and Tehran to seal a deal to reopen the Strait of Hormuz on Sunday"
+   },
+   {
+    "quelle": "Deutschlandfunk",
+    "titel": "Iran-USA-Abkommen - Was dem Frieden noch im Weg steht",
+    "url": "https://www.deutschlandfunk.de/iran-usa-rahmenabkommen-friedensschluss-krieg-100.html",
+    "vorschau": "Seit Monaten bekriegen sich die USA und der Iran. Jetzt scheint ein Rahmenabkommen für einen Friedensschluss bevorzustehen. Doch die Signale sind widersprüchlich. Und es ist fraglich, ob damit letztlich wirklich Frieden erreicht werden kann."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "U.S. and Iran Have Reached a Deal to Stop Fighting, Reopen Shipping",
+    "url": "https://www.wsj.com/world/middle-east/iran-threatens-to-pull-out-of-talks-after-israel-strikes-beiruts-outskirts-d0390e22",
+    "vorschau": "Signing is planned for Friday, marking a potential breakthrough in a war that has roiled the global economy."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "WSJ Politics Special Edition: Trump’s Iran Deal Will Hinge on These Things",
+    "url": "https://www.wsj.com/world/middle-east/wsj-politics-special-edition-trumps-iran-deal-will-hinge-on-these-things-bb2cddfb",
+    "vorschau": "Here are the main issues to watch to see if this agreement is for real."
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Trump veers toward exit in Iran war but risks loom - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcEZVelNtYmlvYmYzR3RtY1ViZ0EzNzU2LTdEcjctWGo0WnhBejRXVG5aVXNBT2VGQWdwWHhNdW90djhTV0VHN0FmcmZjZVJSYThHVzhPcTJ6TDlEdV9NSElZbk9fVWNEN3VlazRLeWtTaXEwb3Z4M1VMeTRTOGRCMWJ3MFByc1dmamxmVklVWVRYUQ?oc=5",
+    "vorschau": "Trump veers toward exit in Iran war but risks loom Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Global leaders react to announcement of US-Iran peace agreement - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNSHhmT0tyLWlGWWFSeU5NbDBDQmxIbHhRa2tJbGp1UDdBWGFHcmctYXJlYkJXWHJwSE03QVp2Y0JHWkdVT0oxSnJUVDlYWG5JSGEyOWQ0aGtQT2lkYmtKN3B2WGo3UnoxMnZObUR4T1FMREYyczRwRjFvMmJZQ21Ec1VLSlFvYzdIQ01OanA4aG9jMzA4WDl5RXNua1Q1VUxGN2htaVAycU54b01CaW1TQg?oc=5",
+    "vorschau": "Global leaders react to announcement of US-Iran peace agreement Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "US, Iran reach preliminary agreement to end war, signing set for Friday - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYkM0aHUzN3lFUGRoNGhaYnA0aXFMTVdPYUlUWXlocnpiZUZCUWhZbFNoTDVSNGJVbTM2bnN0aUdXaXUtYjBzX21SX2xoUjFwWUgyMDNsNVhwS1NMekItUDFGYmxoRXAyNzlUekpFTjVUU2Y2aWZTajVGV3JvcllPVXRub2lJZUFSVElrbk1ncEt1YjRnZEFLRFN4V293cW8xYTFULU93MkRBc3g2LU4wbktn?oc=5",
+    "vorschau": "US, Iran reach preliminary agreement to end war, signing set for Friday Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Russia's Putin sends birthday greetings to 'bright, remarkable' Trump - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaVBBZWZHRmc2VEFmNXJmZlFGaUE3WEJCVVBDWXVTcVhuRzVWUVdncS1oU3g2dWp6VjBxbW4wbGduTFlvc1RJbnNzcXF6RkhEMWlqQWRWTHc1MFl0cVdYZWtlVkc1UzZLZzRtSjQ3TDdhSUdrZmxzUWpFUV95bmJOd19RNURpMGcyN0dBejZ4bk1VS2hPU01fYTNLMGdPLVN4blJ2YTZucw?oc=5",
+    "vorschau": "Russia's Putin sends birthday greetings to 'bright, remarkable' Trump Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "In Tijuana, Iran's tiny diaspora agrees on little — except Team Melli - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOZFJ4RE8zYXgybG1hUm1tejBnSzNXYm9uNS1rOWkzZGlHcjhvUW1fVWZaNVh2aGJuTzRQNEpKcjN0U2NLTV9QbVlRa0hRUllHaEVja19fZ3c3NTZfbHBZN3FseXppLXJVam8zeVVfN2JzV2FDRGYtWlBOWEZDWEczM1RabW9BZ01ZWWJwanp3c25RaWlSSE55dVJzYXZCWkJJb3NsVUVlZDVMVWd6bVMw?oc=5",
+    "vorschau": "In Tijuana, Iran's tiny diaspora agrees on little — except Team Melli Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Iran's manager, striker pledge to play for all Iranians despite protests - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOdlFyaXFBVDZhRUM1cVl3dWYxUXRYeENHbFBicmFhY3JoWEs1MC1PNEh0Qm9vZ0NYU21NOWtfeldEUEdlWEpqLWJIYjdhRm5ieFRsS3piS1hlU0tXenhMSTk0SHBTNzJ0V0l0U2k2SG9RMXNhZG9hZ0EweERTUHdVdnN1QW9lZkJOZThWWGpHQkFwSEVmTDNqSDZBQzVkQ1lEMFJNTG9YUmZOVnBUZVpuSHN5aw?oc=5",
+    "vorschau": "Iran's manager, striker pledge to play for all Iranians despite protests Reuters"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Donald Trump’s least favorite country might just win Donald Trump’s World Cup",
+    "url": "https://www.politico.eu/article/donald-trump-least-spain-win-world-cup/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Tournament favorite Spain is at odds with the U.S. president over Iran, Gaza, defense spending, immigration and green energy."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Omer Bartovs Israel-Buch: Der Zionismus soll schuld sein?",
+    "url": "https://www.faz.net/aktuell/feuilleton/buecher/sachbuch/israelpalaestina-historiker-omer-bartov-macht-den-zionismus-zum-schuldigen-200846814.html",
+    "vorschau": "Der Historiker Omer Bartov erklärt die Katastrophe im Nahen Osten aus den Fehlstellungen des Zionismus. Sein Buch nutzt er für einen Frontalangriff auf das Holocaustgedenken."
+   }
+  ],
+  "💰 Wirtschaft": [
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Anschläge auf Stromleitungen: Eon-Chef: Komplettschutz der Stromnetze nicht möglich",
+    "url": "https://www.tagesspiegel.de/wirtschaft/anschlage-auf-stromleitungen-eon-chef-komplettschutz-der-stromnetze-nicht-moglich-15714583.html",
+    "vorschau": "Eon-Chef Birnbaum sieht keinen vollständigen Schutz der Stromnetze vor Angriffen. Wie der Konzern dennoch auf Störungen vorbereitet sein will."
+   },
+   {
+    "quelle": "DPA",
+    "titel": "dpa-AFX-Überblick: UNTERNEHMEN - Die wichtigsten Meldungen vom Wochenende - 14.06.26 - News - Ariva",
+    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNZm51TWZtd18wU1M0T0hsQkxKdGRTQlJMQzVWYnBJcUY3bEVwLWNybW56MlZqMkg2YUpmWUllckpDVW13YVpCSlVNVUl1VTFScjVJcXVnQzR4N2NZU045RHFyUEh5bGpqSWNaS1duNzZoWTVEZGw3cm0wQ0c4YmpTRWdYZUZiT2EyaGRSOUZkVzNDaF9qd2c?oc=5",
+    "vorschau": "dpa-AFX-Überblick: UNTERNEHMEN - Die wichtigsten Meldungen vom Wochenende - 14.06.26 - News Ariva"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "EU membership would free Iceland from krona ‘inflation machine’, campaigner says",
+    "url": "https://www.euractiv.com/news/eu-membership-would-free-iceland-from-krona-inflation-machine-campaigner-says/",
+    "vorschau": "'At the moment, we have no seat at the table,' Magnússon, leader of Iceland’s pro-EU movement, told Euractiv"
+   },
+   {
+    "quelle": "Deutschlandfunk",
+    "titel": "Kommentar zur Aufrüstung - Deutschland beunruhigt seine Nachbarn",
+    "url": "https://www.deutschlandfunk.de/deutschland-wirtschaftskrise-aufruestung-sicherheitspolitik-kommentar-100.html",
+    "vorschau": "In der deutschen Rüstungsindustrie herrscht gerade Goldgräberstimmung. Doch die Mischung aus Aufrüstung, Wirtschaftskrise und erstarkendem Rechtsextremismus weckt bei unseren Nachbarländern unangenehme historische Erinnerungen. Ein Kommentar von Stephan Detjen"
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "VolksAbstimmung: „Nein“ zur Migrationsgrenze lässt die Schweizer Wirtschaft aufatmen",
+    "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/schweizer-wirtschaft-erleichtert-ueber-ja-zu-europa-accg-200928806.html",
+    "vorschau": "Die Unternehmen können nun weiterhin problemlos auf Arbeitskräfte in der Europäischen Union zurückgreifen. Zugleich erhält das neue Vertragspaket mit der EU politischen Rückenwind."
+   }
+  ],
+  "📊 Finanzen & Märkte": [
+   {
+    "quelle": "WSJ US",
+    "titel": "Tech’s Next IPO Wave Promises a Charitable Windfall",
+    "url": "https://www.wsj.com/finance/investing/techs-next-ipo-wave-promises-a-charitable-windfall-885a1e74?mod=rss_Technology",
+    "vorschau": "The SpaceX IPO is the first in a string of AI public-market debuts that could deliver new riches to startup employees to donate to charity."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Kevin Warsh enters the arena",
+    "url": "https://www.ft.com/content/0b984a9e-8ea5-48e5-98cc-5d9751a118a3",
+    "vorschau": "The new Federal Reserve Chair will be judged on his integrity and ability"
+   },
+   {
+    "quelle": "Google Markets EN",
+    "titel": "Stock market moves on from SpaceX with Iran deal, US Fed in focus - The Business Times",
+    "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQYmFRb2tNMEtZaVluYlphelpjLWJtVFZMcnZ3dDBTNmZEcGVtU3JNbG9HYy1SODFpQURjRmZxOEtZRm9CYXYzUXhnYk44Z1RDOW1MalExdVBTN2tob1VUUW9wX0ZpNFFyTDN3QTBiZ2JyNUM0cXpSVTNZTTR4RTlnNFJzTFBVWWxMNjFlVGpGbFZlSXJLYU5vQUlEZ0hpWFJCWHRVaWZzWDAzTE5tV2NNcjBlMDVlWllBS1hDWVpiN0duYU9q?oc=5",
+    "vorschau": "Stock market moves on from SpaceX with Iran deal, US Fed in focus The Business Times"
+   }
+  ],
+  "💻 Tech & KI": [
+   {
+    "quelle": "WSJ US",
+    "titel": "Anthropic Dispatches Staff to D.C., Racing to Resolve AI Export Restrictions",
+    "url": "https://www.wsj.com/tech/ai/anthropic-dispatches-staff-to-d-c-racing-to-resolve-ai-export-restrictions-71303d42?mod=rss_Technology",
+    "vorschau": "Startup is seeking a deal to end export restrictions that led to shutdown of its most powerful AI models."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Siri’s New Brain",
+    "url": "https://www.wsj.com/tech/siris-new-brain-eb28fe50?mod=rss_Technology",
+    "vorschau": "Plus, Anthropic’s Fable woes, Meta’s big teacher bonuses and the terrifying rise of deepfake porn."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Opinion | AI Can Do Math, but Is It Really Math?",
+    "url": "https://www.wsj.com/opinion/ai-can-do-math-but-is-it-really-math-a7db34be?mod=rss_Technology",
+    "vorschau": "A breakthrough from an OpenAI model would have meant nothing without humans to make sense of it."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Iran: Sind diese Signale Zeichen für eine bevorstehende Hormus-Öffnung oder einen Hackerangriff?",
+    "url": "https://www.wiwo.de/technologie/digitale-welt/strasse-von-hormus-zeichen-fuer-eine-bevorstehende-hormus-oeffnung-oder-einen-hackerangriff/100232878.html",
+    "vorschau": "Kurzzeitig wurde am Wochenende ein System von US-Navigationsbojen online geschaltet. Sie könnten dazu dienen, den enormen Verkehr in der Meerenge zu bewältigen, oder nur Folge eines Hackerangriffs sein."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "IPO: Was der SpaceX-Börsengang für OpenAI und Anthropic bedeutet",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/aktien/spacex-was-der-boersengang-fuer-openai-und-anthropic-bedeutet/100231694.html",
+    "vorschau": "Die Billionenbewertung der Weltraumfirma hatte am ersten Handelstag Bestand. Bald könnten die nächsten IPOs folgen. Dabei kommt es aufs Tempo an, sagen Experten."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "EU turns to US-powered AI to rank job candidates",
+    "url": "https://www.euractiv.com/news/eu-turns-to-us-powered-ai-to-rank-job-candidates/",
+    "vorschau": "With its ever-growing list of candidates, the European Commission is preparing to deploy an AI tool powered by Anthropic's model to short-list them"
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Ransomware: „Der schlimmste Fehler ist ein CEO, der fragt: Wie zahle ich?“",
+    "url": "https://www.handelsblatt.com/technik/it-internet/ransomware-das-ist-keine-it-panne-das-ist-chefsache/100229829.html",
+    "vorschau": "Cyber-Attacken legen ganze Produktionen lahm und treffen zunehmend auch den Mittelstand. Zwei Experten erklären, wie Firmen mit Erpressern verhandeln sollten – und sich besser schützen können."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Halbleiter: Eine Fabrik wie eine Festung",
+    "url": "https://www.faz.net/aktuell/wirtschaft/infineon-eroeffnet-in-dresden-eine-fabrik-wie-eine-festung-accg-200919533.html",
+    "vorschau": "Der deutsche Chiphersteller Infineon steht vor der Eröffnung seines neuen Werks in Dresden, das vierte vor Ort. Der Vorstand nennt es eine Punktlandung. Die Börse macht sich ihren eigenen Reim."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Deutscher Anwaltstag: Die große Verunsicherung",
+    "url": "https://www.faz.net/aktuell/wirtschaft/deutscher-anwaltstag-ki-veraendert-die-rechtswelt-200925134.html",
+    "vorschau": "Während die Anwaltschaft in Freiburg debattiert, machen Anthropic und Open AI längst Ernst. Wer jetzt zaudert, verliert – und wer ohne Sorgfalt auf KI setzt, riskiert mehr als nur den Anschluss."
+   }
+  ],
+  "⚡ Energie & Klima": [
+   {
+    "quelle": "Zeit Online",
+    "titel": "Aktienmärkte: Ölpreis sinkt deutlich, Aktienkurse in Asien steigen",
+    "url": "https://www.zeit.de/wirtschaft/2026-06/irankrieg-oelpreis-aktienkurse-asien-abkommen",
+    "vorschau": "Die Vereinbarung zwischen den USA und dem Iran bewegt die Märkte. Der Preis für Öl der Sorte Brent fällt auf den tiefsten Stand seit März. In Japan legt der Leitindex zu."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Gamechanger: Eine Membran, die Wasser reinigt und entsalzt – ohne Chemie",
+    "url": "https://www.wiwo.de/technologie/forschung/wasseraufbereitung-forscher-entwickeln-membran-die-wasser-reinigt-und-entsalzt-ohne-chemie/100223557.html",
+    "vorschau": "Ideen, die unsere Welt ­ver­ändern und verbessern. Wir stellen sie vor. Diesmal: Ein Wasserfilter, der Salz und Schmutz mit Strom auffängt."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Oil prices slide after Pakistan announces deal between US and Iran",
+    "url": "https://www.bbc.com/news/articles/c6217106px6o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Under the agreement, the key Strait of Hormuz waterway will be reopened, US President Donald Trump said."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Klimawandel ermöglicht Anbau von tropischem Ingwer in Schwaben",
+    "url": "https://www.tagesschau.de/wirtschaft/ingwer-anbau-deutschland-100.html",
+    "vorschau": "Ingwer stammt eigentlich aus den Tropen und Subtropen. Wegen des Klimawandels gibt es nun Landwirte, die auch in Deutschland die Knolle anbauen. Der deutsche Ingwer hat seine Besonderheiten. Von Laura Bisch."
+   }
+  ],
+  "🏥 Gesundheit": [
+   {
+    "quelle": "FT World",
+    "titel": "Australian pharmacy group pulls out of $10bn talks to buy Boots",
+    "url": "https://www.ft.com/content/1def0cfb-e929-40af-94d9-bf6d79834a3a",
+    "vorschau": "Sigma Healthcare says deal for UK retailer would not meet its strategic objectives"
+   }
+  ],
+  "🔬 Wissenschaft": [
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Märkte-Insight: Nicht nur für SpaceX – auch für die US-Notenbank beginnt eine neue Ära",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/maerkte-insight-nicht-nur-fuer-spacex-auch-fuer-die-us-notenbank-beginnt-eine-neue-aera/100231341.html",
+    "vorschau": "Die Federal Reserve tagt zum ersten Mal unter ihrem neuen Chef. Anleger können sich dann selbst ein Bild von Kevin Warsh machen und auf positive Signale hoffen, meint Astrid Dörner."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Emboldened by SpaceX, Investors Are Piling Into All Things Space",
+    "url": "https://www.wsj.com/finance/investing/spacex-ipo-space-companies-investments-3b71287f?mod=rss_markets_main",
+    "vorschau": "Two-ton satellites, laser communications, in-space mobility ships and more draw attention and new funding."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "SpaceX Is Coming Early to Your Index. How Worried Should You Be?",
+    "url": "https://www.wsj.com/finance/stocks/spacex-is-coming-early-to-your-index-how-worried-should-you-be-b65bb7c4?mod=rss_markets_main",
+    "vorschau": "Owen Lamont of Acadian Asset Management says the fast-tracking of mega IPOs shouldn’t keep passive investors up at night, but it isn’t great either."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "DNA from 2,000-year-old grape seeds points to origins of modern winemaking",
+    "url": "https://www.theguardian.com/world/2026/jun/14/dna-from-2000-year-old-grape-seeds-points-to-origins-of-modern-winemaking",
+    "vorschau": "Researchers also discover that the ancient vines of Chianti, famed for its red wines, produced white fruit DNA extracted from 2,000-year-old grape seeds found in ancient wells in Tuscany has enabled scientists to map the most extensive genetic history of grapevines recovered from a single site. The findings revealed that vineyards of the Roman era formed part of the empire’s sophisticated agricultural network that might have influenced the development of modern winemaking. Continue reading..."
+   }
+  ],
+  "⚖️ Recht & Justiz": [
+   {
+    "quelle": "FAZ",
+    "titel": "Gewalt und Drogen: Wie wird das Urteil gegen Høiby ausfallen?",
+    "url": "https://www.faz.net/aktuell/gesellschaft/kriminalitaet/urteil-gegen-hoiby-erwartet-gewalt-drogen-und-ein-getriebener-accg-200924900.html",
+    "vorschau": "Gewaltvorwürfe, Drogendelikte, sexuelle Übergriffe: Gegen Marius Borg Høiby fällt am Montag voraussichtlich das Urteil. Seine schwerkranke Mutter, Norwegens Kronprinzessin Mette-Marit, blieb dem Prozess bislang fern."
+   }
+  ],
+  "🛡️ Sicherheit & Verteidigung": [
+   {
+    "quelle": "Tagesschau",
+    "titel": "Bundeswehr-Brigade in Litauen: Im Kampf mit und gegen Drohnen",
+    "url": "https://www.tagesschau.de/ausland/europa/bundeswehr-brigade-litauen-100.html",
+    "vorschau": "Die NATO stärkt ihre Abschreckung gegenüber Russland. Dazu gehört, dass die Bundeswehr eine Panzerbrigade in Litauen aufbaut. Bei der Übung \"Freedom Shield\" trainieren 2.900 Soldaten aus acht Ländern den Ernstfall. Von B. Großkopff und A. Budweg."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Britische Armee stoppt Schattenflotte-Tanker im Ärmelkanal",
+    "url": "https://www.tagesschau.de/ausland/europa/uk-russland-schattenflotte-100.html",
+    "vorschau": "Das britische Militär hat nach Angaben von Premierminister Starmer einen Tanker der russischen Schattenflotte im Ärmelkanal gestoppt. Es ist die erste von Großbritannien geführte Operation dieser Art."
+   }
+  ],
+  "🌿 Umwelt & Natur": [
+   {
+    "quelle": "NYT Business",
+    "titel": "‘Disclosure Day’ Ends Spielberg’s Summer Box Office Drought",
+    "url": "https://www.nytimes.com/2026/06/14/business/media/disclosure-day-steven-spielberg-box-office.html",
+    "vorschau": "Steven Spielberg’s original science-fiction movie collected an estimated $44 million in North America, giving the director his first new-to-the-screen summer hit in 24 years."
+   }
+  ],
+  "🚗 Mobilität & Verkehr": [
+   {
+    "quelle": "Reuters EN",
+    "titel": "Uruguay's flight to Miami for World Cup match delayed due to airline error - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQSHdNV2cwcmZiNzFrSnY4UDZvQW5kMHhyMmpaMWZOZE9EU3NjckN3WEtVZ19KYkRGZFY5Q3ZDaExPZDZtdzVpbXlEc0k2QW51ck5hMmdQZDNzdG1EZm9feUU4N1diVExvaDhzemR3bG93UHdLMGFfTllMUmtSRndEUXRmRElRNUVuX3hEMmkwVHJvaURFMjNWbk15bHpKUklVZTBsaTVn?oc=5",
+    "vorschau": "Uruguay's flight to Miami for World Cup match delayed due to airline error Reuters"
+   }
+  ],
+  "🇪🇺 Europa & EU": [
+   {
+    "quelle": "Euractiv",
+    "titel": "Defence votes in Brussels once again expose growing cracks within Europe’s far right",
+    "url": "https://www.euractiv.com/news/defence-votes-in-brussels-once-again-expose-growing-cracks-within-europes-far-right/",
+    "vorschau": "A new realignment on defence is emerging inside the far right ahead of key elections"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Inside Finland’s stockpiling strategy",
+    "url": "https://www.euractiv.com/news/inside-finlands-stockpiling-strategy/",
+    "vorschau": "Brussels is looking at how Helsinki prepares for crises, from pandemics to a potential Russian attack"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "An Italian princess and EU budgets: 5 takeaways from POLITICO’s Jordan Bardella interview",
+    "url": "https://www.politico.eu/article/france-jordan-bardella-5-takeaways-from-politico-interview/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "The French far-right leader talks Donald Trump, NATO — and love."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Jordan Bardella is coming for Europe",
+    "url": "https://www.politico.eu/article/france-eu-far-right-jordan-bardella-coming-for-europe/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "In an exclusive interview with POLITICO, the leader of the National Rally said he would seek to halve France’s contribution to the EU budget."
+   }
+  ],
+  "🗳️ Wahlen & Parteien": [
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Migration: Schweiz-Hochrechnung – klare Absage an Bevölkerungs-Grenze",
+    "url": "https://www.wiwo.de/politik/ausland/migration-schweiz-hochrechnung-klare-absage-an-bevoelkerungs-grenze/100232865.html",
+    "vorschau": "Die SVP wollte die Migration begrenzen, doch erste Zahlen zeigen: Die Schweizer lehnen den Vorschlag offenbar ab. Was steckt hinter der sogenannten „Nachhaltigkeitsinitiative“?"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Switzerland Rejects Measure to Cap Its Population at 10 Million",
+    "url": "https://www.nytimes.com/2026/06/14/world/europe/switzerland-population-cap-referendum.html",
+    "vorschau": "The referendum was about limiting migration after the number of residents rose by more than a quarter since 2000, but it was framed around affordability and sustainability."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Schweizer lehnen Einwohner-Obergrenze in Volksabstimmung ab",
+    "url": "https://www.tagesschau.de/ausland/europa/schweiz-volksabtimmung-migration-102.html",
+    "vorschau": "Hohe Mieten waren ein Argument, mit dem die Schweizer SVP eine Begrenzung der Einwohnerzahl begründet hatte. Doch gerade in Städten war das Nein bei der Volksabstimmung deutlich. Die SVP ist enttäuscht, sonst überwiegt Erleichterung. Von K. Hondl."
+   },
+   {
+    "quelle": "Deutschlandfunk",
+    "titel": "Schweiz - Volksabstimmung setzt auf Angst vor Migration - und verliert",
+    "url": "https://www.deutschlandfunk.de/10-millionen-schweiz-schriftsteller-lukas-baerfuss-zur-volksabstimmung-100.html",
+    "vorschau": "Die Schweiz lehnt eine Begrenzung der Einwohnerzahl auf zehn Millionen ab. Für den Schriftsteller Lukas Bärfuss waren vor allem die Warnungen vor möglichen wirtschaftlichen Folgen ausschlaggebend. Zudem sendet das Ergebnis auch ein Signal an andere. Seidel, Änne"
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | Switzerland Rejects a Population Cap",
+    "url": "https://www.wsj.com/opinion/switzerland-rejects-a-population-cap-4985d7d8",
+    "vorschau": "The referendum was an overreaction to migration concerns."
+   }
+  ],
+  "📱 Medien & Kultur": [
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Online-Shopping: Influencer treiben Online-Käufe bei Jugendlichen in die Höhe",
+    "url": "https://www.tagesspiegel.de/gesellschaft/panorama/online-shopping-influencer-treiben-online-kaufe-bei-jugendlichen-in-die-hohe-15714617.html",
+    "vorschau": "Mit nur einem Klick landen Sneaker, Beauty-Produkte und Co. im Warenkorb. Wie stark Social Media und Influencer den Kaufrausch bei Jugendlichen anheizen – und was Eltern wissen sollten."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Starmer set to ban under-16s from major social media platforms",
+    "url": "https://www.bbc.com/news/articles/cly7njlw95qo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The prime minister promises \"bold action\" ahead of Monday's announcement on restrictions for children."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Sahel juntas are 'crushing' basic freedoms",
+    "url": "https://www.dw.com/en/sahel-juntas-are-crushing-basic-freedoms/a-77500618?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "In the Sahel countries of Mali, Burkina Faso, and Niger, military rulers are increasingly clamping down on press freedom and freedom of expression. Many journalists, bloggers and activists have been forced into exile."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "INTERVIEW: Teach kids digital literacy to avoid social media bans",
+    "url": "https://www.euractiv.com/news/interview-teach-kids-digital-literacy-to-avoid-social-media-bans/",
+    "vorschau": "Estonia's digital minister says blanket bans are a misguided \"political\" fix that won't stop online harms"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Starmer to announce Australia-style social media ban for teenagers",
+    "url": "https://www.ft.com/content/e3b7be6f-99e7-42d2-a3bb-e400690c7bc0",
+    "vorschau": "PM set to announce that he will ban younger teenagers from some social media platforms and curb their daily use"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "I’m a mum. Here’s why banning social media for under 16s won’t work.",
+    "url": "https://www.politico.eu/article/social-media-ban-under-16s-uk/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "I want kids to be safe online, but I don’t believe an Australia-style outright ban is the solution."
+   }
+  ],
+  "⚽ Sport": [
+   {
+    "quelle": "Zeit Online",
+    "titel": "Fußball-Nationalmannschaft: Neuers Ratschläge und die Erinnerungen an den WM-Sieg 2014",
+    "url": "https://www.zeit.de/news/2026-06/15/neuers-ratschlaege-und-die-erinnerungen-an-den-wm-sieg-2014",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Fußball: Das war die WM-Nacht: Jubel bei Ivorern und Lob für DFB-Team",
+    "url": "https://www.zeit.de/news/2026-06/15/das-war-die-wm-nacht-jubel-bei-ivorern-und-lob-fuer-dfb-team",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Fußball-WM 2026: Iranische Nationalmannschaft in den USA eingetroffen",
+    "url": "https://www.zeit.de/sport/2026-05/fussball-wm-2026-liveblog",
+    "vorschau": "Das Team des Iran ist zum WM-Auftakt in Los Angeles angekommen. Trainer und Spieler beklagen, dass die Visa-Bestimmungen die Vorbereitung erschwert hätten. Das Liveblog"
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Fußball-WM: Vater ermordet, Bruder entführt: Das ist Iraks WM-Held",
+    "url": "https://www.tagesspiegel.de/sport/fussball-wm-vater-ermordet-bruder-entfuhrt-das-ist-iraks-wm-held-15714611.html",
+    "vorschau": "Die WM-Ambitionen der Iraker ruhen auf Stürmer Aymen Hussein. Hinter seinem Aufstieg steckt eine Geschichte voller Schmerz und Verlust. Früh verliert der Offensivspieler seinen Vater und Bruder."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Fußball-Nationalmannschaft: Nagelsmanns Belohnung und eine klare Hummels-Prognose",
+    "url": "https://www.tagesspiegel.de/sport/fussball-nationalmannschaft-nagelsmanns-belohnung-und-eine-klare-hummels-prognose-15714591.html",
+    "vorschau": "Nach der Tor-Party gegen Curaçao reist der DFB-Tross sofort zurück ins WM-Basiscamp. Während des Fluges gewinnt auch die Elfenbeinküste. Wie es an den kommenden Tagen nun weitergeht."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Fußball-WM: Japaner räumen im Stadion auf - und ein NFL-Star hilft mit",
+    "url": "https://www.tagesspiegel.de/sport/fussball-wm-japaner-raumen-im-stadion-auf-und-ein-nfl-star-hilft-mit-15714588.html",
+    "vorschau": "Seit Japans WM-Premiere gibt es diese Bilder: Die Fans der Samurai Blue sammeln ihren Müll im Stadion selbst ein. NFL-Quarterback Jameis Winston fühlt sich davon offenbar inspiriert."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Formel 1 in Barcelona: „Roter Hammer“: Pressestimmen zu Hamiltons Ferrari-Debütsieg",
+    "url": "https://www.tagesspiegel.de/sport/formel-1-in-barcelona-roter-hammer-pressestimmen-zu-hamiltons-ferrari-debutsieg-15714577.html",
+    "vorschau": "„König Lewis regiert wieder“: Mit seinem ersten Grand-Prix-Sieg im Ferrari meldet sich Lewis Hamilton zurück im WM-Rennen. Die internationalen Medien schwärmen."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Fußball-WM: Irans Kapitän: „Spüre die Spannungen seit dem ersten Moment“",
+    "url": "https://www.tagesspiegel.de/sport/fussball-wm-irans-kapitan-spure-die-spannungen-seit-dem-ersten-moment-15714575.html",
+    "vorschau": "Anreise am Spieltag, Rückreise noch vor dem Schlafengehen: So wenig Zeit wie möglich sollten Irans Fußballer bei der WM in den USA verbringen. Nun scheint es doch etwas besser zu sein."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Matchwornshirt: Der Geruch der Sieger",
+    "url": "https://www.wiwo.de/unternehmen/handel/zonderwijk-matchwornshirt-wm-2026/100231668.html",
+    "vorschau": "Zwei niederländische Brüder versteigern getragene Trikots von Ronaldo, Messi, Mbappé, Wirtz und Co. Bei der letzten Fußball-WM in Katar kooperierten sie mit zwei Nationen – beim aktuellen Turnier mit 15."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "BBC Sport pundits choose England World Cup XIs - who would you pick?",
+    "url": "https://www.bbc.com/sport/football/articles/c8r2l12jjz7o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Thomas Tuchel will pick his first England World Cup team on Wednesday, when the Three Lions take on Croatia. BBC Sport pundits choose their starting XIs - who would you pick?"
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Japan come from behind twice to draw with Netherlands",
+    "url": "https://www.bbc.com/sport/football/videos/cnv9dzl62g6o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Daichi Kamada's late header rescues a deserved point for Japan against the Netherlands in their opening World Cup game in Dallas."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Curaçao Is the Smallest Country Ever to Reach the World Cup",
+    "url": "https://www.nytimes.com/2026/06/14/world/americas/world-cup-curacao-netherlands-soccer.html",
+    "vorschau": "Competing for the first time, Curaçao is brimming with joy. Most of the Caribbean nation’s team was born and raised in the Netherlands, but residents say the players represent them."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "War and the World Cup",
+    "url": "https://www.nytimes.com/2026/06/14/world/world-cup-iran-lebanon-trump-birthday.html",
+    "vorschau": "The Iranian government has always used the national team to project soft power. That puts players and fans who oppose the regime in a tough spot."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "The Secrets of a Soccer-Turf Master",
+    "url": "https://www.nytimes.com/2026/06/14/science/world-cup-turf-sorochan.html",
+    "vorschau": "John Sorochan, a turf scientist at the University of Tennessee, has led the yearslong, multimillion-dollar effort to develop perfect playing fields for the 2026 World Cup."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Manuel Neuer: The aura of a record-breaking goalkeeper",
+    "url": "https://www.dw.com/en/manuel-neuer-the-aura-of-a-record-breaking-goalkeeper/a-77538894?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Germany's hopes at the 2026 World Cup are connected to world-class goalkeeper Manuel Neuer's fitness and form."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Germany start 2026 World Cup with win over Curacao",
+    "url": "https://www.dw.com/en/germany-start-2026-world-cup-with-win-over-curacao/a-77538843?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "For the first time since they won the tournament in 2014, Germany won their opening game at the World Cup."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "New York Knicks win first NBA championship in 53 years",
+    "url": "https://www.dw.com/en/new-york-knicks-win-first-nba-championship-in-53-years/a-77543316?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Series MVP Jalen Brunson has led the New York Knicks to another comeback victory over the San Antonio Spurs. The win secured the franchise's third NBA championship, and its first since 1973."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Livestream: Deutschland gegen Curaçao bei der Fußball-WM",
+    "url": "https://www.tagesschau.de/sport/wm-deutschland-curacao-livestream-100.html",
+    "vorschau": "In der Gruppe E der Fußball-Weltmeisterschaft hat Deutschland gegen Debütant Curaçao mit 7:1 gewonnen. Das DFB-Team galt als klarer Favorit. Verfolgen Sie die Berichterstattung im Ersten hier im Livestream."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Team Curaçao Arrives at the World Cup With Much of the Island in Tow.",
+    "url": "https://www.nytimes.com/2026/06/14/us/team-curacao-world-cup-fans.html",
+    "vorschau": "Qualifying for the world’s biggest sporting event meant everything for residents of the Caribbean island country."
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Second-half goal frenzy lights up World Cup prospects for Dutch and Japan - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQcFoxNHFZYmROT2pRY1diNTJJRy1SZVl5X2kyamtfc1hGaURqeERKN2dMODZIcE4xNWxxSEJXMV9lc3NUN2U1SkpBWlFjQVFkTExRNlJGUWNxTm5hSnpHZzJUWjg5ZXF4eUxCbVE2ekVObHJqWTh6ODI1aUxuVE92eUZoZFJtVmFEN0xSMFBJVHU1NHF0YjNGcmpsQ19sQjJ0M04wTzk5ZnNWeHJfTHoyYUgzUk9kdw?oc=5",
+    "vorschau": "Second-half goal frenzy lights up World Cup prospects for Dutch and Japan Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "New Zealand brush aside politics ahead of World Cup opener against Iran - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPaEpuaTR2ekRoV3JqTl9JNHVoQXRDWkhiOUVnOU1VbmVFMk9UZWlyaDQyRm84ZUlfRmtCT2dWdUZCa2FrSk9pc1JhV1dQdXdXRkw1ZUZZMEtkYzB1dy0tTl90M2U3cEpCc3NINlpRbkpKbDJCVEsxYlVkX1BINHRSSnJrOXk4QWl1bDJWNGM1U0RBQ0Vtdl9qSzVBLUIzeVQ3MXlJQ05EM0lSSEI0SjMwLTZ2WHN1UVV0d0E?oc=5",
+    "vorschau": "New Zealand brush aside politics ahead of World Cup opener against Iran Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Germany's World Cup universe back in order with demolition of Curacao - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQaVhfR0hmRktFWXhvYnNodXdPNWYwZ2lKZDlsVmRtdTBydzZXVUVXa3NqaGw3UVdsQzVyWG9oX2tfeE1zZlpxMC1Bb25yTk5UZkpDY2FQV0ptRUppdEZveDI0UnhlZlVSSTgxVzBJaTZpX08xUUpVSk5BNzNzTTJlWW9XTDBpWi1YbWVzeUMxY2hmMGV6S3R2SnlPQ0w1RFFkb3N2V1luSVhDbU04REF3YUNn?oc=5",
+    "vorschau": "Germany's World Cup universe back in order with demolition of Curacao Reuters"
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "7:1-Sieg zum WM-Auftakt: Deutscher Höhenflug gegen Curaçao",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/fussball-wm-2026-deutschland-besiegt-curacao-deutlich-zum-auftakt-200815719.html",
+    "vorschau": "Mit viel Schub in die WM: Die deutsche Fußball-Nationalmannschaft besiegt Curaçao deutlich und stößt dadurch die Tür Richtung K.-o.-Runde schon weit auf. Eine Mahnung gibt es aber mit auf den Weg."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Liveblog Fußball-WM 2026: Klopp bereut „Noch“-Spruch: „Hätte mir aufs Maul hauen können“",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/liveblog-zur-fussball-wm-2026-klopp-bereut-noch-spruch-und-bittet-um-entschuldigung-faz-200749933.html",
+    "vorschau": "Liveblog zur FIFA Fußball-Weltmeisterschaft 2026 vom 11.06. bis 19.07.2026 in den USA, Kanada und Mexiko | FAZ"
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "DFB-Team in Einzelkritik: Neuers Wade und Bizeps halten – Undav als Quotenstürmer",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/deutschland-in-einzelkritik-nach-curacao-spiel-bei-fussball-wm-2026-200815737.html",
+    "vorschau": "Das 7:1 der DFB-Elf beim WM-Start gegen Curaçao ist kein „Manuel-Neuer-Spiel“. Brown rechtfertigt das Vertrauen. Musiala ist nicht bei 100 Prozent. Und Sané zeigt, warum Karl erste Wahl gewesen wäre."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Fußball: Elfenbeinküste siegt spät bei Alu-Festival gegen Ecuador",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/elfenbeinkueste-amad-diallo-trifft-spaet-gegen-ecuador-accg-200815781.html",
+    "vorschau": "Die weiteren deutschen Vorrundengegner liefern sich ein intensives Duell, schwächeln aber im Abschluss - bis ein Joker doch noch sticht. Gegen beide Teams dürfte auf die DFB-Elf einiges zukommen."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Was ist möglich bei der WM?: Die Chance der deutschen Potentialmannschaft",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/deutschland-bei-fussball-wm-2026-die-grosse-chance-der-potentialmannschaft-200923853.html",
+    "vorschau": "Weltmeister? Dafür gibt es auf zu wenigen Positionen Verlässlichkeit auf höchstem Niveau. Helfen könnten den Deutschen die Umstände – wenn Bundestrainer Julian Nagelsmann keinen Fehler macht."
+   }
+  ],
+  "🔥 Sonstiges": [
+   {
+    "quelle": "Zeit Online",
+    "titel": "Geld sparen: Meine Tochter, 9, hat jetzt eine Debitkarte. So läuft's",
+    "url": "https://www.zeit.de/geld/2026-06/geld-sparen-debitkarte-kinder-finanzielle-bildung-groschenoper",
+    "vorschau": "Ich hasse Bargeld. Meine Kinder, Grundschüler, bekommen ihr Taschengeld deshalb auf ihr Konto überwiesen. Finanzielle Bildung! Es ist großartig. Und sehr hart."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Medien-Ikone: Dagmar Berghoff: Selbstvertrauen gegen Lampenfieber im Job",
+    "url": "https://www.zeit.de/news/2026-06/15/dagmar-berghoff-selbstvertrauen-gegen-lampenfieber-im-job",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Panzer & Flugabwehr: Nach FCAS-Flop: 100 deutsche Firmen auf Pariser Waffenmesse",
+    "url": "https://www.zeit.de/news/2026-06/15/nach-fcas-flop-100-deutsche-firmen-auf-pariser-waffenmesse",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Zählen für Artenschutz: Nabu sucht Schmetterlingszähler in NRW",
+    "url": "https://www.zeit.de/news/2026-06/15/nabu-sucht-schmetterlingszaehler-in-nrw",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Maßnahmen laufen: Schiffsbohrmuscheln zerfressen Holzpfähle an der Ostseeküste",
+    "url": "https://www.zeit.de/news/2026-06/15/schiffsbohrmuscheln-zerfressen-holzpfaehle-an-der-ostseekueste",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Nahverkehr: In sechs Minuten zum Hauptbahnhof - S15 startet",
+    "url": "https://www.zeit.de/news/2026-06/15/in-sechs-minuten-zum-hauptbahnhof-s15-startet",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Fifa-WM 2026: Elfenbeinküste ringt Ecuador in der Schlussphase nieder",
+    "url": "https://www.zeit.de/sport/2026-06/wm-2026-deutschland-curacao-niederlande-japan-elfenbeinkueste-ecuador-schweden-tunesien",
+    "vorschau": "Die Elfenbeinküste startet mit einem späten Sieg gegen Ecuador in die WM. Die Niederlande kommen gegen Japan dagegen nicht über ein Remis hinaus. Die Spielberichte"
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Fußballweltmeisterschaft 2026: Japan sichert sich spät ein Remis gegen die Niederlande",
+    "url": "https://www.zeit.de/sport/2026-06/wm-2026-niederlande-japan",
+    "vorschau": "Die Niederlande und Japan sind die Favoriten in Gruppe F. Im direkten Duell lag Oranje zweimal vorn, doch die Japaner fanden jeweils eine Antwort. Der Spielbericht"
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Hormuz Reopening Would Offer Relief for Asia, but Economic Scars Will Remain",
+    "url": "https://www.nytimes.com/2026/06/14/business/hormuz-reopen-iran.html",
+    "vorschau": "For months, Asia has suffered a physical supply crunch that will likely drag on its economies long after the crucial waterway reopens."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Jean Ziegler, Swiss Gadfly Who Provoked His Countrymen, Dies at 92",
+    "url": "https://www.nytimes.com/2026/06/14/obituaries/jean-ziegler-dead.html",
+    "vorschau": "In a nation that sees itself as a tranquil oasis of prosperity and business virtue, he drew death threats for pointing out a dark underside."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "AI Deepfakes Are Getting Weirder and Harder to Spot in the Midterms",
+    "url": "https://www.wsj.com/politics/elections/ai-deepfakes-are-getting-weirder-and-harder-to-spot-in-the-midterms-88b4f7ad?mod=rss_Technology",
+    "vorschau": "A wave of fake videos and ads is fueling worries about misinformation."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "How the Iconic Cast-Iron Tourist Binoculars Are Fighting to Survive a Cashless World",
+    "url": "https://www.wsj.com/business/entrepreneurship/tourist-binoculars-tap-to-pay-42856c01?mod=rss_Technology",
+    "vorschau": "New owners are retrofitting the scenic viewers with tap-to-pay technology now that fewer people have quarters in their pockets."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Coders Were Tech’s MVPs. Now They’re Fighting to Stay in the Game.",
+    "url": "https://www.wsj.com/lifestyle/careers/changing-careers-cutting-expenses-software-engineers-contend-with-ai-3889ce73?mod=rss_Technology",
+    "vorschau": "Software workers are at the front lines of change brought about by the rise of AI that can code, and they see their future work options dwindling."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "NHL: Carolina Hurricanes holen Stanley Cup: 3:0 in Las Vegas",
+    "url": "https://www.tagesspiegel.de/sport/nhl-carolina-hurricanes-holen-stanley-cup-30-in-las-vegas-15714600.html",
+    "vorschau": "Rod Brind'Amour war Kapitän der Carolina Hurricanes, als das Team 2006 den Stanley Cup holte. 20 Jahre später trägt er die Verantwortung für den zweiten Titel."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Pro-jüdische Bewerber im Nachteil?: Auswahl von Antisemitismus-Beauftragtem für Berlins Hochschulen wirft Fragen auf",
+    "url": "https://www.tagesspiegel.de/berlin/pro-judische-bewerber-im-nachteil-auswahl-von-antisemitismus-beauftragtem-fur-berlins-hochschulen-wirft-fragen-auf-15703920.html",
+    "vorschau": "Ein Antisemitismusbeauftragter für Berlins Hochschulen ist gefunden. Doch es gibt Kritik. Vom Schutz jüdischer Studierender ist keine Rede mehr, dafür geht es um „Erfahrungen von Gruppen palästinensischer Herkunft“."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Verbraucher: Neue Rechte für Fluggäste? Das soll sich ändern",
+    "url": "https://www.tagesspiegel.de/wirtschaft/verbraucher-neue-rechte-fur-fluggaste-das-soll-sich-andern-15714581.html",
+    "vorschau": "Wer mit dem Flugzeug reist und zu spät ankommt, erhält eine Entschädigung - auch künftig nach ähnlichen Regeln wie bisher. Details ändern sich, etwa die Preisanzeige im Internet."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Deutscher WM-Auftakt: So nimmt Curaçao das 1:7 gegen Deutschland auf",
+    "url": "https://www.tagesspiegel.de/sport/deutscher-wm-auftakt-so-nimmt-curacao-das-17-gegen-deutschland-auf-15714579.html",
+    "vorschau": "Mit so einer heftigen Niederlage in eine WM zu starten, ist eigentlich immer undankbar. Für die Spieler und den Trainer von Curaçao überwiegt nach dem Deutschland-Spiel aber der Stolz."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Infrastruktur: Das Geld liegt auf der Schiene",
+    "url": "https://www.wiwo.de/unternehmen/industrie/sondervermoegen-infrastruktur-wer-vom-infrastruktur-boom-profitiert/100231885.html",
+    "vorschau": "Die Bahn verbaut einen Großteil der staatlichen Infrastrukturmilliarden. Bauunternehmen wie Strabag profitieren – zunächst einmal."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Trotz Spitzenkarriere: Wie vielbeschäftigte Manager Freundschaften pflegen",
+    "url": "https://www.wiwo.de/erfolg/management/freundschaften-pflegen-trotz-top-karriere-so-gelingt-es-managern/100232263.html",
+    "vorschau": "Wer Karriere macht, nimmt sich selten die Zeit für alte Freunde. Dabei geben gerade diese Beziehungen Halt. Was also braucht es, um sie auch in stressigen Phasen zu pflegen?"
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "E-Fuels: Ein Traum, der weiter auf sich warten lässt",
+    "url": "https://www.wiwo.de/technologie/mobilitaet/e-fuels-synthetische-kraftstoffe-realitaet/100232219.html",
+    "vorschau": "Trotz des breiten Erfolgs der E-Mobilität bleibt die Idee der E-Fuels bestechend: Infrastruktur und Verbrenner ließen sich weiternutzen. Doch neue Ansätze lösen die Probleme nicht."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Roy Hattersley, former Labour deputy leader, dies aged 93",
+    "url": "https://www.bbc.com/news/articles/cvgq1egykr9o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Paying tribute, Sir Keir Starmer said Lord Hattersley \"was a giant of the Labour movement\"."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Assisted dying returns to Parliament as MP urges peers to 'finish the job'",
+    "url": "https://www.bbc.com/news/articles/c4gyxgwkyxyo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Lauren Edwards says she will bring the exact same bill which was narrowly passed by the Commons but ran out of time in the Lords."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "UK electric car sales target set to be weakened",
+    "url": "https://www.bbc.com/news/articles/cx2dmwmj4dmo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The new target hasn't yet been decided, with different numbers under consideration, the BBC understands."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "11 skydivers and pilot killed in US plane crash",
+    "url": "https://www.bbc.com/news/articles/c74ym4j40gpo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The plane had just taken off in the US state of Missouri, but failed to gain altitude, according to local emergency responders."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Farage vows to ban foreign nationals from social housing",
+    "url": "https://www.bbc.com/news/articles/cdjkd4mp93zo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The Reform UK leader says tenants would have three months to find a new home or face potential deportation."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Amad scores late winner as Ivory Coast beat Ecuador",
+    "url": "https://www.bbc.com/sport/football/videos/cx2dyrzwk2vo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Manchester United winger Amad Diallo scored a superb 90th-minute winner as Ivory Coast beat Ecuador in Philadelphia."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "How will Scotland approach Morocco game after opening win?",
+    "url": "https://www.bbc.com/sport/football/articles/clyrepz59dgo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "How will Scotland approach Group C games against Morocco and Brazil after a tense opening victory over Haiti in Boston?"
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Jubilation as Scotland fans celebrate win",
+    "url": "https://www.bbc.com/news/articles/c78yxr7dl3mo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Supporters gathered in bars and venues across the country in the early hours to watch the match against Haiti."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Japan Is Running Out of Royals. Are More Men the Answer?",
+    "url": "https://www.nytimes.com/2026/06/14/world/asia/japan-royal-family-adoption-male.html",
+    "vorschau": "Japan’s legislature is drafting a plan to allow the imperial family to adopt distant male relatives. But some in Japan would prefer a female emperor."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "World leaders welcome news the Strait of Hormuz could soon reopen.",
+    "url": "https://www.nytimes.com/live/2026/06/14/world/iran-war-trump-us/world-leaders-welcome-news-the-strait-of-hormuz-could-soon-reopen",
+    "vorschau": ""
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Singer Oliver Tree Is Said to Have Died in Collision of Helicopters in Brazil",
+    "url": "https://www.nytimes.com/2026/06/14/arts/music/oliver-tree-dead-brazil-helicopter-crash.html",
+    "vorschau": "The two helicopters crashed in Rio de Janeiro on Sunday, killing at least six people, the authorities said."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Net Gain",
+    "url": "https://www.nytimes.com/2026/06/14/briefing/net-gain.html",
+    "vorschau": "We’re covering the Knicks, and a savvy strategy people are using to game prediction markets."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "What should investors expect from Kevin Warsh’s first Fed meeting?",
+    "url": "https://www.ft.com/content/c17424f0-244e-45f4-b1d7-a0ffcebc4cf0",
+    "vorschau": "Market Questions is the FT’s guide to the week ahead"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "How the screwworm broke through US defences and returned to Texas cattle",
+    "url": "https://www.ft.com/content/7857e93b-68a2-492b-802a-d128aceab01e",
+    "vorschau": "A successful programme that contained the parasite for decades began to fail in 2023 as cases exploded in Panama"
+   },
+   {
+    "quelle": "DPA",
+    "titel": "Straße von Hormus soll erst Freitag geöffnet werden Von dpa-AFX - Investing.com Deutsch",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPakdmUDJvUWhDaWdKLWFzUVJBN2d6UHg4aGkySWJUYTEtVG15eUgzRW1mYXVsZ1Vodmxxc0d2UmRfSlAwcHVPckRBTzU0WmRGdmwyOXpPLUtJNzBOMjZ0bDBrWGNPSUVsbjl4UFFfYWpBLXNqdmR6WWVqUnB1aEdqaTEtUE9TSGRkZkNYRmtha1FFRkZSeWpSOXg1MnlJVmptMXEwaQ?oc=5",
+    "vorschau": "Straße von Hormus soll erst Freitag geöffnet werden Von dpa-AFX Investing.com Deutsch"
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Matthew Beesley: „Wir könnten am Beginn eines mehrere Jahrzehnte währenden Trends stehen“",
+    "url": "https://www.handelsblatt.com/finanzen/anlagestrategie/fonds-etf/matthew-beesley-wir-koennten-am-beginn-eines-mehrere-jahrzehnte-waehrenden-trends-stehen/100231637.html",
+    "vorschau": "Der Chef des britischen Fondsanbieters Jupiter erwartet, dass globale Investoren das US-Gewicht in ihren Portfolios langsam senken. Europa wird davon möglicherweise nicht profitieren."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Immobilien: Wohnkonzerne enteignen? Warum die Idee nur Verlierer kennt",
+    "url": "https://www.handelsblatt.com/finanzen/immobilien/immobilien-wohnkonzerne-enteignen-warum-die-idee-nur-verlierer-kennt/100231099.html",
+    "vorschau": "In Berlin gewinnt die Forderung nach einer Vergesellschaftung großer Wohnungskonzerne an Gewicht. Eine dem Handelsblatt vorliegende Analyse warnt jedoch vor massiven Risiken."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "US: Skydiving plane crash leaves 12 people dead in Missouri",
+    "url": "https://www.dw.com/en/us-skydiving-plane-crash-leaves-12-people-dead-in-missouri/a-77551574?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "A plane on a skydiving excursion crashed in Missouri, leaving 11 passengers and one pilot dead. The incident occurred shortly after the plane became airborne."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Swiss voters reject population cap proposal",
+    "url": "https://www.dw.com/en/swiss-voters-reject-population-cap-proposal/a-77543868?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "A proposal to introduce a population cap of 10 million in the country has failed. It was put forward by a hard-right party."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Was bei der Finanzierung des Hauskaufs zu beachten ist",
+    "url": "https://www.tagesschau.de/wirtschaft/verbraucher/immobilienkauf-finanzierung-100.html",
+    "vorschau": "Spätestens bei der Finanzierung wird der Hauskauf zur Herausforderung, denn auf Käufer wartet meistens eine langfristige finanzielle Verpflichtung. Sie müssen sich fragen: Wie viel Haus kann ich mir überhaupt leisten? Von L.-M. Hiltscher."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "EVG-Analyse: Italo-Züge könnten für 16 Städte Nachteile im Fernverkehr bedeuten",
+    "url": "https://www.tagesschau.de/wirtschaft/verbraucher/db-bahn-konkurrenz-italien-100.html",
+    "vorschau": "Die Bahngesellschaft Italo will in Deutschland einsteigen - auf zwei lukrativen Strecken. Anderswo könnte das weniger Züge zur Folge haben, warnt die EVG. Betroffen wären laut der Gewerkschaft Augsburg, Münster und 14 weitere Städte."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Unterseekabel als Sicherheitslücke am Meeresgrund",
+    "url": "https://www.tagesschau.de/ausland/asien/unterseekabel-suedostasien-100.html",
+    "vorschau": "Unfälle und Sabotageakte bedrohen Unterseekabel, von denen die Kommunikation ganzer Staaten wie etwa Australien abhängt. 17 Staaten wollen kritische Unterwasser-Infrastruktur jetzt besser schützen. Von Jennifer Johnston."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Pro-vaping French far right to abstain in EU parliament tobacco tax vote",
+    "url": "https://www.euractiv.com/news/pro-vaping-french-far-right-to-abstain-in-eu-parliament-tobacco-tax-vote/",
+    "vorschau": "With France's presidential election approaching, the National Rally is wary of alienating consumers"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "How EU AI transparency rules will change what you see online",
+    "url": "https://www.euractiv.com/news/how-eu-ai-transparency-rules-will-change-what-you-see-online/",
+    "vorschau": "AI watermarking and deepfake labelling will soon be the standard in the EU"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Europe’s digital sovereignty: Building clouds, borrowing intelligence",
+    "url": "https://www.euractiv.com/opinion/europes-digital-sovereignty-building-clouds-borrowing-intelligence/",
+    "vorschau": "Europe risks achieving technological autonomy while remaining strategically dependent"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Swiss reject divisive anti-immigration proposal",
+    "url": "https://www.euractiv.com/news/swiss-reject-divisive-anti-immigration-proposal-projections/",
+    "vorschau": "The rejected proposal sought measures to prevent the wealthy Alpine nation's population from exceeding 10 million before 2050"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "French MEP Glucksmann tests presidential waters with sovereignty pitch",
+    "url": "https://www.euractiv.com/news/french-mep-glucksmann-tests-presidential-waters-with-sovereignty-pitch/",
+    "vorschau": "Elon Musk, Sam Altman, and Zhang Yiming are France's enemies, Glucksmann said"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Bremt Futures May Fall to $80 per Barrel by Year-End if Strait of Hormuz Not Closed Again",
+    "url": "https://www.wsj.com/finance/commodities-futures/bremt-futures-may-fall-to-80-per-barrel-by-year-end-if-strait-of-hormuz-not-closed-again-5484ba25?mod=rss_markets_main",
+    "vorschau": "Brent crude oil futures may fall to around $80 per barrel by year-end if Strait of Hormuz isn’t closed again, CBA said."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "US musician Oliver Tree, 32, killed in helicopter crash in Brazil",
+    "url": "https://www.theguardian.com/world/2026/jun/14/musician-oliver-tree-32-killed-in-helicopter-crash-in-brazil",
+    "vorschau": "Alternative singer and internet personality among six who died when two helicopters collided over Rio de Janeiro The American musician Oliver Tree has died in a helicopter crash in Brazil at the age of 32, according to reports. Two helicopters collided over Rio de Janeiro on Sunday morning and crashed in the city’s western zone, killing all six people onboard, including Tree, several Brazilian media outlets reported. Continue reading..."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Mother hopes to get justice for murdered daughter in retrial in Dominican Republic",
+    "url": "https://www.theguardian.com/uk-news/2026/jun/14/mother-hopes-to-get-justice-for-murdered-daughter-in-retrial-in-dominican-republic",
+    "vorschau": "Shirley Firth is hoping those responsible for Lindsay de Feliz’s death in 2019 will finally be convicted A Cambridgeshire mother in her 90s is hoping to finally see justice for her murdered daughter when a retrial into her death is due to open in the Dominican Republic this week. The body of Lindsay de Feliz, 64, a successful author, was found in a shallow grave, close to her home in the north-west of the Dominican Republic, in December 2019. Continue reading..."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Jamaican beach access campaigners go to court to fight privatisation of coast",
+    "url": "https://www.theguardian.com/news/2026/jun/14/jamaica-beach-access-court-fight-privatisation-coast",
+    "vorschau": "Activists are challenging colonial-era law and demanding ‘free, legal, unfettered, forever rights’ to use beaches Jamaica’s beach access crisis: ‘We shouldn’t be forced to fight for what is already ours’ Campaigners in Jamaica are heading to court next week to try to prevent the government from cutting off access to more of their beaches. They argue that ceding their shorelines to big hotel chains enriches private investors and benefits tourists and outsiders while depriving Jamaicans who depend"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Jamaica’s beach access crisis: ‘We shouldn’t be forced to fight for what is already ours’",
+    "url": "https://www.theguardian.com/news/2026/jun/14/jamaica-beach-access-crisis-plantation-tourism",
+    "vorschau": "Activists argue business model is ‘plantation tourism’ designed to benefit elite and disadvantage most Jamaicans Campaigners go to court to fight privatisation of Jamaican coast Devon Taylor remembers when the Mammee Bay shoreline in St Ann, Jamaica, was filled with children frolicking in the ocean after school, fishers haggling with locals over the price of their daily catch and craft vendors carving souvenirs under almond trees. “I grew up on Mammee Bay,” Taylor says. He recalls fetching seawa"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Deadly Philippines earthquake found to have raised seabed by up to 2 metres",
+    "url": "https://www.theguardian.com/world/2026/jun/14/philippines-earthquake-raised-seabed-costal-uplift-coral-exposed",
+    "vorschau": "‘Coastal uplift’ exposes coral and kills marine life, as residents say shorelines extended by up to 200 metres A powerful earthquake that killed at least 61 people in the Philippines this week raised the seabed by as much as 2 metres (6.6ft), exposing coral and harming marine life, the country’s environment department has said. At least 40 people are still missing after the 7.8-magnitude quake off southern Mindanao island on Monday, according to updated tolls from the disaster agency. Continue r"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Shark expert says Tony Abbott ‘doesn’t understand the science’ after former PM calls for cull",
+    "url": "https://www.theguardian.com/environment/2026/jun/15/shark-expert-says-tony-abbott-doesnt-understand-the-science-after-former-pm-calls-for-cull",
+    "vorschau": "Another expert says drone technology may have prevented a shark attack at Coogee beach on Saturday Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast A shark behaviour expert says Tony Abbott “doesn’t understand the science” after the former prime minister called for sharks to be culled in the wake of an attack at a Sydney beach. A woman, aged in her 30s, was in a critical but stable condition on Monday after being bitten on the le"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Pakistani police officer arrested over shooting death of ‘happy, bubbly, friendly’ Australian girl Hania Ahmed",
+    "url": "https://www.theguardian.com/world/2026/jun/15/pakistani-police-officer-arrested-over-shooting-death-of-happy-bubbly-friendly-australian-girl-hania-ahmed",
+    "vorschau": "Punjab police said an officer mistakenly opened fire at the Ahmed family, who were victims of a robbery at Chakwal A Pakistani police officer has been stood down and arrested after mistakenly shooting dead a young Australian girl who was on holiday with her family. Australian-born Hania Ahmed and her family were visiting a relative at Chakwal, in Pakistan’s Punjab province, when they were robbed while in their rental car late on Wednesday night (local time). Continue reading..."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Father may have thrown daughter into Parramatta River in suspected murder-suicide, police say",
+    "url": "https://www.theguardian.com/australia-news/2026/jun/15/father-murder-suicide-parramatta-river-sydney-six-year-old-girl-death-ntwnfb",
+    "vorschau": "NSW police say suicide note and ‘other evidence’ suggest six-year-old’s death was an act of domestic violence Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast A suicide note has been located after the bodies of a young girl and her father were pulled from the Parramatta River on Saturday. The six-year-old may have been deliberately thrown in the water by the man from a hired boat in what police believe was a horrific act of domes"
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "California Sues to Stop One County’s Ban on Most Mail Voting",
+    "url": "https://www.nytimes.com/2026/06/14/us/california-lawsuit-mail-voting.html",
+    "vorschau": "Shasta County voters had approved a ballot measure that would have heavily restricted voting by mail and imposed photo ID requirements. State officials said the new rules were illegal."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Mitch McConnell Is Hospitalized, His Spokesman Says",
+    "url": "https://www.nytimes.com/2026/06/14/us/politics/mitch-mcconnell-hospitalized.html",
+    "vorschau": "No details were given about the 84-year-old former majority leader’s condition, but he has had a string of health issues in recent years."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Don’t ask Burnham what he’d do as PM. I’m not sure he’s in the loop",
+    "url": "https://www.ft.com/content/c0eb2f07-fcf6-4368-b1f2-7525f8b2eabd",
+    "vorschau": "A behind-the-scenes look at the work of Rutherford Hall, critical communications strategist"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "MPs warned over soaring cost of delaying work on UK parliament",
+    "url": "https://www.ft.com/content/1a435989-9eff-45ff-852d-9f16ca170baa",
+    "vorschau": "Crumbling Palace of Westminster ‘in urgent need’ of repairs already estimated at £11bn, says National Audit Office"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "UK consumer losses as a result of financial fraud hit 4-year high in 2025",
+    "url": "https://www.ft.com/content/4d5db95f-e60e-4c5a-8e17-48f91230959b",
+    "vorschau": "Figures will intensify pressure from banks for government to force tech groups to crack down on fraudulent activity"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Badenoch courts City with call for greater risk-taking",
+    "url": "https://www.ft.com/content/69e14b8b-c009-41d4-89b1-fb27d61c5c45",
+    "vorschau": "UK opposition leader seeks to reset relations after market turbulence under ex-prime minister Liz Truss in 2022"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Underfunded and under fire: the crises facing Northern Ireland’s police",
+    "url": "https://www.ft.com/content/eb85e22d-cfd0-41ef-b752-8039fbf17902",
+    "vorschau": "Service already under scrutiny for failing to attract enough Catholics and a culture of institutional misogyny before this week’s riots"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Electrification jumps up corporate agenda after energy crisis, survey finds",
+    "url": "https://www.ft.com/content/336ad7d4-15b3-4033-9ff3-3ae03111eb1f",
+    "vorschau": "Security and cost concerns elevate business push for overhaul of power systems"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Manchester is a triumph of private enterprise",
+    "url": "https://www.ft.com/content/87e4c899-5055-4a4d-841b-c7e9b0c319a6",
+    "vorschau": "‘Soft left’ Labour MPs backing Andy Burnham might have learned the wrong lessons from the city’s revival"
+   },
+   {
+    "quelle": "Deutschlandfunk",
+    "titel": "Südtirol - Was vom Sprachkonflikt geblieben ist",
+    "url": "https://www.deutschlandfunk.de/suedtirol-was-vom-sprachkonflikt-geblieben-ist-100.html",
+    "vorschau": "Südtirol ist die nördlichste Provinz Italiens. Seit Inkrafttreten der Autonomie 1972 gilt es, die drei offiziellen Sprachgruppen zusammenzuhalten: Deutsche, Italiener und Ladiner. Doch bis heute gibt es immer wieder Differenzen. (Erstsendung: 02.02.26) Weiß, Lisa"
+   },
+   {
+    "quelle": "Deutschlandfunk",
+    "titel": "KI in der Politik - Wenn KI die Reden schreibt",
+    "url": "https://www.deutschlandfunk.de/ki-kuenstliche-intelligenz-politik-reden-gastbeitraege-100.html",
+    "vorschau": "Viele Politiker verfassen ihre Reden nicht selbst, sondern haben Ghostwriter. Macht es da einen Unterschied, wenn sie stattdessen die KI zur Hilfe nehmen, so wie Thüringens Ministerpräsident Mario Voigt oder Bundesdigitalminister Karsten Wildberger?"
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Europe’s Arms Race Is Creating Boomtowns. Why Are Locals So Unhappy?",
+    "url": "https://www.wsj.com/world/europe/europes-arms-race-is-creating-boomtowns-why-are-locals-so-unhappy-f103ccdf",
+    "vorschau": "New investment in French and British towns brings jobs but sparks division and resentment."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | Colombia’s Stark Election Choice",
+    "url": "https://www.wsj.com/opinion/colombias-stark-election-choice-29adc737",
+    "vorschau": "Next Sunday’s runoff pits a hard-core socialist against a backer of free markets."
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Germany cruise to 7-1 win over debutants Curacao in Houston - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUGtUdHpaTFBJOHp4NFNWNU4tbm5aVi1ZNGRyRUVYZ3lyMGcyOGVjaDZNRVJheWNyQ3M5SHZqbU9HMVZPYTROX0ZqRmhiVk9iNFRkdEo3bGJiUS1QelNQcEFxQkJlS21HekQ3cndESGdmVkoxQUZhWUdpeG4yMWIxOGRSU1Zqa3hjRGhTZmhuOU02UnhOdk5SdkRVQ0Y2ZklsYnQzdXVrbUx2SzhMcWdZ?oc=5",
+    "vorschau": "Germany cruise to 7-1 win over debutants Curacao in Houston Reuters"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "‘The EU is completely obsolete’: France’s far-right leader wants to shake up Europe",
+    "url": "https://www.politico.eu/article/jordan-bardella-france-far-right-frontrunner-donald-trump-nato-future-of-eu/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Jordan Bardella lays out how he would lead France as president."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Farage and Corbyn are out in front on TikTok, new research shows",
+    "url": "https://www.politico.eu/article/nigel-farage-reform-uk-jeremy-corbyn-you-party-tiktok-new-research/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "A study of more than 11,000 TikTok posts suggests the right-wing Reform UK leader is the most effective performer on the video-sharing site."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Budget, alliances : Bardella veut toujours “tout changer” à l’UE",
+    "url": "https://www.politico.eu/article/budget-alliances-bardella-veut-toujours-tout-changer-a-lue/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "A quelques jours de son premier déplacement en Pologne, le président du RN a répondu en exclusivité aux questions de POLITICO, depuis Bruxelles. L'occasion pour lui de préciser ses intentions vis-à-vis de l'Union européenne."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Sieg zum WM-Auftakt: Die Nationalelf hat Glück gehabt",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/fussball-wm-2026-dfb-team-besiegt-curacao-und-hat-glueck-gehabt-200815732.html",
+    "vorschau": "Nicht, weil sie gegen Curaçao gewonnen hat. Weil sie gegen Curaçao gespielt hat. Durch das 7:1 im Auftaktspiel der Weltmeisterschaft hat sie vor allem eines gewonnen: Zeit."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Die Gier der FIFA: Abpfiff für Normalverdiener",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/fussball-wm-2026-abpfiff-fuer-normalverdiener-200928350.html",
+    "vorschau": "Die WM 2026 bricht Rekorde – vor allem beim Abkassieren: Wer nicht zahlen kann, bleibt draußen. FIFA-Präsident Gianni Infantino nennt es Marktwirtschaft."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Keine Migrationsgrenze: Die Schweiz bleibt offen",
+    "url": "https://www.faz.net/aktuell/wirtschaft/die-schweiz-bleibt-offen-accg-200929189.html",
+    "vorschau": "Das „Nein“ zum Bevölkerungsdeckel verhindert den Bruch mit Europa. Aber ein Wermutstropfen bleibt."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Wenn KI für Politiker schreibt: Ist das noch Betrug?",
+    "url": "https://www.faz.net/aktuell/feuilleton/debatten/weshalb-es-nicht-egal-ist-wenn-politiker-wie-wildberger-ki-als-schreiber-benutzen-200928373.html",
+    "vorschau": "Der Digitalminister lässt mutmaßlich KI schreiben, ein Ministerpräsident hat es zugegeben, und es wirkt, als ließe die Leute das eher kalt. Sind die Zeiten, in denen KI-Nutzung beim Schreiben als Betrug gilt, schon vorbei?"
+   },
+   {
+    "quelle": "Google Markets EN",
+    "titel": "What to Expect in Markets This Week: Kevin Warsh Leads His First Fed Meeting - Investopedia",
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNWEJrbFpRWXU2SUlCaEQ2bVk2TUF1c21SQkFvMW9TQVRibzQ2cmN2eGhjNVYzRFpTVTIySEgyOFNLZnN4T0plMHFkZFNhOGJJWEFUb3AzSVlJLWpSY2U2QnA1S3JmcC1FT3RMZVlKeDR1VmxocG1LNkU0WlYxOEs1VTRKaE1ydjcyZ1VUY2trY0lwNzdRaHJfUWw4WUpKN2NRcVVpOHZrQzB4WWhXdGk5NTBKOA?oc=5",
+    "vorschau": "What to Expect in Markets This Week: Kevin Warsh Leads His First Fed Meeting Investopedia"
+   },
+   {
+    "quelle": "Google Markets EN",
+    "titel": "Macro Memo: Spin Cycle - Citrini Research",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBZSHdmakZlTEtUaERnanhNbDVCc043YXRtVVd0dEZQeDdEY21ibVNBdy1WMkpkOGRLMzFMbmlKc3U4Mi1iYjRucWtuREc0RWU0MmVRcmRpRy1tZ2ZhUDljN3pXU01pZw?oc=5",
+    "vorschau": "Macro Memo: Spin Cycle Citrini Research"
+   },
+   {
+    "quelle": "Google Markets EN",
+    "titel": "Kevin Warsh's Inaugural Fed Meeting: Market Impact and Stock Index Declines - News and Statistics - IndexBox",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMHk0UE9rZTZzMnpQR2Y0MUc4ejZhUTNBTkhJVURobzV1d1BlemxlcXNFbHF6c2JOb0tteVlXSXRIRDJkLUNCZDJxdmhKV3hhcS1uY0VfWVR6TUxndmw1VG5NNkd4eGM2OE5JODVFclpzakpRTUotZ3Q0aHExajVnSFNEejRTQzFDbC1ETU53dDNWTVltRWgwLXpZSVRwZzV4azlKTTdCMXRqakE?oc=5",
+    "vorschau": "Kevin Warsh's Inaugural Fed Meeting: Market Impact and Stock Index Declines - News and Statistics IndexBox"
+   }
+  ]
+ }
+}
