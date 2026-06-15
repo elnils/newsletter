@@ -1,62 +1,58 @@
-name: Tageslage Newsletter
+name: Build Berlin Weekend Guide
 
-# Geplanter Abruf erfolgt extern über cron-job.org (per workflow_dispatch).
 on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "30 4 * * 4"   # Donnerstag 06:30 Berlin
   workflow_dispatch:
 
+# Die Action committet die gebauten Dateien zurueck ins Repo (wie beim
+# Tageslage-Newsletter). GitHub Pages liefert sie aus main aus.
 permissions:
-  contents: write   # noetig, damit der Commit von data/ gepusht werden darf
+  contents: write
+
+concurrency:
+  group: build-weekend-guide
+  cancel-in-progress: false
 
 jobs:
-  send-newsletter:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # 1) Repo auschecken
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # 2) Python bereitstellen
-      - name: Python einrichten
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          cache: "pip"
+          python-version: "3.12"
 
-      # 3) Abhaengigkeiten
-      - name: Abhaengigkeiten installieren
-        run: pip install feedparser groq gspread google-auth
+      - name: Abhaengigkeiten (nur fuer optionale Groq-Politur)
+        run: pip install -r requirements.txt
+        continue-on-error: true
 
-      # 4) Empfaengerliste aus Google Sheet -> schreibt RECIPIENT_LIST
-      - name: Empfaengerliste laden
+      - name: Events holen + Seite bauen (ins Repo-Wurzelverzeichnis)
         env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-          GOOGLE_SHEET_ID:    ${{ secrets.GOOGLE_SHEET_ID }}
-          RECIPIENT_EMAIL:    ${{ secrets.RECIPIENT_EMAIL }}
-        run: python3 scripts/recipients.py
-
-      # 5) Newsletter bauen + versenden + Archiv-JSON nach data/ schreiben
-      #    (laeuft in scripts/, daher landet data/ via ../data in der Repo-Wurzel)
-      - name: Newsletter ausfuehren
-        working-directory: scripts
-        env:
-          GROQ_API_KEY:       ${{ secrets.GROQ_API_KEY }}
-          GMAIL_ADDRESS:      ${{ secrets.GMAIL_ADDRESS }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          RECIPIENT_EMAIL:    ${{ env.RECIPIENT_LIST }}
-          PAGES_BASE_URL:     ${{ secrets.PAGES_BASE_URL }}
-          UNSUBSCRIBE_URL:    ${{ secrets.UNSUBSCRIBE_URL }}
-        run: python3 newsletter.py
-
-      # 6) Aktualisiertes Archiv (data/) committen und in main pushen
-      #    Pages liest "main (nur main)" aus der Wurzel -> data/ + index.html
-      - name: Archiv committen
+          SITE_URL: https://elnils.github.io/berlin-guide/
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
-          if git diff --cached --quiet; then
-            echo "Keine Archiv-Aenderungen."
-          else
-            git commit -m "Archiv aktualisiert: $(date -u +%Y-%m-%d_%H:%M)"
-            git push
-          fi
+          python app.py build   # erst aus Cache bauen (immer etwas da)
+          python app.py fetch    # frische Events holen
+          python app.py build    # mit frischen Daten neu bauen
+
+      - name: Newsletter verschicken (nur Donnerstag, nur mit Secrets)
+        if: github.event_name == 'schedule'
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_LIST: ${{ secrets.RECIPIENT_LIST }}
+          UNSUBSCRIBE_URL: ${{ secrets.UNSUBSCRIBE_URL }}
+        run: python app.py send
+        continue-on-error: true
+
+      - name: Gebaute Seite zurueck ins Repo committen
+        run: |
+          git config user.name "weekend-guide-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Auto-Update $(date +%d.%m.%Y\ %H:%M)"
+          git push
