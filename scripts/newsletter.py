@@ -122,15 +122,21 @@ CATEGORIES = {
             "koalitionsvertrag": 10, "fraktionsvorsitz": 10,
             "bundestagswahl": 10, "landtagswahl": 10,
             "kanzler": 10, "koalition": 10,
-            # Merz ist Bundeskanzler seit März 2025
+            # Kabinett Merz (seit Mai 2025) – aktuelle Amtsträger
             "merz": 10, "friedrich merz": 10,
-            # Scholz ist jetzt SPD-Oppositionsführer
-            "scholz": 5,
-            "habeck": 7, "baerbock": 7, "lindner": 7,
-            "spd": 8, "cdu": 8, "csu": 8, "grüne": 8, "fdp": 7, "afd": 8,
-            "kabinett": 8, "große koalition": 10,
-            "abgeordneter": 8,
-            # Explizit deutsche Kontexte
+            "klingbeil": 9, "lars klingbeil": 9,   # Vizekanzler + Finanzminister
+            "wadephul": 8, "johann wadephul": 8,    # Außenminister (auch Außenpol.)
+            "reiche": 6, "katharina reiche": 7,     # Wirtschaftsministerin
+            "söder": 8, "markus söder": 8,          # CSU-Chef
+            "esken": 6, "saskia esken": 6,
+            # Scholz/Ampel-Minister nur noch schwach (Opposition/nicht mehr im Amt)
+            "scholz": 4,
+            "spd": 8, "cdu": 8, "csu": 8, "grüne": 7, "fdp": 6, "afd": 8,
+            "linke": 6, "bsw": 6,
+            "kabinett": 8, "große koalition": 10, "schwarz-rot": 9,
+            "abgeordneter": 8, "bundespräsident": 8, "steinmeier": 7,
+            "vertrauensfrage": 9, "misstrauensvotum": 9,
+            # Explizit deutsche Kontexte (englische Quellen)
             "german government": 10, "german parliament": 10,
             "german chancellor": 10, "german coalition": 10,
             "german minister": 8, "german election": 8,
@@ -153,17 +159,18 @@ CATEGORIES = {
             "außenminister": 10, "außenpolitik": 10, "diplomatie": 10,
             "botschafter": 10, "staatsbesuch": 10, "gipfel": 8,
             "sanktionen": 8, "friedensverhandlung": 10, "waffenstillstand": 10,
-            "trump": 5, "biden": 5, "g7": 8, "g20": 8,
+            "wadephul": 8,                    # deutscher Außenminister
+            "trump": 5, "biden": 4, "g7": 8, "g20": 8,
             # Vereinte Nationen gehören zur Außenpolitik, nicht Innenpolitik
             "vereinte nationen": 10, "un-sicherheitsrat": 10,
-            "konflikt": 5,
+            "konflikt": 5, "eskalation": 6, "vermittlung": 8,
             "foreign policy": 10, "foreign minister": 10,
             "diplomacy": 10, "diplomatic": 8, "ambassador": 10,
             "ceasefire": 10, "peace talks": 10, "peace deal": 10,
             "sanctions": 8, "summit": 8, "bilateral": 8,
             "united nations": 10, "un security council": 10,
             "nato summit": 10, "state visit": 10,
-            "ukraine war": 10, "kremlin": 10,
+            "ukraine war": 10, "kremlin": 10, "zelensky": 8, "selenskyj": 8,
         },
         "exclude": [
             "bundesliga", "fußball", "soccer",
@@ -185,6 +192,12 @@ CATEGORIES = {
             "us tariff": 10, "us trade": 10,
             "us foreign policy": 10, "us sanctions": 10,
             "us military": 10, "us troops": 10,
+            # Aktuelle US-Kabinettsmitglieder (Trump II)
+            "rubio": 8, "marco rubio": 9,        # Außenminister
+            "bessent": 7, "scott bessent": 8,    # Finanzminister
+            "hegseth": 8, "pete hegseth": 8,     # Verteidigungs-/"Kriegsminister"
+            "jd vance": 8, "vance": 6,           # Vizepräsident
+            "department of war": 9, "secretary of war": 9,
             "canada": 6, "mexico": 6,
             # ── China ─────────────────────────────────────────────────
             "china": 8, "xi jinping": 10, "beijing": 10, "peking": 10,
@@ -199,8 +212,11 @@ CATEGORIES = {
             # ── Geopolitische Konfliktherde ───────────────────────────
             "nahost": 10, "gazastreifen": 10, "westjordanland": 10,
             "israel": 8, "palästina": 10, "iran": 8,
+            "iran-krieg": 10, "iran war": 10, "irankrieg": 10,
+            "netanjahu": 9, "netanyahu": 9, "hamas": 9, "hisbollah": 9,
             "nordkorea": 10, "north korea": 10,
             "syrien": 10, "jemen": 10, "irak": 10, "afghanistan": 10,
+            "houthi": 9, "huthi": 9,
             "middle east": 10, "gaza strip": 10, "west bank": 10,
             "iran nuclear": 10, "saudi arabia": 8,
             "african union": 8, "latin america": 7, "venezuela": 8,
@@ -292,10 +308,17 @@ CATEGORIES = {
             "generative ai": 10, "ai model": 10,
             "machine learning": 10, "deep learning": 10,
             "openai": 10, "anthropic": 10, "google deepmind": 10,
+            "chatgpt": 9, "claude": 7, "gemini": 7, "llama": 7,
+            "mistral": 8, "deepseek": 9, "grok": 7,
+            "ki-modell": 10, "ki-chatbot": 9, "ki-regulierung": 10,
+            "ai act": 9, "ai regulation": 9, "ki-gesetz": 9,
+            "agentic ai": 9, "ki-agent": 9, "ai agent": 9,
             "nvidia": 10, "semiconductor": 10, "microchip": 10,
-            "data center": 8, "cloud computing": 8,
+            "chiphersteller": 9, "chipfabrik": 9, "tsmc": 9,
+            "data center": 8, "cloud computing": 8, "rechenleistung": 8,
             "cybersecurity": 10, "cyber attack": 10,
             "data breach": 10, "big tech": 8, "silicon valley": 8,
+            "microsoft": 6, "apple": 5, "meta": 6, "alphabet": 7,
         },
         "exclude": [
             "fußball", "soccer", "bundesliga",
@@ -619,6 +642,7 @@ def _anchor_id(category: str) -> str:
 
 MAX_ARTICLE_AGE_HOURS  = 18   # Artikel älter als X Stunden werden gefiltert
 DUPLICATE_THRESHOLD    = 0.45 # Jaccard-Schwelle: niedriger = strenger gegen Dopplungen
+CROSS_CAT_THRESHOLD    = 0.38 # etwas lockerer: gleiches Thema in versch. Kategorien erkennen
 HISTORY_LOOKBACK_DAYS   = 2    # Ausgaben der letzten X KALENDERTAGE gegen Wiederholung pruefen
 HISTORY_DEDUP_THRESHOLD = 0.55 # Aehnlichkeit zu alten Titeln, ab der gefiltert wird
 
@@ -923,7 +947,7 @@ def _kw_match(kw: str, text: str) -> bool:
 TITLE_WEIGHT_MULTIPLIER = 3.0
 
 
-def categorize_article(article: dict) -> str:
+def categorize_article(article: dict, return_score: bool = False):
     title_text   = article["title"].lower()
     summary_text = article["summary"].lower()
     scores: dict[str, float] = {}
@@ -946,15 +970,51 @@ def categorize_article(article: dict) -> str:
             scores[category] = score
 
     if not scores:
-        return "🔥 Sonstiges"
-    return max(scores, key=lambda c: scores[c])
+        return ("🔥 Sonstiges", 0.0) if return_score else "🔥 Sonstiges"
+    best = max(scores, key=lambda c: scores[c])
+    return (best, scores[best]) if return_score else best
 
 
 def group_by_category(articles: list[dict]) -> dict[str, list[dict]]:
-    grouped: dict[str, list[dict]] = {}
+    # Jeden Artikel kategorisieren UND seinen Kategorie-Score merken
+    annotated = []
     for article in articles:
-        cat = categorize_article(article)
-        grouped.setdefault(cat, []).append(article)
+        cat, score = categorize_article(article, return_score=True)
+        annotated.append({"article": article, "cat": cat, "score": score,
+                          "norm": _normalize_title(article["title"])})
+
+    # ── Cross-Kategorie-Deduplizierung ───────────────────────────────
+    # Dasselbe Ereignis (z.B. Iran-Abkommen) landet sonst als mehrere
+    # Artikel in verschiedenen Kategorien (Aussenpolitik, Wirtschaft, …)
+    # und wird dort je einzeln zusammengefasst → Thema erscheint mehrfach.
+    # Loesung: thematisch gleiche Artikel gruppieren; das Thema bleibt nur
+    # in der Kategorie, in der ein Artikel den hoechsten Score hat.
+    # In anderen Kategorien werden die zugehoerigen Artikel entfernt.
+    annotated.sort(key=lambda x: x["score"], reverse=True)  # stärkste zuerst
+    behalten = []
+    themen_anker = []  # (norm_title, gewinner_kategorie)
+    for item in annotated:
+        if item["cat"] == "🔥 Sonstiges":
+            behalten.append(item)
+            continue
+        # Gehoert dieser Artikel zu einem schon vergebenen Thema?
+        ziel_kat = None
+        for anker_norm, anker_cat in themen_anker:
+            if _token_overlap(item["norm"], anker_norm) >= CROSS_CAT_THRESHOLD:
+                ziel_kat = anker_cat
+                break
+        if ziel_kat is None:
+            # Neues Thema → dieser (staerkste) Artikel definiert die Kategorie
+            themen_anker.append((item["norm"], item["cat"]))
+            behalten.append(item)
+        elif ziel_kat == item["cat"]:
+            # Gleiches Thema, gleiche Kategorie → erlaubt (zweiter Beleg)
+            behalten.append(item)
+        # sonst: gleiches Thema, ANDERE Kategorie → verwerfen (Dopplung)
+
+    grouped: dict[str, list[dict]] = {}
+    for item in behalten:
+        grouped.setdefault(item["cat"], []).append(item["article"])
 
     sorted_grouped = {}
     for cat in CATEGORIES.keys():
@@ -2651,6 +2711,34 @@ def fetch_subscribers() -> list[str]:
 # E-MAIL VERSENDEN
 # ─────────────────────────────────────────────
 
+def _html_zu_text(html: str) -> str:
+    """
+    Erzeugt aus dem Newsletter-HTML eine lesbare Plain-Text-Fassung.
+    Eine inhaltsgleiche Textversion senkt den Spam-Score deutlich
+    (reine "HTML aktivieren"-Platzhalter gelten als Spam-Signal).
+    """
+    text = html
+    # Quellen-Marker entfernen (falls noch vorhanden)
+    text = re.sub(r"‹‹SRC\|([^|]*)\|[^›]*››", r" [\1]", text)
+    # Linkadressen sichtbar machen: <a href="X">Y</a> → Y (X)
+    text = re.sub(r'<a[^>]*href="([^"]*)"[^>]*>(.*?)</a>',
+                  lambda m: f"{re.sub(r'<[^>]+>', '', m.group(2))} ({m.group(1)})",
+                  text, flags=re.S)
+    # Zeilenumbrueche an Block-Elementen
+    text = re.sub(r"(?i)</(tr|div|p|h[1-6]|td)>", "\n", text)
+    text = re.sub(r"(?i)<br\s*/?>", "\n", text)
+    # restliche Tags raus
+    text = re.sub(r"(?s)<[^>]+>", "", text)
+    # Entities dekodieren
+    import html as _html
+    text = _html.unescape(text)
+    # Whitespace aufraeumen
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n[ \t]+", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
 def send_email(html_template: str, recipient: str,
                unsubscribe_base: str = "") -> None:
     """Sendet den Newsletter an einen einzelnen Empfänger."""
@@ -2678,6 +2766,17 @@ def send_email(html_template: str, recipient: str,
     msg["Subject"] = subject
     msg["From"]    = f"Tageslage <{sender}>"
     msg["To"]      = recipient
+    msg["Reply-To"] = sender
+    # RFC-konforme Header verbessern die Zustellbarkeit (weniger Spam-Verdacht)
+    from email.utils import make_msgid, formatdate
+    msg["Message-ID"] = make_msgid(domain=sender.split("@")[-1])
+    msg["Date"]       = formatdate(localtime=True)
+    msg["MIME-Version"] = "1.0"
+    # List-Id kennzeichnet die Mail als Mailinglisten-Nachricht (empfohlen)
+    msg["List-Id"] = f"Tageslage Newsletter <tageslage.{sender.split('@')[-1]}>"
+    # Auto-Antworten unterdruecken
+    msg["Auto-Submitted"] = "auto-generated"
+    msg["Precedence"]     = "bulk"
 
     # ── Nativer "Abbestellen"-Button in Gmail/Apple Mail/Outlook ──────────
     # List-Unsubscribe zeigt den Button neben dem Absender. List-Unsubscribe-Post
@@ -2686,7 +2785,10 @@ def send_email(html_template: str, recipient: str,
         msg["List-Unsubscribe"] = f"<{unsubscribe_url}>"
         msg["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click"
 
-    plain = f"Tageslage – {now.strftime('%d.%m.%Y')}\nBitte HTML-Ansicht aktivieren."
+    # ── Echte Plain-Text-Version (KEIN "bitte HTML aktivieren" – das ist
+    #    ein Spam-Trigger). Eine inhaltsgleiche Textfassung senkt den
+    #    Spam-Score deutlich. ──────────────────────────────────────────────
+    plain = _html_zu_text(html_content)
     msg.attach(MIMEText(plain, "plain", "utf-8"))
     msg.attach(MIMEText(html_content, "html", "utf-8"))
 
