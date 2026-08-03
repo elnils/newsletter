@@ -1,0 +1,2041 @@
+{
+ "datum": "2026-08-03",
+ "zeit": "morgen",
+ "erstellt": "03.08.2026 05:35",
+ "intro": "US-Präsident Trump sagt, er habe Iran‑Angriffe auf Wunsch mehrerer Nahost‑Staaten abgesagt ‹‹SRC|FT US|https://www.ft.com/content/9cb84920-075e-4fa4-b1cb-dfc55d5845f4?syn-25a6b1a6=1››‹‹SRC|Tagesspiegel|https://www.tagesspiegel.de/internationales/iran-krieg-trump-kundigt-fur-heute-neue-gesprache-mit-dem-iran-an-15907769.html››. Sicherheitsbehörden warnen vor einer Welle KI‑gestützter Cyberattacken ‹‹SRC|Handelsblatt|https://www.handelsblatt.com/politik/deutschland/kuenstliche-intelligenz-sicherheitsbehoerden-warnen-vor-welle-ki-gestuetzter-cyberattacken/100243667.html››.",
+ "wikipedia": {
+  "text": "Vor 75 Jahren (1951): Gegenüber der am Vor­tag eröff­neten Deutschen Sport­halle wird in der Ost-Berliner Stalin­allee ein fast fünf Meter hohes Stalin­denkmal enthüllt.",
+  "url": "https://de.wikipedia.org/wiki/Deutsche_Sporthalle"
+ },
+ "destatis": {
+  "text": "What has driven deforestation in the 21st century?",
+  "url": "https://ourworldindata.org/what-has-driven-deforestation-in-the-21st-century",
+  "quelle": "Our World in Data"
+ },
+ "wm": {},
+ "kategorien": [
+  {
+   "name": "🌐 Großmächte & Geopolitik",
+   "punkte": [
+    "• US-Präsident Trump sagte, er habe geplante Angriffe auf den Iran abgesagt und kündige neue Gespräche mit Teheran für Montag an ‹‹SRC|FT US|https://www.ft.com/content/9cb84920-075e-4fa4-b1cb-dfc55d5845f4?syn-25a6b1a6=1››‹‹SRC|Reuters EN|https://news.google.com/rss/articles/CBMitwFBVV95cUxOdzJzZHNCZzdLcHhDVWdCSEpLMEpVckJUQXFxcjhrcEdHWmlWQ183T3g0dUtwWldQLTVfQ0FCbGRaXzV3Y2tnS0laLS1LeU1KcGJKRVhvX2xyV1I1Q0cxSDF0dWJ6ZWpaOFZJTWZac045VWduTklfeUl2QUhKcXZtbE9EY1MtR0p0MUNZOXEtbEpFejVqeXFQaHRRcVFBbkNhUU41eGM3ZldtVFg3U09UY205bjRlUFU?oc=5››.",
+    "• China zieht „rote Linien“ um sein Wirtschaftsmodell, bevor EU‑ und US‑Handelsgespräche beginnen ‹‹SRC|Reuters EN|https://news.google.com/rss/articles/CBMiuwFBVV95cUxQQWk1MXJvXzVGTkx2SW9Kak03MTJDSUlsYWtZREhuT1MwcjJUOWcyOFFwcXFHYlNrV1dlUUdHVG9yZk5JbFJwS1JzWWg4ZE9pY0NQWWdpSVhoT0g1ZERwVlBvTm51dklQLWlGU0UxeEF1NVJfQ1pvdnZUa1dRQ3RUU09lUE50NGJLcE4wYmNtUGNXT0xLV1BkNnlmR1p4ZTkwQ0pIRnpQUVQ3TGkyakUwRm5RRzNJZi1Id3Bv?oc=5››."
+   ],
+   "links": [
+    {
+     "quelle": "FT US",
+     "titel": "Trump says he cancelled Iran strikes at request of Middle East nations",
+     "url": "https://www.ft.com/content/9cb84920-075e-4fa4-b1cb-dfc55d5845f4?syn-25a6b1a6=1",
+     "vorschau": "US president claims ‘perimeters of a deal’ to end conflict have been agreed days after he threatened to attack"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Trump says Iran talks to take place on Monday, sets no deadline for deal - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOdzJzZHNCZzdLcHhDVWdCSEpLMEpVckJUQXFxcjhrcEdHWmlWQ183T3g0dUtwWldQLTVfQ0FCbGRaXzV3Y2tnS0laLS1LeU1KcGJKRVhvX2xyV1I1Q0cxSDF0dWJ6ZWpaOFZJTWZac045VWduTklfeUl2QUhKcXZtbE9EY1MtR0p0MUNZOXEtbEpFejVqeXFQaHRRcVFBbkNhUU41eGM3ZldtVFg3U09UY205bjRlUFU?oc=5",
+     "vorschau": "Trump says Iran talks to take place on Monday, sets no deadline for deal Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "China draws 'red lines' around its economic model ahead of EU, US trade talks - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQQWk1MXJvXzVGTkx2SW9Kak03MTJDSUlsYWtZREhuT1MwcjJUOWcyOFFwcXFHYlNrV1dlUUdHVG9yZk5JbFJwS1JzWWg4ZE9pY0NQWWdpSVhoT0g1ZERwVlBvTm51dklQLWlGU0UxeEF1NVJfQ1pvdnZUa1dRQ3RUU09lUE50NGJLcE4wYmNtUGNXT0xLV1BkNnlmR1p4ZTkwQ0pIRnpQUVQ3TGkyakUwRm5RRzNJZi1Id3Bv?oc=5",
+     "vorschau": "China draws 'red lines' around its economic model ahead of EU, US trade talks Reuters"
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Trump backs down on Iran strikes in expectation of ‘rapidly’ reaching a deal",
+     "url": "https://www.theguardian.com/world/2026/aug/02/trump-climbs-down-on-iran-strikes-after-saudi-alarm-and-threats-from-tehran",
+     "vorschau": "US president claims delay is also in response to requests from Iran and other countries in the region Donald Trump has said he cancelled planned military strikes against Iran on the basis of “rapidly” reaching a deal on its nuclear programme and the full reopening of the strait of Hormuz . The US president paused the strikes in expectation of a breakthrough and in response to requests from Iran and other countries in the region, he claimed on his Truth Social platform on Saturday. Continue readi"
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "Oil Prices Plummet as Investors Digest Pause in Fighting in Iran War",
+     "url": "https://www.nytimes.com/2026/08/02/business/oil-prices-plummet-iran-war.html",
+     "vorschau": "The markets’ moves were the first since President Trump said late Saturday that he had halted a U.S. assault on Iran."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Iran-Krieg: Trump kündigt für heute neue Gespräche mit dem Iran an",
+     "url": "https://www.tagesspiegel.de/internationales/iran-krieg-trump-kundigt-fur-heute-neue-gesprache-mit-dem-iran-an-15907769.html",
+     "vorschau": "Der US-Präsident will eine beispiellose Welle vernichtender Angriffe auf den Iran in letzter Minute gestoppt haben - auf Bitten mehrerer Staaten in der Region. Heute soll es eine Annäherung geben."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Trump Says He Canceled Strikes on Iran, Claiming Progress on Outlines of a Deal",
+     "url": "https://www.nytimes.com/2026/08/02/world/middleeast/trump-iran-cancels-attack-deal.html",
+     "vorschau": "President Trump has repeatedly threatened to escalate the war with Iran, only to abruptly back down. Saudi Arabia said its leader had urged Trump not to renew attacks."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "The Kremlin Is Bullying More Russians Into Fighting in Ukraine",
+     "url": "https://www.wsj.com/world/russia/the-kremlin-is-bullying-more-russians-into-fighting-in-ukraine-3d1af6d7",
+     "vorschau": "Russia is strong-arming more fighting-age men into military service as voluntary recruitment stalls and Moscow’s initiative in Ukraine falters."
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "‘They feel emboldened’: Iran leaving Trump with no good way out",
+     "url": "https://www.politico.com/news/2026/08/02/irans-demands-leave-trump-few-good-options-01020961?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Inside the White House, top administration officials have warned against any resolution that allows Iran to control the strait."
+    },
+    {
+     "quelle": "FT US",
+     "titel": "Trump says Iran talks to resume after US called off major attack",
+     "url": "https://www.ft.com/content/c9bd508c-2915-4b34-a5a5-553bff9548a5?syn-25a6b1a6=1",
+     "vorschau": "Oil falls on signs of de-escalation as Tehran says a deal with Oman to reopen Strait of Hormuz to shipping was close"
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Trump kündigt neue Iran-Gespräche an",
+     "url": "https://www.tagesschau.de/ausland/amerika/trump-iran-verhandlungen-102.html",
+     "vorschau": "Kurz nach der Absage angeblich geplanter Angriffe auf Iran hat US-Präsident Trump neue Verhandlungen mit Teheran angekündigt. Diese sollen noch heute beginnen. Details zu den Teilnehmern nannte er allerdings nicht."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Jordan Is Learning Its U.S. Alliance Has a Price in the Iran War",
+     "url": "https://www.wsj.com/world/middle-east/jordan-is-learning-its-u-s-alliance-has-a-price-in-the-iran-war-7ce9fd8b",
+     "vorschau": "The kingdom has become a target for Tehran as the U.S. relies more on its desert bases."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Trump Pivots Back to Diplomacy as Iran Victory Eludes Him",
+     "url": "https://www.wsj.com/world/middle-east/trump-pivots-back-to-diplomacy-as-iran-victory-eludes-him-a925ee98",
+     "vorschau": "The question is whether negotiations can finally reopen the Strait of Hormuz and lay the groundwork for nuclear talks."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Gulf States Pressed Trump to Hold Off on Iran Strikes and Pursue Talks",
+     "url": "https://www.wsj.com/world/middle-east/gulf-states-pressed-trump-to-hold-off-on-iran-strikes-and-pursue-talks-03bcdb52",
+     "vorschau": "The president called off a planned attack late Saturday. Tehran has signaled openness to a new plan to open Strait of Hormuz, mediators said."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Opinion | Trump’s Latest Iran ‘DEAL’",
+     "url": "https://www.wsj.com/opinion/trumps-latest-iran-deal-7c90e6cc",
+     "vorschau": "He again calls off the military escalation he threatened, with little detail disclosed."
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "Trump suggests new talks with Iran to begin on Monday",
+     "url": "https://www.bbc.co.uk/news/articles/c23579jzv08o?at_medium=RSS&at_campaign=rss",
+     "vorschau": "Tehran has not responded to the suggestion that new talks are imminent. Trump has previously said a negotiated end to the war is close, only for strikes to resume."
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "Almost £200,000 of fuel stolen from UK forecourts every day since Iran war began",
+     "url": "https://www.bbc.co.uk/news/articles/cy8mrrlkjppo?at_medium=RSS&at_campaign=rss",
+     "vorschau": "Incidents of fuel being taken without payment have risen by a fifth in five months, according to industry analysis."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Ukraine hits targets deep inside Russia, killing eight",
+     "url": "https://www.dw.com/en/ukraine-hits-targets-deep-inside-russia-killing-eight/a-78208850?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Ukrainian drone strikes inside Russia killed eight people overnight in attacks that targeted military and civilian infrastructure. Russia said Moscow's forces downed 635 drones in the assault."
+    },
+    {
+     "quelle": "Google Markets EN",
+     "titel": "The $1.2 Trillion Reason Scott Bessent Just Bought Japanese Yen - 24/7 Wall St.",
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZ2JkT2Y0TjMzS3haLTR2NXV1RU1PMUNoN0dON2Nvb3FzSUU1WnRaUjhwUDZWbXJlaWJkblhnVTFoLXYwbmpHTnpMTXFwNXByOEkwMTltYlgwMmw5S3Y2WnFPREo4TmJHU3ZNakpEaE9FMy1aZkFCV2syS1ZvS2Jhb0d1N2lfUFVzOWpNTTYza2xvemI5RVM5ZVFsT0J3U0h1Yy1xTlNxUk5fUQ?oc=5",
+     "vorschau": "The $1.2 Trillion Reason Scott Bessent Just Bought Japanese Yen 24/7 Wall St."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "How a Top Law Firm Went From Standing Up to Trump to Bending the Knee",
+     "url": "https://www.nytimes.com/2026/08/02/us/politics/paul-weiss-trump.html",
+     "vorschau": "Paul Weiss was a progressive stalwart for decades and led the legal resistance against President Trump in his first term. Then it surrendered without a fight. This is the inside story of its transformation."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "New Round of Trump Threats and Pullbacks Raises Uncertainty in Mideast",
+     "url": "https://www.nytimes.com/2026/08/02/us/politics/trump-iran-negotiations.html",
+     "vorschau": "Analysts and lawmakers are trying to divine whether Mr. Trump’s latest announcement means negotiations with Iran will truly get underway Monday or if the president is just working through unappealing options."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Israel äußert Bedenken zu Trumps Plan für Gaza-Entwaffnung",
+     "url": "https://www.tagesschau.de/ausland/asien/israel-bedenken-hamas-entwaffnung-100.html",
+     "vorschau": "Schon vor Tagen hatte US-Präsident Trump eine Einigung zur Entwaffnung des Gazastreifens verkündet. Jetzt gibt es eine offizielle Reaktion aus Israel: Man habe den USA \"ernsthafte Sicherheitsbedenken\" übermittelt."
+    },
+    {
+     "quelle": "FT US",
+     "titel": "‘Voters have had it’: influence of pro-Israel lobby group sparks backlash in the US",
+     "url": "https://www.ft.com/content/889c551a-88ab-451a-87f5-cdec65467a64?syn-25a6b1a6=1",
+     "vorschau": "Aipac’s links to Israeli Prime Minister Benjamin Netanyahu provoke controversy in midterm election campaigns"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Opinion | How U.S. Treasury Is Helping Venezuela Rebuild",
+     "url": "https://www.wsj.com/opinion/how-u-s-treasury-is-helping-venezuela-rebuild-3e73241f?mod=rss_markets_main",
+     "vorschau": "Washington is opening the way for American investment."
+    },
+    {
+     "quelle": "BBC News",
+     "titel": "Outside the Moscow restaurant where bomb killed three",
+     "url": "https://www.bbc.co.uk/news/articles/cdx8qp451lko?at_medium=RSS&at_campaign=rss",
+     "vorschau": "The BBC's Russia editor reports from Kudrinskaya Square, where the blast took place."
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Taiwan minister says close ties with U.S. Pacific Command boost defence readiness - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOVklDQ3A2S254OVB4N0hfV0ZUc2trSnBwU3dUbjFQYkJKdGFoemRkU3lITTJNLUxpemJaellmQkl4T2ZCMEJpb19fcjJQVHNsS0ctMjdBNDY0bld4VW01SFVNcHM4UFNOSGE2Y1Y3bW0xeEJGSXZ4eC11SGs5RkVCb1NQenY5SDQtNzRRMnBKaDBTOE5zVnRUVkE2bEtqSDlIcm5vdDYzcV9wdkpCTkNTaXZ2b2NnNm5BclB1ZmFyRWdhWmx0Tmc?oc=5",
+     "vorschau": "Taiwan minister says close ties with U.S. Pacific Command boost defence readiness Reuters"
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Trump keeps escalating his trade threats. This time, Europe isn’t biting.",
+     "url": "https://www.politico.com/news/2026/08/02/trump-trade-threats-europe-01020492?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "The EU believes Trump’s latest threats are best answered with strategic patience, not retaliation."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "A Marijuana Giant That Won Over Trump Has Found Enemies Closer to Home",
+     "url": "https://www.nytimes.com/2026/08/02/us/florida-marijuana-trulieve-trump.html",
+     "vorschau": "Concerns about polluted water and excessive runoff — and the pervasive smell of cannabis — in a small Florida town have made the company, Trulieve, the target of local criticism and state investigations."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Opinion | Trump, TikTok and Federal Devices",
+     "url": "https://www.wsj.com/opinion/donald-trump-tiktok-federal-devices-bytedance-china-28d21162?mod=rss_Technology",
+     "vorschau": "The Justice Department green lights the app for U.S. officials, despite spying worries."
+    },
+    {
+     "quelle": "Handelsblatt",
+     "titel": "Devisen: Trump bestätigt gemeinsame Intervention mit Japan zur Stützung des Yen",
+     "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/devisen-trump-bestaetigt-gemeinsame-intervention-mit-japan-zur-stuetzung-des-yen/100244551.html",
+     "vorschau": "Die USA seien immer für Japan da, so US-Präsident Donald Trump über die neuen Maßnahmen. Der Yen war in den vergangenen Wochen massiv abgestürzt."
+    },
+    {
+     "quelle": "Spiegel Online",
+     "titel": "Krieg in Gaza: Israelische Angriffe töten mindestens 15 Palästinenser",
+     "url": "https://www.spiegel.de/ausland/krieg-in-gaza-israelische-angriffe-toeten-mindestens-15-palaestinenser-a-a9e5a14d-e547-415e-a4b4-437610ac954e#ref=rss",
+     "vorschau": "US-Präsident Trump hat erst vor wenigen Tagen Fortschritte beim Waffenstillstandsabkommen zwischen Israel und der Hamas verkündet. Israels Militär greift dennoch weiter Ziele in Gaza an, am Sonntag gab es dabei viele Opfer."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Moscow restaurant blast a 'brutal terror attack,' mayor says",
+     "url": "https://www.dw.com/en/moscow-restaurant-blast-a-brutal-terror-attack-mayor-says/a-78205022?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "The deadly explosion outside an upscale Moscow restaurant at Kudrinskaya Square was a \"brutal terror attack,\" Moscow Mayor Sergei Sobyanin said, promising the perpetrators would be punished. But many questions remain."
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "EXCLUSIVE Japan to announce Tokyo, Washington took joint action on yen, sources say - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeWRxZmUtQUZfS21oaHA2QVRaX0FYX09hRTBYRXZ6dnZ4dzAxamMzREtPN2laazBKdDNacXg3UUcxbS1fM3VSNGV4bDFNVkJPU3RCUWFDZjlDQ3VaTV9zTmQzaDgxYlV1MmNJcFZZcmJvRG9qSlRWTnZlQ1MyTm14OVItU2M2cDJfcklTdERRR2xBZ09FVWtYVkhZaTJiQXE5S0Q1eUNFdE5fbGl1X3VyUko1bHFiQ1M2SExvVw?oc=5",
+     "vorschau": "EXCLUSIVE Japan to announce Tokyo, Washington took joint action on yen, sources say Reuters"
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "Oil slumps on hopes of Iran deal, yen spikes suddenly after intervention - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQUjBjdHpEdEdMdVNpbVprQmRvNG9JTzl0ZHB4SkNmWUxqT2hNUG8xcW96U1R2czNKWHVMYXRqY2gxR1pHTzZ4RjlpaDgzUnM3U0dCNURmZDhPUUhVTnRuUFhYcGFmVHdoOWg2a3RJNTNGQktBU3pvZVZGSS1EVUJ1QzlVbw?oc=5",
+     "vorschau": "Oil slumps on hopes of Iran deal, yen spikes suddenly after intervention Reuters"
+    },
+    {
+     "quelle": "Reuters Business",
+     "titel": "China's Chery to invest $75 mln in Korea's KG Mobility, eyes overseas markets - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNMHcyblFseVdpWUdPVVdaYy01XzhlWFBObENialpfdWZoeW5hemhtODBRd0ZkbG9QeDVqR2RBYzZDV3NQcGRoWVgxY3dXa1d4UlFoRDEwR0lkSVl6QTRrZmFaU2ZpazIxdUQ4TWtmQzJKVHg3Q2FPd0VIMk1NaTBFdUV5VE9kQ3hlRVo1RGx3aHp2ZHhKY1RkcDdtcUc0SmVaVUM2T2sxVjVDdlJQdmNTTUpwam9CenQ3SjZIVWd5RUFmbGJiMUxuekl2UHpnUQ?oc=5",
+     "vorschau": "China's Chery to invest $75 mln in Korea's KG Mobility, eyes overseas markets Reuters"
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "La Guaira Is Unrecognizable After Venezuela’s Deadly Earthquakes",
+     "url": "https://www.nytimes.com/2026/08/02/world/americas/venezuela-earthquakes-la-guaira.html",
+     "vorschau": "More than a month after the earthquakes, the coastal region of La Guaira — once Venezuela’s main gateway — is completely unrecognizable."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Spitting Attacks Show Rise of Anti-Christian Hate in Israel",
+     "url": "https://www.wsj.com/world/middle-east/spitting-attacks-show-rise-of-anti-christian-hate-in-israel-5ea40ac7",
+     "vorschau": "Negative attitudes toward Christianity are becoming more common among young Israelis."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Canada’s WestJet Cancels Trips Amid Strike By Flight Attendants",
+     "url": "https://www.nytimes.com/2026/08/02/world/canada/westjet-flight-attendants-strike-canada.html",
+     "vorschau": "Labor talks resumed on Sunday between the airline and union representing 4,400 flight attendants, who want improved wages and compensation for unpaid work."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Healey’s profiteering warning on food and fuel risks row with retailers",
+     "url": "https://www.theguardian.com/business/2026/aug/02/john-healey-profiteering-warning-retailers-backlash",
+     "vorschau": "Chancellor says the government wants to prevent shoppers being ‘taken for a ride’ at the pump or till The chancellor, John Healey , has said the government is standing by to prevent the public from “being taken for a ride at the pump or the till” as the Iran war continues to hit prices. While he said there had been “no significant evidence of so-called price gouging” during the crisis, he used a weekend column to tell the big retailers that ministers were “watching closely” for any signs of prof"
+    },
+    {
+     "quelle": "Handelsblatt Finanzen",
+     "titel": "Yen: Japan und USA stützen offenbar gemeinsam den Yen",
+     "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/yen-japan-und-usa-stuetzen-offenbar-gemeinsam-den-yen/100244484.html",
+     "vorschau": "Es wäre die erste derartige gemeinsame Intervention seit 2011. US-Finanzminister Scott Bessent bezeichnete den Yen vergangene Woche noch als „sehr unterbewertet“."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Neue Schmuggelroute: Das Kokain kommt per Schnellboot",
+     "url": "https://www.faz.net/aktuell/politik/ausland/kokain-schmuggel-spaniens-straende-und-die-westafrika-route-201025591.html",
+     "vorschau": "Donald Trump lässt südamerikanische Drogenschmuggler in der Karibik jagen. Deshalb suchen sie neue Absatzmärkte in Europa – und verschiffen ihre Ware über Westafrika nach Spanien."
+    },
+    {
+     "quelle": "Handelsblatt Finanzen",
+     "titel": "Märkte Asien: Yen steigt, Aktien sinken: Japan und USA intervenieren gemeinsam am Devisenmarkt",
+     "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/maerkte-asien-japan-und-usa-intervenieren-gemeinsam-am-devisenmarkt/100244551.html",
+     "vorschau": "Die erste gemeinsame Intervention seit 2011 überrascht die Märkte. US-Präsident Donald Trump deutet weitere Hilfe zur Stützung des Yen an."
+    },
+    {
+     "quelle": "FT US",
+     "titel": "Japan vows to intervene again with US over yen if needed",
+     "url": "https://www.ft.com/content/5de204a4-4db6-458c-aa9a-324e6bd5e766?syn-25a6b1a6=1",
+     "vorschau": "Finance minister Satsuki Katayama confirms joint action with Washington to counter ‘disorderly movements’"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Nikkei Falls 1.4%, Dragged by Electronics, Auto Stocks",
+     "url": "https://www.wsj.com/finance/stocks/nikkei-falls-1-4-dragged-by-electronics-auto-stocks-e85119b4?mod=rss_markets_main",
+     "vorschau": "Japanese stocks were lower in early trade following Friday’s sharp gains as uncertainty over the Iran conflict continues."
+    },
+    {
+     "quelle": "Spiegel Online",
+     "titel": "Massive Attack dürften nach Eklat mit Palästinenserflagge nicht mehr in Singapur auftreten",
+     "url": "https://www.spiegel.de/panorama/massive-attack-duerften-nach-eklat-mit-palaestinenserflagge-nicht-mehr-in-singapur-auftreten-a-f21c4429-c548-4bd9-b2a4-e58139c3cf9b#ref=rss",
+     "vorschau": "Die Band macht aus ihrer Haltung zu Israel und Gaza keinen Hehl – das hat für Massive Attack nun Folgen: In Singapur stand nach einem Auftritt die Polizei vor den Hotelzimmern. Die Musiker sprachen von einer »surrealen Erfahrung«."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "Spokane Wildfires Destroy Hundreds of Buildings as Thousands Evacuate",
+     "url": "https://www.nytimes.com/2026/08/02/us/spokane-wildfires.html",
+     "vorschau": "Firefighters were hopeful that improving weather conditions in Washington state could help efforts to contain the blaze, which officials described as the largest natural disaster in the history of Spokane."
+    },
+    {
+     "quelle": "NYT US",
+     "titel": "Ohio Senator Calls Former Son-in-Law Accused of Abuse Unfit for Office",
+     "url": "https://www.nytimes.com/2026/08/02/us/elections/max-miller-ohio-republican-moreno-election.html",
+     "vorschau": "Senator Bernie Moreno, Republican of Ohio, broke his silence about allegations of domestic abuse his daughter has made against Representative Max Miller."
+    },
+    {
+     "quelle": "Handelsblatt Finanzen",
+     "titel": "Ölförderung: Opec plus einigt sich auf höhere Ölförderziele",
+     "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/oelfoerderung-opec-plus-einigt-sich-auf-hoehere-oelfoerderziele/100244498.html",
+     "vorschau": "Die Ölförderorganisation hat ihre Quoten seit Beginn des Iran-Krieges monatlich angehoben. Nun will sie ihre Förderziele ab September um 188.000 Barrel pro Tag erhöhen."
+    }
+   ]
+  },
+  {
+   "name": "🏛️ Innenpolitik",
+   "punkte": [
+    "• CSU‑Chef Markus Söder warnt vor Neuwahlen, sieht sich als Stabilisator der Demokratie und betont die Notwendigkeit von Geschlossenheit im ARD‑Sommerinterview ‹‹SRC|Spiegel Online|https://www.spiegel.de/politik/deutschland/friedrich-merz-csu-chef-markus-soeder-lobt-kanzler-als-sehr-sehr-stabil-und-stark-a-a19ddc9c-561b-403b-9cc8-77fd22feca8b#ref=rss››; das Interview wurde im Faktencheck als weitgehend korrekt bewertet ‹‹SRC|Tagesschau|https://www.tagesschau.de/faktenfinder/sommerinterview-faktencheck-soeder-100.html››.",
+    "• SPD‑Co‑Chefin Bärbel Bas fordert die Union zur Entscheidung über die „Rente mit 63“ und kündigt an, ein Rentenpaket zu schnüren, falls die Union nicht klar Stellung bezieht ‹‹SRC|Tagesschau|https://www.tagesschau.de/inland/innenpolitik/rentenreform-bas-100.html››."
+   ],
+   "links": [
+    {
+     "quelle": "Spiegel Online",
+     "titel": "Friedrich Merz: CSU-Chef Markus Söder lobt Kanzler als »sehr, sehr stabil und stark«",
+     "url": "https://www.spiegel.de/politik/deutschland/friedrich-merz-csu-chef-markus-soeder-lobt-kanzler-als-sehr-sehr-stabil-und-stark-a-a19ddc9c-561b-403b-9cc8-77fd22feca8b#ref=rss",
+     "vorschau": "In der Union zeichnet sich ein Autoritätsverlust des Kanzlers ab. Nun springt ihm CSU-Chef Markus Söder zur Seite. Er warnt die eigenen Leute vor Neuwahlen."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Das Sommerinterview mit CSU-Chef Söder im Faktencheck",
+     "url": "https://www.tagesschau.de/faktenfinder/sommerinterview-faktencheck-soeder-100.html",
+     "vorschau": "Der CSU-Vorsitzende Söder war im ARD-Sommerinterview zu Gast. Viele Aussagen waren weitgehend korrekt. Doch unter anderem bei der Regelung zu den Krankschreibungen und den Abschiebungen lag er daneben."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Rentendebatte: Ernst machen mit der besseren Generationen-Balance",
+     "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/cdu-und-spd-im-streit-ist-die-fruehrente-noch-zu-retten-201088204.html",
+     "vorschau": "Über Forderungen aus der CDU, die abschlagsfreie Frührente zu erhalten, freut sich die SPD. Merz muss die Debatte stoppen, bevor sie aus dem Ruder läuft."
+    },
+    {
+     "quelle": "Handelsblatt",
+     "titel": "Sommerinterview: Bas verteidigt Doppelrolle als SPD-Chefin und Ministerin: „Ich verheddere mich nicht“",
+     "url": "https://www.handelsblatt.com/politik/deutschland/sommerinterview-bas-verteidigt-doppelrolle-als-spd-chefin-und-ministerin/100243730.html",
+     "vorschau": "Die SPD-Co-Chefin gibt sich trotz desaströser Umfragewerte pragmatisch. Von der Union fordert sie, dass sie ihre Position bei der Rente klärt."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Bas fordert Union zur Klärung bei \"Rente mit 63\" auf",
+     "url": "https://www.tagesschau.de/inland/innenpolitik/rentenreform-bas-100.html",
+     "vorschau": "Soll die \"Rente mit 63\" weg - oder doch nicht? Darüber gibt es in der Union derzeit Diskussion. Nun fordert SPD-Chefin Bas den Koalitionspartner auf, sich zu positionieren. Die Sozialdemokraten seien bereit, das Rentenpaket aufzuschnüren."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Tagesschau",
+     "titel": "CSU-Chef Söder wirbt für Geschlossenheit im ARD-Sommerinterview",
+     "url": "https://www.tagesschau.de/inland/innenpolitik/sommerinterview-soeder-112.html",
+     "vorschau": "Die CSU schwächelt nach der Kommunalwahl, doch Bayerns Ministerpräsident Söder bleibt gelassen. Er sieht seine Aufgabe als \"Stabilisator der Demokratie\", sagte er im ARD-Sommerinterview - auch mit Blick auf den wachsenden Erfolg der AfD."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "„Verbindlich und verbindend“: SPD-Politiker sprechen sich für Ilse Aigner als Bundespräsidentin aus",
+     "url": "https://www.tagesspiegel.de/politik/verbindlich-und-verbindend-spd-politiker-fur-aigner-als-bundesprasidentin-15907654.html",
+     "vorschau": "CSU-Chef Söder hat Ilse Aigner als Steinmeier-Nachfolgerin vorgeschlagen. Nun plädieren auch SPD-Politiker für Bayerns Landtagspräsidentin als Staatsoberhaupt."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "TV-Kritik Bas und Söder: Wer braucht bitte Sommerinterviews?",
+     "url": "https://www.faz.net/aktuell/feuilleton/medien-und-film/talkshow/tv-kritik-bas-und-soeder-wer-braucht-bitte-sommerinterviews-accg-201089007.html",
+     "vorschau": "Im ZDF soll Bärbel Bas zu demselben politischen Klein-Klein Stellung beziehen wie Markus Söder in der ARD. Wenn den Sendern bei Sommerinterviews sonst nichts einfällt – warum bringen sie nicht gleich Talkshows?"
+    },
+    {
+     "quelle": "Wirtschaftswoche",
+     "titel": "Scheinselbstständigkeit: Wann schafft die Bundesregierung Rechtssicherheit für Selbstständige?",
+     "url": "https://www.wiwo.de/politik/deutschland/scheinselbstaendigkeit-schafft-die-regierung-sicherheit-fuer-selbstaendige/100243476.html",
+     "vorschau": "Mehr als zwei Drittel der Statusprüfungen für Selbstständige endeten 2025 mit dem Ergebnis „scheinselbstständig“. Kritiker sagen, um die Sozialkassen zu füllen."
+    },
+    {
+     "quelle": "Wirtschaftswoche",
+     "titel": "Umfrage: FDP in weiterer Umfrage bei fünf Prozent",
+     "url": "https://www.wiwo.de/politik/deutschland/fdp-in-weiterer-umfrage-bei-fuenf-prozent/100244508.html",
+     "vorschau": "Vor anderthalb Jahren sind die Liberalen aus dem Bundestag geflogen. Mehrere Umfragen legten zuletzt nahe, dass sie aktuell Chancen auf einen Wiedereinzug hätten. Jetzt kommt eine weitere dazu."
+    },
+    {
+     "quelle": "Spiegel Online",
+     "titel": "AfD in Sachsen-Anhalt: Dieser Mann regiert seit knapp drei Jahren eine Kleinstadt",
+     "url": "https://www.spiegel.de/politik/deutschland/afd-in-sachsen-anhalt-dieser-mann-regiert-seit-knapp-drei-jahren-eine-kleinstadt-a-e5f4d601-9e39-4320-8d21-1b9f87b325bf#ref=rss",
+     "vorschau": "Hannes Loth ist Bürgermeister von Raguhn-Jeßnitz in Sachsen-Anhalt, er war der erste AfD-Politiker im Amt. Wie hat sich die Stadt unter ihm verändert? Eine Langzeitbeobachtung."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Hallervordens Auftritt: Nonstop Nonsens",
+     "url": "https://www.faz.net/aktuell/politik/inland/auftritt-von-hallervorden-bei-der-cdu-nonstop-nonsens-201088154.html",
+     "vorschau": "Auf einer CDU-Wahlkampfveranstaltung in Sachsen-Anhalt zieht Didi Hallervorden über Pistorius und Merz her. So überzeugt man Wähler nicht."
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Energiesicherheit: Katherina Reiche bringt neue Finanzierung für Gasreserve ins Spiel",
+     "url": "https://www.zeit.de/wirtschaft/2026-08/gasreserve-katherina-reiche-cdu-finanzierung-umlage",
+     "vorschau": "Die geplante Gasreserve für Krisen sollte von Verbrauchern bezahlt werden. Nach Kritik regt die Bundeswirtschaftsministerin ein Mischmodell über den Haushalt an."
+    }
+   ]
+  },
+  {
+   "name": "💻 Tech & KI",
+   "punkte": [
+    "• Finanzprofis zeigen, dass KI‑Milliardeninvestitionen von Tech‑Konzernen über die Allianz in deutsche Sparpolicen fließen und dort das Risiko für Kunden erhöhen ‹‹SRC|Handelsblatt Technik|https://www.handelsblatt.com/technik/it-internet/kuenstliche-intelligenz-wie-metas-schulden-in-deutschen-sparpolicen-landen-koennten/100243249.html››.",
+    "• Sicherheitsbehörden warnen, dass die rasanten Fortschritte bei Künstlicher Intelligenz die Gefahr einer Welle KI‑gestützter Cyberattacken deutlich erhöhen ‹‹SRC|Handelsblatt|https://www.handelsblatt.com/politik/deutschland/kuenstliche-intelligenz-sicherheitsbehoerden-warnen-vor-welle-ki-gestuetzter-cyberattacken/100243667.html››."
+   ],
+   "links": [
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Künstliche Intelligenz: Wie Metas Schulden in deutschen Sparpolicen landen könnten",
+     "url": "https://www.handelsblatt.com/technik/it-internet/kuenstliche-intelligenz-wie-metas-schulden-in-deutschen-sparpolicen-landen-koennten/100243249.html",
+     "vorschau": "Finanzprofis finden immer neue Wege, KI-Milliardeninvestitionen aus den Bilanzen der Tech-Konzerne zu halten. Das Risiko trägt unter anderem die Allianz – und deren Kunden. Eine Rekonstruktion."
+    },
+    {
+     "quelle": "Handelsblatt",
+     "titel": "Künstliche Intelligenz: Sicherheitsbehörden warnen vor Welle KI-gestützter Cyberattacken",
+     "url": "https://www.handelsblatt.com/politik/deutschland/kuenstliche-intelligenz-sicherheitsbehoerden-warnen-vor-welle-ki-gestuetzter-cyberattacken/100243667.html",
+     "vorschau": "Die raschen Fortschritte bei Künstlicher Intelligenz schüren die Sorge vor zunehmenden digitalen Angriffen. Cyberkriminelle könnten deutlich leichteres Spiel haben. Welche Gegenmaßnahmen nötig sind."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Big Tech Earnings Are Sending Valuations in Opposite Directions",
+     "url": "https://www.wsj.com/finance/stocks/tech-company-earnings-stock-market-5c4179d8?mod=rss_markets_main",
+     "vorschau": "Reports from tech giants drove big gains and losses, while the Fed-fueled bond selloff adds to market pressures."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "German Robotics Startup Agile Robots Set to Double Revenue This Year",
+     "url": "https://www.wsj.com/tech/ai/german-robotics-startup-agile-robots-set-to-double-revenue-this-year-6d0a27dc?mod=rss_Technology",
+     "vorschau": "The German robotics startup is betting that its manufacturing expertise, not just advances in artificial intelligence, will lead to a surge in revenue and produce profits."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Opinion | The Math on AI Works Out Well for You",
+     "url": "https://www.wsj.com/opinion/the-math-on-ai-works-out-well-for-you-eaf0f8c8?mod=rss_markets_main",
+     "vorschau": "Efforts to curtail data centers risk a potential gold mine for our society."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Interview: Black-Forest-Labs-Gründer: „Ein Wettlauf mit der größten KI-Firma der Welt ist einschüchternd“",
+     "url": "https://www.handelsblatt.com/technik/ki/ki-manches-koennen-wir-besser-als-openai/100243488.html",
+     "vorschau": "Die Firma Black Forest Labs setzt mit ihrem neuesten KI-Modell erneut Maßstäbe. Der Mitgründer und leitende Forscher Axel Sauer erklärt im Handelsblatt-Gespräch, was dahintersteckt."
+    },
+    {
+     "quelle": "Handelsblatt",
+     "titel": "KI-Prozessoren: Rechner mit KI-Kick: Gut investiertes Geld oder unnötig?",
+     "url": "https://www.handelsblatt.com/technik/it-internet/ki-prozessoren-rechner-mit-ki-kick-gut-investiertes-geld-oder-unnoetig/100244571.html",
+     "vorschau": "Künstliche Intelligenz macht sich in Smartphones und Computern breit - und mit ihr ein neuer Name: die Neural Processing Unit, kurz NPU. Was steckt dahinter? Und muss ein neuer Rechner das haben?"
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "A Dire Situation",
+     "url": "https://www.wsj.com/tech/ai/a-dire-situation-fa97dbae?mod=rss_Technology",
+     "vorschau": "Plus, what AI content does to our brains, Meta’s mountain of lawsuits, the million-dollar talent wars for math geniuses and more."
+    }
+   ]
+  },
+  {
+   "name": "⚽ Sport",
+   "punkte": [
+    "• Der Sportvorstand Eberl signalisiert nach Hoeneß‑Statement eine Vertragsverlängerung beim FC Bayern, wobei der Aufsichtsratsvorsitzende ebenfalls Lob äußert ‹‹SRC|Tagesspiegel|https://www.tagesspiegel.de/sport/fussball-bundesliga-nach-hoeness-statement-so-reagiert-sportvorstand-eberl-15907792.html››.",
+    "• Die FIFA muss nach dem Abbruch des World‑Cup‑Investoren‑Deals das Vertrauen wiederaufbauen, erklärt Boyce ‹‹SRC|Reuters EN|https://news.google.com/rss/articles/CBMixwFBVV95cUxPODVhaHRrdmswVFVVN3NlZ0dtblcxMmJRZVYzYWdteTR0WE00N1ZuVlcxckRYMngxdTlLZFd5VkNqdmhld2JiZEJhNUhlZ1lUaFh2V1RJeTFkVFZzWmNkRmF0eElsZWIyUFJlajUwZC1wTXJLbnlESU5qN1RLRzczaUZMX3pzOTZKeVRtTFIxckpuUFhCeGlFYzZDQTdOUVRmeHplSEhza1Y0dnhxTTNlTHMtWW9ZbFJoQVhnWXFkZjVjZExlRWp3?oc=5››."
+   ],
+   "links": [
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Fußball-Bundesliga: Nach Hoeneß-Statement: So reagiert Sportvorstand Eberl",
+     "url": "https://www.tagesspiegel.de/sport/fussball-bundesliga-nach-hoeness-statement-so-reagiert-sportvorstand-eberl-15907792.html",
+     "vorschau": "Bei Eberl stehen die Signale auf Vertragsverlängerung beim FC Bayern. Nach Hoeneß lobt ihn auch der Aufsichtsratsvorsitzende. Er stellt auch einem anderen Vorstand eine Verlängerung in Aussicht."
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "2. Fußball-Bundesliga: KSC-Präsident: «Am Ende dieses Kapitels in der Bundesliga»",
+     "url": "https://www.zeit.de/news/2026-08/03/ksc-praesident-am-ende-dieses-kapitels-in-der-bundesliga",
+     "vorschau": ""
+    },
+    {
+     "quelle": "Reuters EN",
+     "titel": "FIFA must rebuild trust after scrapping World Cup investor proposal, says Boyce - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPODVhaHRrdmswVFVVN3NlZ0dtblcxMmJRZVYzYWdteTR0WE00N1ZuVlcxckRYMngxdTlLZFd5VkNqdmhld2JiZEJhNUhlZ1lUaFh2V1RJeTFkVFZzWmNkRmF0eElsZWIyUFJlajUwZC1wTXJLbnlESU5qN1RLRzczaUZMX3pzOTZKeVRtTFIxckpuUFhCeGlFYzZDQTdOUVRmeHplSEhza1Y0dnhxTTNlTHMtWW9ZbFJoQVhnWXFkZjVjZExlRWp3?oc=5",
+     "vorschau": "FIFA must rebuild trust after scrapping World Cup investor proposal, says Boyce Reuters"
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Rekord in Bundesliga: Abgezählte Fans",
+     "url": "https://www.faz.net/aktuell/sport/fussball/bundesliga/charakterfeste-fussballfans-bescheren-der-bundesliga-zuschauer-rekord-201084494.html",
+     "vorschau": "400.000 Menschen beim Motorradspektakel? Während in manchen Sportarten mit Zuschauerzahlen virtuos gespielt wird, bietet der Profifußball Nachprüfbares."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Zukunft der FIFA: Die Doppelmoral der Infantino-Kritiker",
+     "url": "https://www.faz.net/aktuell/sport/fussball-wm/sturz-des-fifa-praesidenten-gianni-infantino-uefa-sollte-sich-nicht-allzu-sicher-sein-201087872.html",
+     "vorschau": "Nach dem Ende des Investoren-Deals will die UEFA auch FIFA-Präsident Gianni Infantino stürzen. Doch Fußball-Europa sollte sich seiner Sache noch nicht allzu sicher sein."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Fußball: Nach Spionage: Deutscher Trainer erzählt von Morddrohungen",
+     "url": "https://www.tagesspiegel.de/sport/fussball-nach-spionage-deutscher-trainer-erzahlt-von-morddrohungen-15907790.html",
+     "vorschau": "Wegen der Spionage-Vorwürfe muss Trainer Tonda Eckert vom FC Southampton eine Sperre fürchten. Nun äußert er in einem Interview, wie ihn der Vorfall mitgenommen hat."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Regierungsumbildung: Dankbar wie die Tennisstars",
+     "url": "https://www.faz.net/aktuell/politik/inland/neue-bundesminister-warum-sind-alle-so-dankbar-201075586.html",
+     "vorschau": "Früher wurden Minister ernannt und genossen ihren Aufstieg still. Heute wollen sie sich mitteilen. Das Vokabular ist begrenzt."
+    }
+   ]
+  },
+  {
+   "name": "⚡ Energie & Klima",
+   "punkte": [
+    "• Opec+ erhöht die Förderobergrenze für September, um die Ölversorgung zu stärken, wobei die Preisentwicklung noch offen bleibt ‹‹SRC|Wirtschaftswoche|https://www.wiwo.de/politik/ausland/opec-kartell-opec-erhoeht-oelfoerderziele-fuer-september/100244518.html››.",
+    "• Ungarn verliert wegen Niedrigwasser an der Donau fast die Hälfte seiner Stromerzeugung, da das Kernkraftwerk Paks stillgelegt wird, Premier Magyar spricht von beispielloser Krise ‹‹SRC|Tagesschau|https://www.tagesschau.de/ausland/europa/niedrigwasser-donau-120.html››."
+   ],
+   "links": [
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Oil Prices Fall Amid Hopes of Possible U.S.-Iran Deal",
+     "url": "https://www.wsj.com/finance/commodities-futures/oil-prices-fall-amid-hopes-of-possible-u-s-iran-deal-9a3f0ff4?mod=rss_markets_main",
+     "vorschau": "Oil prices were lower in early Asian trade amid hopes of a possible U.S.-Iran deal that could ease supply disruptions."
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Hungary faces energy crunch as drought shuts down Paks nuclear plant, PM says",
+     "url": "https://www.politico.eu/article/hungary-shuts-down-paks-nuclear-plant-danube-drought-intensifies-energy-crisis/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Budapest loses 40 percent of the country's electricity generation as water levels continue to drop."
+    },
+    {
+     "quelle": "FAZ",
+     "titel": "Hormus-Krise: Warum geht uns das Öl nicht aus?",
+     "url": "https://www.faz.net/aktuell/finanzen/finanzmarkt/oelversorgung-trotz-iran-krieg-warum-blieb-die-krise-aus-201072274.html",
+     "vorschau": "Im Frühjahr warnten Experten vor leeren Tanks und Flugausfällen infolge des Irankriegs. Bisher sind die schlimmsten Befürchtungen nicht eingetreten. Die Gefahr bleibt."
+    },
+    {
+     "quelle": "Wirtschaftswoche",
+     "titel": "Rohstoffe: Opec+ erhöht Ölförderziele für September",
+     "url": "https://www.wiwo.de/politik/ausland/opec-kartell-opec-erhoeht-oelfoerderziele-fuer-september/100244518.html",
+     "vorschau": "Die Opec+ hebt ihre Förderobergrenze erneut an. Ob das den Ölpreis senkt und die angespannte Versorgungslage entspannt, bleibt offen."
+    },
+    {
+     "quelle": "Tagesschau",
+     "titel": "Niedrigwasser der Donau: Ungarn erlebt \"beispiellose Energiekrise\"",
+     "url": "https://www.tagesschau.de/ausland/europa/niedrigwasser-donau-120.html",
+     "vorschau": "Fast die Hälfte des benötigten Stroms fällt in Ungarn plötzlich weg. Wegen der anhaltenden Hitze muss das Atomkraftwerk Paks abgeschaltet werden. Premier Magyar spricht von einer \"beispiellosen Krise\". Von Clemens Verenkotte."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Handelsblatt",
+     "titel": "Daniel Stelter: KI braucht Strom, Kompetenz und Teilhabe – Deutschland besitzt nichts davon",
+     "url": "https://www.handelsblatt.com/meinung/wirtschaftsforum/beyond-the-obvious-ki-braucht-strom-kompetenz-und-teilhabe-deutschland-besitzt-nichts-davon/100240242.html",
+     "vorschau": "Europa und Deutschland sind bei KI hoffnungslos abgehängt. Der Grund ist eine Regulierung, die weder Sicherheit schafft noch Innovation zulässt. Ein Gastbeitrag."
+    }
+   ]
+  }
+ ],
+ "alle_artikel": {
+  "🏛️ Innenpolitik": [
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Friedrich Merz: CSU-Chef Markus Söder lobt Kanzler als »sehr, sehr stabil und stark«",
+    "url": "https://www.spiegel.de/politik/deutschland/friedrich-merz-csu-chef-markus-soeder-lobt-kanzler-als-sehr-sehr-stabil-und-stark-a-a19ddc9c-561b-403b-9cc8-77fd22feca8b#ref=rss",
+    "vorschau": "In der Union zeichnet sich ein Autoritätsverlust des Kanzlers ab. Nun springt ihm CSU-Chef Markus Söder zur Seite. Er warnt die eigenen Leute vor Neuwahlen."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "CSU-Chef Söder wirbt für Geschlossenheit im ARD-Sommerinterview",
+    "url": "https://www.tagesschau.de/inland/innenpolitik/sommerinterview-soeder-112.html",
+    "vorschau": "Die CSU schwächelt nach der Kommunalwahl, doch Bayerns Ministerpräsident Söder bleibt gelassen. Er sieht seine Aufgabe als \"Stabilisator der Demokratie\", sagte er im ARD-Sommerinterview - auch mit Blick auf den wachsenden Erfolg der AfD."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Das Sommerinterview mit CSU-Chef Söder im Faktencheck",
+    "url": "https://www.tagesschau.de/faktenfinder/sommerinterview-faktencheck-soeder-100.html",
+    "vorschau": "Der CSU-Vorsitzende Söder war im ARD-Sommerinterview zu Gast. Viele Aussagen waren weitgehend korrekt. Doch unter anderem bei der Regelung zu den Krankschreibungen und den Abschiebungen lag er daneben."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "„Verbindlich und verbindend“: SPD-Politiker sprechen sich für Ilse Aigner als Bundespräsidentin aus",
+    "url": "https://www.tagesspiegel.de/politik/verbindlich-und-verbindend-spd-politiker-fur-aigner-als-bundesprasidentin-15907654.html",
+    "vorschau": "CSU-Chef Söder hat Ilse Aigner als Steinmeier-Nachfolgerin vorgeschlagen. Nun plädieren auch SPD-Politiker für Bayerns Landtagspräsidentin als Staatsoberhaupt."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "TV-Kritik Bas und Söder: Wer braucht bitte Sommerinterviews?",
+    "url": "https://www.faz.net/aktuell/feuilleton/medien-und-film/talkshow/tv-kritik-bas-und-soeder-wer-braucht-bitte-sommerinterviews-accg-201089007.html",
+    "vorschau": "Im ZDF soll Bärbel Bas zu demselben politischen Klein-Klein Stellung beziehen wie Markus Söder in der ARD. Wenn den Sendern bei Sommerinterviews sonst nichts einfällt – warum bringen sie nicht gleich Talkshows?"
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Scheinselbstständigkeit: Wann schafft die Bundesregierung Rechtssicherheit für Selbstständige?",
+    "url": "https://www.wiwo.de/politik/deutschland/scheinselbstaendigkeit-schafft-die-regierung-sicherheit-fuer-selbstaendige/100243476.html",
+    "vorschau": "Mehr als zwei Drittel der Statusprüfungen für Selbstständige endeten 2025 mit dem Ergebnis „scheinselbstständig“. Kritiker sagen, um die Sozialkassen zu füllen."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Umfrage: FDP in weiterer Umfrage bei fünf Prozent",
+    "url": "https://www.wiwo.de/politik/deutschland/fdp-in-weiterer-umfrage-bei-fuenf-prozent/100244508.html",
+    "vorschau": "Vor anderthalb Jahren sind die Liberalen aus dem Bundestag geflogen. Mehrere Umfragen legten zuletzt nahe, dass sie aktuell Chancen auf einen Wiedereinzug hätten. Jetzt kommt eine weitere dazu."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Rentendebatte: Ernst machen mit der besseren Generationen-Balance",
+    "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/cdu-und-spd-im-streit-ist-die-fruehrente-noch-zu-retten-201088204.html",
+    "vorschau": "Über Forderungen aus der CDU, die abschlagsfreie Frührente zu erhalten, freut sich die SPD. Merz muss die Debatte stoppen, bevor sie aus dem Ruder läuft."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "AfD in Sachsen-Anhalt: Dieser Mann regiert seit knapp drei Jahren eine Kleinstadt",
+    "url": "https://www.spiegel.de/politik/deutschland/afd-in-sachsen-anhalt-dieser-mann-regiert-seit-knapp-drei-jahren-eine-kleinstadt-a-e5f4d601-9e39-4320-8d21-1b9f87b325bf#ref=rss",
+    "vorschau": "Hannes Loth ist Bürgermeister von Raguhn-Jeßnitz in Sachsen-Anhalt, er war der erste AfD-Politiker im Amt. Wie hat sich die Stadt unter ihm verändert? Eine Langzeitbeobachtung."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Sommerinterview: Bas verteidigt Doppelrolle als SPD-Chefin und Ministerin: „Ich verheddere mich nicht“",
+    "url": "https://www.handelsblatt.com/politik/deutschland/sommerinterview-bas-verteidigt-doppelrolle-als-spd-chefin-und-ministerin/100243730.html",
+    "vorschau": "Die SPD-Co-Chefin gibt sich trotz desaströser Umfragewerte pragmatisch. Von der Union fordert sie, dass sie ihre Position bei der Rente klärt."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Hallervordens Auftritt: Nonstop Nonsens",
+    "url": "https://www.faz.net/aktuell/politik/inland/auftritt-von-hallervorden-bei-der-cdu-nonstop-nonsens-201088154.html",
+    "vorschau": "Auf einer CDU-Wahlkampfveranstaltung in Sachsen-Anhalt zieht Didi Hallervorden über Pistorius und Merz her. So überzeugt man Wähler nicht."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Energiesicherheit: Katherina Reiche bringt neue Finanzierung für Gasreserve ins Spiel",
+    "url": "https://www.zeit.de/wirtschaft/2026-08/gasreserve-katherina-reiche-cdu-finanzierung-umlage",
+    "vorschau": "Die geplante Gasreserve für Krisen sollte von Verbrauchern bezahlt werden. Nach Kritik regt die Bundeswirtschaftsministerin ein Mischmodell über den Haushalt an."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Bas fordert Union zur Klärung bei \"Rente mit 63\" auf",
+    "url": "https://www.tagesschau.de/inland/innenpolitik/rentenreform-bas-100.html",
+    "vorschau": "Soll die \"Rente mit 63\" weg - oder doch nicht? Darüber gibt es in der Union derzeit Diskussion. Nun fordert SPD-Chefin Bas den Koalitionspartner auf, sich zu positionieren. Die Sozialdemokraten seien bereit, das Rentenpaket aufzuschnüren."
+   }
+  ],
+  "🌍 Außenpolitik": [
+   {
+    "quelle": "Google US Foreign",
+    "titel": "Iran US Understanding Foreign Policy Shapes Future Strategy - صوت الإمارات",
+    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxORy1TY2d6N2VDX2NkMDc0c082OWNjQTNabUpCMFFXVEFJNmVPMDJLRUh6ZWZfZnRweG1mTXNQc2ZWSUMyZGNuZEVnTlY5a3EtWF80UGhUbGNnSHFWV3JIU2c2YkJCVUJpYkd6ZTZ5a2oyYkRYVE9VQWdxTGUwLUttX1JnMzcwdk5vTWZfVDkxMnNuR183a1Nob0xOOU80X2RKVGZWbGxsSXNVSUpZM2ZvdA?oc=5",
+    "vorschau": "Iran US Understanding Foreign Policy Shapes Future Strategy صوت الإمارات"
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "‘Comradely’ Talks and a ‘Deer Leader’ Mascot: Scenes From the D.S.A. Summit",
+    "url": "https://www.nytimes.com/2026/08/02/us/politics/democratic-socialists-america-convention.html",
+    "vorschau": "At a national meeting of the Democratic Socialists of America, nervous energy and a sprawling tableau of sometimes-competing interests were on display."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Nacktszene mit Kinski: Wim Wenders macht einen Schnitt",
+    "url": "https://www.faz.net/aktuell/feuilleton/medien-und-film/medienpolitik/wenders-schneidet-nacktszene-mit-13jaehriger-kinski-aus-film-was-folgt-daraus-201087284.html",
+    "vorschau": "Wim Wenders entfernt die Nacktszene mit der damals dreizehn Jahre alten Nastassja Kinski aus dem Film „Falsche Bewegung“. Er will den „Konflikt“ beenden. Über das „Filmerbe“ will er immer noch sprechen. Was heißt das?"
+   }
+  ],
+  "🌐 Großmächte & Geopolitik": [
+   {
+    "quelle": "FT US",
+    "titel": "Trump says he cancelled Iran strikes at request of Middle East nations",
+    "url": "https://www.ft.com/content/9cb84920-075e-4fa4-b1cb-dfc55d5845f4?syn-25a6b1a6=1",
+    "vorschau": "US president claims ‘perimeters of a deal’ to end conflict have been agreed days after he threatened to attack"
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Iran-Krieg: Trump kündigt für heute neue Gespräche mit dem Iran an",
+    "url": "https://www.tagesspiegel.de/internationales/iran-krieg-trump-kundigt-fur-heute-neue-gesprache-mit-dem-iran-an-15907769.html",
+    "vorschau": "Der US-Präsident will eine beispiellose Welle vernichtender Angriffe auf den Iran in letzter Minute gestoppt haben - auf Bitten mehrerer Staaten in der Region. Heute soll es eine Annäherung geben."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Oil Prices Plummet as Investors Digest Pause in Fighting in Iran War",
+    "url": "https://www.nytimes.com/2026/08/02/business/oil-prices-plummet-iran-war.html",
+    "vorschau": "The markets’ moves were the first since President Trump said late Saturday that he had halted a U.S. assault on Iran."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Trump Says He Canceled Strikes on Iran, Claiming Progress on Outlines of a Deal",
+    "url": "https://www.nytimes.com/2026/08/02/world/middleeast/trump-iran-cancels-attack-deal.html",
+    "vorschau": "President Trump has repeatedly threatened to escalate the war with Iran, only to abruptly back down. Saudi Arabia said its leader had urged Trump not to renew attacks."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "The Kremlin Is Bullying More Russians Into Fighting in Ukraine",
+    "url": "https://www.wsj.com/world/russia/the-kremlin-is-bullying-more-russians-into-fighting-in-ukraine-3d1af6d7",
+    "vorschau": "Russia is strong-arming more fighting-age men into military service as voluntary recruitment stalls and Moscow’s initiative in Ukraine falters."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "‘They feel emboldened’: Iran leaving Trump with no good way out",
+    "url": "https://www.politico.com/news/2026/08/02/irans-demands-leave-trump-few-good-options-01020961?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Inside the White House, top administration officials have warned against any resolution that allows Iran to control the strait."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Trump backs down on Iran strikes in expectation of ‘rapidly’ reaching a deal",
+    "url": "https://www.theguardian.com/world/2026/aug/02/trump-climbs-down-on-iran-strikes-after-saudi-alarm-and-threats-from-tehran",
+    "vorschau": "US president claims delay is also in response to requests from Iran and other countries in the region Donald Trump has said he cancelled planned military strikes against Iran on the basis of “rapidly” reaching a deal on its nuclear programme and the full reopening of the strait of Hormuz . The US president paused the strikes in expectation of a breakthrough and in response to requests from Iran and other countries in the region, he claimed on his Truth Social platform on Saturday. Continue readi"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Trump says Iran talks to resume after US called off major attack",
+    "url": "https://www.ft.com/content/c9bd508c-2915-4b34-a5a5-553bff9548a5?syn-25a6b1a6=1",
+    "vorschau": "Oil falls on signs of de-escalation as Tehran says a deal with Oman to reopen Strait of Hormuz to shipping was close"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Trump says Iran talks to take place on Monday, sets no deadline for deal - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOdzJzZHNCZzdLcHhDVWdCSEpLMEpVckJUQXFxcjhrcEdHWmlWQ183T3g0dUtwWldQLTVfQ0FCbGRaXzV3Y2tnS0laLS1LeU1KcGJKRVhvX2xyV1I1Q0cxSDF0dWJ6ZWpaOFZJTWZac045VWduTklfeUl2QUhKcXZtbE9EY1MtR0p0MUNZOXEtbEpFejVqeXFQaHRRcVFBbkNhUU41eGM3ZldtVFg3U09UY205bjRlUFU?oc=5",
+    "vorschau": "Trump says Iran talks to take place on Monday, sets no deadline for deal Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "China draws 'red lines' around its economic model ahead of EU, US trade talks - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQQWk1MXJvXzVGTkx2SW9Kak03MTJDSUlsYWtZREhuT1MwcjJUOWcyOFFwcXFHYlNrV1dlUUdHVG9yZk5JbFJwS1JzWWg4ZE9pY0NQWWdpSVhoT0g1ZERwVlBvTm51dklQLWlGU0UxeEF1NVJfQ1pvdnZUa1dRQ3RUU09lUE50NGJLcE4wYmNtUGNXT0xLV1BkNnlmR1p4ZTkwQ0pIRnpQUVQ3TGkyakUwRm5RRzNJZi1Id3Bv?oc=5",
+    "vorschau": "China draws 'red lines' around its economic model ahead of EU, US trade talks Reuters"
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Trump kündigt neue Iran-Gespräche an",
+    "url": "https://www.tagesschau.de/ausland/amerika/trump-iran-verhandlungen-102.html",
+    "vorschau": "Kurz nach der Absage angeblich geplanter Angriffe auf Iran hat US-Präsident Trump neue Verhandlungen mit Teheran angekündigt. Diese sollen noch heute beginnen. Details zu den Teilnehmern nannte er allerdings nicht."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Jordan Is Learning Its U.S. Alliance Has a Price in the Iran War",
+    "url": "https://www.wsj.com/world/middle-east/jordan-is-learning-its-u-s-alliance-has-a-price-in-the-iran-war-7ce9fd8b",
+    "vorschau": "The kingdom has become a target for Tehran as the U.S. relies more on its desert bases."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Trump Pivots Back to Diplomacy as Iran Victory Eludes Him",
+    "url": "https://www.wsj.com/world/middle-east/trump-pivots-back-to-diplomacy-as-iran-victory-eludes-him-a925ee98",
+    "vorschau": "The question is whether negotiations can finally reopen the Strait of Hormuz and lay the groundwork for nuclear talks."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Gulf States Pressed Trump to Hold Off on Iran Strikes and Pursue Talks",
+    "url": "https://www.wsj.com/world/middle-east/gulf-states-pressed-trump-to-hold-off-on-iran-strikes-and-pursue-talks-03bcdb52",
+    "vorschau": "The president called off a planned attack late Saturday. Tehran has signaled openness to a new plan to open Strait of Hormuz, mediators said."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | Trump’s Latest Iran ‘DEAL’",
+    "url": "https://www.wsj.com/opinion/trumps-latest-iran-deal-7c90e6cc",
+    "vorschau": "He again calls off the military escalation he threatened, with little detail disclosed."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Trump suggests new talks with Iran to begin on Monday",
+    "url": "https://www.bbc.co.uk/news/articles/c23579jzv08o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Tehran has not responded to the suggestion that new talks are imminent. Trump has previously said a negotiated end to the war is close, only for strikes to resume."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Almost £200,000 of fuel stolen from UK forecourts every day since Iran war began",
+    "url": "https://www.bbc.co.uk/news/articles/cy8mrrlkjppo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Incidents of fuel being taken without payment have risen by a fifth in five months, according to industry analysis."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Ukraine hits targets deep inside Russia, killing eight",
+    "url": "https://www.dw.com/en/ukraine-hits-targets-deep-inside-russia-killing-eight/a-78208850?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Ukrainian drone strikes inside Russia killed eight people overnight in attacks that targeted military and civilian infrastructure. Russia said Moscow's forces downed 635 drones in the assault."
+   },
+   {
+    "quelle": "Google Markets EN",
+    "titel": "The $1.2 Trillion Reason Scott Bessent Just Bought Japanese Yen - 24/7 Wall St.",
+    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZ2JkT2Y0TjMzS3haLTR2NXV1RU1PMUNoN0dON2Nvb3FzSUU1WnRaUjhwUDZWbXJlaWJkblhnVTFoLXYwbmpHTnpMTXFwNXByOEkwMTltYlgwMmw5S3Y2WnFPREo4TmJHU3ZNakpEaE9FMy1aZkFCV2syS1ZvS2Jhb0d1N2lfUFVzOWpNTTYza2xvemI5RVM5ZVFsT0J3U0h1Yy1xTlNxUk5fUQ?oc=5",
+    "vorschau": "The $1.2 Trillion Reason Scott Bessent Just Bought Japanese Yen 24/7 Wall St."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "How a Top Law Firm Went From Standing Up to Trump to Bending the Knee",
+    "url": "https://www.nytimes.com/2026/08/02/us/politics/paul-weiss-trump.html",
+    "vorschau": "Paul Weiss was a progressive stalwart for decades and led the legal resistance against President Trump in his first term. Then it surrendered without a fight. This is the inside story of its transformation."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "New Round of Trump Threats and Pullbacks Raises Uncertainty in Mideast",
+    "url": "https://www.nytimes.com/2026/08/02/us/politics/trump-iran-negotiations.html",
+    "vorschau": "Analysts and lawmakers are trying to divine whether Mr. Trump’s latest announcement means negotiations with Iran will truly get underway Monday or if the president is just working through unappealing options."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Israel äußert Bedenken zu Trumps Plan für Gaza-Entwaffnung",
+    "url": "https://www.tagesschau.de/ausland/asien/israel-bedenken-hamas-entwaffnung-100.html",
+    "vorschau": "Schon vor Tagen hatte US-Präsident Trump eine Einigung zur Entwaffnung des Gazastreifens verkündet. Jetzt gibt es eine offizielle Reaktion aus Israel: Man habe den USA \"ernsthafte Sicherheitsbedenken\" übermittelt."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "‘Voters have had it’: influence of pro-Israel lobby group sparks backlash in the US",
+    "url": "https://www.ft.com/content/889c551a-88ab-451a-87f5-cdec65467a64?syn-25a6b1a6=1",
+    "vorschau": "Aipac’s links to Israeli Prime Minister Benjamin Netanyahu provoke controversy in midterm election campaigns"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Opinion | How U.S. Treasury Is Helping Venezuela Rebuild",
+    "url": "https://www.wsj.com/opinion/how-u-s-treasury-is-helping-venezuela-rebuild-3e73241f?mod=rss_markets_main",
+    "vorschau": "Washington is opening the way for American investment."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Outside the Moscow restaurant where bomb killed three",
+    "url": "https://www.bbc.co.uk/news/articles/cdx8qp451lko?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The BBC's Russia editor reports from Kudrinskaya Square, where the blast took place."
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Taiwan minister says close ties with U.S. Pacific Command boost defence readiness - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOVklDQ3A2S254OVB4N0hfV0ZUc2trSnBwU3dUbjFQYkJKdGFoemRkU3lITTJNLUxpemJaellmQkl4T2ZCMEJpb19fcjJQVHNsS0ctMjdBNDY0bld4VW01SFVNcHM4UFNOSGE2Y1Y3bW0xeEJGSXZ4eC11SGs5RkVCb1NQenY5SDQtNzRRMnBKaDBTOE5zVnRUVkE2bEtqSDlIcm5vdDYzcV9wdkpCTkNTaXZ2b2NnNm5BclB1ZmFyRWdhWmx0Tmc?oc=5",
+    "vorschau": "Taiwan minister says close ties with U.S. Pacific Command boost defence readiness Reuters"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Trump keeps escalating his trade threats. This time, Europe isn’t biting.",
+    "url": "https://www.politico.com/news/2026/08/02/trump-trade-threats-europe-01020492?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "The EU believes Trump’s latest threats are best answered with strategic patience, not retaliation."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "A Marijuana Giant That Won Over Trump Has Found Enemies Closer to Home",
+    "url": "https://www.nytimes.com/2026/08/02/us/florida-marijuana-trulieve-trump.html",
+    "vorschau": "Concerns about polluted water and excessive runoff — and the pervasive smell of cannabis — in a small Florida town have made the company, Trulieve, the target of local criticism and state investigations."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Opinion | Trump, TikTok and Federal Devices",
+    "url": "https://www.wsj.com/opinion/donald-trump-tiktok-federal-devices-bytedance-china-28d21162?mod=rss_Technology",
+    "vorschau": "The Justice Department green lights the app for U.S. officials, despite spying worries."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Devisen: Trump bestätigt gemeinsame Intervention mit Japan zur Stützung des Yen",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/devisen-trump-bestaetigt-gemeinsame-intervention-mit-japan-zur-stuetzung-des-yen/100244551.html",
+    "vorschau": "Die USA seien immer für Japan da, so US-Präsident Donald Trump über die neuen Maßnahmen. Der Yen war in den vergangenen Wochen massiv abgestürzt."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Krieg in Gaza: Israelische Angriffe töten mindestens 15 Palästinenser",
+    "url": "https://www.spiegel.de/ausland/krieg-in-gaza-israelische-angriffe-toeten-mindestens-15-palaestinenser-a-a9e5a14d-e547-415e-a4b4-437610ac954e#ref=rss",
+    "vorschau": "US-Präsident Trump hat erst vor wenigen Tagen Fortschritte beim Waffenstillstandsabkommen zwischen Israel und der Hamas verkündet. Israels Militär greift dennoch weiter Ziele in Gaza an, am Sonntag gab es dabei viele Opfer."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Moscow restaurant blast a 'brutal terror attack,' mayor says",
+    "url": "https://www.dw.com/en/moscow-restaurant-blast-a-brutal-terror-attack-mayor-says/a-78205022?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "The deadly explosion outside an upscale Moscow restaurant at Kudrinskaya Square was a \"brutal terror attack,\" Moscow Mayor Sergei Sobyanin said, promising the perpetrators would be punished. But many questions remain."
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "EXCLUSIVE Japan to announce Tokyo, Washington took joint action on yen, sources say - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeWRxZmUtQUZfS21oaHA2QVRaX0FYX09hRTBYRXZ6dnZ4dzAxamMzREtPN2laazBKdDNacXg3UUcxbS1fM3VSNGV4bDFNVkJPU3RCUWFDZjlDQ3VaTV9zTmQzaDgxYlV1MmNJcFZZcmJvRG9qSlRWTnZlQ1MyTm14OVItU2M2cDJfcklTdERRR2xBZ09FVWtYVkhZaTJiQXE5S0Q1eUNFdE5fbGl1X3VyUko1bHFiQ1M2SExvVw?oc=5",
+    "vorschau": "EXCLUSIVE Japan to announce Tokyo, Washington took joint action on yen, sources say Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Oil slumps on hopes of Iran deal, yen spikes suddenly after intervention - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQUjBjdHpEdEdMdVNpbVprQmRvNG9JTzl0ZHB4SkNmWUxqT2hNUG8xcW96U1R2czNKWHVMYXRqY2gxR1pHTzZ4RjlpaDgzUnM3U0dCNURmZDhPUUhVTnRuUFhYcGFmVHdoOWg2a3RJNTNGQktBU3pvZVZGSS1EVUJ1QzlVbw?oc=5",
+    "vorschau": "Oil slumps on hopes of Iran deal, yen spikes suddenly after intervention Reuters"
+   },
+   {
+    "quelle": "Reuters Business",
+    "titel": "China's Chery to invest $75 mln in Korea's KG Mobility, eyes overseas markets - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNMHcyblFseVdpWUdPVVdaYy01XzhlWFBObENialpfdWZoeW5hemhtODBRd0ZkbG9QeDVqR2RBYzZDV3NQcGRoWVgxY3dXa1d4UlFoRDEwR0lkSVl6QTRrZmFaU2ZpazIxdUQ4TWtmQzJKVHg3Q2FPd0VIMk1NaTBFdUV5VE9kQ3hlRVo1RGx3aHp2ZHhKY1RkcDdtcUc0SmVaVUM2T2sxVjVDdlJQdmNTTUpwam9CenQ3SjZIVWd5RUFmbGJiMUxuekl2UHpnUQ?oc=5",
+    "vorschau": "China's Chery to invest $75 mln in Korea's KG Mobility, eyes overseas markets Reuters"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "La Guaira Is Unrecognizable After Venezuela’s Deadly Earthquakes",
+    "url": "https://www.nytimes.com/2026/08/02/world/americas/venezuela-earthquakes-la-guaira.html",
+    "vorschau": "More than a month after the earthquakes, the coastal region of La Guaira — once Venezuela’s main gateway — is completely unrecognizable."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Spitting Attacks Show Rise of Anti-Christian Hate in Israel",
+    "url": "https://www.wsj.com/world/middle-east/spitting-attacks-show-rise-of-anti-christian-hate-in-israel-5ea40ac7",
+    "vorschau": "Negative attitudes toward Christianity are becoming more common among young Israelis."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Canada’s WestJet Cancels Trips Amid Strike By Flight Attendants",
+    "url": "https://www.nytimes.com/2026/08/02/world/canada/westjet-flight-attendants-strike-canada.html",
+    "vorschau": "Labor talks resumed on Sunday between the airline and union representing 4,400 flight attendants, who want improved wages and compensation for unpaid work."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Healey’s profiteering warning on food and fuel risks row with retailers",
+    "url": "https://www.theguardian.com/business/2026/aug/02/john-healey-profiteering-warning-retailers-backlash",
+    "vorschau": "Chancellor says the government wants to prevent shoppers being ‘taken for a ride’ at the pump or till The chancellor, John Healey , has said the government is standing by to prevent the public from “being taken for a ride at the pump or the till” as the Iran war continues to hit prices. While he said there had been “no significant evidence of so-called price gouging” during the crisis, he used a weekend column to tell the big retailers that ministers were “watching closely” for any signs of prof"
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Yen: Japan und USA stützen offenbar gemeinsam den Yen",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/yen-japan-und-usa-stuetzen-offenbar-gemeinsam-den-yen/100244484.html",
+    "vorschau": "Es wäre die erste derartige gemeinsame Intervention seit 2011. US-Finanzminister Scott Bessent bezeichnete den Yen vergangene Woche noch als „sehr unterbewertet“."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Neue Schmuggelroute: Das Kokain kommt per Schnellboot",
+    "url": "https://www.faz.net/aktuell/politik/ausland/kokain-schmuggel-spaniens-straende-und-die-westafrika-route-201025591.html",
+    "vorschau": "Donald Trump lässt südamerikanische Drogenschmuggler in der Karibik jagen. Deshalb suchen sie neue Absatzmärkte in Europa – und verschiffen ihre Ware über Westafrika nach Spanien."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Märkte Asien: Yen steigt, Aktien sinken: Japan und USA intervenieren gemeinsam am Devisenmarkt",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/maerkte-asien-japan-und-usa-intervenieren-gemeinsam-am-devisenmarkt/100244551.html",
+    "vorschau": "Die erste gemeinsame Intervention seit 2011 überrascht die Märkte. US-Präsident Donald Trump deutet weitere Hilfe zur Stützung des Yen an."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Japan vows to intervene again with US over yen if needed",
+    "url": "https://www.ft.com/content/5de204a4-4db6-458c-aa9a-324e6bd5e766?syn-25a6b1a6=1",
+    "vorschau": "Finance minister Satsuki Katayama confirms joint action with Washington to counter ‘disorderly movements’"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Nikkei Falls 1.4%, Dragged by Electronics, Auto Stocks",
+    "url": "https://www.wsj.com/finance/stocks/nikkei-falls-1-4-dragged-by-electronics-auto-stocks-e85119b4?mod=rss_markets_main",
+    "vorschau": "Japanese stocks were lower in early trade following Friday’s sharp gains as uncertainty over the Iran conflict continues."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Massive Attack dürften nach Eklat mit Palästinenserflagge nicht mehr in Singapur auftreten",
+    "url": "https://www.spiegel.de/panorama/massive-attack-duerften-nach-eklat-mit-palaestinenserflagge-nicht-mehr-in-singapur-auftreten-a-f21c4429-c548-4bd9-b2a4-e58139c3cf9b#ref=rss",
+    "vorschau": "Die Band macht aus ihrer Haltung zu Israel und Gaza keinen Hehl – das hat für Massive Attack nun Folgen: In Singapur stand nach einem Auftritt die Polizei vor den Hotelzimmern. Die Musiker sprachen von einer »surrealen Erfahrung«."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Spokane Wildfires Destroy Hundreds of Buildings as Thousands Evacuate",
+    "url": "https://www.nytimes.com/2026/08/02/us/spokane-wildfires.html",
+    "vorschau": "Firefighters were hopeful that improving weather conditions in Washington state could help efforts to contain the blaze, which officials described as the largest natural disaster in the history of Spokane."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Ohio Senator Calls Former Son-in-Law Accused of Abuse Unfit for Office",
+    "url": "https://www.nytimes.com/2026/08/02/us/elections/max-miller-ohio-republican-moreno-election.html",
+    "vorschau": "Senator Bernie Moreno, Republican of Ohio, broke his silence about allegations of domestic abuse his daughter has made against Representative Max Miller."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Ölförderung: Opec plus einigt sich auf höhere Ölförderziele",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/devisen-rohstoffe/oelfoerderung-opec-plus-einigt-sich-auf-hoehere-oelfoerderziele/100244498.html",
+    "vorschau": "Die Ölförderorganisation hat ihre Quoten seit Beginn des Iran-Krieges monatlich angehoben. Nun will sie ihre Förderziele ab September um 188.000 Barrel pro Tag erhöhen."
+   }
+  ],
+  "💰 Wirtschaft": [
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Kolumne Inside America: Starke Zahlen, Stimmung im Keller: Was ist mit der US-Wirtschaft los?",
+    "url": "https://www.handelsblatt.com/meinung/kolumnen/kolumne-inside-america-starke-zahlen-stimmung-im-keller-was-ist-mit-der-us-wirtschaft-los/100244359.html",
+    "vorschau": "Die Wirtschaft wächst, die Arbeitslosigkeit ist niedrig – und die US-Bürger gehen auf die Barrikaden. Selten klafften offizielle Zahlen und die gefühlte Wahrheit weiter auseinander als jetzt."
+   },
+   {
+    "quelle": "Google Markets EN",
+    "titel": "The Bond Market Just Called Fed Chair Kevin Warsh's Bluff on Interest Rates - The Motley Fool",
+    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQcldqcGZSVDJnbkk0Q3BaenZuR2QtWHoxZTB0R3NKZmZNTU5qZXpzUlRyaC1KdFIxbmp3MnQ3MTRDYmlvd3pteHJaX3g5R1d0eVRmVVVKX2lMbEg5Z2Z3RG1QZ0k0V3BKSXJvNDRfbUxmS2QtWmNuMDZ0d0swYnZNcFc5RTYxREVsTTdra2FxNHpxVHhvTUVN?oc=5",
+    "vorschau": "The Bond Market Just Called Fed Chair Kevin Warsh's Bluff on Interest Rates The Motley Fool"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Gold Rises on Technical Rebound",
+    "url": "https://www.wsj.com/finance/commodities-futures/gold-rises-on-technical-rebound-e221dd67?mod=rss_markets_main",
+    "vorschau": "Gold rose. The direction of the U.S. dollar, U.S. Treasury yields and incoming U.S. labor market data will affect gold’s trends over the next few sessions more than the traditional safe-haven narrative, said XS.com."
+   }
+  ],
+  "📊 Finanzen & Märkte": [
+   {
+    "quelle": "FT US",
+    "titel": "Morgan Stanley’s IPO after-party: a wealth management bonanza",
+    "url": "https://www.ft.com/content/3f651fa0-3362-4a16-9ac1-992291c5f68a?syn-25a6b1a6=1",
+    "vorschau": "Bank’s underwriting of SpaceX and other new issues generates $74bn second-quarter haul in wealth management assets"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Monte dei Paschi explores Banco BPM takeover after ‘merger of equals’ talks collapse",
+    "url": "https://www.ft.com/content/4ce36d22-571d-4532-8a8f-078e8fba34ff?syn-25a6b1a6=1",
+    "vorschau": "MPS chief executive weighs approach to Banco BPM’s largest shareholder, Crédit Agricole"
+   },
+   {
+    "quelle": "Google Finanzen DE",
+    "titel": "DAX-Aktie: Verdoppler möglich - boerse-online.de",
+    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOSGRuZU5Pc1lRa1NuX3B6SnBXdmFJLVNqUGdmRlFWaURmQTJua012ZFhUYU1CUlhpcjlSQzZpWi1ha2k2R1FaNERpTENXX2pseDZ2dmJoTFFyclc1cERRRU82Rl83NTgyZVdndnQyNHlhUFlWa2s0Y1RwSHVOSTRGWjVqRHRWOVphT0JUU1NIZ01uWkxFMlE?oc=5",
+    "vorschau": "DAX-Aktie: Verdoppler möglich boerse-online.de"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "America’s biggest companies report ‘rock solid’ profits as consumers face higher costs",
+    "url": "https://www.ft.com/content/b4f150ea-9ea3-4bb4-b1e0-014cf1f0df26?syn-25a6b1a6=1",
+    "vorschau": "S&P 500 groups on track for strongest earnings in five years"
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Citadel Securities: König Ken, der reichste Hedgefondsmanager der Welt",
+    "url": "https://www.faz.net/aktuell/finanzen/ken-griffin-der-reichste-hedgefondsmanager-der-usa-201073575.html",
+    "vorschau": "Ken Griffin ist der reichste Hedgefondsmanager der Welt. Ob Börse, Erdgasfelder oder Politik: Er mischt überall mit. Und könnte sich sogar vorstellen, amerikanischer Präsident zu werden."
+   }
+  ],
+  "💻 Tech & KI": [
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Künstliche Intelligenz: Wie Metas Schulden in deutschen Sparpolicen landen könnten",
+    "url": "https://www.handelsblatt.com/technik/it-internet/kuenstliche-intelligenz-wie-metas-schulden-in-deutschen-sparpolicen-landen-koennten/100243249.html",
+    "vorschau": "Finanzprofis finden immer neue Wege, KI-Milliardeninvestitionen aus den Bilanzen der Tech-Konzerne zu halten. Das Risiko trägt unter anderem die Allianz – und deren Kunden. Eine Rekonstruktion."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Künstliche Intelligenz: Sicherheitsbehörden warnen vor Welle KI-gestützter Cyberattacken",
+    "url": "https://www.handelsblatt.com/politik/deutschland/kuenstliche-intelligenz-sicherheitsbehoerden-warnen-vor-welle-ki-gestuetzter-cyberattacken/100243667.html",
+    "vorschau": "Die raschen Fortschritte bei Künstlicher Intelligenz schüren die Sorge vor zunehmenden digitalen Angriffen. Cyberkriminelle könnten deutlich leichteres Spiel haben. Welche Gegenmaßnahmen nötig sind."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Big Tech Earnings Are Sending Valuations in Opposite Directions",
+    "url": "https://www.wsj.com/finance/stocks/tech-company-earnings-stock-market-5c4179d8?mod=rss_markets_main",
+    "vorschau": "Reports from tech giants drove big gains and losses, while the Fed-fueled bond selloff adds to market pressures."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Interview: Black-Forest-Labs-Gründer: „Ein Wettlauf mit der größten KI-Firma der Welt ist einschüchternd“",
+    "url": "https://www.handelsblatt.com/technik/ki/ki-manches-koennen-wir-besser-als-openai/100243488.html",
+    "vorschau": "Die Firma Black Forest Labs setzt mit ihrem neuesten KI-Modell erneut Maßstäbe. Der Mitgründer und leitende Forscher Axel Sauer erklärt im Handelsblatt-Gespräch, was dahintersteckt."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "German Robotics Startup Agile Robots Set to Double Revenue This Year",
+    "url": "https://www.wsj.com/tech/ai/german-robotics-startup-agile-robots-set-to-double-revenue-this-year-6d0a27dc?mod=rss_Technology",
+    "vorschau": "The German robotics startup is betting that its manufacturing expertise, not just advances in artificial intelligence, will lead to a surge in revenue and produce profits."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "KI-Prozessoren: Rechner mit KI-Kick: Gut investiertes Geld oder unnötig?",
+    "url": "https://www.handelsblatt.com/technik/it-internet/ki-prozessoren-rechner-mit-ki-kick-gut-investiertes-geld-oder-unnoetig/100244571.html",
+    "vorschau": "Künstliche Intelligenz macht sich in Smartphones und Computern breit - und mit ihr ein neuer Name: die Neural Processing Unit, kurz NPU. Was steckt dahinter? Und muss ein neuer Rechner das haben?"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Opinion | The Math on AI Works Out Well for You",
+    "url": "https://www.wsj.com/opinion/the-math-on-ai-works-out-well-for-you-eaf0f8c8?mod=rss_markets_main",
+    "vorschau": "Efforts to curtail data centers risk a potential gold mine for our society."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "A Dire Situation",
+    "url": "https://www.wsj.com/tech/ai/a-dire-situation-fa97dbae?mod=rss_Technology",
+    "vorschau": "Plus, what AI content does to our brains, Meta’s mountain of lawsuits, the million-dollar talent wars for math geniuses and more."
+   }
+  ],
+  "⚡ Energie & Klima": [
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Oil Prices Fall Amid Hopes of Possible U.S.-Iran Deal",
+    "url": "https://www.wsj.com/finance/commodities-futures/oil-prices-fall-amid-hopes-of-possible-u-s-iran-deal-9a3f0ff4?mod=rss_markets_main",
+    "vorschau": "Oil prices were lower in early Asian trade amid hopes of a possible U.S.-Iran deal that could ease supply disruptions."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Hungary faces energy crunch as drought shuts down Paks nuclear plant, PM says",
+    "url": "https://www.politico.eu/article/hungary-shuts-down-paks-nuclear-plant-danube-drought-intensifies-energy-crisis/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Budapest loses 40 percent of the country's electricity generation as water levels continue to drop."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Hormus-Krise: Warum geht uns das Öl nicht aus?",
+    "url": "https://www.faz.net/aktuell/finanzen/finanzmarkt/oelversorgung-trotz-iran-krieg-warum-blieb-die-krise-aus-201072274.html",
+    "vorschau": "Im Frühjahr warnten Experten vor leeren Tanks und Flugausfällen infolge des Irankriegs. Bisher sind die schlimmsten Befürchtungen nicht eingetreten. Die Gefahr bleibt."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Rohstoffe: Opec+ erhöht Ölförderziele für September",
+    "url": "https://www.wiwo.de/politik/ausland/opec-kartell-opec-erhoeht-oelfoerderziele-fuer-september/100244518.html",
+    "vorschau": "Die Opec+ hebt ihre Förderobergrenze erneut an. Ob das den Ölpreis senkt und die angespannte Versorgungslage entspannt, bleibt offen."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Daniel Stelter: KI braucht Strom, Kompetenz und Teilhabe – Deutschland besitzt nichts davon",
+    "url": "https://www.handelsblatt.com/meinung/wirtschaftsforum/beyond-the-obvious-ki-braucht-strom-kompetenz-und-teilhabe-deutschland-besitzt-nichts-davon/100240242.html",
+    "vorschau": "Europa und Deutschland sind bei KI hoffnungslos abgehängt. Der Grund ist eine Regulierung, die weder Sicherheit schafft noch Innovation zulässt. Ein Gastbeitrag."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Niedrigwasser der Donau: Ungarn erlebt \"beispiellose Energiekrise\"",
+    "url": "https://www.tagesschau.de/ausland/europa/niedrigwasser-donau-120.html",
+    "vorschau": "Fast die Hälfte des benötigten Stroms fällt in Ungarn plötzlich weg. Wegen der anhaltenden Hitze muss das Atomkraftwerk Paks abgeschaltet werden. Premier Magyar spricht von einer \"beispiellosen Krise\". Von Clemens Verenkotte."
+   }
+  ],
+  "🏥 Gesundheit": [
+   {
+    "quelle": "FT World",
+    "titel": "UK graduate job openings fall to lowest level since pandemic",
+    "url": "https://www.ft.com/content/5391353e-3e03-4170-a289-497019a5d615?syn-25a6b1a6=1",
+    "vorschau": "Indeed’s findings point to challenge facing Andy Burnham to boost youth unemployment and cut welfare bill"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "U.S. Restores Some Vaccine and Health Aid to Unicef, Gavi and World Food Programme",
+    "url": "https://www.nytimes.com/2026/08/02/health/trump-health-aid-state-department.html",
+    "vorschau": "The amount is still far below what the U.S. spent previously on humanitarian and health aid, but resumes the flow of money for key efforts to fight malnutrition and disease."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Pharma: AstraZeneca erwägt offenbar Mega-Fusion mit US-Rivalen Bristol Myers Squibb",
+    "url": "https://www.handelsblatt.com/unternehmen/industrie/pharma-astrazeneca-erwaegt-mega-fusion-mit-us-rivalen-bristol-myers-squibb/100244536.html",
+    "vorschau": "Es wäre eine der größten Fusionen in der Wirtschaftsgeschichte. Laut einem Medienbericht wurden entsprechende Gespräche geführt. Ob es zu einem Zusammenschluss kommt ist jedoch noch offen."
+   }
+  ],
+  "🔬 Wissenschaft": [
+   {
+    "quelle": "FT Economics",
+    "titel": "Earnings season reaches a peak",
+    "url": "https://www.ft.com/content/21896669-cce4-43cb-8e7b-e40520e9ac91?syn-25a6b1a6=1",
+    "vorschau": "SpaceX gives first results call, Flutter migrates to New York, inflation updates from China and India"
+   }
+  ],
+  "⚖️ Recht & Justiz": [
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Urteil: Eigenhändiges Testament: Wann die Unterschrift zählt",
+    "url": "https://www.handelsblatt.com/finanzen/steuern-recht/urteil-eigenhaendiges-testament-wann-die-unterschrift-zaehlt/100244561.html",
+    "vorschau": "Wer sein Testament selbst schreibt, muss bei der Unterschrift aufpassen: Ein krakeliges Wellengebilde reicht nicht, stellt ein aktuelles Urteil klar. Worauf es ankommt, damit der letzte Wille zählt."
+   }
+  ],
+  "🛡️ Sicherheit & Verteidigung": [
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Militär im Kaiserreich: »Der Stolz jedes Deutschen ist die Armee, die Blüthe des Volkes«",
+    "url": "https://www.spiegel.de/geschichte/militaer-im-kaiserreich-der-stolz-jedes-deutschen-ist-die-armee-die-bluethe-des-volkes-a-06d7d477-6449-4264-b75a-d4b68d38f2b1#ref=rss",
+    "vorschau": "Nach der Reichsgründung 1871 feierte Deutschland alles Militärische, Offiziere galten als megasexy. Die Armee diente als Karrieresprungbrett, Sehnsuchtsort und als Treffpunkt für Antidemokraten."
+   }
+  ],
+  "🌿 Umwelt & Natur": [
+   {
+    "quelle": "FT World",
+    "titel": "Hungary braced for power cuts amid extreme drought",
+    "url": "https://www.ft.com/content/a4539dc2-dcb0-4b57-9a78-c32cb1f9eda1?syn-25a6b1a6=1",
+    "vorschau": "Record-low water levels on Danube force country’s first shutdown of nuclear power plant"
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "USA: Waldbrand zerstört Teile der US-Großstadt Spokane",
+    "url": "https://www.zeit.de/wissenschaft/umwelt/2026-08/waldbrand-spokane-old-trails-fire-washington-evakuierungen",
+    "vorschau": "Der US-Bundesstaat Washington erlebt einige der schwersten dokumentierten Waldbrände in der Region. Hunderte Gebäude sind zerstört, Zehntausende Anwohner müssen fliehen."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Two helicopters collide outside Athens as Greece battles to control wildfires",
+    "url": "https://www.theguardian.com/world/2026/aug/02/western-europe-wildfire-crisis-retreats-greece-evacuates-hundreds-athens",
+    "vorschau": "Fire department says two-person crew of one aircraft killed in incident during gale-force winds to west of capital Two firefighting helicopters have collided west of Athens, killing the two-person crew of one of the aircraft, as efforts to control a massive wildfire barrelling towards the outskirts of the Greek capital intensified. Footage showed one of the helicopters losing control in the face of gale-force winds that have pushed flames towards settlements on Athens’ western fringes. Continue "
+   }
+  ],
+  "🏙️ Gesellschaft": [
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Zoff in der Union: Wie geht es weiter mit der Rentenreform?",
+    "url": "https://www.wiwo.de/politik/deutschland/rentenreform-wie-geht-es-weiter-mit-der-abschlagsfreien-fruehrente/100244523.html",
+    "vorschau": "Die Vorschläge der Rentenkommission sollten vollständig umgesetzt werden, hat Kanzler Merz angekündigt. Doch an der Abschaffung der abschlagsfreien Frührente gibt es CDU-intern Kritik. Was nun?"
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Rentenreform: DIW-Präsident für Abschaffung der „Rente mit 63“",
+    "url": "https://www.handelsblatt.com/politik/deutschland/rentenreform-diw-praesident-fuer-abschaffung-der-rente-mit-63/100244542.html",
+    "vorschau": "In der CDU regt sich Widerstand gegen die Abschaffung der abschlagsfreien „Rente mit 63“. Sollte dieses Vorhaben also noch einmal überdacht werden? DIW-Präsident Fratzscher hat eine klare Meinung."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Europe’s weak reaction to Spain’s migrant crisis",
+    "url": "https://www.ft.com/content/8faf28df-bb76-49e6-a916-55faa8a5d4a8?syn-25a6b1a6=1",
+    "vorschau": "Pedro Sánchez is being unfairly singled out for a liberal immigration policy"
+   }
+  ],
+  "🏗️ Immobilien & Bauen": [
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Überraschende Risiken für zwei neue Stadtquartiere: 7700 oder nur 420 neue Wohnungen im Berliner Norden?",
+    "url": "https://www.tagesspiegel.de/berlin/bezirke/pankow/uberraschende-risiken-fur-zwei-neue-stadtquartiere-7700-oder-nur-420-neue-wohnungen-im-berliner-norden-15895109.html",
+    "vorschau": "Ein Zukunftsquartier in Berlin-Pankow geht diesen Herbst in Bau. Ein zweites Großprojekt verzögert sich wegen neuer Bedenken beim Vogelschutz. In beiden Fällen stehen die hohen Ziele beim Wohnungsbau infrage."
+   }
+  ],
+  "📱 Medien & Kultur": [
+   {
+    "quelle": "Guardian World",
+    "titel": "Malaysia cracks down on social media hiking trend after jump in numbers needing rescue",
+    "url": "https://www.theguardian.com/world/2026/aug/03/malaysia-hiking-rescue-rules-social-media-bagging-peaks-trend",
+    "vorschau": "Officials are banning some ‘compressed hikes’ which involve walkers tackling demanding routes in short timeframes Malaysia’s government is tightening hiking rules nationwide after a social media trend left increasing numbers of adventurers needing to be rescued when they became lost or stranded in remote locations. In the first five months of 2026, Malaysia saw 52 cases of lost hikers, an increase of nearly 30% compared with the same period the previous year, the Malaysian Fire and Rescue Depart"
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "What are the 'luteal uglies'? And how they're affecting women",
+    "url": "https://www.bbc.co.uk/news/articles/cy0jk6wjkn0o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "More women than ever are talking about the luteal phase on social media, but how does it actually affect you?"
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Malaysian boy on trial for allegedly murdering girl in school",
+    "url": "https://www.bbc.co.uk/news/articles/cgewq549988o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The high-profile case has shocked Malaysia and sparked debate about the effect of social media on children."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "For a Day, Google Made It Easy to Spoof Satellite Imagery",
+    "url": "https://www.nytimes.com/2026/08/02/technology/google-earth-ai-satellite-images.html",
+    "vorschau": "A new Google Earth tool allowed the creation of A.I. deepfake maps. The tech giant quickly pulled it back after a backlash and concerns about disinformation risks."
+   }
+  ],
+  "⚽ Sport": [
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Fußball-Bundesliga: Nach Hoeneß-Statement: So reagiert Sportvorstand Eberl",
+    "url": "https://www.tagesspiegel.de/sport/fussball-bundesliga-nach-hoeness-statement-so-reagiert-sportvorstand-eberl-15907792.html",
+    "vorschau": "Bei Eberl stehen die Signale auf Vertragsverlängerung beim FC Bayern. Nach Hoeneß lobt ihn auch der Aufsichtsratsvorsitzende. Er stellt auch einem anderen Vorstand eine Verlängerung in Aussicht."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "2. Fußball-Bundesliga: KSC-Präsident: «Am Ende dieses Kapitels in der Bundesliga»",
+    "url": "https://www.zeit.de/news/2026-08/03/ksc-praesident-am-ende-dieses-kapitels-in-der-bundesliga",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "FIFA must rebuild trust after scrapping World Cup investor proposal, says Boyce - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPODVhaHRrdmswVFVVN3NlZ0dtblcxMmJRZVYzYWdteTR0WE00N1ZuVlcxckRYMngxdTlLZFd5VkNqdmhld2JiZEJhNUhlZ1lUaFh2V1RJeTFkVFZzWmNkRmF0eElsZWIyUFJlajUwZC1wTXJLbnlESU5qN1RLRzczaUZMX3pzOTZKeVRtTFIxckpuUFhCeGlFYzZDQTdOUVRmeHplSEhza1Y0dnhxTTNlTHMtWW9ZbFJoQVhnWXFkZjVjZExlRWp3?oc=5",
+    "vorschau": "FIFA must rebuild trust after scrapping World Cup investor proposal, says Boyce Reuters"
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Rekord in Bundesliga: Abgezählte Fans",
+    "url": "https://www.faz.net/aktuell/sport/fussball/bundesliga/charakterfeste-fussballfans-bescheren-der-bundesliga-zuschauer-rekord-201084494.html",
+    "vorschau": "400.000 Menschen beim Motorradspektakel? Während in manchen Sportarten mit Zuschauerzahlen virtuos gespielt wird, bietet der Profifußball Nachprüfbares."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Fußball: Nach Spionage: Deutscher Trainer erzählt von Morddrohungen",
+    "url": "https://www.tagesspiegel.de/sport/fussball-nach-spionage-deutscher-trainer-erzahlt-von-morddrohungen-15907790.html",
+    "vorschau": "Wegen der Spionage-Vorwürfe muss Trainer Tonda Eckert vom FC Southampton eine Sperre fürchten. Nun äußert er in einem Interview, wie ihn der Vorfall mitgenommen hat."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Zukunft der FIFA: Die Doppelmoral der Infantino-Kritiker",
+    "url": "https://www.faz.net/aktuell/sport/fussball-wm/sturz-des-fifa-praesidenten-gianni-infantino-uefa-sollte-sich-nicht-allzu-sicher-sein-201087872.html",
+    "vorschau": "Nach dem Ende des Investoren-Deals will die UEFA auch FIFA-Präsident Gianni Infantino stürzen. Doch Fußball-Europa sollte sich seiner Sache noch nicht allzu sicher sein."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Regierungsumbildung: Dankbar wie die Tennisstars",
+    "url": "https://www.faz.net/aktuell/politik/inland/neue-bundesminister-warum-sind-alle-so-dankbar-201075586.html",
+    "vorschau": "Früher wurden Minister ernannt und genossen ihren Aufstieg still. Heute wollen sie sich mitteilen. Das Vokabular ist begrenzt."
+   }
+  ],
+  "🔥 Sonstiges": [
+   {
+    "quelle": "FT US",
+    "titel": "‘Crush this lady’: how eBay harassment campaign led to $56mn payout",
+    "url": "https://www.ft.com/content/06ec1b03-d4af-40cf-b12a-4ba5a410f6d2?syn-25a6b1a6=1",
+    "vorschau": "Employees’ cyberstalking of Boston couple involving macabre deliveries ended in jail time and financial settlement"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Walter insurers paid millions of dollars to credit rating provider Egan-Jones",
+    "url": "https://www.ft.com/content/18ccb15a-f8ed-41ba-a948-7c62cd757274?syn-25a6b1a6=1",
+    "vorschau": "Billionaire investor faces wide-ranging probe into the private credit holdings of insurers he controls"
+   },
+   {
+    "quelle": "FT US",
+    "titel": "Will July’s US employment data prompt a rethink on rates?",
+    "url": "https://www.ft.com/content/b3042c38-c38c-48f9-aa8c-99901ed440a9?syn-25a6b1a6=1",
+    "vorschau": "Market Questions is the FT’s guide to the week ahead"
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "5.0 magnitude earthquake strikes Egypt",
+    "url": "https://www.dw.com/en/5-0-magnitude-earthquake-strikes-egypt/a-78210318?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "The quake occurred at 3 a.m. local time about 22 miles north ⁠of the Egyptian city of Suez, the US Geological Survey said."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Man arrested over death of British woman found in suitcase in Athens",
+    "url": "https://www.dw.com/en/man-arrested-over-death-of-british-woman-found-in-suitcase-in-athens/a-78210183?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "The body of Scottish national Elisabeth-Jane Ross was discovered last month in a suitcase in a derelict building in Athens."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Pakistan: Suicide bomber kills 14 at anti-militancy protest",
+    "url": "https://www.dw.com/en/pakistan-suicide-bomber-kills-14-at-anti-militancy-protest/a-78209642?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "A suicide bomber has killed over a dozen people including police in an attack during a demonstration of citizens against militancy. More than 18 people were injured in the attack."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Ceuta: Most who breached border have left, Spain says",
+    "url": "https://www.dw.com/en/ceuta-most-who-breached-border-have-left-spain-says/live-78191601?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Nearly all of the more than 50,000 migrants who breached the border this week have returned to Morocco, according to Spanish officials. At least 72 people died in the border rush. DW has more."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Greece: Fire brigade helicopters collide as wildfires spread",
+    "url": "https://www.dw.com/en/greece-fire-brigade-helicopters-collide-as-wildfires-spread/a-78207952?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "The crew of one of the helicopters is reported to be safe but the search for the second is ongoing. Prime Minister Mitsotakis has warned of \"extremely difficult\" days ahead, while one expert has referred to a \"megafire.\""
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Germany news: DB hampered by 'organized irresponsibility'",
+    "url": "https://www.dw.com/en/germany-news-db-hampered-by-organized-irresponsibility/live-78199317?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "DB chief Evelyn Palla wants to overcome the culture of ''organized irresponsibility\" by empowering new decision-makers within the railway operator. Bavarian brass musicians have wrapped up a 72-hour concert. DW has more."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Indonesia: At least 5 dead in ferry fire",
+    "url": "https://www.dw.com/en/indonesia-at-least-5-dead-in-ferry-fire/a-78206895?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Search and rescue officials report some 41 missing after a fire on a ferry near the Indonesia island of Madura. The cause of the blaze remains unclear."
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Crew of Iranian ship hit in Ukrainian attack returns home, news agency says - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQQUpTTWg4MEVxOG9ZTExoRTFzZW94TDNkYTFvUVpWMlJFU0JBbE1hRVkta2k5ZmhISGJqMTdjb2Z1TXVncEdZWmxIeUppazRrMzRSMWo2aTJydTM2ekNneWhXTEFaSjVTQzMwLUhNM09GUTN6Y3Z3c1VUbmxIcG9RZXgwWmRuMjQ0OEJsTWdqWEJfYlJ6TU1zRjNvNzBjaGxQMHBiY3Rmc0ZmdWpHd1o2dEdfOHpkSjI3OVVrb084cw?oc=5",
+    "vorschau": "Crew of Iranian ship hit in Ukrainian attack returns home, news agency says Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Suspected suicide bombing at police station kills at least 14 in Pakistan, officials say - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVTZuMDlfeGlmTG14UGlTZ2EtWHd6LVR1Nk9zSlE1ZDNwZ19PbTVnS1B2bktSZnMxRjFYaU9RX29Xa0djazNpRW0xVThaOHVtVW0xZTFiVURWd1dGNkd0cWV2OHNLcGI1OTVOY19JUTdTX3RiZmE0RzdHWjdTd29jLVlMNUFtM3R5cHBkNHYzbjVqYkh4eXlGNUtDYlduVkxOTG9jaWlZS1FHN2J6QjZTb00zWC1mblRzcFhsYjYwWUgxb0YxNTRYZXRPcjUxUQ?oc=5",
+    "vorschau": "Suspected suicide bombing at police station kills at least 14 in Pakistan, officials say Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Japan confirms joint yen intervention with US, signals readiness for more action - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNYWxCY2xleXI0czB5WEhyRThFYVhWT0pYcFE1TzY5NnZSbVBvc0Vsc05hM2hwd0sySWFGT213d2hFSkhqRlJ5LXg4djlZXzRBZmZ1Y2c2VHhnUHlmUlpwTlFqbDI5U25KT0NPajF2eWsya0k1UXVVOHZyZEdrZGZTQXRycGt4R0oySUc2TVk3T01XemExNEJOMDJ2MkU0a0dtMTFkNDRIYTlwaWRGR2hB?oc=5",
+    "vorschau": "Japan confirms joint yen intervention with US, signals readiness for more action Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Two people hospitalised after building collapse in Sydney - emergency services - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNRWRQanpQUWN0TWp3T3VIT2ZHOTQ2QmJ0eXZPOXlOZlVKa3hFbFpfYUlaM2E3SGh1dlJDaE8yemNZelp4bnl1ajB4Y2JxbmlDLUI2QzRZNHV6M0pIamxYdUpnZzducW5HajRrdHY1YkhrZGR1LWNSS2pUREFCZ3FIcEhZS2s5bDlkTjNWVXpzWDd3R00tRWNFZUdzWWVZQkNWTEQ5YnY0dFZ6ckNnQzdoMlpxeTYzY2FDWTBwTFYtdWFlVXZiUnY0?oc=5",
+    "vorschau": "Two people hospitalised after building collapse in Sydney - emergency services Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Is India Asia's ultimate 'anti-AI' trade? - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOb2NCZE9XeXdnYVJoal9ZM1EyRFk0U2ltd3FrUk5PLXhTLWlUTTA3c0FRTmEyeDRqVURuMDU4TXRDbnpjMjQ3VG5DTC1scXhKcGZKek9oZW5yejBhaGJ2OHVVTmZYWExRQ3dKNENNOVdjRWhSU2RfWkYwbDZSNlIxLXhwSUt5TGdjQXhkT016MmhnVUV4Nl9iTFZyY0xXT1lHYVk2dEpPS2ZyTHRZSldFbW5NelJfM3BNbTRv?oc=5",
+    "vorschau": "Is India Asia's ultimate 'anti-AI' trade? Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Hungary PM flags 'critical' days ahead with looming nuclear shutdown - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNZ3k3dmJWR3pfSnFZRFVOcE1KMXF6UkpsQUoyTk9JVVFLOW1XNGlLQXkxRlhnNXVuaTRnOElUT2paNnlneG1pYnNNMjhxZFVsR3R4czN3dFdab2w4S1hfZms5TC1tRDdpR3F3cGYzQnFvOVViWGtsdFdaQUpZZ1FvOFJiMl9QUk1raEF1M1BDZzdUM1NyZDB1Znp4OGlUZWdIMDRBeEptWlhpaU9BeTl2YkF6dDluS1VIRmc?oc=5",
+    "vorschau": "Hungary PM flags 'critical' days ahead with looming nuclear shutdown Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Two dead in firefighting helicopter crash in Greece, Fire Service says - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX2czb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkFzaWZmWlNtSTNUUURCLUNrdUhFdi03a2lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFUEhLT0NKS2JsRlpQQQ?oc=5",
+    "vorschau": "Two dead in firefighting helicopter crash in Greece, Fire Service says Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Oil retreat to provide RBI's rupee-support efforts an extra boost - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPckZYOVg4cml2ODhWenhRNGdKQXliekRYa0tVV0s3MWhGM0FseFpnTmpRQmpramhyNGFRaGt0cmxhMHh6S2IzN2hvYWJWM24zcE1LbGZPZ0ZlOEV1ZVhwUE03cUYya0xUVUJiY2lCNjZwTWlCOGl1RXcwS21kMXZHdzJ2eGdOS0JQUktfb3lCdGVjYy1JWGFaYWdTWXROR2Z0NDdnQ0hjY3dKZVllNlE?oc=5",
+    "vorschau": "Oil retreat to provide RBI's rupee-support efforts an extra boost Reuters"
+   },
+   {
+    "quelle": "Reuters EN",
+    "titel": "Chelsea sign Barco from Strasbourg until 2033 - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQdlFseTJjazBFSGJLTU8xT3RWNm1Yemh5TVBWRU5aRFZMQl8yR2R2REkwb2toRWlzTGh6V0Y2ZzdIZy14a3hQSTFzd0x2Vlc4X0NwR1Ezc1kybzdIUWlpbkVhSWpjTUZwQXBPQ2lMLVA5alpVNGFNSFF4SFhtZ0ItRU9LMjdWNVRxazJ4MmxTMFZHMVBC?oc=5",
+    "vorschau": "Chelsea sign Barco from Strasbourg until 2033 Reuters"
+   },
+   {
+    "quelle": "FT Economics",
+    "titel": "What percentage of UK households are net contributors?",
+    "url": "https://www.ft.com/content/9f81d98b-ac0f-4650-8d3b-6b596c50bae2?syn-25a6b1a6=1",
+    "vorschau": "Despite attempts, the figure is virtually impossible to calculate"
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Marokko macht Falschinformationen für Ceuta-Migration verantwortlich",
+    "url": "https://www.tagesschau.de/ausland/afrika/ceuta-marokko-migranten-100.html",
+    "vorschau": "Marokkos Regierung hat sich erstmals zu den Ereignissen in Ceuta geäußert. Sie macht Falschinformationen für die plötzliche Migration Zehntausender Menschen verantwortlich. Die Zahl der Todesopfer weicht von der spanischen Darstellung ab."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Brasiliens 80-jähriger Präsident Lula tritt zur Wiederwahl an",
+    "url": "https://www.tagesschau.de/ausland/amerika/brasilien-lula-kandidatur-100.html",
+    "vorschau": "Er will es noch mal wissen: Der 80-jährige Lula da Silva tritt erneut bei der Präsidentschaftswahl in Brasilien an. Er sei topfit, betonte er bei seiner Nominierung. Sein wichtigster Konkurrent steht bereits fest."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Leben in Prag - zwischen Hitzeschutz und Klimaskepsis",
+    "url": "https://www.tagesschau.de/ausland/europa/hitzeschutz-klimaskepsis-tschechien-100.html",
+    "vorschau": "Tschechien leidet unter der zweiten Hitzewelle des Jahres. Und nach den Waldbränden in Südeuropa wächst auch dort die Sorge vor Feuern. In Prag wurden fast 40 Grad gemessen - doch die Politik tut sich weiterhin schwer, die neue Realität zu akzeptieren. Von M. von Lieben."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Rückkehr aus Ceuta: Ein Nachbarort im Ausnahmezustand",
+    "url": "https://www.tagesschau.de/ausland/afrika/fnideq-nachbarstadt-ceuta-100.html",
+    "vorschau": "In Ceuta normalisiert sich die Lage nach dem Massenandrang, ganz anders sieht es im Nachbarort Fnideq aus. Die Menschen kehren erschöpft dorthin zurück, wo alles begann. Eindrücke aus einer Stadt im Ausnahmezustand. Von Stefan Ehlert."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Strand im ukrainischen Odessa: Zwischen Badebetrieb und Bombenalarm",
+    "url": "https://www.tagesschau.de/ausland/europa/ukraine-odessa-angriffe-106.html",
+    "vorschau": "Volle Strände, spielende Kinder - und jederzeit droht ein russischer Angriff. In Odessa liegen Sommerleichtigkeit und Kriegsgefahr dicht beieinander. Immer wieder ignorieren Menschen den Luftalarm, mit teils schlimmen Folgen. Von S. Laack."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Philippinische Aktivisten trotzen Chinas Machtanspruch",
+    "url": "https://www.tagesschau.de/ausland/asien/suedchinesisches-meer-philippinen-china-100.html",
+    "vorschau": "Pekings Küstenwache demonstriert im Südchinesischen Meer ihren Machtanspruch. Das bekommen auch Philippiner zu spüren, die sich per Schiff zu den von mehreren Staaten beanspruchten Spratly-Inseln aufgemacht haben. Ulrich Mendgen war mit an Bord."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Maßnahmen gegen Migration: Was folgt auf die Ereignisse in Ceuta?",
+    "url": "https://www.tagesschau.de/ausland/ceuta-ansturm-massnahmen-100.html",
+    "vorschau": "Der Andrang Zehntausender Menschen in der spanische Exklave Ceuta hat die EU-Staaten aufgeschreckt. Nun wird nach den Ursachen gesucht - und nach schärferen Maßnahmen gegen Migration. Einiges ist auch schon umgesetzt."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Wie Diebe nachts Lastwagen aufschlitzen und Ware klauen",
+    "url": "https://www.tagesschau.de/wirtschaft/lkw-schlitzer-autobahnraststaetten-100.html",
+    "vorschau": "Im Dunkeln kundschaften Kriminelle an Autobahnen Lkw aus - und wenn die Fahrer schlafen, schlagen sie zu. Der Schaden ist immens: Waren im Wert von 1,3 Milliarden Euro werden jährlich so gestohlen, schätzen Experten. Von M. Fiedler und R. Schwaß."
+   },
+   {
+    "quelle": "Tagesschau",
+    "titel": "Könnten Smart Glasses in Deutschland verboten werden?",
+    "url": "https://www.tagesschau.de/inland/gesellschaft/smart-glasses-102.html",
+    "vorschau": "Immer öfter landen Aufnahmen im Netz, die heimlich mit Smart Glasses gefilmt wurden. Sich juristisch gegen die Aufnahmen zu wehren, ist oft schwer bis unmöglich. Experten halten ein Verbot der Brillen für möglich. Von Antonetta Stephany."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Marokko statt Münsterland: Ein Erdbeerrätsel aus Westfalen",
+    "url": "https://www.faz.net/aktuell/wirtschaft/klima-nachhaltigkeit/markus-staden-erdbeerbetrieb-aus-telgte-expandiert-in-marokko-201077557.html",
+    "vorschau": "In Telgte fällt viel mehr Regen als in Agadir. Trotzdem zieht es einen Obstbauern aus dem Münsterland an den Rand der Wüste."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Brauerei im Wachstumsmodus: „Größe allein ist kein Erfolgsmodell“",
+    "url": "https://www.faz.net/aktuell/karriere-hochschule/unternehmergespraech/westerwald-brauerei-wie-jens-geimer-gegen-den-trend-waechst-201061636.html",
+    "vorschau": "Die Westerwald-Brauerei wächst seit Jahren gegen den Trend – mit Limonade, aber auch mit Bier. Für zusätzlichen Auftrieb sorgte ausgerechnet ein Aprilscherz."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Jan Patočkas Philosophie: Gibt es ein Leben nach dem Tod?",
+    "url": "https://www.faz.net/aktuell/feuilleton/buecher/sachbuch/philosophischer-trost-jan-patoka-erkundet-das-leben-nach-dem-tod-accg-201029975.html",
+    "vorschau": "Das Ende des Lebens muss nicht bedeuten, dass jemand die Erde ganz verlässt: Eine Schrift aus dem Nachlass des Philosophen Jan Patočka erkundet phänomenologisch, was den Menschen nach dem Tod erwartet."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "Ungarns Energiekrise: Ein Fanal für ganz Europa",
+    "url": "https://www.faz.net/aktuell/politik/ausland/akw-paks-in-ungarn-abgeschaltet-klimawandel-trifft-energieversorgung-201088239.html",
+    "vorschau": "Die Abschaltung des Atomkraftwerks Paks in Ungarn führt die Auswirkungen des Klimawandels auf die Energiesicherheit vor Augen."
+   },
+   {
+    "quelle": "FAZ",
+    "titel": "EU-Innenminister uneins: Ceuta als Warnzeichen",
+    "url": "https://www.faz.net/aktuell/politik/ausland/eu-innenminister-uneins-ceuta-als-warnzeichen-201088162.html",
+    "vorschau": "Die meisten Migranten kehren offenbar nach Marokko zurück. Das ist der einzige Weg, die Krise zu lösen."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Labour overtakes Reform UK in polls for first time in more than a year",
+    "url": "https://www.ft.com/content/43636916-1879-4315-9ed3-9437d7526179?syn-25a6b1a6=1",
+    "vorschau": "Party commands about 25 per cent of the vote as Andy Burnham promises to ‘bring back hope’"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Morocco counts its dead and missing after mass swim to Ceuta",
+    "url": "https://www.ft.com/content/a01171e8-f8a1-4e2c-b3f7-f79f9cd11651?syn-25a6b1a6=1",
+    "vorschau": "Families search for children not seen since 60,000 people crossed into Spanish enclave, as death toll rises to 72"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "How to save the British high street",
+    "url": "https://www.ft.com/content/f438f3c0-d309-4687-b265-ba775b24044d",
+    "vorschau": "Communities need help to tackle the blight of delinquent landlords who let empty properties decay"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Rupert Lowe offers to find ‘common way forward’ with Reform UK",
+    "url": "https://www.ft.com/content/9dea3dc5-2045-430b-81fb-02b9c3126e90?syn-25a6b1a6=1",
+    "vorschau": "Comments by Restore Britain founder come as Nigel Farage’s party slips in polls and faces scrutiny over its finances"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "In Ceuta, Far-Right Leaders Call on Spain to Expel Migrants",
+    "url": "https://www.nytimes.com/2026/08/02/world/europe/spain-ceuta-far-right.html",
+    "vorschau": "Far-right politicians and activists are flocking to the Spanish territory on the northern coast of Africa, fueling tensions there days after thousands of migrants entered the exclave."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Australia’s Indie Music Venues Closing as Costs Rise and Attendance Drops",
+    "url": "https://www.nytimes.com/2026/08/02/world/australia/sydney-australia-marys-underground-music-venues-closing.html",
+    "vorschau": "When Mary’s Underground in Sydney closed, it was a familiar tune for a scene hit by high costs and low attendance. Critics worry about a shrinking space for new talent."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "After Most Migrants Leave Ceuta, Exhausted Holdouts Find Shelter on Beach",
+    "url": "https://www.nytimes.com/2026/08/02/world/europe/ceuta-spain-morocco-migrant-holdouts-beach.html",
+    "vorschau": "Most of the people who surged into Spain on Thursday have since returned to Morocco. A small minority are holed up on a seafront, tired, hungry and vowing to stay."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Unraveling the Chaos in Ceuta",
+    "url": "https://www.nytimes.com/2026/08/02/world/spain-morocco-migration-iran.html",
+    "vorschau": "Whatever caused the migrant surge in the Spanish territory, it’s already shaking up European politics."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Machthaber: Leo XIV.",
+    "url": "https://www.politico.eu/podcast/berlin-playbook-podcast/machthaber-leo-xiv/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Wer regiert die Welt – und was treibt sie an? In unserem regelmäßigen Machthaber-Spezial geht es um die mächtigsten und umstrittensten Politikerinnen und Politiker unserer Zeit. Wir zeigen, wie sie denken, entscheiden – und was das für uns bedeutet. Eine Politikerin oder Politiker, ein Blick hinter die Kulissen der Macht. Das Berlin Playbook als Podcast […]"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Macron’s team seeks Saudi funding for manga theme park near Paris",
+    "url": "https://www.politico.eu/article/macrons-team-seeks-saudi-funding-for-manga-theme-park-near-paris/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "The deal could exceed €1 billion, according to several parties involved in the discussions."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Nigel Farage is under siege. That’s just how he likes it.",
+    "url": "https://www.politico.eu/article/nigel-farage-is-under-siege-thats-just-how-he-likes-it/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Reform UK is struggling to keep pace with Labour’s new Prime Minister Andy Burnham. Can the underdog party leader bite back?"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Choppers collide, killing 2, as fires and foreboding grip Greece",
+    "url": "https://www.politico.eu/article/greece-fire-helicopter-collision/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "“These are extremely difficult days for our country,” Prime Minister Kyriakos Mitsotakis says as 130-kph winds fan flames."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Short-Dated JGBs Fall on Growing BOJ Rate-Increase Expectations",
+    "url": "https://www.wsj.com/finance/investing/short-dated-jgbs-fall-on-growing-boj-rate-increase-expectations-c0bac28f?mod=rss_markets_main",
+    "vorschau": "Short-dated JGBs fell in price terms on growing expectations for a rate increase by the Bank of Japan."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Opinion | The Public Pension AI Boom",
+    "url": "https://www.wsj.com/opinion/public-pensions-ai-equable-institute-report-16281797?mod=rss_markets_main",
+    "vorschau": "An Equable study shows how the market is already helping workers."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Opinion | A Brief History of Wealth Creation",
+    "url": "https://www.wsj.com/opinion/a-brief-history-of-wealth-creation-32bd917a?mod=rss_markets_main",
+    "vorschau": "The ancients aggregated wealth. America was built by creating it. Socialists are blind to all this."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "More Coordinated U.S.-Japan FX Intervention Could Occur",
+    "url": "https://www.wsj.com/finance/currencies/yen-weakens-slightly-on-likely-technical-correction-cda7c245?mod=rss_markets_main",
+    "vorschau": "More rounds of coordinated U.S.-Japan FX intervention could occur, HSBC Global Investment Research said."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Japan Intervenes to Support Yen Together With U.S. Treasury",
+    "url": "https://www.wsj.com/finance/currencies/japan-intervened-to-support-yen-together-with-u-s-treasury-4627741f?mod=rss_markets_main",
+    "vorschau": "U.S. and Japanese financial authorities acted jointly to counter the yen’s recent excessive volatility and disorderly movements."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Ceuta: Blitzmigrationskrise legt Spaltung in der EU offen",
+    "url": "https://www.spiegel.de/politik/deutschland/ceuta-blitzmigrationskrise-legt-spaltung-in-der-eu-mitte-offen-a-8da70fe1-6b51-476f-9be1-2827b4749910#ref=rss",
+    "vorschau": "Die Blitzmigrationskrise in Ceuta zeigt: Die europäische Solidarität wird in so einer Ausnahmesituation schnell brüchig. Einer der Antreiber dieser Spaltung ist die rechte Politikerin Giorgia Meloni."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Den Haag - Fall Khaled El Hishri: Sie nannten ihn »Engel des Todes«",
+    "url": "https://www.spiegel.de/ausland/den-haag-fall-khaled-el-hishri-sie-nannten-ihn-engel-des-todes-a-b39c0d0d-e1b0-4064-a82e-5e5fb0a2c4d1#ref=rss",
+    "vorschau": "Im Mitiga-Gefängnis in Libyen sollen Milizen Tausende Migranten gefoltert haben. In Den Haag wird nun einem mutmaßlichen Aufseher der Prozess gemacht, der Libyen verändern könnte. Der Internationale Strafgerichtshof braucht dringend den Erfolg."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Sonja Optendrenk: Die Frau, die über Therapien für 74 Millionen Versicherte entscheidet",
+    "url": "https://www.spiegel.de/wirtschaft/sonja-optendrenk-die-frau-die-ueber-therapien-fuer-74-millionen-versicherte-entscheidet-a-bac5bdce-1514-43ab-8d9c-cff2141323ed#ref=rss",
+    "vorschau": "Ihr Gremium entscheidet, welche Medizin 74 Millionen Versicherte bekommen. Sonja Optendrenk fordert neue Regeln für die Abnehmspritze und spricht hier über den Preiskampf mit den USA – und über eigene Laster."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Oetinger-Verlag: Verlegerin Julia Bielenberg fordert »Elternführerschein«",
+    "url": "https://www.spiegel.de/kultur/literatur/oetinger-verlag-verlegerin-julia-bielenberg-fordert-elternfuehrerschein-a-6e26182f-a9b3-4c15-ad2e-8e9e1d016454#ref=rss",
+    "vorschau": "»Das Bildungsniveau geht seit Jahren katastrophal nach unten«, beklagt die Chefin des Hamburger Oetinger Verlages. Sie hat klare Erwartungen an Eltern und sieht das Land »vom Mittelmaß regiert«."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Bali: Wie das Dorf Penglipuran meinen Blick auf Tourismus verändert hat",
+    "url": "https://www.spiegel.de/reise/bali-wie-das-dorf-penglipuran-meinen-blick-auf-tourismus-veraendert-hat-a-65e43432-481a-459d-878a-793e6f4b3a99#ref=rss",
+    "vorschau": "Das Dorf Penglipuran auf Bali nimmt Eintritt und hat Öffnungszeiten. Ausgerechnet hier hat sich mein Blick auf Tourismus verändert."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Bildungskarrieren von Erstakademikern: Nichts an meinem Weg war selbstverständlich",
+    "url": "https://www.spiegel.de/panorama/bildung/bildungskarrieren-von-erstakademikern-nichts-an-meinem-weg-war-selbstverstaendlich-a-96323d2a-740c-42dd-a60b-0a15929566a1#ref=rss",
+    "vorschau": "Meine Großeltern waren Gastarbeiter, ich bin die erste Akademikerin in der Familie. Mittlerweile gibt es viele solcher Biografien. Und doch hat Deutschland ein Problem mit Bildungsgerechtigkeit."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "»Spider-Man: Brand New Day« bricht am ersten Kinowochenende (fast) alle Rekorde",
+    "url": "https://www.spiegel.de/kultur/kino/spider-man-brand-new-day-bricht-am-ersten-kinowochenende-fast-alle-rekorde-a-41fa83ff-6b88-4b35-9372-fb32d3d8a0c9#ref=rss",
+    "vorschau": "Die Prognosen für den neuen Superhelden-Blockbuster »Spider-Man« waren schon optimistisch: 200 Millionen Dollar wurden erwartet. Der tatsächliche Kinostart hat diese Zahlen nun weit übertroffen."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Ariana Grande: Spekulationen über ihr Gewicht - »Petals«-Sängerin will sich aus Öffentlichkeit zurückziehen",
+    "url": "https://www.spiegel.de/panorama/ariana-grande-spekulationen-ueber-ihr-gewicht-petals-saengerin-will-sich-aus-oeffentlichkeit-zurueckziehen-a-53cce93b-c13e-486e-988b-a779386dee45#ref=rss",
+    "vorschau": "Seit Jahren gibt es Spekulationen über den Gesundheitszustand von Ariana Grande, zuletzt wurden sie wieder massiv angefacht. Jetzt reagiert der Popstar auf die permanente »öffentliche Beobachtung« – und legt eine ungeplante Pause ein."
+   },
+   {
+    "quelle": "Spiegel Online",
+    "titel": "Deutsche Leihmutter in den USA: Wie ist es, drei Kinder für andere Frauen auszutragen?",
+    "url": "https://www.spiegel.de/familie/deutsche-leihmutter-in-den-usa-wie-ist-es-drei-kinder-fuer-andere-frauen-auszutragen-a-493e488e-be0e-4882-a697-292208b5c4e0#ref=rss",
+    "vorschau": "Mirjam Johns aus Schweinfurt lebt seit 21 Jahren in den USA. Sie hat dort drei eigene Kinder geboren und drei für andere Frauen. Hier spricht ihre Familie darüber, wie das war."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Deep Read: „Das Rennen ist noch nicht gelaufen“ – Digitalminister Wildberger glaubt an Europas KI-Aufholjagd",
+    "url": "https://www.handelsblatt.com/technik/ki/kuenstliche-intelligenz-rennen-ist-noch-nicht-gelaufen-wildberger-setzt-auf-euro-ki/100236141.html",
+    "vorschau": "Mythos, Kimi K3, GPT-5.6 Sol: Die KI-Weltspitze ändert sich im Wochentakt – Europa bleibt außen vor. Gibt es noch Hoffnungsträger? Ja, sagt nicht nur der Digitalminister. Eine Spurensuche."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "The Migrants Have Left Ceuta, But the Trauma Lingers",
+    "url": "https://www.wsj.com/world/europe/the-migrants-have-left-ceuta-but-the-trauma-lingers-27ae5ac7",
+    "vorschau": "A city long-known as a melting pot of cultures suddenly feels vulnerable."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "How Does the Qatar-Donated Air Force One Compare With Other Presidential Jets?",
+    "url": "https://www.wsj.com/politics/national-security/how-does-the-qatar-donated-air-force-one-compare-with-other-presidential-jets-048c5169",
+    "vorschau": "From laser weapons to color schemes, transporting the president around the world is a study in details."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "OPEC, Allies Increase Oil Output for Sixth Time in a Row",
+    "url": "https://www.wsj.com/business/energy-oil/opec-allies-increase-oil-output-for-sixth-time-in-a-row-e56378d9",
+    "vorschau": "The cartel nears the end of a cycle of production hikes, while potentially difficult talks over future quotas loom."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | How Green Policies Fuel Fires In Europe",
+    "url": "https://www.wsj.com/opinion/how-green-policies-fuel-fires-in-europe-a0148698",
+    "vorschau": "Burned areas are disproportionately nature-protected lands."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | The Islamist Threat Isn’t Only Terrorism",
+    "url": "https://www.wsj.com/opinion/the-islamist-threat-isnt-only-terrorism-4a8d8ff2",
+    "vorschau": "Groups try to push their agenda through politics, schools and grassroots activism."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Biologische Erzeugung: Erneut höhere Nachfrage nach Bio im zweiten Quartal",
+    "url": "https://www.tagesspiegel.de/wirtschaft/biologische-erzeugung-erneut-hohere-nachfrage-nach-bio-im-zweiten-quartal-15907797.html",
+    "vorschau": "Noch immer schauen Verbraucher stark aufs Geld. Trotzdem kaufen sie zunehmend Lebensmittel aus biologischer Erzeugung. Die Märkte profitieren davon in sehr unterschiedlichem Umfang."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Geburtstag: Der letzte Erfolg der Demokraten? Obama wird 65",
+    "url": "https://www.tagesspiegel.de/internationales/geburtstag-der-letzte-erfolg-der-demokraten-obama-wird-65-15907788.html",
+    "vorschau": "Fast zehn Jahre sind seit dem Ende seiner Präsidentschaft vergangen. Seither straucheln die Demokraten, geeignete Nachfolgekandidaten vorzuweisen."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Himmelsschauspiel mit Zugabe: Totale Sonnenfinsternis in Spanien steht bevor",
+    "url": "https://www.tagesspiegel.de/wissen/himmelsschauspiel-mit-zugabe-totale-sonnenfinsternis-in-spanien-steht-bevor-15907786.html",
+    "vorschau": "Totale Sonnenfinsternisse zählen zu den eindrucksvollsten astronomischen Ereignissen. Früher blickten Menschen voller Furcht nach oben, wenn der Mond die Sonne verschlang. Nun reisen Touristen an."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Kritik nach Investoren-Debakel: So könnte FIFA-Präsident Infantino stürzen",
+    "url": "https://www.tagesspiegel.de/sport/kritik-nach-investoren-debakel-so-konnte-fifa-prasident-infantino-sturzen-15907782.html",
+    "vorschau": "Der Plan von Gianni Infantino, WM-Rechte an private Investoren zu verkaufen, ist gescheitert. Die Kritik am FIFA-Boss wird immer lauter. Längst wird über Abschiedsszenarien gesprochen."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Neues Schuljahr: Brandenburg richtet sechs Online-Kurse für die Oberstufe ein",
+    "url": "https://www.tagesspiegel.de/berlin/neues-schuljahr-brandenburg-richtet-sechs-online-kurse-fur-die-oberstufe-ein-15907780.html",
+    "vorschau": "Abends von zu Hause Psychologie lernen: Brandenburgs Oberstufenschüler bekommen neue Online-Kurse. Der Andrang auf die 15 Plätze pro Fach sei groß, heißt es vom Bildungsminister."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Neuer Blitzermarathon: Polizei nimmt Raser verstärkt ins Visier",
+    "url": "https://www.tagesspiegel.de/gesellschaft/panorama/neuer-blitzermarathon-polizei-nimmt-raser-verstarkt-ins-visier-15907778.html",
+    "vorschau": "Mit Kontrollen an Straßen will die Polizei in mehreren Bundesländern zu schnelle Fahrer und Fahrerinnen stoppen. Das Ziel: schwere Unfälle verhindern. Was in den nächsten Tagen zu beachten ist."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Arbeitsalltag: Ruhe, bitte! Was Menschen im Büro nervt",
+    "url": "https://www.tagesspiegel.de/wirtschaft/arbeitsalltag-ruhe-bitte-was-menschen-im-buro-nervt-15907776.html",
+    "vorschau": "Die Hölle, das sind die anderen. Das schrieb der französische Schriftsteller und Philosoph Jean-Paul Sartre. Mit Blick auf die lieben Kollegen dürfte mancher Bürobeschäftigte ähnlich denken."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Feuer bei Bordeaux: „Ist unser Erbe“: Wie ein Waldbauer gegen den Brand kämpft",
+    "url": "https://www.tagesspiegel.de/gesellschaft/panorama/feuer-bei-bordeaux-ist-unser-erbe-wie-ein-waldbauer-gegen-den-brand-kampft-15907774.html",
+    "vorschau": "Eigentlich sollte sein Wald an seine Urenkel gehen, doch die Flammen haben es ihm genommen. Ein Waldbauer berichtet von der verheerenden Wucht des Brandes bei Bordeaux - und seinem Kampf dagegen."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Tödliche Schüsse: Tod von Cousin gerächt? Brüder nach Schüssen vor Gericht",
+    "url": "https://www.tagesspiegel.de/berlin/todliche-schusse-tod-von-cousin-geracht-bruder-nach-schussen-vor-gericht-15907772.html",
+    "vorschau": "Ein 44-Jähriger steigt am Morgen in Berlin-Weißensee arglos in seinen Transporter. Plötzlich fallen Schüsse. Die Angreifer feuern aus einem Auto auf den Familienvater. War es ein Mord aus Rache?"
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Alle Farben im Festspielhaus: Bayreuth wagt den Stilbruch",
+    "url": "https://www.tagesspiegel.de/gesellschaft/alle-farben-im-festspielhaus-bayreuth-wagt-den-stilbruch-15907767.html",
+    "vorschau": "„Kinder, schafft Neues!“ - das forderte einst Richard Wagner. Urenkelin Katharina Wagner kommt seinem Wunsch nach: Zum 150. Festspieljubiläum kommt ein bekannter DJ ins traditionsreiche Festspielhaus."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Gunman Acted Alone in Idaho In-N-Out Attack, Authorities Say",
+    "url": "https://www.nytimes.com/2026/08/02/us/gunman-acted-alone-in-idaho-in-n-out-attack-authorities-say.html",
+    "vorschau": "An off-duty state trooper and private citizen returned fire and are credited with slowing the 24-year-old shooter."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "What We Know About the Shooting at an In-N-Out Burger in Idaho",
+    "url": "https://www.nytimes.com/2026/08/02/us/in-n-out-shooting-idaho-victims-suspect.html",
+    "vorschau": "Gunfire brought panic to a shopping center in Twin Falls in what the authorities described as a chaotic scene. At least three people were killed."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Man Charged in Girl’s Abduction Nearly Four Years After She Was Last Seen",
+    "url": "https://www.nytimes.com/2026/08/02/us/missing-milwaukee-girl-found-virginia.html",
+    "vorschau": "The police found the girl, who was 15 when she disappeared in 2022 in Milwaukee, alive in Virginia in May. A man faces more than 60 charges, including abduction, in connection with the case."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Chicago’s Mayoral Race Is Taking Shape. But What About the Incumbent?",
+    "url": "https://www.nytimes.com/2026/08/02/us/chicago-mayors-race.html",
+    "vorschau": "Several prominent Democrats already are running for mayor of Chicago. Mayor Brandon Johnson has not said whether he will seek a second term next year."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Shooting at In-N-Out in Idaho Leaves at Least 3 Dead and 5 Wounded",
+    "url": "https://www.nytimes.com/2026/08/01/us/in-n-out-shooting-idaho.html",
+    "vorschau": "The shooting occurred at a busy shopping center in Twin Falls, as people were getting food, shopping and going to the movies on a Saturday afternoon. The police said the shooter was dead."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Märkte Insight: Eine der teuersten Aktien der Welt wird immer billiger",
+    "url": "https://www.handelsblatt.com/finanzen/anlagestrategie/kolumnen/maerkte-insight-eine-der-teuersten-aktien-der-welt-wird-immer-billiger/100244210.html",
+    "vorschau": "Die Aktie der Schweizer Kult-Schokoladenmarke Lindt & Sprüngli macht eine ungewohnte Schwächephase durch. Die Bewertung der Qualitätsaktie wird damit immer verlockender, meint Jakob Blume."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Lebensversicherungen: R+V Versicherung bläst Verkauf von Tochtergesellschaft Condor Leben ab",
+    "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen/versicherer/lebensversicherungen-rv-versicherung-sagt-verkauf-von-condor-leben-ab/100244494.html",
+    "vorschau": "Der Genossenschaftskonzern will 219.000 Lebensversicherungsverträge nun doch weiterführen und nicht an den Investor Acathia Capital veräußern."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Zum Tod von Monika Helfer: Diese große Menschenfreundlichkeit",
+    "url": "https://www.zeit.de/feuilleton/literatur/2026-08/monika-helfer-schriftstellerin-nachruf",
+    "vorschau": "Monika Helfer schuf Literatur aus fragilen Erinnerungen. Ihr Durchbruch kam spät. Nun ist die Schriftstellerin gestorben. Ein Nachruf"
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Autokauf: Was ist »Made in Germany« noch wert?",
+    "url": "https://www.zeit.de/mobilitaet/2026-08/autokauf-preis-made-in-germany-chinesische-autos",
+    "vorschau": "Zumindest den Heimatmarkt scheinen die deutschen Autobauer zu beherrschen. Doch die Zahlen sind trügerisch."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Ausbildungsbeginn: Ausgescherzt: Lufthaken und Stornozange sind passé",
+    "url": "https://www.zeit.de/news/2026-08/03/ausgescherzt-lufthaken-und-stornozange-sind-pass",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Bauarbeiten: Umleitung und Sperrung: Westhofener Kreuz und A42 betroffen",
+    "url": "https://www.zeit.de/news/2026-08/03/umleitung-und-sperrung-westhofener-kreuz-und-a42-betroffen",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Haustiere: Ferienzeit: Immer mehr Tiere landen im Hamburger Tierheim",
+    "url": "https://www.zeit.de/news/2026-08/03/ferienzeit-immer-mehr-tiere-landen-im-hamburger-tierheim",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Besondere Reise: Mit «Emma» und «Kaya» auf Tour",
+    "url": "https://www.zeit.de/news/2026-08/03/mit-emma-und-kaya-auf-tour",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Abriss geplant: A14-Verkehr wird über Ersatzbau der Muldebrücke geleitet",
+    "url": "https://www.zeit.de/news/2026-08/03/a14-verkehr-wird-ueber-ersatzbau-der-muldebruecke-geleitet",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Waldbrände in Südeuropa: Zwei Tote bei Zusammenstoß von Löschhubschraubern nahe Athen",
+    "url": "https://www.zeit.de/wissenschaft/umwelt/2026-08/loeschhubschrauber-absturz-griechenland-waldbrand-athen",
+    "vorschau": "In Griechenland sind zwei Helikopter in der Luft kollidiert und abgestürzt. In Spanien entspannt sich die Lage. Frankreich lässt Menschen in Ferienorte zurückkehren."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Extremwetter: Bundesumweltministerium erwägt nationalen Aktionsplan gegen Hitze",
+    "url": "https://www.zeit.de/politik/deutschland/2026-08/hitzeaktionsplan-bundesumweltministerium-klimaanpassung-jochen-flasbarth",
+    "vorschau": "Die Lektion dieses Sommers sei: Deutschland brauche einen nationalen Hitzeplan, sagt Umweltstaatssekretär Jochen Flasbarth. Bund und Länder arbeiteten bereits zusammen."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Mein Wendepunkt: „Von einem 20-Jährigen wollte erst mal keiner hören, wo’s langgeht“",
+    "url": "https://www.wiwo.de/erfolg/management/personio-chef-hanno-renner-spricht-ueber-wendepunkt-in-seinem-leben/100243510.html",
+    "vorschau": "In den Ferien übernahm Hanno Renner als Skipper Verantwortung für die Gäste an Bord. Heute, als Personio-Chef, weiß er mit Überraschungen und einer renitenten Crew umzugehen."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "Gold: Diese Faktoren sprechen für eine Trendwende beim Goldpreis",
+    "url": "https://www.wiwo.de/finanzen/boerse/goldpreis-2026-diese-faktoren-sprechen-fuer-steigende-kurse/100243079.html",
+    "vorschau": "Trotz herber Verluste in diesem Jahr: Die Goldhausse ist noch nicht vorbei. Auf lange Sicht hat das Edelmetall viel Luft nach oben."
+   },
+   {
+    "quelle": "Wirtschaftswoche",
+    "titel": "„Organisierte Verantwortungslosigkeit“: Palla wettert gegen alte Bahn-Kultur",
+    "url": "https://www.wiwo.de/unternehmen/dienstleister/palla-wettert-gegen-alte-bahn-kultur-organisierte-verantwortungslosigkeit/100244513.html",
+    "vorschau": "Bahnchefin Evelyn Palla fordert mehr Einsatz vom Management und kritisiert die bisherige Leistungskultur als unzureichend. Zugverspätungen bleiben das große Problem."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Two crew killed after firefighting helicopters collide in Greece, as British pilot survives",
+    "url": "https://www.bbc.co.uk/news/articles/c1417713ve6o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "One Danish and one Greek national died in the incident, while a British pilot and another Greek crew member survived."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Ariana Grande to take a break from public life amid 'endless' scrutiny",
+    "url": "https://www.bbc.co.uk/news/articles/c80ngjjvevyo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The US singer, 33, will \"step back from visibility\" at the end of her world tour next month, her representative says."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Burnham pledges to be 'relentless' in curbing small boat crossings",
+    "url": "https://www.bbc.co.uk/news/articles/c3r0v952ny3o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The PM says enforcement is being increased but there also need to be more safe routes into the UK."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "'No guarantees' - joyful Glasgow cannot banish all Commonwealth Games doubts",
+    "url": "https://www.bbc.co.uk/sport/articles/c2k7nn9z0e7o?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Glasgow 2026 was a joyful success in isolation but questions and doubts remain about the Commonwealth Games' future."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "Heat health alerts in England as temperatures set to reach 34C",
+    "url": "https://www.bbc.co.uk/weather/articles/c17199dy4yxo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Temperatures are expected to reach 34C in some areas of England."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "US and Japan jointly intervene to prop up yen in rare move",
+    "url": "https://www.bbc.co.uk/news/articles/cglj1pr0wjwo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "Both countries have said that they will not hesitate to conduct joint interventions in the future."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "At least five Al Fayed survivors confirmed as modern slavery victims",
+    "url": "https://www.bbc.co.uk/news/articles/c151k0k4eqgo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The rulings include women trafficked internationally and within the UK, and one case found to have taken place entirely within Harrods."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "New Spider-Man film sees second-biggest ever global opening weekend",
+    "url": "https://www.bbc.co.uk/news/articles/c3w052le2elo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "The strong box office performance gives a boost to Disney ahead of the much-anticipated Avengers: Doomsday."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "The Papers: Police warn on early release and 'le rip-off'",
+    "url": "https://www.bbc.co.uk/news/articles/c5ywj4z65xwo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "A range of stories feature on Monday's front pages, with Andy Burnham's vow to cut the number of people arriving in the UK on small boats a focus for some."
+   },
+   {
+    "quelle": "BBC News",
+    "titel": "The change that may help you get a mortgage as a first-time buyer",
+    "url": "https://www.bbc.co.uk/news/articles/cp3rkzpl7ngo?at_medium=RSS&at_campaign=rss",
+    "vorschau": "More relaxed mortgage regulation opens the door for some first-time buyers, but it comes with risk."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Chaos of border crossing gives way to limbo for Moroccans on Ceuta’s streets",
+    "url": "https://www.theguardian.com/world/2026/aug/02/ceuta-border-crossing-spain-morocco",
+    "vorschau": "People among the more than 50,000 who entered Spanish enclave this week describe the journey and their prospects Four days ago, Youssef El Abbas saw an opportunity to reclaim the life he had lost seven years earlier. News was circulating that about 400 people had swum from Morocco to the neighbouring Spanish enclave of Ceuta on the north African coast, approximately 12 miles (19km) across the strait of Gibraltar from mainland Spain. Here was a chance for the 44-year-old Moroccan father of four t"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Massive Attack speak about ‘surreal experience’ of being banned from Singapore over Palestinian flag",
+    "url": "https://www.theguardian.com/music/2026/aug/03/massive-attack-singapore-ban-palestine-flag",
+    "vorschau": "British band say they are ‘proud to have made this impromptu expression with our fans in Singapore’, where open display of all foreign flags is banned Massive Attack have called being banned from Singapore a “surreal experience” after displaying a Palestinian flag during their show. On Wednesday, the English trip-hop collective – whose current lineup includes Robert “3D” Del Naja and Grant “Daddy G” Marshall – played a show at the Star theatre. Continue reading..."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "‘Stop all outdoor activities’: South Korea records its highest ever temperature",
+    "url": "https://www.theguardian.com/world/2026/aug/03/south-korea-highest-temperature",
+    "vorschau": "Authorities issue alert saying indoor spaces without airconditioning are ‘dangerous’ as temperatures pass 40C for fifth straight day South Korea has registered its highest temperature since records began more than a century ago, as authorities warned people to “immediately” stop all outdoor activities in affected areas. The south-eastern city of Yangsan saw the temperature reach 42.5C on Sunday afternoon, the Korea Meteorological Administration (KMA) said, the highest temperature reported since "
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Australia news live: Icac hears of alleged Liberal faction push to ‘hit up’ MPs for public money; Hanson excludes ABC and Guardian from press conference",
+    "url": "https://www.theguardian.com/australia-news/live/2026/aug/03/australia-news-live-fuel-excise-cut-jim-chalmers-cost-of-living-anthony-albanese-labor-angus-taylor-coalition-one-nation-pauline-hanson-ntwnfb",
+    "vorschau": "State corruption watchdog enters second of eight weeks of hearings as part of Operation Rosny. Follow today’s news live Angus Taylor and Anthony Albanese on leave this week The opposition leader, Angus Taylor, is on leave for most of this week, his office has announced, with the deputy leader, Jane Hume, acting in his stead. NSWRL owes a massive debt of gratitude to Laurie for the service he has given to his state as both a player and a coach. He has also led NSW to arguably two of the greatest "
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "One Nation names eight Victorian election candidates as Hanson bars ABC and Guardian from press conferences",
+    "url": "https://www.theguardian.com/australia-news/2026/aug/03/one-nation-candidates-victoria-state-election-2026-ntwnfb",
+    "vorschau": "Former Liberal, ‘anti-woke’ film animator and councillor who says he used to work on Daniel Andrews’ security team among lineup for November’s state poll One Nation has named its first candidates for the upcoming Victorian state election, as leader Pauline Hanson has vowed to ban the ABC and the Guardian from attending her press conferences during the campaign. Guardian Australia understands an ABC reporter was refused entry to Hanson’s press conference on Monday, where she announced seven of th"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Luke Bateman tells inquiry gambling companies supplied him with cocaine and alcohol",
+    "url": "https://www.theguardian.com/australia-news/2026/aug/03/ex-rugby-league-star-says-gambling-companies-fuelled-his-betting-addiction",
+    "vorschau": "Former rugby league player turned TikTok influencer tells parliamentary inquiry his spiralling addiction to gambling cost him about $1m Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast Former rugby league star Luke Bateman has alleged gambling company promoters supplied him with cocaine and alcohol, telling a parliamentary inquiry the betting industry exercised no duty of care. Bateman, who is now a TikTok star and influential in"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Alan Jones trial on indecent assault and sexual touching charges begins in Sydney",
+    "url": "https://www.theguardian.com/media/2026/aug/03/trial-alan-jones-begins-sydney-ntwnfb",
+    "vorschau": "The 85-year-old former broadcaster faces 22 charges from six different complainants in what is expected to be a four-month trial Alan Jones trial live updates The high-profile trial of former broadcaster Alan Jones for indecent assault and sexual touching charges begins on Monday in Sydney’s Downing Centre local court and is expected to run for four months and hear from 76 witnesses. Judge Glenn Walsh will hear from six complainants who were allegedly indecently assaulted by the 85-year-old betw"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "A record number of First Nations people died in NSW prison custody last year. Advocates fear this year will be worse",
+    "url": "https://www.theguardian.com/australia-news/2026/aug/03/rising-indigenous-deaths-custody-nsw-ntwnfb",
+    "vorschau": "Exclusive: Karlene Whitton says her son Matthew Roberts took his own life three months into his jail term. ‘I keep picturing it every night’ Warning: This article contains images and names of Indigenous Australians who have died Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast First Nations advocates warn that prisons in New South Wales could exceed the record number of Indigenous deaths in custody set last year , after two men d"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "EU citizens in UK get letters telling them post-Brexit residency rights were given ‘in error’",
+    "url": "https://www.theguardian.com/politics/2026/aug/02/eu-citizens-uk-letters-post-brexit-residency-rights-given-in-error",
+    "vorschau": "After years of building lives in UK, potentially thousands of EU citizens could be told they have no right to remain The UK Home Office has started stripping some EU citizens of their post-Brexit residency rights, in a move that has raised concerns about Britain’s compliance with its withdrawal agreement with Europe. The UK internal affairs authority has told at least 100 people that they were given residency rights “in error”, disrupting their lives just as they come to the end of their five-ye"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "UK’s first ‘super-university’, merging Greenwich and Kent, to launch in September",
+    "url": "https://www.theguardian.com/education/2026/aug/03/uk-first-super-university-merger-greenwich-kent-september-launch",
+    "vorschau": "The new London and South East University Group will be UK’s third largest higher education institution The UK’s first “super-university”, which will merge the universities of Greenwich and Kent, is set to launch in September. The new London and South East University Group, to be known as the LASEUG, will have more than 50,000 students on four campuses across London, Medway and Kent, making it the third largest higher education institution in the UK. Continue reading..."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Artists, writers and scientists urge UK government to save Jodrell Bank Observatory",
+    "url": "https://www.theguardian.com/science/2026/aug/03/jodrell-bank-observatory-artists-writers-scientists-letter",
+    "vorschau": "New Order and Simon Armitage among more than 100 signatories to criticise ‘foolish and shortsighted’ cuts More than 100 artists, writers and scientists have called for the UK government to save the “world’s clearest eyes on the sky”, after funding for thenetwork of radio telescopes at Jodrell Bank Observatory was slashed. New Order, the Canadian astronaut Chris Hadfield and the poet laureate, Simon Armitage, are among those calling on the new prime minister, Andy Burnham, to save the deep space "
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "AI Images Are Everywhere. Here’s What They Do to Our Brains, and What We Can Do.",
+    "url": "https://www.wsj.com/tech/ai/ai-slop-blurring-reality-podcast-06a9e879?mod=rss_Technology",
+    "vorschau": "Tips for navigating a feed full of machine-made content."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Opinion | Does AI Have a Fiduciary Duty?",
+    "url": "https://www.wsj.com/opinion/does-ai-have-a-fiduciary-duty-4eaa49d1?mod=rss_Technology",
+    "vorschau": "How to regulate the new technology? The answer may lie in the common law."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Fragen aus dem Arbeitsrecht: Kann ich einen befristeten Vertrag frühzeitig kündigen?",
+    "url": "https://www.handelsblatt.com/politik/deutschland/fragen-aus-dem-arbeitsrecht-kann-ich-einen-befristeten-vertrag-fruehzeitig-kuendigen/100244570.html",
+    "vorschau": "Wer in einem befristeten Arbeitsverhältnis ist, kann nicht immer einfach kündigen. Es gibt klare Richtlinien, die zu beachten sind."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Gastkommentar: Das Reformpaket ändert in deutschen Fabriken wenig",
+    "url": "https://www.handelsblatt.com/meinung/gastbeitraege/gastkommentar-das-reformpaket-aendert-in-deutschen-fabriken-wenig/100243212.html",
+    "vorschau": "Die Reformen sind ein Anfang. Doch der Rückstand des industriellen Mittelstands ist so groß, dass radikale Änderungen nötig sind, meint Carlo Lazzarini, CEO des Autozulieferers PWO."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Schwere Beine: Besenreiser und Krampfadern an den Beinen - was hilft?",
+    "url": "https://www.handelsblatt.com/technik/medizin/schwere-beine-besenreiser-und-krampfadern-an-den-beinen-was-hilft/100244557.html",
+    "vorschau": "Hervortretende Adern an den Beinen sind oft harmlos. Stören können Krampfadern aber trotzdem, denn sie können für schwere Beine sorgen. Zwei Ärzte über Alltagstipps und Behandlungsmöglichkeiten."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Venengesundheit: Krampfadern und Hitze: 7 Tipps für Sommertage",
+    "url": "https://www.handelsblatt.com/technik/medizin/venengesundheit-krampfadern-und-hitze-7-tipps-fuer-sommertage/100244556.html",
+    "vorschau": "Krampfadern haben oft schwere Beine und Schwellungen in Gepäck - insbesondere an warmen Tagen. Was dann eine Wohltat ist? Den Kompressionsstrümpfen einen kurzen Ausflug ins TK-Fach gönnen."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Industrie: Studie zeigt: Deutsche Stahlindustrie könnte Milliarden umsonst investiert haben",
+    "url": "https://www.handelsblatt.com/unternehmen/industrie/industrie-stahlindustrie-koennte-milliarden-umsonst-investiert-haben/100243116.html",
+    "vorschau": "Laut einer Studie droht die Wette auf grünen Stahl aus Deutschland zu scheitern. Die Branche muss sich ihre globale Daseinsberechtigung neu erkämpfen. Experten sehen dafür zwei Chancen."
+   },
+   {
+    "quelle": "Handelsblatt",
+    "titel": "Präsidentenwahl in Brasilien: Lula will vierte Amtszeit – Duell mit Bolsonaros Sohn",
+    "url": "https://www.handelsblatt.com/politik/international/praesidentenwahl-in-brasilien-lula-will-vierte-amtszeit-duell-mit-bolsonaros-sohn/100244533.html",
+    "vorschau": "Der 80-jährige Lula will zum vierten Mal Brasiliens Präsident werden. Wie vor vier Jahren heißt sein wichtigster Gegner Bolsonaro - diesmal ist es der Sohn des inhaftierten Ex-Staatschefs."
+   },
+   {
+    "quelle": "Deutschlandfunk",
+    "titel": "Kommentar zu Wahlumfragen - Schafft die Sonntagsfrage ab!",
+    "url": "https://www.deutschlandfunk.de/kommentar-wahlumfragen-sonntagsfrage-verbot-100.html",
+    "vorschau": "Wahlumfragen sind nur Momentaufnahmen – verhandelt werden sie wie feststehende Prognosen. Das lenkt Unentschlossene und kann kleine Parteien aus dem Parlament drängen. Ein Verbot kurz vor der Wahl bringt nichts. Man muss weiter gehen. Kommentar von Christoph Richter"
+   },
+   {
+    "quelle": "Deutschlandfunk",
+    "titel": "Leerstand in Japan - Ideen für verlassene Häuser",
+    "url": "https://www.deutschlandfunk.de/leerstand-in-japan-ideen-fuer-verlassene-haeuser-100.html",
+    "vorschau": "Niedrige Geburtenraten und eine eher restriktive Zuwanderungspolitik ließen die Bevölkerungszahl in Japan seit 2009 um fünf Millionen Menschen fallen. Eine Folge: Leerstand. Um die 14 Prozent aller Wohngebäude sind betroffen. Das soll sich ändern. (Erstsendung: 02.12.2025) Lill, Felix"
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "U.S. and Japan Coordinated to Help Stabilize the Yen",
+    "url": "https://www.nytimes.com/2026/08/02/business/us-japan-yen.html",
+    "vorschau": "U.S. and Japanese officials confirmed on Sunday that the Treasury Department had moved last week to help the currency."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Nanit and Other Baby-Tracking Start-Ups Eye Collecting Even More Data",
+    "url": "https://www.nytimes.com/2026/08/02/business/smart-baby-monitors-nanit-owlet.html",
+    "vorschau": "Nanit and other start-ups want to track your children through the night — and soon, for much longer than that."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "The Ultra-Rich Are Moving to Miami, and Want Their Money Managers There, Too",
+    "url": "https://www.nytimes.com/2026/08/02/business/family-offices-miami.html",
+    "vorschau": "Tax incentives, among other benefits, have drawn the ultrawealthy to the city. And they need space for the firms that manage their money."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Larry Ellison Bet It All on the A.I. Boom. Will He Be the Face of the A.I. Bubble?",
+    "url": "https://www.nytimes.com/2026/07/31/magazine/larry-ellison-ai-oracle.html",
+    "vorschau": "Inside the 81-year-old billionaire’s risky, debt-fueled scramble to transform his data empire into an A.I. juggernaut."
+   }
+  ]
+ }
+}
