@@ -578,7 +578,7 @@ GROQ_RETRIES             = 1
 GROQ_MODEL               = "openai/gpt-oss-120b"
 # reasoning_effort: nur fuer gpt-oss-Modelle relevant ("low"/"medium"/"high").
 # "low" = kurz nachdenken, spart Tokens + Zeit. Bei qwen wird es ignoriert.
-GROQ_REASONING_EFFORT    = "medium"
+GROQ_REASONING_EFFORT    = "low"
 # Fallback-Modell: wird automatisch genutzt, sobald GROQ_MODEL einmal im
 # Lauf versagt (Fehler ODER leere Antwort). Dann bleibt es bis Lauf-Ende dabei.
 GROQ_FALLBACK_MODEL      = "qwen/qwen3.6-27b"
