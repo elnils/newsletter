@@ -574,14 +574,14 @@ GROQ_TIMEOUT             = 30
 GROQ_RETRIES             = 1
 
 # Groq-Modell: "openai/gpt-oss-120b" (Reasoning-Modell, klueger) oder
-# "llama-3.3-70b-versatile" (schneller, kein Reasoning). Hier umstellbar.
+# "qwen/qwen3.6-27b" (schneller, kein Reasoning). Hier umstellbar.
 GROQ_MODEL               = "openai/gpt-oss-120b"
 # reasoning_effort: nur fuer gpt-oss-Modelle relevant ("low"/"medium"/"high").
-# "low" = kurz nachdenken, spart Tokens + Zeit. Bei Llama wird es ignoriert.
-GROQ_REASONING_EFFORT    = "low"
+# "low" = kurz nachdenken, spart Tokens + Zeit. Bei qwen wird es ignoriert.
+GROQ_REASONING_EFFORT    = "medium"
 # Fallback-Modell: wird automatisch genutzt, sobald GROQ_MODEL einmal im
 # Lauf versagt (Fehler ODER leere Antwort). Dann bleibt es bis Lauf-Ende dabei.
-GROQ_FALLBACK_MODEL      = "llama-3.3-70b-versatile"
+GROQ_FALLBACK_MODEL      = "qwen/qwen3.6-27b"
 
 SIGNUP_URL    = "https://forms.gle/LSavK3JVp3aAsLGm9"
 ARCHIVE_URL   = "https://elnils.github.io/newsletter/"
