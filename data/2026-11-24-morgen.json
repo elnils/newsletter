@@ -1,0 +1,2287 @@
+{
+ "datum": "2026-11-24",
+ "zeit": "morgen",
+ "erstellt": "24.11.2026 05:35",
+ "intro": "Fed‑Vertreter John Williams signalisiert, dass die US‑Notenbank die Zinsen langfristig weiter anheben wird, um die Inflation zu bekämpfen ‹‹SRC|CNBC Finance|https://www.cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html››. Cisco und OpenAI starten ein gemeinsames Projekt, das die sichere Nutzung von agentenbasierter KI gewährleisten soll ‹‹SRC|WSJ US|https://www.wsj.com/tech/cisco-openai-launch-project-to-safeguard-agentic-ai-f48e6420?mod=rss_Technology››.",
+ "wikipedia": {
+  "text": "Vor 115 Jahren (1911): Die Operette Eva von Franz Lehár wird am Theater an der Wien uraufgeführt; das Libretto stammt von Alfred Maria Willner und Robert Bodanzky.",
+  "url": "https://de.wikipedia.org/wiki/Operette"
+ },
+ "destatis": {
+  "text": "14,7 % mehr Spenden im Jahr 2022 als im Vorjahr",
+  "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/11/PD26_N082_73.html",
+  "quelle": "Destatis"
+ },
+ "wm": {},
+ "kategorien": [
+  {
+   "name": "🏛️ Innenpolitik",
+   "punkte": [
+    "• Der Bundesinnenminister lehnt eine Dunkelfeldstudie zum sexualisierten Fehlverhalten bei Bundespolizei und BKA ab, obwohl Grüne sie gefordert haben ‹‹SRC|Zeit Online|https://www.zeit.de/politik/deutschland/2026-11/sexismus-bundeskriminalamt-bka-bundespolizei-polizei››.",
+    "• Der Parlamentskreis Mittelstand aus CDU/CSU fordert Personalabbau beim Bund, Abschaffung von Subventionen und Anhebung des Rentenalters auf 63 Jahre ‹‹SRC|Zeit Online|https://www.zeit.de/politik/deutschland/2026-11/parlamentskreis-mittelstand-cdu-csu-bundestag-sozialreformen››."
+   ],
+   "links": [
+    {
+     "quelle": "Zeit Online",
+     "titel": "Parlamentskreis Mittelstand: Wirtschaftsliberale in CDU und CSU fordern Personalabbau beim Bund",
+     "url": "https://www.zeit.de/politik/deutschland/2026-11/parlamentskreis-mittelstand-cdu-csu-bundestag-sozialreformen",
+     "vorschau": "Eine Parlamentariergruppe der Unionsfraktion will, dass die Regierung konsequenter Geld spart. Stellen sollen wegfallen, ebenso Subventionen und die Rente mit 63."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Regierungsbildung in Berlin: Fraktionsausschluss von Emde? – Berliner Linke entscheidet",
+     "url": "https://www.tagesspiegel.de/politik/dpa-regierungsbildung-in-berlin-fraktionsausschluss-von-emde--berliner-linke-entscheidet-16318152.html",
+     "vorschau": "Die Berliner Linke Vanessa Emde holte ein Direktmandat, doch ihr Verhältnis zur eigenen Fraktionsspitze ist zerrüttet. Bei der Abstimmung über ihren Ausschluss steht einiges auf dem Spiel."
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Türkei sieht Europas Wohlstand in Gefahr – wegen des IAA",
+     "url": "https://www.politico.eu/article/tuerkei-sieht-europas-wohlstand-in-gefahr-wegen-des-iaa/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Die EU plant ein Gesetz zur Stärkung der europäischen Industrie. Der „Industrial Accelerator Act“ könnte aber auch die Autoindustrie schwächen. Die Bundesregierung ist gespalten."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Etat 2027: Was an dieser Bundestagswoche besonders ist",
+     "url": "https://www.tagesspiegel.de/politik/dpa-etat-2027-was-an-dieser-bundestagswoche-besonders-ist-16318154.html",
+     "vorschau": "Die Haushaltswoche ist im Bundestag ohnehin speziell. In diesem Jahr aber ganz besonders. Worüber stimmt das Parlament von heute an ab?"
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Sexismus in Bundesbehörden: Bundesinnenminister lehnt Dunkelfeldstudie für Polizei ab",
+     "url": "https://www.zeit.de/politik/deutschland/2026-11/sexismus-bundeskriminalamt-bka-bundespolizei-polizei",
+     "vorschau": "Alexander Dobrindt hält es vorerst für unnötig, das Ausmaß sexualisierten Fehlverhaltens auch bei Bundespolizei und BKA zu untersuchen. Das hatten Grüne gefordert."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Judith Dada: „Wir brauchen das europäische Manhattan-Projekt!“",
+     "url": "https://www.handelsblatt.com/technik/ki/ki-es-muss-jetzt-die-drastischste-politische-agenda-in-friedenszeiten-geben/100268792.html",
+     "vorschau": "Die Investorin erklärt im Interview ihre Vision für Europas KI-Zukunft, wo sie Lücken in den Plänen der Bundesregierung sieht und warum Europa US-Konzerne für Rechenzentren gewinnen muss."
+    }
+   ]
+  },
+  {
+   "name": "🌍 Außenpolitik",
+   "punkte": [
+    "• Das Weiße Haus fügt Megaspeed, ein singapurisches Unternehmen im Nvidia‑Skandal, nach langen Verhandlungen der Entity List hinzu ‹‹SRC|NYT Politics|https://www.nytimes.com/2026/11/23/business/trump-administration-megaspeed-trade-blacklist-nvidia.html››.",
+    "• Die EU verhängt ein neues Sanktionspaket gegen russische Athleten und Soldaten, das bis zu einem echten Friedensangebot in der Ukraine weitergeführt wird ‹‹SRC|Euractiv|https://www.rapporteur.com/news/eu-targets-russian-athletes-soldiers-in-fresh-sanctions-package/››."
+   ],
+   "links": [
+    {
+     "quelle": "NYT Politics",
+     "titel": "Trump Administration Imposes Sanctions on Megaspeed, Singaporean Firm at Center of Nvidia Scandal",
+     "url": "https://www.nytimes.com/2026/11/23/business/trump-administration-megaspeed-trade-blacklist-nvidia.html",
+     "vorschau": "The administration added Megaspeed to the entity list, a trade blacklist, after weeks of sparring among top officials on the decision."
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "EU targets Russian athletes, soldiers in fresh sanctions package",
+     "url": "https://www.rapporteur.com/news/eu-targets-russian-athletes-soldiers-in-fresh-sanctions-package/",
+     "vorschau": "Brussels pledges to continue to propose sanctions ‘until Russia shows genuine intent for lasting peace in Ukraine‘"
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Estonian foreign minister: Why we’re closing our border with Russia",
+     "url": "https://www.politico.eu/article/estonia-foreign-minister-margus-tsahkna-close-border-russia/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Only through sustained pressure can Europe make Moscow accept a ceasefire."
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Finland summons Russian ambassador over suspected helicopter incursion",
+     "url": "https://www.politico.eu/article/finland-summons-russian-ambassador-over-suspected-helicopter-incursion/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Russia's \"dangerous and reckless\" actions in Europe are unacceptable, the Finnish foreign ministry said."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "COP deadlock prompts calls for a reset of climate diplomacy",
+     "url": "https://www.dw.com/en/cop-deadlock-prompts-calls-for-a-reset-of-climate-diplomacy/a-80020494?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "COP31 has been branded a failure after countries couldn't reach a final agreement, divided over a reference to \"fossil fuels.\" But was the decision to walk away from a watered-down text actually a show of strength?"
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "WSJ World",
+     "titel": "Opinion | Trump’s Focus Moves to Foreign Policy",
+     "url": "https://www.wsj.com/opinion/trumps-focus-moves-to-foreign-policy-a8004ad5?mod=rss_worldnews",
+     "vorschau": "After the midterms, the president seems to be tending alliances, not disrupting them."
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Krieg gegen die Ukraine: Polen bittet Visegrád-Staaten um Unterstützung",
+     "url": "https://www.zeit.de/politik/ausland/ukraine-krieg-news-liveblog",
+     "vorschau": "Nach dem Absturz russischer Raketen in Polen hat Ministerpräsident Tusk die Visegrád-Staaten um Hilfe gebeten. Eine Drohne dringt in Polens Luftraum ein. Das Liveblog"
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Ukraine Attack Off Coast of Libya Shows Reach of Its Naval Drones",
+     "url": "https://www.nytimes.com/2026/11/23/world/europe/ukraine-libya-russian-ships.html",
+     "vorschau": "President Volodymyr Zelensky said that Ukrainian drones had sunk a corvette and hit a dry cargo vessel, in attacks that involved special operations forces."
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "NATO’s Black Sea ambitions meet Turkish caution",
+     "url": "https://www.rapporteur.com/news/natos-black-sea-ambitions-meet-turkish-caution/",
+     "vorschau": "Bulgaria would like a NATO mission modelled on Baltic Sentry"
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "Like Sánchez, Spanish opposition stalls on NATO defence target",
+     "url": "https://www.rapporteur.com/news/like-sanchez-spanish-opposition-stalls-on-nato-defence-target/",
+     "vorschau": "People's Party says defence spending will not ‘jeopardise’ public services in line with Pedro Sánchez"
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Internationaler Gerichtshof: Großbritannien verhängt Sanktionen gegen Myanmar nach Völkermordurteil",
+     "url": "https://www.zeit.de/politik/ausland/2026-11/igh-myanmar-rohingya-voelkermord-urteil",
+     "vorschau": "Der IGH hat Myanmar für Verbrechen an den Rohingya zu Wiedergutmachungen verurteilt. Spanien, Großbritannien und zwölf weitere Länder erhöhen nun den Druck."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Ukraine Sinks Russian Warship, Hits Cargo Vessels Far From Warzone",
+     "url": "https://www.wsj.com/world/europe/russian-ships-struck-in-attacks-far-from-ukraine-as-wars-fallout-spreads-a51964cb?mod=rss_worldnews",
+     "vorschau": "The attacks are the latest in a series of Ukrainian drone strikes on Russian vessels that have spread far beyond the battlefield."
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Russian soldiers twice as likely to die by suicide as civilians",
+     "url": "https://www.ft.com/content/aa2855d5-1736-4d48-b9db-272c077ab72d?syn-25a6b1a6=1",
+     "vorschau": "FT analysis of leaked records suggests number of those taking their own lives has risen during the Ukraine war"
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Drone Attack Hits Colombian City as Unmanned Explosives Transform Conflict",
+     "url": "https://www.nytimes.com/2026/11/23/world/americas/colombia-drone-attack-cucuta.html",
+     "vorschau": "At least three people were injured. The United Nations has reported a 445 percent increase in drone bombings in the country."
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Nepal's new PM eyes closer ties with India amid lingering disputes",
+     "url": "https://www.dw.com/en/nepal-s-new-pm-eyes-closer-ties-with-india-amid-lingering-disputes/a-80021769?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "On his first foreign bilateral visit, rapper-turned-Prime Minister Balendra Shah sought deeper ties with Nepal's neighbor and largest trading partner, while steering clear of sticky territorial issues."
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "Tractors rule",
+     "url": "https://www.rapporteur.com/news/tractors-rule/",
+     "vorschau": "Also, in tonight’s edition: Kyiv’s NATO dream, France’s shaky finances, and Magyar’s pushback."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "COP31 Climate Talks Broke Down. Now What?",
+     "url": "https://www.nytimes.com/2026/11/23/climate/cop31-collapse-what-next.html",
+     "vorschau": "With big diplomatic efforts faltering, smaller pacts, local leaders and booming clean energy take center stage."
+    }
+   ]
+  },
+  {
+   "name": "🌐 Großmächte & Geopolitik",
+   "punkte": [
+    "• Washington und Moskau drängen Europa, seine Sicherheitsarchitektur im Zuge der Ukraine‑Friedensgespräche neu zu gestalten, um beiden Großmächten entgegenzukommen ‹‹SRC|Politico Europe|https://www.politico.eu/article/5-ways-europe-could-revamp-its-security-architecture-to-please-russia-vladimir-putin-us-donald-trump/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication››.",
+    "• Das Weiße Haus setzte sich für die Rückkehr von Nvidia‑CEO Jensen Huang ein, woraufhin die Aktie um 30 % sprang und das Unternehmen von Trumps Unterstützung profitierte ‹‹SRC|NYT Business|https://www.nytimes.com/2026/11/23/business/nvidia-jensen-huang.html››; die Marktreaktion wurde von Präsident Trump als Bestätigung seiner Entscheidung hervorgehoben ‹‹SRC|WSJ US|https://www.wsj.com/business/nvidia-jensen-huang-white-house-9ad03961?mod=rss_Technology››."
+   ],
+   "links": [
+    {
+     "quelle": "Politico Europe",
+     "titel": "5 ways Europe could revamp its security architecture to please Putin and Trump",
+     "url": "https://www.politico.eu/article/5-ways-europe-could-revamp-its-security-architecture-to-please-russia-vladimir-putin-us-donald-trump/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Washington and Moscow are pressuring Europe to recast its security arrangements amid Ukraine peace talks. POLITICO looks at five scenarios."
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "Jensen Huang Returns to Nvidia After President Trump Intervenes",
+     "url": "https://www.nytimes.com/2026/11/23/business/nvidia-jensen-huang.html",
+     "vorschau": "Mr. Trump, a close ally of Mr. Huang, led a campaign to assure the chip company’s board that the longtime chief executive did not present a national security risk."
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Inside the ‘war room’ that lobbied Trump to bring back ousted tech boss",
+     "url": "https://www.ft.com/content/82d3be02-8ac7-4acb-aefa-6e3722ee05cc?syn-25a6b1a6=1",
+     "vorschau": "Silicon Valley titans enlisted US president and JD Vance to rescue the billionaire tech boss whom they viewed as critical for the AI industry"
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Trump Asked Vance to Help Persuade Nvidia to Bring Back Jensen Huang",
+     "url": "https://www.wsj.com/politics/policy/nvidia-ceo-trump-vance-jensen-huang-bdec91c3?mod=rss_Technology",
+     "vorschau": "The vice president worked over the weekend to help coax the chip maker’s board to reinstate its former CEO."
+    },
+    {
+     "quelle": "FT Economics",
+     "titel": "What Nvidia tells us about America and China",
+     "url": "https://www.ft.com/content/28cb9178-ac22-44b9-99f5-d5f25a86d366?syn-25a6b1a6=1",
+     "vorschau": "The company’s spy scandal shows how little leverage Washington has against Beijing"
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "NYT World",
+     "titel": "Netanyahu Wants to Attack Iran. Does That Serve Israel or Him?",
+     "url": "https://www.nytimes.com/2026/11/23/world/middleeast/netanyahu-israel-iran.html",
+     "vorschau": "The Israeli prime minister, Benjamin Netanyahu, calls renewing strikes a matter of national security. Military analysts and opposition leaders say he’s prioritizing his own interests."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Butt of the joke: Trump impersonator mocks president at Canada press dinner",
+     "url": "https://www.theguardian.com/world/2026/nov/23/canada-trump-impersonator-press-dinner",
+     "vorschau": "Carney watches on as comedian lampoons US leader and his interest in men’s backsides at correspondents’ event Ottawa Canada’s prime minister, Mark Carney, was joined on stage in Ottawa by a Donald Trump impersonator who mocked the US president to raucous laughter from a crowd of politicians and journalists at a parliamentary press gallery dinner on Saturday. With coiffed hair and an ill-fitting suit, comedian Mark Critch – who portrays the president on the sketch show This Hour Has 22 Minutes – "
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Trump administration deported US citizen to Mexico, DoJ admits in court",
+     "url": "https://www.theguardian.com/us-news/2026/nov/23/trump-administration-deported-citizen-mexico",
+     "vorschau": "Brian Morales García of Texas seeks damages after he was wrongly identified as undocumented in case White House wants dropped The Trump administration recently admitted in federal court that it deported a US citizen to Mexico after American authorities incorrectly concluded he was an undocumented immigrant. Attorneys for the US justice department made that admission on Friday while requesting the dismissal of a lawsuit for damages that the deported man – Brian José Morales García of Austin, Texa"
+    },
+    {
+     "quelle": "NYT Politics",
+     "titel": "Fake Personas Aligned With China Are Targeting Taiwan’s Election, Researchers Say",
+     "url": "https://www.nytimes.com/2026/11/23/us/politics/taiwan-elections-misinformation.html",
+     "vorschau": "A tool developed by researchers at Vanderbilt University is detecting A.I.-generated social media posts that support the policies of the Chinese Communist Party."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Opinion | Marco Rubio Is Hostage to a Failing Foreign Policy",
+     "url": "https://www.wsj.com/opinion/marco-rubio-is-hostage-to-a-failing-foreign-policy-d4ddaeca?mod=rss_worldnews",
+     "vorschau": "How long can he keep his reputation as a serious person committed to American interests?"
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "After Japan's APEC snub, what's next for its China ties?",
+     "url": "https://www.dw.com/en/after-japan-s-apec-snub-what-s-next-for-its-china-ties/a-80020823?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Japan has long-running concerns over Chinese military expansionism, and Beijing has bristled at Sanae Takaichi's comments on Taiwan. The frosty ties were on full display at the APEC summit."
+    },
+    {
+     "quelle": "NYT Politics",
+     "titel": "Trump Is Said to Have Pushed to Reinstate Nvidia CEO Jensen Huang",
+     "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-nvidia-huang.html",
+     "vorschau": "The president set in motion a weekend of maneuvering, led by Vice President JD Vance, to help Jensen Huang get his old job back."
+    },
+    {
+     "quelle": "NYT Politics",
+     "titel": "Trump’s Extraordinary Nvidia Intervention Sidelines National Security Concerns",
+     "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-nvidia-national-security.html",
+     "vorschau": "President Trump’s move to put Jensen Huang back at the helm of Nvidia caps his indifference to the warnings of his own intelligence agencies."
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Trump made up to $15mn on Nvidia shares after Huang’s return",
+     "url": "https://www.ft.com/content/67b0a070-c2a9-4229-885a-383cca657763?syn-25a6b1a6=1",
+     "vorschau": "Profit on 30% jump in chip group’s share price based on maximum amount US president could have owned in latest disclosure"
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "By Engineering Huang’s Return, Trump Endorses Silicon Valley’s Founder Mode",
+     "url": "https://www.wsj.com/business/by-engineering-huangs-return-trump-endorses-silicon-valleys-founder-mode-45c613f8?mod=rss_Technology",
+     "vorschau": "President Trump is betting that the chip leader can keep the AI boom afloat."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "The Frantic White House Push to Get Jensen Huang Back",
+     "url": "https://www.wsj.com/business/nvidia-jensen-huang-white-house-9ad03961?mod=rss_Technology",
+     "vorschau": "Trump made clear he wanted the Nvidia CEO reinstated. On Monday, he touted the decision, saying the market proved it was right."
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "With Jensen Huang’s Return as C.E.O., Trump Effectively Overrode Nvidia’s Board",
+     "url": "https://www.nytimes.com/2026/11/23/technology/jensen-huang-nvidia-board-trump.html",
+     "vorschau": "Nvidia’s board said Mr. Huang would not be back. But President Trump, who pushed for Mr. Huang’s reinstatement, effectively overrode the board, governance experts said."
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "Jensen Huang Returns to Nvidia, Showing What Trump Will Do for AI",
+     "url": "https://www.nytimes.com/2026/11/23/business/trump-jensen-huang-nvidia.html",
+     "vorschau": "President Trump intervened on behalf of the returning Nvidia chief in a bid to boost a key company driving the stock market. The company’s share price soared."
+    },
+    {
+     "quelle": "Politico Europe",
+     "titel": "Peace in Ukraine won’t end Russian sabotage in Europe, Poland warns",
+     "url": "https://www.politico.eu/article/ukraine-peace-wont-end-russian-sabotage-in-europe-poland-warns/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+     "vorschau": "Poland’s intelligence minister says Moscow's hybrid campaign against Europe could persist whether the war goes Russia’s way or not."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Lucy Powell to visit China to promote UK education weeks after MI5 warning",
+     "url": "https://www.theguardian.com/politics/2026/nov/23/uk-visit-china-lucy-powell-education-mi5-universities-warning",
+     "vorschau": "Delegation of 50 to accompany minister, with trip criticised after universities were warned about Chinese interference The education secretary, Lucy Powell, is travelling to Beijing this week to promote UK education, weeks after MI5 issued a rare public warning to universities about Chinese interference in UK academia. A 50-strong UK delegation, including 18 university leaders, will accompany the minister when she attends the first UK-China education summit in nine years, aimed at opening up new"
+    },
+    {
+     "quelle": "FT World",
+     "titel": "China wanted families to put savings in shares not homes — then markets fell",
+     "url": "https://www.ft.com/content/45c49a84-53cc-44ed-9aab-0dc79f564278?syn-25a6b1a6=1",
+     "vorschau": "Tumbling stock prices undermine Beijing’s efforts to persuade households to focus more on equities"
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Russia poised to put nuclear weapon in space within 60 days, Germany warns",
+     "url": "https://www.ft.com/content/dd00f616-1fef-4a26-a5f9-2b1bf83cc489?syn-25a6b1a6=1",
+     "vorschau": "Berlin is ‘taking seriously’ intelligence reports shared by western allies that Moscow could deploy ‘Sputnik-S’ armed satellite as soon as next month"
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "Over 700,000 Russian Soldiers Have Died in Ukraine, Analysis Indicates",
+     "url": "https://www.nytimes.com/2026/11/23/world/europe/russia-ukraine-war-deaths.html",
+     "vorschau": "Hacked government data underscores the immense human cost of President Vladimir V. Putin’s war of attrition."
+    },
+    {
+     "quelle": "NYT Politics",
+     "titel": "How a Scientist Behind the Mediterranean Diet Got Caught in Trump’s War on Harvard",
+     "url": "https://www.nytimes.com/2026/11/23/us/politics/walter-willett-trump-harvard.html",
+     "vorschau": "Walter Willett studies the link between diet and health, a high priority for Health Secretary Robert F. Kennedy Jr. His grants were frozen anyway."
+    },
+    {
+     "quelle": "NYT Politics",
+     "titel": "Trump Toasted Floyd Mayweather, Who Owes the IRS, at Crypto Gala",
+     "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-floyd-mayweather-gala.html",
+     "vorschau": "At his third dinner for buyers of his memecoin digital tokens, the president’s honored guests included Floyd Mayweather, who owes the I.R.S."
+    },
+    {
+     "quelle": "NYT Politics",
+     "titel": "Trump Draws Bipartisan Criticism for Pushing to Reinstate Jensen Huang as Nvidia CEO",
+     "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-nvidia-huang-congress-criticism.html",
+     "vorschau": "Politicians in both parties questioned the move, with some asking whether the president was prioritizing the stock market over national security."
+    },
+    {
+     "quelle": "Reuters Business",
+     "titel": "Huang returns as Nvidia CEO after Trump intervention in abrupt board reversal - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOd19EYmc4X2wzaW5zXzZ5VXZ1cUFJbS1OYzJsZ2VSTVRnMkQteWdiN3Z0dTBlNmltdll6Vy1RWnpxVUthOF9XX3g0YmVvNWdXODJUMGpSeXdldVdYQWE3N2hCQXU3RExXSDViSWI3S2xHNVZFc0NUVmh5bGRhem5aUzdDa29xb1hH?oc=5",
+     "vorschau": "Huang returns as Nvidia CEO after Trump intervention in abrupt board reversal Reuters"
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Trump decries California’s death penalty commutation as a ‘shocking act’",
+     "url": "https://www.ft.com/content/2de3b26b-6569-44a5-b8b8-8a4be9243d0c?syn-25a6b1a6=1",
+     "vorschau": "Gavin Newsom insists every inmate will die in prison but president says justice department will try to overturn the decision"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Trump Engineered Huang’s Reinstatement as Nvidia CEO",
+     "url": "https://www.wsj.com/business/trump-engineered-huangs-reinstatement-as-nvidia-ceo-4e9c1cd3?mod=rss_markets_main",
+     "vorschau": "Plus, Nvidia added nearly $1 trillion in market value, and Trump ordered the U.S. Army to hold off on detonating tons of toxic explosives in Iowa."
+    },
+    {
+     "quelle": "WiWo Finanzen",
+     "titel": "Rückkehr Jensen Huang: Donald Trump ist überzeugt – Er sei die Ursache für Huangs Rückkehr",
+     "url": "https://www.wiwo.de/finanzen/boerse/rueckkehr-jensen-huang-donald-trump-ist-ueberzeugt-er-sei-die-ursache-fuer-huangs-rueckkehr/100272163.html",
+     "vorschau": "Trump hat nach eigener Darstellung Einfluss auf den Verwaltungsrat von Nvidia genommen. Es gebe keine Bedenken zur Wiedereinstellung Jensen Huangs an die Nvidia-Spitze."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Opinion | Sanctioning People for Building Homes in the West Bank",
+     "url": "https://www.wsj.com/opinion/sanctioning-people-for-building-homes-in-the-west-bank-47c51eb7?mod=rss_worldnews",
+     "vorschau": "Advocates for a two-state solution accept Palestinian leaders’ vision of an apartheid-like state without Jews."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Ukraine confirms it used naval drones to strike two Russian ships off Libya",
+     "url": "https://www.theguardian.com/world/2026/nov/23/ukraine-naval-drones-strike-russian-warship-libya",
+     "vorschau": "Ukraine’s security service says seven drones were launched from mothership in operation that sank Merkury warship Ukraine has confirmed it deployed naval drones in strikes on two Russian vessels off Libya on Sunday, including one that sank the corvette Merkury, one of Russia’s newest vessels. Ukraine’s security service, the SBU, said seven domestically made naval drones were launched from a mothership in the operation, which Volodymyr Zelenskyy described as “exemplary”. Continue reading..."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "They Were Too Old to Enlist, but Not to Fight. Meet the Steppe Wolves of Ukraine.",
+     "url": "https://www.nytimes.com/2026/11/23/world/europe/ukraine-older-soldiers.html",
+     "vorschau": "When the military refused to let them sign up, a band of aging men found their own way to wage war against Russia."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "China sentences official to death for spying for foreign country",
+     "url": "https://www.theguardian.com/world/2026/nov/24/china-official-ma-death-sentence-spying-leaking-national-secrets",
+     "vorschau": "Accused official leaked national secrets to unnamed country and received payments worth over $150,000, state-linked publisher says A Chinese official has been sentenced to death for spying for a foreign country, a government-linked publisher has said. Gold Wall Press, a publishing company associated with China’s national administration of state secrets protection, said the convicted person was surnamed Ma and was approached and recruited by an unnamed foreign intelligence service while working a"
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Alice Huang Had Ties to China’s Intelligence Network. But Was She Really a Spy?",
+     "url": "https://www.wsj.com/world/china/alice-huang-us-intel-nvidia-china-34e2404a?mod=rss_worldnews",
+     "vorschau": "The data-industry executive was in contact with Chinese intelligence during her affair with Jensen Huang."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "U.S. Eyes Iran as Possible Culprit in Dozens of New Cyberattacks Against Ships",
+     "url": "https://www.wsj.com/politics/national-security/iran-us-cyberattack-suspect-fed78942?mod=rss_worldnews",
+     "vorschau": "As many as 50 ships carrying oil and other explosive substances are believed to have been attacked, U.S. officials said."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "The Return of Jensen Huang",
+     "url": "https://www.nytimes.com/2026/11/23/world/jensen-huang-return-nvidia-ukraine.html",
+     "vorschau": "The Nvidia C.E.O. is back, President Trump is celebrating and markets are rallying."
+    },
+    {
+     "quelle": "NYT World",
+     "titel": "The Woman Who Took Canada to Court Over Genocide",
+     "url": "https://www.nytimes.com/2026/11/23/world/canada/nakuset-montreal.html",
+     "vorschau": "Na’kuset is a longtime champion for Indigenous communities across Canada using her experiences to fuel her advocacy."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Mexico Took Down a Top Drug Kingpin. Can It Dismantle His Cartel?",
+     "url": "https://www.wsj.com/world/americas/mexico-took-down-a-top-drug-kingpin-can-it-dismantle-his-cartel-be03308a?mod=rss_worldnews",
+     "vorschau": "U.S.-backed raids are delivering tactical victories, but the crime groups remain deeply embedded in Mexican politics, society and the local economy."
+    },
+    {
+     "quelle": "Euractiv",
+     "titel": "Kallas using EU-Syria talks to weaken Russian territorial claims",
+     "url": "https://www.rapporteur.com/news/kallas-using-eu-syria-talks-to-weaken-russian-territorial-claims/",
+     "vorschau": "The diplomat wants Damascus to withdraw recognition of territories occupied by Russia in Georgia and Ukraine"
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Tajikistan follows US call, withdraws from ICC",
+     "url": "https://www.dw.com/en/tajikistan-follows-us-call-withdraws-from-icc/a-80023903?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Tajikistan has initiated its withdrawal from the International Criminal Court as the US calls for it to be \"dismantled.\" The decision was made during a recent visit from Russian President Vladimir Putin."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "The Morning Risk Report: Fugitives Seek New Hideouts as UAE Begins Extraditing",
+     "url": "https://www.wsj.com/risk-compliance-journal/fugitive-criminals-are-looking-for-new-hideouts-since-the-uae-started-extraditing-94e98eb1?mod=rss_worldnews",
+     "vorschau": "Plus: Citi undercounted $35 billion in assets in a U.K. subsidiary and Trump says he will penalize companies that build data centers outside the U.S."
+    },
+    {
+     "quelle": "FT Economics",
+     "titel": "FirstFT: Wall Street set to rebound after AI stock sell-off",
+     "url": "https://www.ft.com/content/67014244-a737-4be5-ac81-97b77a6912ff?syn-25a6b1a6=1",
+     "vorschau": "Also in today’s newsletter: Democrats win House seat in North Carolina and how China is winning the car war"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Financial Services Roundup: Market Talk",
+     "url": "https://www.wsj.com/business/financial-services-roundup-market-talk-59d5ef65?mod=rss_markets_main",
+     "vorschau": "Find insight on France’s sovereign rating, Fitch Rating’s 2027 U.S. banks sector outlook, Saudi Arabia’s banking sector and more in the latest Market Talks covering Financial Services."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "Inside the Ukrainian Attack That Sank Russian Warship Docked in Libya",
+     "url": "https://www.wsj.com/world/inside-the-ukrainian-attack-that-sank-russian-warship-docked-in-libya-2dbd658b?mod=rss_worldnews",
+     "vorschau": "Kyiv’s special forces studied the movement of Moscow’s ships for months before an audacious attack far away from the war zone."
+    }
+   ]
+  },
+  {
+   "name": "💰 Wirtschaft",
+   "punkte": [
+    "• John Williams von der US-Notenbank Fed sagt, dass höhere Zinsen über die Zeit nötig seien, um die Inflation bis 2027 auf 2 Prozent zu senken ‹‹SRC|CNBC Finance|https://www.cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html››.",
+    "• Crowdstrike will Zscaler für 43,9 Milliarden Dollar übernehmen, wodurch einer der größten globalen Cybersicherheitskonzerne der Welt entstehen könnte ‹‹SRC|Handelsblatt Technik|https://www.handelsblatt.com/technik/cybersicherheit-crowdstrike-will-zscaler-fuer-439-milliarden-dollar-kaufen/100272028.html››."
+   ],
+   "links": [
+    {
+     "quelle": "CNBC Finance",
+     "titel": "Fed's John Williams indicates higher interest rates likely 'over time' to address inflation",
+     "url": "https://www.cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html",
+     "vorschau": "The influential central banker expressed confidence that inflation will get closer to the Fed's 2% target in 2027."
+    },
+    {
+     "quelle": "WSJ World",
+     "titel": "The Mass Exodus Making Cuba’s Economic Crisis Even Worse",
+     "url": "https://www.wsj.com/world/americas/the-mass-exodus-making-cubas-economic-crisis-even-worse-6fed25bd?mod=rss_worldnews",
+     "vorschau": "Watch to learn why the country’s economic woes and fuel shortages could be masking an even bigger issue for its chances of a turnaround."
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Kalte Progression: Weitere Unionspolitiker verlangen vollständigen Steuerausgleich",
+     "url": "https://www.zeit.de/politik/deutschland/2026-11/kalte-progression-steuern-markus-soeder-michael-kretschmer-boris-rhein",
+     "vorschau": "Diese Woche soll der Bundeshaushalt stehen, doch der Unmut über die kalte Progression wächst. Nun will auch Sachsens Ministerpräsident Michael Kretschmer nachjustieren."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Zscaler-Übernahme: In der Cybersicherheitsbranche bahnt sich ein Mega-Deal an",
+     "url": "https://www.handelsblatt.com/technik/cybersicherheit-crowdstrike-will-zscaler-fuer-439-milliarden-dollar-kaufen/100272028.html",
+     "vorschau": "Das US-Unternehmen Crowdstrike will Zscaler für 43,9 Milliarden Dollar kaufen. Damit könnte einer der größten Cybersicherheitskonzerne der Welt entstehen. Doch nicht alle Anleger reagieren darauf positiv."
+    },
+    {
+     "quelle": "Handelsblatt Finanzen",
+     "titel": "M&A-Markt: Amerikas Griff nach deutschen Konzernen – droht der Ausverkauf?",
+     "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen/banken/industrie-amerikas-griff-nach-deutschen-konzernen-droht-der-ausverkauf/100270590.html",
+     "vorschau": "EBM-Papst, Trench, TKE: Deutsche Industriefirmen sind vermehrt Übernahmeziel von US-Unternehmen und -Investoren. Experten nennen die Gründe – und erklären, warum das Interesse dem Standort nützt."
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Insolvenz: Hellweg verschwindet – Was wird jetzt aus den Baumärkten?",
+     "url": "https://www.tagesspiegel.de/wirtschaft/dpa-insolvenz-hellweg-verschwindet--was-wird-jetzt-aus-den-baumarkten-16318156.html",
+     "vorschau": "Die Filialen der Ketten Hellweg und Baywa Bau- &amp; Gartenmärkte wurden deutschlandweit für immer geschlossen. Und nun? Für einen kleinen Teil geht es weiter, allerdings unter anderer Flagge."
+    },
+    {
+     "quelle": "Manager Magazin",
+     "titel": "Lego: Konzern investiert über eine Milliarde Euro in Werk in Portugal",
+     "url": "https://www.manager-magazin.de/unternehmen/handel/lego-konzern-investiert-ueber-eine-milliarde-euro-in-werk-in-portugal-a-679037b5-4252-433d-bbdf-63a8cae9205b#ref=rss",
+     "vorschau": "Um der wachsenden Nachfrage gerecht zu werden, baut der dänische Spielwarenhersteller Lego ein neues Werk in Portugal an. Am Standort südlich von Porto entstehen 1000 neue Jobs. Der Produktionsstart ist für 2030 geplant."
+    },
+    {
+     "quelle": "Guardian World",
+     "titel": "Australian politics live: Government lacks ‘moral authority’ on decarbonisation, Monique Ryan says; Labor MP kicked out of question time",
+     "url": "https://www.theguardian.com/australia-news/live/2026/nov/24/labor-penny-wong-us-china-anthony-albanese-final-sitting-week-ntwnfb",
+     "vorschau": "Get our breaking news email , free app or daily news podcast The government will save more than it spends, says Jim Chalmers , but it won’t be a “slash and burn” budget update. Unlike the federal budget, where we get plenty of notice of when it will be handed down, the government only gives us a few days notice for the mid-financial year economic and fiscal outlook (or Myefo). There’s still a fair bit of work to do to finalise it all, but we’ve made enough progress to be confident that at this s"
+    },
+    {
+     "quelle": "Manager Magazin",
+     "titel": "BASF: Batterierecycling geht an Aachener Recyclingfirma Cylib",
+     "url": "https://www.manager-magazin.de/unternehmen/industrie/basf-batterierecycling-geht-an-aachener-recyclingfirma-cylib-a-2b5a456c-6342-4615-b415-3744012318ef#ref=rss",
+     "vorschau": "BASF hatte angekündigt, seine Investitionen in Batteriematerialien auf den Prüfstand zu stellen. Nun trennt sich der Konzern von seinem Batterierecycling-Geschäft. Der Käufer kommt aus Aachen."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "KI-Jobmarkt: Forscher, Entwickler und geschulte Anwender – in diesen Branchen können Sie mit KI-Kenntnissen punkten",
+     "url": "https://www.handelsblatt.com/technik/ki/ki-wo-entstehen-trotz-schwachem-arbeitsmarkt-aktuell-neue-jobchancen-01/100251207.html",
+     "vorschau": "Unternehmen schreiben immer weniger Stellen aus. Der Bedarf an KI-Experten aber wächst – es fehlen Fachkräfte zur Umsetzung der deutschen KI‑Strategie. Wo eröffnen sich Chancen für Bewerber?"
+    }
+   ]
+  },
+  {
+   "name": "💻 Tech & KI",
+   "punkte": [
+    "• Das Nvidia‑Board stimmt einstimmig für die Rückkehr des ehemaligen CEOs Jensen Huang, obwohl er wegen einer mutmaßlichen Beziehung zu einer chinesischen Spionin kritisiert wird ‹‹SRC|Deutsche Welle|https://www.dw.com/en/nvidia-reinstates-former-ceo-jensen-huang-despite-china-espionage-scandal/a-80021926?maca=en-rss-en-all-1573-rdf››.",
+    "• CrowdStrike kündigt die Übernahme von Zscaler für 44 Milliarden Dollar an, um angesichts durch KI verschärfter Hackerangriffe die Sicherheitsposition zu stärken ‹‹SRC|NYT Business|https://www.nytimes.com/2026/11/23/business/crowdstrike-zscaler-cybersecurity.html››."
+   ],
+   "links": [
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "Nvidia reinstates former CEO Jensen Huang despite China espionage scandal",
+     "url": "https://www.dw.com/en/nvidia-reinstates-former-ceo-jensen-huang-despite-china-espionage-scandal/a-80021926?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "Nvidia's board voted unanimously to bring back the disgraced CEO, who resigned this month amid news of his affairs. He's suspected of having had a relationship with a Chinese intelligence asset."
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "Two Major Cybersecurity Firms to Combine in $44 Billion Deal",
+     "url": "https://www.nytimes.com/2026/11/23/business/crowdstrike-zscaler-cybersecurity.html",
+     "vorschau": "CrowdStrike agreed to acquire Zscaler, bulking up as worries about hacks fueled by advances in artificial intelligence bedevil companies and governments."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Nvidia Chief’s Return Lifts Many Boats",
+     "url": "https://www.wsj.com/finance/stocks/nvidia-chiefs-return-lifts-many-boats-3b515f16?mod=rss_markets_main",
+     "vorschau": "Plus, credit markets aren’t so bullish about Jensen Huang’s reinstatement, and Anthropic’s impending bond-market challenge."
+    },
+    {
+     "quelle": "Reuters Business",
+     "titel": "How Nvidia’s billion-dollar turnaround in China is threatened by Huang’s exit - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMzBhLWJfeFVoaXlNajJPVmVaNHl3bFFPR3lveEhDV3dlNXU3MTNlcm1MNVp0OGM5MmtvcmVxVHg2SXBCZ0U1WkdBX0NGYmNZR1NrUXI2MVZFdXQtQnlhUXN6bm9SRGJOSnYxb1QzRklGZWd1bm9tdnlSNnVGLUpLWllkZFB2MVF0UXd3T3NDbWRUQUtmVzZkUml4cXJjdmhXVXFkYWdLZ3o4TGI0T2tIZG5KMHZlSWpSczNIVg?oc=5",
+     "vorschau": "How Nvidia’s billion-dollar turnaround in China is threatened by Huang’s exit Reuters"
+    },
+    {
+     "quelle": "FT Economics",
+     "titel": "FirstFT: Nvidia adds nearly $1tn in value after Jensen Huang reinstated",
+     "url": "https://www.ft.com/content/5fd14979-e239-4eaf-bbfb-cde969afb514?syn-25a6b1a6=1",
+     "vorschau": "Also in today’s newsletter: Ukraine blows up Russian warship in Libya’s Benghazi and Nepal’s PM seals aid deal with India’s Narendra Modi"
+    }
+   ],
+   "weitere": [
+    {
+     "quelle": "WSJ US",
+     "titel": "Cisco, OpenAI Launch Project to Safeguard Agentic AI",
+     "url": "https://www.wsj.com/tech/cisco-openai-launch-project-to-safeguard-agentic-ai-f48e6420?mod=rss_Technology",
+     "vorschau": "The project, called Shirudo, helps protect running Linux systems without a reboot while teams roll out a patch."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Deep Read: 1,2 Milliarden Nutzer, doch die meisten zahlen nichts: Der ChatGPT-Macher will sich neu erfinden",
+     "url": "https://www.handelsblatt.com/technik/ki/openai-der-chatgpt-entwickler-muss-sich-neu-erfinden/100268812.html",
+     "vorschau": "Der Rivale Anthropic ist an der Börse, OpenAI verschiebt den Gang aufs Parkett. Mit Firmenkunden und Agenten will Sam Altman verlorenen Boden gutmachen. Hat er noch ein Ass im Ärmel?"
+    },
+    {
+     "quelle": "Deutsche Welle",
+     "titel": "US adds Megaspeed, at center of Nvidia scandal, to a trade blacklist",
+     "url": "https://www.dw.com/en/us-adds-megaspeed-at-center-of-nvidia-scandal-to-a-trade-blacklist/a-80026849?maca=en-rss-en-all-1573-rdf",
+     "vorschau": "The Trump administration has added Megaspeed to a trade blacklist after tensions over its failure to do so raised questions. The news came the same day that Jensen Huang was reinstated as Nvidia's CEO."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "USA: Zurück bei Nvidia, bald vor dem Kongress – Jensen Huangs heikle Tage in Washington",
+     "url": "https://www.handelsblatt.com/technik/ki/usa-zurueck-bei-nvidia-bald-vor-dem-kongress-huangs-heikle-tage-in-washington/100272147.html",
+     "vorschau": "Bei US-Politikern beider Parteien stößt die Rückkehr von Jensen Huang auf heftige Kritik. Dem Chef des Chipherstellers stehen mehrere Befragungen bevor – die ersten schon in der kommenden Woche."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Chipkonzern: Jensen Huang kehrt als Nvidia-Chef zurück – Aktie steigt um 30 Prozent",
+     "url": "https://www.handelsblatt.com/technik/ki/nvidia-huang-kehrt-als-konzernchef-zurueck-aktie-legt-um-30-prozent-zu/100272106.html",
+     "vorschau": "Nach Berichten über außereheliche Affären war Jensen Huang als Nvidia-Chef zurückgetreten, nun übernimmt er die Konzernführung wieder. Welche Rolle spielte dabei Donald Trump?"
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Nvidia-Chefsuche: Wohl kein Wechsel zu Nvidia – Arm-Chef Haas verlängert Vertrag",
+     "url": "https://www.handelsblatt.com/technik/ki/nvidia-chefsuche-arm-chef-haas-verlaengert-seinen-vertrag-bis-2033/100272078.html",
+     "vorschau": "Nvidia sucht nach dem Abgang von Jensen Huang einen neuen Chef und soll dabei auch beim Chef des Chipdesigners Arm angefragt haben. Doch der verlängert seinen Vertrag nun um sechs Jahre."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Künstliche Intelligenz: US-Banken beschränken offenbar Zugriffsrechte für KI-Agenten",
+     "url": "https://www.handelsblatt.com/technik/ki/kuenstliche-intelligenz-us-banken-beschraenken-offenbar-zugriffsrechte-fuer-ki-agenten/100272065.html",
+     "vorschau": "Bei den großen Finanzinstituten wächst offenbar die KI-Skepsis. Einige Banken sorgen sich nach jüngsten Sicherheitsvorfällen und verstärken das interne Risikomanagement."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Ransomware: „Der schlimmste Fehler ist ein CEO, der fragt: Wie zahle ich?“",
+     "url": "https://www.handelsblatt.com/technik/it-internet/cyber-attacken-die-erste-phase-ist-immer-chaos/100229829.html",
+     "vorschau": "Cyber-Attacken legen ganze Produktionen lahm und treffen zunehmend auch den Mittelstand. Zwei Experten erklären, wie Firmen mit Erpressern verhandeln sollten – und sich besser schützen können."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Künstliche Intelligenz: „Wir stürzen in eine Welt, in der nur die Elite arbeitet“",
+     "url": "https://www.handelsblatt.com/technik/ki/ki-wir-priorisieren-oder-schaetzen-nicht-was-ein-mensch-leistet/100223312.html",
+     "vorschau": "Allison Pugh ist eine der wichtigsten Stimmen der US‑Soziologie. Sie warnt: Menschen verlieren ihre Würde, wenn KI alle Arbeit ersetzt. Künftig könnte vor allem eine Fähigkeit zählen."
+    },
+    {
+     "quelle": "Manager Magazin",
+     "titel": "Nvidia-Affäre: US-Demokraten prüfen Trumps Rolle bei Huang-Rückkehr",
+     "url": "https://www.manager-magazin.de/unternehmen/tech/nvidia-affaere-us-demokraten-pruefen-trumps-rolle-bei-huang-rueckkehr-a-d9b9bc41-0144-4b2d-83f9-024d06c13b9d#ref=rss",
+     "vorschau": ""
+    },
+    {
+     "quelle": "Manager Magazin",
+     "titel": "Huangs Rückkehr als Nvidia-Chef und Deutschlands größtes Familiendrama",
+     "url": "https://www.manager-magazin.de/ueber-uns/huangs-rueckkehr-als-nvidia-chef-und-deutschlands-groesstes-familiendrama-a-97f0d838-9bcf-400e-86f8-c8a8370d158d#ref=rss",
+     "vorschau": "Jensen Huang kehrt als Nvidia-Chef zurück. Tengelmann-Chef Christian Haub erhöht das Risiko. Und die Deutschland-App wird von der D-App überholt. Die wichtigsten Wirtschaftsthemen lesen Sie in „Der Tag“."
+    },
+    {
+     "quelle": "Manager Magazin",
+     "titel": "Nvidia-Aktie mit Kursrallye: Jensen Huang kehrt an die Konzernspitze zurück",
+     "url": "https://www.manager-magazin.de/unternehmen/tech/nvidia-beruft-ex-chef-jensen-huang-zurueck-an-die-firmenspitze-a-d48ee9b6-0758-4ac9-92f0-912cd4d2e692#ref=rss",
+     "vorschau": "Paukenschlag bei Nvidia: Der Chipkonzern setzt Jensen Huang auf Druck von US-Präsident Trump trotz seiner Affäre mit einer mutmaßlichen chinesischen Spionin wieder als Chef ein. ⁠Die Aktie reagiert mit einem zweistelligen Kurssprung."
+    },
+    {
+     "quelle": "Handelsblatt Finanzen",
+     "titel": "Nvidia: Huang-Comeback löst Erleichterungs-Rally aus: So schätzen Experten jetzt die Lage an den Märkten ein",
+     "url": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nvidia-so-schaetzen-experten-nach-huangs-comeback-die-lage-an-den-boersen-ein/100271952.html",
+     "vorschau": "Der Manager kehrt an die Spitze von Nvidia zurück. Ob dadurch die KI‑Zweifel nachhaltig verschwinden, ist unklar. Ein Blick auf die einzelnen Anlageklassen und deren Aussichten."
+    },
+    {
+     "quelle": "Tagesspiegel",
+     "titel": "Nvidia-Chef: Wie Jensen Huang für die USA unverzichtbar wurde",
+     "url": "https://www.tagesspiegel.de/gesellschaft/medien/dpa-nvidia-chef-wie-jensen-huang-fur-die-usa-unverzichtbar-wurde-16318101.html",
+     "vorschau": "„US-Präsident bringt Gründer von größtem Chip-Konzern zurück auf Chefposten“ - das ist keine Schlagzeile, die man erwartet. Doch für Donald Trump hing zu viel an Jensen Huang, um nicht einzugreifen."
+    },
+    {
+     "quelle": "FT World",
+     "titel": "OpenAI engineer possessed dozens of meeting recordings, say US prosecutors",
+     "url": "https://www.ft.com/content/f860152a-6bd6-43f7-8ba1-4a6ae94d6565?syn-25a6b1a6=1",
+     "vorschau": "Saudi national is also alleged to have photographed confidential documents"
+    },
+    {
+     "quelle": "FT World",
+     "titel": "US lawmakers vow to sharpen Huang probes as he returns to Nvidia",
+     "url": "https://www.ft.com/content/6b4e5bfb-d566-4a61-a12c-057881a261b8?syn-25a6b1a6=1",
+     "vorschau": "Democrats and Republicans insist tech CEO must testify in public"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Nvidia’s Rally Ripples Across Markets",
+     "url": "https://www.wsj.com/finance/stocks/stock-futures-rally-as-dust-settles-after-ai-driven-selloff-705ff2c4?mod=rss_markets_main",
+     "vorschau": "U.S. stocks climbed, mostly thanks to Nvidia’s rally following Jensen Huang’s return as chief executive. The Nasdaq added more than 6%."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "European Chip Stocks Surge After Nvidia Reinstates Huang as CEO",
+     "url": "https://www.wsj.com/finance/stocks/some-underperforming-japan-stocks-may-start-rising-after-strong-results-e6e3f434?mod=rss_markets_main",
+     "vorschau": "Europe’s AI-linked stocks rebounded sharply in early trade as investors returned to the sector after last week’s heavy selloff."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Pouncing on Anthropic Won’t Make You Rich",
+     "url": "https://www.wsj.com/finance/stocks/pouncing-on-anthropic-wont-make-you-rich-4d500a06?mod=rss_markets_main",
+     "vorschau": "Plus, tech rises from the ashes."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Then and Now: See How Nvidia and the Administration Pivoted on Huang",
+     "url": "https://www.wsj.com/business/then-and-now-see-how-nvidia-and-the-administration-pivoted-on-huang-d49b1c1b?mod=rss_Technology",
+     "vorschau": "Treasury Secretary Scott Bessent and other leaders criticized the AI CEO’s conduct before pivoting upon his return to the chip maker."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Jensen Huang Is Back at Nvidia. Major Investigations Still Surround Him.",
+     "url": "https://www.wsj.com/tech/ai/jensen-huang-is-back-at-nvidia-major-investigations-still-surround-him-c904001c?mod=rss_Technology",
+     "vorschau": "Several probes are examining the chip maker, its CEO and issues related to his initial ouster."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Jensen Huang’s Return to Nvidia Draws Heavy Fire From Lawmakers",
+     "url": "https://www.wsj.com/politics/policy/jensen-huangs-return-to-nvidia-draws-heavy-fire-from-lawmakers-ae698d88?mod=rss_Technology",
+     "vorschau": "Republicans and Democrats see national-security risks and are vowing to press forward with investigations."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "A Timeline of Nvidia CEO Jensen Huang’s Spy Downfall and Resurrection",
+     "url": "https://www.wsj.com/tech/ai/a-timeline-of-nvidia-ceo-jensen-huangs-suspected-spy-drama-05cbebf3?mod=rss_Technology",
+     "vorschau": "A scandal put the world’s most consequential AI CEO in the hot seat—and cost him his job—until the U.S. government intervened."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Opinion | Nvidia’s Lesson: Set Rules Before a Crisis",
+     "url": "https://www.wsj.com/opinion/nvidias-lesson-set-rules-before-a-crisis-d4ccc369?mod=rss_Technology",
+     "vorschau": "Fast-moving companies should lock in guardrails so panicked boards don’t oust founders prematurely."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Opinion | Artificial Intelligence Can’t Replace a Doctor",
+     "url": "https://www.wsj.com/opinion/artificial-intelligence-cant-replace-a-doctor-ba5192c4?mod=rss_Technology",
+     "vorschau": "That genuine attention and clear roadmap are what ultimately bring patients relief."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "CrowdStrike’s $44 Billion Zscaler Deal Reflects a New Imperative in Cybersecurity",
+     "url": "https://www.wsj.com/pro/cybersecurity/crowdstrikes-44-billion-zscaler-deal-reflects-a-new-imperative-in-cybersecurity-5669e9db?mod=rss_Technology",
+     "vorschau": "AI is exposing the limitations of fragmented defenses, pushing security companies to combine technologies that once operated separately."
+    },
+    {
+     "quelle": "Zeit Online",
+     "titel": "Chipexporte nach China: USA setzen Nvidia-Kunden Megaspeed auf schwarze Liste",
+     "url": "https://www.zeit.de/wirtschaft/2026-11/usa-handelssperre-schwarze-liste-megaspeed-nvidia-skandal-alice-huang-china-exportverbot",
+     "vorschau": "Die US-Regierung versucht nach Rückkehr des Nvidia-Chefs Jensen Huang, weiteren Schaden abzuwehren. Sie sperrt die verdächtige Cloud-Firma Megaspeed für den Chiphandel."
+    },
+    {
+     "quelle": "WiWo Finanzen",
+     "titel": "Nvidia-Rally: Fünf Risiken halten die Börsen in Atem",
+     "url": "https://www.wiwo.de/finanzen/boerse/boersen-comeback-nach-nvidia-absturz-fuenf-risiken-im-check/100271976.html",
+     "vorschau": "Nach 33 Tagen schwerer Kursverluste proben die Börsen das Comeback – dank Nvidia. Welche Risiken es dabei gibt und wann die Korrektur an den Aktienmärkten vorbei sein könnte."
+    },
+    {
+     "quelle": "NYT Business",
+     "titel": "Can Jensen Huang Return to Nvidia?",
+     "url": "https://www.nytimes.com/2026/11/23/business/dealbook/jensen-huang-nvidia.html",
+     "vorschau": "Jensen Huang did just that. Nvidia’s co-founder has been reinstated as chief executive, a move that has stunned Wall Street and Washington."
+    },
+    {
+     "quelle": "Handelsblatt Technik",
+     "titel": "Insight Innovation: Die KI, die intuitiv handelt – was nach ChatGPT kommt",
+     "url": "https://www.handelsblatt.com/technik/ki/technologie-was-nach-chatgpt-kommt-und-wie-sap-mit-neuer-ki-vorangeht/100264577.html",
+     "vorschau": "Ungenau, teuer, zu langsam: Große Sprachmodelle stoßen an Grenzen. Technologieanbieter arbeiten daher an spezialisierten Systemen, die schnell Entscheidungen treffen können. Vorn dabei: SAP."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "The Most Famous Problem in Math Was Just Solved by AI—and This Human",
+     "url": "https://www.wsj.com/tech/ai/riemann-hypothesis-anthropic-math-levent-alpoge-75351bcb?mod=rss_Technology",
+     "vorschau": "Mathematicians tried and failed to crack the Riemann Hypothesis for 167 years. Anthropic’s Levent Alpöge says he’s found a proof with Claude."
+    },
+    {
+     "quelle": "Handelsblatt Finanzen",
+     "titel": "Nikkei und Hang Seng: Jensen-Huang-Rally in Asien räumt Zweifel an KI-Boom nicht aus",
+     "url": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nikkei-und-hang-seng-jensen-huang-rally-in-asien-raeumt-zweifel-an-ki-boom-nicht-aus/100272218.html",
+     "vorschau": "Die Rückkehr von Jensen Huang als Nvidia-Chef treibt nach schweren Kursverlusten die Aktienpreise in Ostasiens Chiphochburgen in die Höhe. Doch Experten sehen kein Ende der Volatilität."
+    },
+    {
+     "quelle": "FT World",
+     "titel": "Asian tech stocks surge after Jensen Huang’s return",
+     "url": "https://www.ft.com/content/c0cb932a-076e-4471-8009-91749fde5f47?syn-25a6b1a6=1",
+     "vorschau": "Region’s markets follow Wall Street higher on Nvidia chief’s reinstatement"
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Jensen Is Back. But AI’s Problems Haven’t Gone Away.",
+     "url": "https://www.wsj.com/finance/stocks/jensen-is-back-but-ais-problems-havent-gone-away-7551770e?mod=rss_markets_main",
+     "vorschau": "The Nvidia CEO’s return is bad on multiple levels, and doesn’t remove serious challenges facing the AI ecosystem in general or the company in particular."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Tech, Media & Telecom Roundup: Market Talk",
+     "url": "https://www.wsj.com/business/tech-media-telecom-roundup-market-talk-196a238a?mod=rss_markets_main",
+     "vorschau": "Find insight on CrowdStrike, Nvidia, Zscaler and more in the latest Market Talks covering Technology, Media and Telecom."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "Nikkei Rises 2.7%, Led by Chip, Metals Stocks",
+     "url": "https://www.wsj.com/finance/stocks/nikkei-rises-2-7-led-by-chip-metals-stocks-82c1bb9d?mod=rss_markets_main",
+     "vorschau": "Japanese stocks were higher in early trade as Jensen Huang’s return as the Nvidia chief executive revives an artificial-intelligence trade."
+    },
+    {
+     "quelle": "WSJ Markets",
+     "titel": "U.S. Stocks Jump as Huang Return Triggers AI Rally",
+     "url": "https://www.wsj.com/finance/stocks/u-s-stocks-jump-as-huang-return-triggers-ai-rally-7c008308?mod=rss_markets_main",
+     "vorschau": "U.S. stocks surged broadly as Nvidia reinstated Jensen Huang as its chief executive, sparking a revival in artificial-intelligence wagers."
+    },
+    {
+     "quelle": "WSJ US",
+     "titel": "Jensen Huang Upends AI Outlook Once Again",
+     "url": "https://www.wsj.com/cio-journal/jensen-huang-upends-ai-outlook-once-again-b2bdb17d?mod=rss_Technology",
+     "vorschau": "Plus, OpenAI scientist proposes common limits on frontier model development."
+    },
+    {
+     "quelle": "CNBC Finance",
+     "titel": "‘This establishes a bottom’: Jensen Huang’s return seen as likely to stop market sell-off, for now",
+     "url": "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo-market-rally.html",
+     "vorschau": "Wall Street strategists say Jensen Huang’s return to Nvidia could steady the AI trade, though spending and data-center risks remain."
+    },
+    {
+     "quelle": "WiWo Finanzen",
+     "titel": "Aktienmärkte: Der Börsencrash? Erstmal abgesagt",
+     "url": "https://www.wiwo.de/finanzen/boerse/boersencrash-dank-nvidia-rally-abgewendet-was-die-erholung-bedeutet/100271772.html",
+     "vorschau": "Anleger starteten mit Sorge in die Woche. Doch dann beendete die überraschende Nachricht von Huangs Rückkehr an die Nvidia-Unternehmensspitze den weltweiten Ausverkauf – vorerst."
+    },
+    {
+     "quelle": "WiWo Finanzen",
+     "titel": "Aixtron: Der positive Trend hängt an einem einzigen Markt",
+     "url": "https://www.wiwo.de/finanzen/boerse/deutschlands-zweite-boersenreihe-lohnt-sich-die-aixtron-aktie/100271778.html",
+     "vorschau": "Der Anlagenbauer Aixtron soll vom KI-Boom profitieren. Die Zahlen überzeugen jedoch (noch) nicht – urteilt mit Warren Wise ausgerechnet ein KI-Agent."
+    }
+   ]
+  }
+ ],
+ "alle_artikel": {
+  "🏛️ Innenpolitik": [
+   {
+    "quelle": "Zeit Online",
+    "titel": "Parlamentskreis Mittelstand: Wirtschaftsliberale in CDU und CSU fordern Personalabbau beim Bund",
+    "url": "https://www.zeit.de/politik/deutschland/2026-11/parlamentskreis-mittelstand-cdu-csu-bundestag-sozialreformen",
+    "vorschau": "Eine Parlamentariergruppe der Unionsfraktion will, dass die Regierung konsequenter Geld spart. Stellen sollen wegfallen, ebenso Subventionen und die Rente mit 63."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Regierungsbildung in Berlin: Fraktionsausschluss von Emde? – Berliner Linke entscheidet",
+    "url": "https://www.tagesspiegel.de/politik/dpa-regierungsbildung-in-berlin-fraktionsausschluss-von-emde--berliner-linke-entscheidet-16318152.html",
+    "vorschau": "Die Berliner Linke Vanessa Emde holte ein Direktmandat, doch ihr Verhältnis zur eigenen Fraktionsspitze ist zerrüttet. Bei der Abstimmung über ihren Ausschluss steht einiges auf dem Spiel."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Türkei sieht Europas Wohlstand in Gefahr – wegen des IAA",
+    "url": "https://www.politico.eu/article/tuerkei-sieht-europas-wohlstand-in-gefahr-wegen-des-iaa/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Die EU plant ein Gesetz zur Stärkung der europäischen Industrie. Der „Industrial Accelerator Act“ könnte aber auch die Autoindustrie schwächen. Die Bundesregierung ist gespalten."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Judith Dada: „Wir brauchen das europäische Manhattan-Projekt!“",
+    "url": "https://www.handelsblatt.com/technik/ki/ki-es-muss-jetzt-die-drastischste-politische-agenda-in-friedenszeiten-geben/100268792.html",
+    "vorschau": "Die Investorin erklärt im Interview ihre Vision für Europas KI-Zukunft, wo sie Lücken in den Plänen der Bundesregierung sieht und warum Europa US-Konzerne für Rechenzentren gewinnen muss."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Etat 2027: Was an dieser Bundestagswoche besonders ist",
+    "url": "https://www.tagesspiegel.de/politik/dpa-etat-2027-was-an-dieser-bundestagswoche-besonders-ist-16318154.html",
+    "vorschau": "Die Haushaltswoche ist im Bundestag ohnehin speziell. In diesem Jahr aber ganz besonders. Worüber stimmt das Parlament von heute an ab?"
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Sexismus in Bundesbehörden: Bundesinnenminister lehnt Dunkelfeldstudie für Polizei ab",
+    "url": "https://www.zeit.de/politik/deutschland/2026-11/sexismus-bundeskriminalamt-bka-bundespolizei-polizei",
+    "vorschau": "Alexander Dobrindt hält es vorerst für unnötig, das Ausmaß sexualisierten Fehlverhaltens auch bei Bundespolizei und BKA zu untersuchen. Das hatten Grüne gefordert."
+   }
+  ],
+  "🌍 Außenpolitik": [
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | Trump’s Focus Moves to Foreign Policy",
+    "url": "https://www.wsj.com/opinion/trumps-focus-moves-to-foreign-policy-a8004ad5?mod=rss_worldnews",
+    "vorschau": "After the midterms, the president seems to be tending alliances, not disrupting them."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Estonian foreign minister: Why we’re closing our border with Russia",
+    "url": "https://www.politico.eu/article/estonia-foreign-minister-margus-tsahkna-close-border-russia/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Only through sustained pressure can Europe make Moscow accept a ceasefire."
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Trump Administration Imposes Sanctions on Megaspeed, Singaporean Firm at Center of Nvidia Scandal",
+    "url": "https://www.nytimes.com/2026/11/23/business/trump-administration-megaspeed-trade-blacklist-nvidia.html",
+    "vorschau": "The administration added Megaspeed to the entity list, a trade blacklist, after weeks of sparring among top officials on the decision."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Krieg gegen die Ukraine: Polen bittet Visegrád-Staaten um Unterstützung",
+    "url": "https://www.zeit.de/politik/ausland/ukraine-krieg-news-liveblog",
+    "vorschau": "Nach dem Absturz russischer Raketen in Polen hat Ministerpräsident Tusk die Visegrád-Staaten um Hilfe gebeten. Eine Drohne dringt in Polens Luftraum ein. Das Liveblog"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "EU targets Russian athletes, soldiers in fresh sanctions package",
+    "url": "https://www.rapporteur.com/news/eu-targets-russian-athletes-soldiers-in-fresh-sanctions-package/",
+    "vorschau": "Brussels pledges to continue to propose sanctions ‘until Russia shows genuine intent for lasting peace in Ukraine‘"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Ukraine Attack Off Coast of Libya Shows Reach of Its Naval Drones",
+    "url": "https://www.nytimes.com/2026/11/23/world/europe/ukraine-libya-russian-ships.html",
+    "vorschau": "President Volodymyr Zelensky said that Ukrainian drones had sunk a corvette and hit a dry cargo vessel, in attacks that involved special operations forces."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "COP deadlock prompts calls for a reset of climate diplomacy",
+    "url": "https://www.dw.com/en/cop-deadlock-prompts-calls-for-a-reset-of-climate-diplomacy/a-80020494?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "COP31 has been branded a failure after countries couldn't reach a final agreement, divided over a reference to \"fossil fuels.\" But was the decision to walk away from a watered-down text actually a show of strength?"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Finland summons Russian ambassador over suspected helicopter incursion",
+    "url": "https://www.politico.eu/article/finland-summons-russian-ambassador-over-suspected-helicopter-incursion/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Russia's \"dangerous and reckless\" actions in Europe are unacceptable, the Finnish foreign ministry said."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "NATO’s Black Sea ambitions meet Turkish caution",
+    "url": "https://www.rapporteur.com/news/natos-black-sea-ambitions-meet-turkish-caution/",
+    "vorschau": "Bulgaria would like a NATO mission modelled on Baltic Sentry"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Like Sánchez, Spanish opposition stalls on NATO defence target",
+    "url": "https://www.rapporteur.com/news/like-sanchez-spanish-opposition-stalls-on-nato-defence-target/",
+    "vorschau": "People's Party says defence spending will not ‘jeopardise’ public services in line with Pedro Sánchez"
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Internationaler Gerichtshof: Großbritannien verhängt Sanktionen gegen Myanmar nach Völkermordurteil",
+    "url": "https://www.zeit.de/politik/ausland/2026-11/igh-myanmar-rohingya-voelkermord-urteil",
+    "vorschau": "Der IGH hat Myanmar für Verbrechen an den Rohingya zu Wiedergutmachungen verurteilt. Spanien, Großbritannien und zwölf weitere Länder erhöhen nun den Druck."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Ukraine Sinks Russian Warship, Hits Cargo Vessels Far From Warzone",
+    "url": "https://www.wsj.com/world/europe/russian-ships-struck-in-attacks-far-from-ukraine-as-wars-fallout-spreads-a51964cb?mod=rss_worldnews",
+    "vorschau": "The attacks are the latest in a series of Ukrainian drone strikes on Russian vessels that have spread far beyond the battlefield."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Russian soldiers twice as likely to die by suicide as civilians",
+    "url": "https://www.ft.com/content/aa2855d5-1736-4d48-b9db-272c077ab72d?syn-25a6b1a6=1",
+    "vorschau": "FT analysis of leaked records suggests number of those taking their own lives has risen during the Ukraine war"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Drone Attack Hits Colombian City as Unmanned Explosives Transform Conflict",
+    "url": "https://www.nytimes.com/2026/11/23/world/americas/colombia-drone-attack-cucuta.html",
+    "vorschau": "At least three people were injured. The United Nations has reported a 445 percent increase in drone bombings in the country."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Nepal's new PM eyes closer ties with India amid lingering disputes",
+    "url": "https://www.dw.com/en/nepal-s-new-pm-eyes-closer-ties-with-india-amid-lingering-disputes/a-80021769?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "On his first foreign bilateral visit, rapper-turned-Prime Minister Balendra Shah sought deeper ties with Nepal's neighbor and largest trading partner, while steering clear of sticky territorial issues."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Tractors rule",
+    "url": "https://www.rapporteur.com/news/tractors-rule/",
+    "vorschau": "Also, in tonight’s edition: Kyiv’s NATO dream, France’s shaky finances, and Magyar’s pushback."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "COP31 Climate Talks Broke Down. Now What?",
+    "url": "https://www.nytimes.com/2026/11/23/climate/cop31-collapse-what-next.html",
+    "vorschau": "With big diplomatic efforts faltering, smaller pacts, local leaders and booming clean energy take center stage."
+   }
+  ],
+  "🌐 Großmächte & Geopolitik": [
+   {
+    "quelle": "Politico Europe",
+    "titel": "5 ways Europe could revamp its security architecture to please Putin and Trump",
+    "url": "https://www.politico.eu/article/5-ways-europe-could-revamp-its-security-architecture-to-please-russia-vladimir-putin-us-donald-trump/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Washington and Moscow are pressuring Europe to recast its security arrangements amid Ukraine peace talks. POLITICO looks at five scenarios."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Netanyahu Wants to Attack Iran. Does That Serve Israel or Him?",
+    "url": "https://www.nytimes.com/2026/11/23/world/middleeast/netanyahu-israel-iran.html",
+    "vorschau": "The Israeli prime minister, Benjamin Netanyahu, calls renewing strikes a matter of national security. Military analysts and opposition leaders say he’s prioritizing his own interests."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Jensen Huang Returns to Nvidia After President Trump Intervenes",
+    "url": "https://www.nytimes.com/2026/11/23/business/nvidia-jensen-huang.html",
+    "vorschau": "Mr. Trump, a close ally of Mr. Huang, led a campaign to assure the chip company’s board that the longtime chief executive did not present a national security risk."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Butt of the joke: Trump impersonator mocks president at Canada press dinner",
+    "url": "https://www.theguardian.com/world/2026/nov/23/canada-trump-impersonator-press-dinner",
+    "vorschau": "Carney watches on as comedian lampoons US leader and his interest in men’s backsides at correspondents’ event Ottawa Canada’s prime minister, Mark Carney, was joined on stage in Ottawa by a Donald Trump impersonator who mocked the US president to raucous laughter from a crowd of politicians and journalists at a parliamentary press gallery dinner on Saturday. With coiffed hair and an ill-fitting suit, comedian Mark Critch – who portrays the president on the sketch show This Hour Has 22 Minutes – "
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Trump administration deported US citizen to Mexico, DoJ admits in court",
+    "url": "https://www.theguardian.com/us-news/2026/nov/23/trump-administration-deported-citizen-mexico",
+    "vorschau": "Brian Morales García of Texas seeks damages after he was wrongly identified as undocumented in case White House wants dropped The Trump administration recently admitted in federal court that it deported a US citizen to Mexico after American authorities incorrectly concluded he was an undocumented immigrant. Attorneys for the US justice department made that admission on Friday while requesting the dismissal of a lawsuit for damages that the deported man – Brian José Morales García of Austin, Texa"
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Fake Personas Aligned With China Are Targeting Taiwan’s Election, Researchers Say",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/taiwan-elections-misinformation.html",
+    "vorschau": "A tool developed by researchers at Vanderbilt University is detecting A.I.-generated social media posts that support the policies of the Chinese Communist Party."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Inside the ‘war room’ that lobbied Trump to bring back ousted tech boss",
+    "url": "https://www.ft.com/content/82d3be02-8ac7-4acb-aefa-6e3722ee05cc?syn-25a6b1a6=1",
+    "vorschau": "Silicon Valley titans enlisted US president and JD Vance to rescue the billionaire tech boss whom they viewed as critical for the AI industry"
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | Marco Rubio Is Hostage to a Failing Foreign Policy",
+    "url": "https://www.wsj.com/opinion/marco-rubio-is-hostage-to-a-failing-foreign-policy-d4ddaeca?mod=rss_worldnews",
+    "vorschau": "How long can he keep his reputation as a serious person committed to American interests?"
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Trump Asked Vance to Help Persuade Nvidia to Bring Back Jensen Huang",
+    "url": "https://www.wsj.com/politics/policy/nvidia-ceo-trump-vance-jensen-huang-bdec91c3?mod=rss_Technology",
+    "vorschau": "The vice president worked over the weekend to help coax the chip maker’s board to reinstate its former CEO."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "After Japan's APEC snub, what's next for its China ties?",
+    "url": "https://www.dw.com/en/after-japan-s-apec-snub-what-s-next-for-its-china-ties/a-80020823?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Japan has long-running concerns over Chinese military expansionism, and Beijing has bristled at Sanae Takaichi's comments on Taiwan. The frosty ties were on full display at the APEC summit."
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Trump Is Said to Have Pushed to Reinstate Nvidia CEO Jensen Huang",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-nvidia-huang.html",
+    "vorschau": "The president set in motion a weekend of maneuvering, led by Vice President JD Vance, to help Jensen Huang get his old job back."
+   },
+   {
+    "quelle": "FT Economics",
+    "titel": "What Nvidia tells us about America and China",
+    "url": "https://www.ft.com/content/28cb9178-ac22-44b9-99f5-d5f25a86d366?syn-25a6b1a6=1",
+    "vorschau": "The company’s spy scandal shows how little leverage Washington has against Beijing"
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Trump’s Extraordinary Nvidia Intervention Sidelines National Security Concerns",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-nvidia-national-security.html",
+    "vorschau": "President Trump’s move to put Jensen Huang back at the helm of Nvidia caps his indifference to the warnings of his own intelligence agencies."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Trump made up to $15mn on Nvidia shares after Huang’s return",
+    "url": "https://www.ft.com/content/67b0a070-c2a9-4229-885a-383cca657763?syn-25a6b1a6=1",
+    "vorschau": "Profit on 30% jump in chip group’s share price based on maximum amount US president could have owned in latest disclosure"
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "By Engineering Huang’s Return, Trump Endorses Silicon Valley’s Founder Mode",
+    "url": "https://www.wsj.com/business/by-engineering-huangs-return-trump-endorses-silicon-valleys-founder-mode-45c613f8?mod=rss_Technology",
+    "vorschau": "President Trump is betting that the chip leader can keep the AI boom afloat."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "The Frantic White House Push to Get Jensen Huang Back",
+    "url": "https://www.wsj.com/business/nvidia-jensen-huang-white-house-9ad03961?mod=rss_Technology",
+    "vorschau": "Trump made clear he wanted the Nvidia CEO reinstated. On Monday, he touted the decision, saying the market proved it was right."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "With Jensen Huang’s Return as C.E.O., Trump Effectively Overrode Nvidia’s Board",
+    "url": "https://www.nytimes.com/2026/11/23/technology/jensen-huang-nvidia-board-trump.html",
+    "vorschau": "Nvidia’s board said Mr. Huang would not be back. But President Trump, who pushed for Mr. Huang’s reinstatement, effectively overrode the board, governance experts said."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Jensen Huang Returns to Nvidia, Showing What Trump Will Do for AI",
+    "url": "https://www.nytimes.com/2026/11/23/business/trump-jensen-huang-nvidia.html",
+    "vorschau": "President Trump intervened on behalf of the returning Nvidia chief in a bid to boost a key company driving the stock market. The company’s share price soared."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Peace in Ukraine won’t end Russian sabotage in Europe, Poland warns",
+    "url": "https://www.politico.eu/article/ukraine-peace-wont-end-russian-sabotage-in-europe-poland-warns/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Poland’s intelligence minister says Moscow's hybrid campaign against Europe could persist whether the war goes Russia’s way or not."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Lucy Powell to visit China to promote UK education weeks after MI5 warning",
+    "url": "https://www.theguardian.com/politics/2026/nov/23/uk-visit-china-lucy-powell-education-mi5-universities-warning",
+    "vorschau": "Delegation of 50 to accompany minister, with trip criticised after universities were warned about Chinese interference The education secretary, Lucy Powell, is travelling to Beijing this week to promote UK education, weeks after MI5 issued a rare public warning to universities about Chinese interference in UK academia. A 50-strong UK delegation, including 18 university leaders, will accompany the minister when she attends the first UK-China education summit in nine years, aimed at opening up new"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "China wanted families to put savings in shares not homes — then markets fell",
+    "url": "https://www.ft.com/content/45c49a84-53cc-44ed-9aab-0dc79f564278?syn-25a6b1a6=1",
+    "vorschau": "Tumbling stock prices undermine Beijing’s efforts to persuade households to focus more on equities"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Russia poised to put nuclear weapon in space within 60 days, Germany warns",
+    "url": "https://www.ft.com/content/dd00f616-1fef-4a26-a5f9-2b1bf83cc489?syn-25a6b1a6=1",
+    "vorschau": "Berlin is ‘taking seriously’ intelligence reports shared by western allies that Moscow could deploy ‘Sputnik-S’ armed satellite as soon as next month"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Over 700,000 Russian Soldiers Have Died in Ukraine, Analysis Indicates",
+    "url": "https://www.nytimes.com/2026/11/23/world/europe/russia-ukraine-war-deaths.html",
+    "vorschau": "Hacked government data underscores the immense human cost of President Vladimir V. Putin’s war of attrition."
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "How a Scientist Behind the Mediterranean Diet Got Caught in Trump’s War on Harvard",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/walter-willett-trump-harvard.html",
+    "vorschau": "Walter Willett studies the link between diet and health, a high priority for Health Secretary Robert F. Kennedy Jr. His grants were frozen anyway."
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Trump Toasted Floyd Mayweather, Who Owes the IRS, at Crypto Gala",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-floyd-mayweather-gala.html",
+    "vorschau": "At his third dinner for buyers of his memecoin digital tokens, the president’s honored guests included Floyd Mayweather, who owes the I.R.S."
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Trump Draws Bipartisan Criticism for Pushing to Reinstate Jensen Huang as Nvidia CEO",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/trump-nvidia-huang-congress-criticism.html",
+    "vorschau": "Politicians in both parties questioned the move, with some asking whether the president was prioritizing the stock market over national security."
+   },
+   {
+    "quelle": "Reuters Business",
+    "titel": "Huang returns as Nvidia CEO after Trump intervention in abrupt board reversal - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOd19EYmc4X2wzaW5zXzZ5VXZ1cUFJbS1OYzJsZ2VSTVRnMkQteWdiN3Z0dTBlNmltdll6Vy1RWnpxVUthOF9XX3g0YmVvNWdXODJUMGpSeXdldVdYQWE3N2hCQXU3RExXSDViSWI3S2xHNVZFc0NUVmh5bGRhem5aUzdDa29xb1hH?oc=5",
+    "vorschau": "Huang returns as Nvidia CEO after Trump intervention in abrupt board reversal Reuters"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Trump decries California’s death penalty commutation as a ‘shocking act’",
+    "url": "https://www.ft.com/content/2de3b26b-6569-44a5-b8b8-8a4be9243d0c?syn-25a6b1a6=1",
+    "vorschau": "Gavin Newsom insists every inmate will die in prison but president says justice department will try to overturn the decision"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Trump Engineered Huang’s Reinstatement as Nvidia CEO",
+    "url": "https://www.wsj.com/business/trump-engineered-huangs-reinstatement-as-nvidia-ceo-4e9c1cd3?mod=rss_markets_main",
+    "vorschau": "Plus, Nvidia added nearly $1 trillion in market value, and Trump ordered the U.S. Army to hold off on detonating tons of toxic explosives in Iowa."
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Rückkehr Jensen Huang: Donald Trump ist überzeugt – Er sei die Ursache für Huangs Rückkehr",
+    "url": "https://www.wiwo.de/finanzen/boerse/rueckkehr-jensen-huang-donald-trump-ist-ueberzeugt-er-sei-die-ursache-fuer-huangs-rueckkehr/100272163.html",
+    "vorschau": "Trump hat nach eigener Darstellung Einfluss auf den Verwaltungsrat von Nvidia genommen. Es gebe keine Bedenken zur Wiedereinstellung Jensen Huangs an die Nvidia-Spitze."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | Sanctioning People for Building Homes in the West Bank",
+    "url": "https://www.wsj.com/opinion/sanctioning-people-for-building-homes-in-the-west-bank-47c51eb7?mod=rss_worldnews",
+    "vorschau": "Advocates for a two-state solution accept Palestinian leaders’ vision of an apartheid-like state without Jews."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Ukraine confirms it used naval drones to strike two Russian ships off Libya",
+    "url": "https://www.theguardian.com/world/2026/nov/23/ukraine-naval-drones-strike-russian-warship-libya",
+    "vorschau": "Ukraine’s security service says seven drones were launched from mothership in operation that sank Merkury warship Ukraine has confirmed it deployed naval drones in strikes on two Russian vessels off Libya on Sunday, including one that sank the corvette Merkury, one of Russia’s newest vessels. Ukraine’s security service, the SBU, said seven domestically made naval drones were launched from a mothership in the operation, which Volodymyr Zelenskyy described as “exemplary”. Continue reading..."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "They Were Too Old to Enlist, but Not to Fight. Meet the Steppe Wolves of Ukraine.",
+    "url": "https://www.nytimes.com/2026/11/23/world/europe/ukraine-older-soldiers.html",
+    "vorschau": "When the military refused to let them sign up, a band of aging men found their own way to wage war against Russia."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "China sentences official to death for spying for foreign country",
+    "url": "https://www.theguardian.com/world/2026/nov/24/china-official-ma-death-sentence-spying-leaking-national-secrets",
+    "vorschau": "Accused official leaked national secrets to unnamed country and received payments worth over $150,000, state-linked publisher says A Chinese official has been sentenced to death for spying for a foreign country, a government-linked publisher has said. Gold Wall Press, a publishing company associated with China’s national administration of state secrets protection, said the convicted person was surnamed Ma and was approached and recruited by an unnamed foreign intelligence service while working a"
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Alice Huang Had Ties to China’s Intelligence Network. But Was She Really a Spy?",
+    "url": "https://www.wsj.com/world/china/alice-huang-us-intel-nvidia-china-34e2404a?mod=rss_worldnews",
+    "vorschau": "The data-industry executive was in contact with Chinese intelligence during her affair with Jensen Huang."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "U.S. Eyes Iran as Possible Culprit in Dozens of New Cyberattacks Against Ships",
+    "url": "https://www.wsj.com/politics/national-security/iran-us-cyberattack-suspect-fed78942?mod=rss_worldnews",
+    "vorschau": "As many as 50 ships carrying oil and other explosive substances are believed to have been attacked, U.S. officials said."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "The Return of Jensen Huang",
+    "url": "https://www.nytimes.com/2026/11/23/world/jensen-huang-return-nvidia-ukraine.html",
+    "vorschau": "The Nvidia C.E.O. is back, President Trump is celebrating and markets are rallying."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "The Woman Who Took Canada to Court Over Genocide",
+    "url": "https://www.nytimes.com/2026/11/23/world/canada/nakuset-montreal.html",
+    "vorschau": "Na’kuset is a longtime champion for Indigenous communities across Canada using her experiences to fuel her advocacy."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Mexico Took Down a Top Drug Kingpin. Can It Dismantle His Cartel?",
+    "url": "https://www.wsj.com/world/americas/mexico-took-down-a-top-drug-kingpin-can-it-dismantle-his-cartel-be03308a?mod=rss_worldnews",
+    "vorschau": "U.S.-backed raids are delivering tactical victories, but the crime groups remain deeply embedded in Mexican politics, society and the local economy."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Kallas using EU-Syria talks to weaken Russian territorial claims",
+    "url": "https://www.rapporteur.com/news/kallas-using-eu-syria-talks-to-weaken-russian-territorial-claims/",
+    "vorschau": "The diplomat wants Damascus to withdraw recognition of territories occupied by Russia in Georgia and Ukraine"
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Tajikistan follows US call, withdraws from ICC",
+    "url": "https://www.dw.com/en/tajikistan-follows-us-call-withdraws-from-icc/a-80023903?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Tajikistan has initiated its withdrawal from the International Criminal Court as the US calls for it to be \"dismantled.\" The decision was made during a recent visit from Russian President Vladimir Putin."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "The Morning Risk Report: Fugitives Seek New Hideouts as UAE Begins Extraditing",
+    "url": "https://www.wsj.com/risk-compliance-journal/fugitive-criminals-are-looking-for-new-hideouts-since-the-uae-started-extraditing-94e98eb1?mod=rss_worldnews",
+    "vorschau": "Plus: Citi undercounted $35 billion in assets in a U.K. subsidiary and Trump says he will penalize companies that build data centers outside the U.S."
+   },
+   {
+    "quelle": "FT Economics",
+    "titel": "FirstFT: Wall Street set to rebound after AI stock sell-off",
+    "url": "https://www.ft.com/content/67014244-a737-4be5-ac81-97b77a6912ff?syn-25a6b1a6=1",
+    "vorschau": "Also in today’s newsletter: Democrats win House seat in North Carolina and how China is winning the car war"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Financial Services Roundup: Market Talk",
+    "url": "https://www.wsj.com/business/financial-services-roundup-market-talk-59d5ef65?mod=rss_markets_main",
+    "vorschau": "Find insight on France’s sovereign rating, Fitch Rating’s 2027 U.S. banks sector outlook, Saudi Arabia’s banking sector and more in the latest Market Talks covering Financial Services."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Inside the Ukrainian Attack That Sank Russian Warship Docked in Libya",
+    "url": "https://www.wsj.com/world/inside-the-ukrainian-attack-that-sank-russian-warship-docked-in-libya-2dbd658b?mod=rss_worldnews",
+    "vorschau": "Kyiv’s special forces studied the movement of Moscow’s ships for months before an audacious attack far away from the war zone."
+   }
+  ],
+  "💰 Wirtschaft": [
+   {
+    "quelle": "CNBC Finance",
+    "titel": "Fed's John Williams indicates higher interest rates likely 'over time' to address inflation",
+    "url": "https://www.cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html",
+    "vorschau": "The influential central banker expressed confidence that inflation will get closer to the Fed's 2% target in 2027."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Insolvenz: Hellweg verschwindet – Was wird jetzt aus den Baumärkten?",
+    "url": "https://www.tagesspiegel.de/wirtschaft/dpa-insolvenz-hellweg-verschwindet--was-wird-jetzt-aus-den-baumarkten-16318156.html",
+    "vorschau": "Die Filialen der Ketten Hellweg und Baywa Bau- &amp; Gartenmärkte wurden deutschlandweit für immer geschlossen. Und nun? Für einen kleinen Teil geht es weiter, allerdings unter anderer Flagge."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "The Mass Exodus Making Cuba’s Economic Crisis Even Worse",
+    "url": "https://www.wsj.com/world/americas/the-mass-exodus-making-cubas-economic-crisis-even-worse-6fed25bd?mod=rss_worldnews",
+    "vorschau": "Watch to learn why the country’s economic woes and fuel shortages could be masking an even bigger issue for its chances of a turnaround."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Lego: Konzern investiert über eine Milliarde Euro in Werk in Portugal",
+    "url": "https://www.manager-magazin.de/unternehmen/handel/lego-konzern-investiert-ueber-eine-milliarde-euro-in-werk-in-portugal-a-679037b5-4252-433d-bbdf-63a8cae9205b#ref=rss",
+    "vorschau": "Um der wachsenden Nachfrage gerecht zu werden, baut der dänische Spielwarenhersteller Lego ein neues Werk in Portugal an. Am Standort südlich von Porto entstehen 1000 neue Jobs. Der Produktionsstart ist für 2030 geplant."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Australian politics live: Government lacks ‘moral authority’ on decarbonisation, Monique Ryan says; Labor MP kicked out of question time",
+    "url": "https://www.theguardian.com/australia-news/live/2026/nov/24/labor-penny-wong-us-china-anthony-albanese-final-sitting-week-ntwnfb",
+    "vorschau": "Get our breaking news email , free app or daily news podcast The government will save more than it spends, says Jim Chalmers , but it won’t be a “slash and burn” budget update. Unlike the federal budget, where we get plenty of notice of when it will be handed down, the government only gives us a few days notice for the mid-financial year economic and fiscal outlook (or Myefo). There’s still a fair bit of work to do to finalise it all, but we’ve made enough progress to be confident that at this s"
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Kalte Progression: Weitere Unionspolitiker verlangen vollständigen Steuerausgleich",
+    "url": "https://www.zeit.de/politik/deutschland/2026-11/kalte-progression-steuern-markus-soeder-michael-kretschmer-boris-rhein",
+    "vorschau": "Diese Woche soll der Bundeshaushalt stehen, doch der Unmut über die kalte Progression wächst. Nun will auch Sachsens Ministerpräsident Michael Kretschmer nachjustieren."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "BASF: Batterierecycling geht an Aachener Recyclingfirma Cylib",
+    "url": "https://www.manager-magazin.de/unternehmen/industrie/basf-batterierecycling-geht-an-aachener-recyclingfirma-cylib-a-2b5a456c-6342-4615-b415-3744012318ef#ref=rss",
+    "vorschau": "BASF hatte angekündigt, seine Investitionen in Batteriematerialien auf den Prüfstand zu stellen. Nun trennt sich der Konzern von seinem Batterierecycling-Geschäft. Der Käufer kommt aus Aachen."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "KI-Jobmarkt: Forscher, Entwickler und geschulte Anwender – in diesen Branchen können Sie mit KI-Kenntnissen punkten",
+    "url": "https://www.handelsblatt.com/technik/ki/ki-wo-entstehen-trotz-schwachem-arbeitsmarkt-aktuell-neue-jobchancen-01/100251207.html",
+    "vorschau": "Unternehmen schreiben immer weniger Stellen aus. Der Bedarf an KI-Experten aber wächst – es fehlen Fachkräfte zur Umsetzung der deutschen KI‑Strategie. Wo eröffnen sich Chancen für Bewerber?"
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Zscaler-Übernahme: In der Cybersicherheitsbranche bahnt sich ein Mega-Deal an",
+    "url": "https://www.handelsblatt.com/technik/cybersicherheit-crowdstrike-will-zscaler-fuer-439-milliarden-dollar-kaufen/100272028.html",
+    "vorschau": "Das US-Unternehmen Crowdstrike will Zscaler für 43,9 Milliarden Dollar kaufen. Damit könnte einer der größten Cybersicherheitskonzerne der Welt entstehen. Doch nicht alle Anleger reagieren darauf positiv."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "M&A-Markt: Amerikas Griff nach deutschen Konzernen – droht der Ausverkauf?",
+    "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen/banken/industrie-amerikas-griff-nach-deutschen-konzernen-droht-der-ausverkauf/100270590.html",
+    "vorschau": "EBM-Papst, Trench, TKE: Deutsche Industriefirmen sind vermehrt Übernahmeziel von US-Unternehmen und -Investoren. Experten nennen die Gründe – und erklären, warum das Interesse dem Standort nützt."
+   }
+  ],
+  "📊 Finanzen & Märkte": [
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Börse: Dax klar im Plus, Anleger feiern Rückkehr des Nvidia-Chefs",
+    "url": "https://www.manager-magazin.de/finanzen/boerse/boerse-dax-im-globalen-tech-ausverkauf-vor-robustem-start-a-252e5921-96a1-4ebb-9e00-c626ff21ec1a#ref=rss",
+    "vorschau": "Die überraschende Rückkehr von Jensen Huang an die Unternehmensspitze des KI-Chipriesen Nvidia beflügelt die Börsen. Sie setzten am Nachmittag zu einer Erholungsrallye an. Gewinner im Dax sind Technologieaktien."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Dax aktuell: Dax schließt nach Huangs Rückkehr mehr als 500 Punkte im Plus",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/dax-aktuell-dax-schliesst-nach-huangs-rueckkehr-mehr-als-500-punkte-im-plus/100271947.html",
+    "vorschau": "Dieser Tage trennen nur wenige Tage Rekorde von Tiefpunkten. Nach der schwächsten Woche seit April 2025 gab es am Montag eine starke Bewegung am Aktienmarkt. Grund ist der alte und neue Nvidia-Chef."
+   },
+   {
+    "quelle": "Reuters Business",
+    "titel": "AI rally set to add $2 trillion to Nasdaq-100 as Huang returns to Nvidia helm - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQWk01bk9iRUpaaEhTQ1RKTXVXdEQyblBoSjRFb1FBZjBjbzJZdi03REh0RHpKTnFBSnQzRGdoMXNSLWMyVEtQaDBjN2dMVS1zR2otTXhPRzVQeWJaRmZiaXZ6R1dkcUFFSGRYTTRMSWtsWGhEQmhrUmgyaGgtZWRjbjQ5MUl2T3ZuSEhFUDVOY2pNbHRaWG5KMmJydmk3UmZib3djVnV4QXlEcnh2ZUE?oc=5",
+    "vorschau": "AI rally set to add $2 trillion to Nasdaq-100 as Huang returns to Nvidia helm Reuters"
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Wall Street: Nasdaq schließt nach Huang-Rückkehr mehr als sechs Prozent im Plus",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/dow-jones-sp-500-nasdaq-nasdaq-schliesst-nach-huang-rueckkehr-mehr-als-sechs-prozent-im-plus/100272031.html",
+    "vorschau": "Nach dem drastischen Kursrutsch greifen Investoren im großen Stil wieder bei Aktien zu. Nur Anthropic kann nicht von der großen Rally profitieren."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Dax-Sentiment: Panik als Kaufchance? Für steigende Kurse braucht es eine weitere Auslese im Dax",
+    "url": "https://www.handelsblatt.com/finanzen/anlagestrategie/trends/dax-fuer-steigende-kurse-braucht-es-eine-weitere-auslese/100268642.html",
+    "vorschau": "Anleger sind so verunsichert wie zuletzt zum Corona-Crash. Das macht Hoffnung, dass das Schlimmste überstanden ist. Bevor sich die Lage bessert, kann es aber noch einmal empfindlich wehtun."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Nasdaq jumps 7% as Nvidia shares soar",
+    "url": "https://www.ft.com/content/0f5a7285-fbf1-4120-86df-c9cca29644fc?syn-25a6b1a6=1",
+    "vorschau": "Chip giant gains 31.5% after Huang reinstated while S&P rises 4.7%"
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "BörsenTag: Huang kehrt an die Nvidia-Spitze zurück – die Börse feiert es",
+    "url": "https://www.wiwo.de/finanzen/boerse/nvidia-aktie-jensen-huang-zurueck-boersenwert-steigt-um-eine-billion-dollar/100272115.html",
+    "vorschau": "Jensen Huang kehrt überraschend an die Spitze des Chipkonzerns Nvidia zurück. Die Aktie reagiert mit einem Kurssprung – und sorgt vorerst für Beruhigung an der Börse."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Crowdstrike: Cybersicherheitsfirma übernimmt Rivalen Zscaler",
+    "url": "https://www.manager-magazin.de/unternehmen/tech/crowdstrike-uebernimmt-rivalen-zscaler-a-7c6406d4-e8a5-4b6b-b3b9-209fe2b079e6#ref=rss",
+    "vorschau": "Es ist ein Deal zwischen zwei Schwergewichten der Cybersicherheitsbranche: Crowdstrike kauft den Wettbewerber Zscaler auf. Kaufpreis: 44 Milliarden Dollar. Die Reaktionen der Börse fallen gemischt aus."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "‘I Fell Off My Chair.’ Investors Marvel as Huang’s Return Sends Stocks Rocketing.",
+    "url": "https://www.wsj.com/finance/stocks/i-fell-off-my-chair-investors-marvel-as-huangs-return-sends-stocks-rocketing-98131bc6?mod=rss_markets_main",
+    "vorschau": "The tech-heavy Nasdaq composite roars back from last week’s selloff, adding more than $2 trillion in market value."
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Cybersicherheitsbranche: Crowdstrike übernimmt für 43,9 Milliarden Dollar Rivalen Zscaler",
+    "url": "https://www.wiwo.de/finanzen/boerse/cybersecurity-crowdstrike-uebernimmt-zscaler-fuer-439-milliarden-dollar/100272056.html",
+    "vorschau": "Crowdstrike und Zscaler fusionieren zu einem Cybersicherheitsriesen. Der Zukauf soll Millionen Dollar sparen. Doch die Börse reagiert gespalten."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Top Fed official probed over whether she breached ‘blackout period’",
+    "url": "https://www.ft.com/content/2c1fcdc0-eb16-4cee-9041-736527c2ae83?syn-25a6b1a6=1",
+    "vorschau": "Michelle Bowman spoke at an invitation-only Bank of America dinner just hours after a central bank meeting"
+   }
+  ],
+  "💻 Tech & KI": [
+   {
+    "quelle": "WSJ US",
+    "titel": "Cisco, OpenAI Launch Project to Safeguard Agentic AI",
+    "url": "https://www.wsj.com/tech/cisco-openai-launch-project-to-safeguard-agentic-ai-f48e6420?mod=rss_Technology",
+    "vorschau": "The project, called Shirudo, helps protect running Linux systems without a reboot while teams roll out a patch."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Deep Read: 1,2 Milliarden Nutzer, doch die meisten zahlen nichts: Der ChatGPT-Macher will sich neu erfinden",
+    "url": "https://www.handelsblatt.com/technik/ki/openai-der-chatgpt-entwickler-muss-sich-neu-erfinden/100268812.html",
+    "vorschau": "Der Rivale Anthropic ist an der Börse, OpenAI verschiebt den Gang aufs Parkett. Mit Firmenkunden und Agenten will Sam Altman verlorenen Boden gutmachen. Hat er noch ein Ass im Ärmel?"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Nvidia Chief’s Return Lifts Many Boats",
+    "url": "https://www.wsj.com/finance/stocks/nvidia-chiefs-return-lifts-many-boats-3b515f16?mod=rss_markets_main",
+    "vorschau": "Plus, credit markets aren’t so bullish about Jensen Huang’s reinstatement, and Anthropic’s impending bond-market challenge."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Two Major Cybersecurity Firms to Combine in $44 Billion Deal",
+    "url": "https://www.nytimes.com/2026/11/23/business/crowdstrike-zscaler-cybersecurity.html",
+    "vorschau": "CrowdStrike agreed to acquire Zscaler, bulking up as worries about hacks fueled by advances in artificial intelligence bedevil companies and governments."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "US adds Megaspeed, at center of Nvidia scandal, to a trade blacklist",
+    "url": "https://www.dw.com/en/us-adds-megaspeed-at-center-of-nvidia-scandal-to-a-trade-blacklist/a-80026849?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "The Trump administration has added Megaspeed to a trade blacklist after tensions over its failure to do so raised questions. The news came the same day that Jensen Huang was reinstated as Nvidia's CEO."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Nvidia reinstates former CEO Jensen Huang despite China espionage scandal",
+    "url": "https://www.dw.com/en/nvidia-reinstates-former-ceo-jensen-huang-despite-china-espionage-scandal/a-80021926?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Nvidia's board voted unanimously to bring back the disgraced CEO, who resigned this month amid news of his affairs. He's suspected of having had a relationship with a Chinese intelligence asset."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "USA: Zurück bei Nvidia, bald vor dem Kongress – Jensen Huangs heikle Tage in Washington",
+    "url": "https://www.handelsblatt.com/technik/ki/usa-zurueck-bei-nvidia-bald-vor-dem-kongress-huangs-heikle-tage-in-washington/100272147.html",
+    "vorschau": "Bei US-Politikern beider Parteien stößt die Rückkehr von Jensen Huang auf heftige Kritik. Dem Chef des Chipherstellers stehen mehrere Befragungen bevor – die ersten schon in der kommenden Woche."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Chipkonzern: Jensen Huang kehrt als Nvidia-Chef zurück – Aktie steigt um 30 Prozent",
+    "url": "https://www.handelsblatt.com/technik/ki/nvidia-huang-kehrt-als-konzernchef-zurueck-aktie-legt-um-30-prozent-zu/100272106.html",
+    "vorschau": "Nach Berichten über außereheliche Affären war Jensen Huang als Nvidia-Chef zurückgetreten, nun übernimmt er die Konzernführung wieder. Welche Rolle spielte dabei Donald Trump?"
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Nvidia-Chefsuche: Wohl kein Wechsel zu Nvidia – Arm-Chef Haas verlängert Vertrag",
+    "url": "https://www.handelsblatt.com/technik/ki/nvidia-chefsuche-arm-chef-haas-verlaengert-seinen-vertrag-bis-2033/100272078.html",
+    "vorschau": "Nvidia sucht nach dem Abgang von Jensen Huang einen neuen Chef und soll dabei auch beim Chef des Chipdesigners Arm angefragt haben. Doch der verlängert seinen Vertrag nun um sechs Jahre."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Künstliche Intelligenz: US-Banken beschränken offenbar Zugriffsrechte für KI-Agenten",
+    "url": "https://www.handelsblatt.com/technik/ki/kuenstliche-intelligenz-us-banken-beschraenken-offenbar-zugriffsrechte-fuer-ki-agenten/100272065.html",
+    "vorschau": "Bei den großen Finanzinstituten wächst offenbar die KI-Skepsis. Einige Banken sorgen sich nach jüngsten Sicherheitsvorfällen und verstärken das interne Risikomanagement."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Ransomware: „Der schlimmste Fehler ist ein CEO, der fragt: Wie zahle ich?“",
+    "url": "https://www.handelsblatt.com/technik/it-internet/cyber-attacken-die-erste-phase-ist-immer-chaos/100229829.html",
+    "vorschau": "Cyber-Attacken legen ganze Produktionen lahm und treffen zunehmend auch den Mittelstand. Zwei Experten erklären, wie Firmen mit Erpressern verhandeln sollten – und sich besser schützen können."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Künstliche Intelligenz: „Wir stürzen in eine Welt, in der nur die Elite arbeitet“",
+    "url": "https://www.handelsblatt.com/technik/ki/ki-wir-priorisieren-oder-schaetzen-nicht-was-ein-mensch-leistet/100223312.html",
+    "vorschau": "Allison Pugh ist eine der wichtigsten Stimmen der US‑Soziologie. Sie warnt: Menschen verlieren ihre Würde, wenn KI alle Arbeit ersetzt. Künftig könnte vor allem eine Fähigkeit zählen."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Nvidia-Affäre: US-Demokraten prüfen Trumps Rolle bei Huang-Rückkehr",
+    "url": "https://www.manager-magazin.de/unternehmen/tech/nvidia-affaere-us-demokraten-pruefen-trumps-rolle-bei-huang-rueckkehr-a-d9b9bc41-0144-4b2d-83f9-024d06c13b9d#ref=rss",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Huangs Rückkehr als Nvidia-Chef und Deutschlands größtes Familiendrama",
+    "url": "https://www.manager-magazin.de/ueber-uns/huangs-rueckkehr-als-nvidia-chef-und-deutschlands-groesstes-familiendrama-a-97f0d838-9bcf-400e-86f8-c8a8370d158d#ref=rss",
+    "vorschau": "Jensen Huang kehrt als Nvidia-Chef zurück. Tengelmann-Chef Christian Haub erhöht das Risiko. Und die Deutschland-App wird von der D-App überholt. Die wichtigsten Wirtschaftsthemen lesen Sie in „Der Tag“."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Nvidia-Aktie mit Kursrallye: Jensen Huang kehrt an die Konzernspitze zurück",
+    "url": "https://www.manager-magazin.de/unternehmen/tech/nvidia-beruft-ex-chef-jensen-huang-zurueck-an-die-firmenspitze-a-d48ee9b6-0758-4ac9-92f0-912cd4d2e692#ref=rss",
+    "vorschau": "Paukenschlag bei Nvidia: Der Chipkonzern setzt Jensen Huang auf Druck von US-Präsident Trump trotz seiner Affäre mit einer mutmaßlichen chinesischen Spionin wieder als Chef ein. ⁠Die Aktie reagiert mit einem zweistelligen Kurssprung."
+   },
+   {
+    "quelle": "Reuters Business",
+    "titel": "How Nvidia’s billion-dollar turnaround in China is threatened by Huang’s exit - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMzBhLWJfeFVoaXlNajJPVmVaNHl3bFFPR3lveEhDV3dlNXU3MTNlcm1MNVp0OGM5MmtvcmVxVHg2SXBCZ0U1WkdBX0NGYmNZR1NrUXI2MVZFdXQtQnlhUXN6bm9SRGJOSnYxb1QzRklGZWd1bm9tdnlSNnVGLUpLWllkZFB2MVF0UXd3T3NDbWRUQUtmVzZkUml4cXJjdmhXVXFkYWdLZ3o4TGI0T2tIZG5KMHZlSWpSczNIVg?oc=5",
+    "vorschau": "How Nvidia’s billion-dollar turnaround in China is threatened by Huang’s exit Reuters"
+   },
+   {
+    "quelle": "FT Economics",
+    "titel": "FirstFT: Nvidia adds nearly $1tn in value after Jensen Huang reinstated",
+    "url": "https://www.ft.com/content/5fd14979-e239-4eaf-bbfb-cde969afb514?syn-25a6b1a6=1",
+    "vorschau": "Also in today’s newsletter: Ukraine blows up Russian warship in Libya’s Benghazi and Nepal’s PM seals aid deal with India’s Narendra Modi"
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Nvidia: Huang-Comeback löst Erleichterungs-Rally aus: So schätzen Experten jetzt die Lage an den Märkten ein",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nvidia-so-schaetzen-experten-nach-huangs-comeback-die-lage-an-den-boersen-ein/100271952.html",
+    "vorschau": "Der Manager kehrt an die Spitze von Nvidia zurück. Ob dadurch die KI‑Zweifel nachhaltig verschwinden, ist unklar. Ein Blick auf die einzelnen Anlageklassen und deren Aussichten."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Nvidia-Chef: Wie Jensen Huang für die USA unverzichtbar wurde",
+    "url": "https://www.tagesspiegel.de/gesellschaft/medien/dpa-nvidia-chef-wie-jensen-huang-fur-die-usa-unverzichtbar-wurde-16318101.html",
+    "vorschau": "„US-Präsident bringt Gründer von größtem Chip-Konzern zurück auf Chefposten“ - das ist keine Schlagzeile, die man erwartet. Doch für Donald Trump hing zu viel an Jensen Huang, um nicht einzugreifen."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "OpenAI engineer possessed dozens of meeting recordings, say US prosecutors",
+    "url": "https://www.ft.com/content/f860152a-6bd6-43f7-8ba1-4a6ae94d6565?syn-25a6b1a6=1",
+    "vorschau": "Saudi national is also alleged to have photographed confidential documents"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "US lawmakers vow to sharpen Huang probes as he returns to Nvidia",
+    "url": "https://www.ft.com/content/6b4e5bfb-d566-4a61-a12c-057881a261b8?syn-25a6b1a6=1",
+    "vorschau": "Democrats and Republicans insist tech CEO must testify in public"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Nvidia’s Rally Ripples Across Markets",
+    "url": "https://www.wsj.com/finance/stocks/stock-futures-rally-as-dust-settles-after-ai-driven-selloff-705ff2c4?mod=rss_markets_main",
+    "vorschau": "U.S. stocks climbed, mostly thanks to Nvidia’s rally following Jensen Huang’s return as chief executive. The Nasdaq added more than 6%."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "European Chip Stocks Surge After Nvidia Reinstates Huang as CEO",
+    "url": "https://www.wsj.com/finance/stocks/some-underperforming-japan-stocks-may-start-rising-after-strong-results-e6e3f434?mod=rss_markets_main",
+    "vorschau": "Europe’s AI-linked stocks rebounded sharply in early trade as investors returned to the sector after last week’s heavy selloff."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Pouncing on Anthropic Won’t Make You Rich",
+    "url": "https://www.wsj.com/finance/stocks/pouncing-on-anthropic-wont-make-you-rich-4d500a06?mod=rss_markets_main",
+    "vorschau": "Plus, tech rises from the ashes."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Then and Now: See How Nvidia and the Administration Pivoted on Huang",
+    "url": "https://www.wsj.com/business/then-and-now-see-how-nvidia-and-the-administration-pivoted-on-huang-d49b1c1b?mod=rss_Technology",
+    "vorschau": "Treasury Secretary Scott Bessent and other leaders criticized the AI CEO’s conduct before pivoting upon his return to the chip maker."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Jensen Huang Is Back at Nvidia. Major Investigations Still Surround Him.",
+    "url": "https://www.wsj.com/tech/ai/jensen-huang-is-back-at-nvidia-major-investigations-still-surround-him-c904001c?mod=rss_Technology",
+    "vorschau": "Several probes are examining the chip maker, its CEO and issues related to his initial ouster."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Jensen Huang’s Return to Nvidia Draws Heavy Fire From Lawmakers",
+    "url": "https://www.wsj.com/politics/policy/jensen-huangs-return-to-nvidia-draws-heavy-fire-from-lawmakers-ae698d88?mod=rss_Technology",
+    "vorschau": "Republicans and Democrats see national-security risks and are vowing to press forward with investigations."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "A Timeline of Nvidia CEO Jensen Huang’s Spy Downfall and Resurrection",
+    "url": "https://www.wsj.com/tech/ai/a-timeline-of-nvidia-ceo-jensen-huangs-suspected-spy-drama-05cbebf3?mod=rss_Technology",
+    "vorschau": "A scandal put the world’s most consequential AI CEO in the hot seat—and cost him his job—until the U.S. government intervened."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Opinion | Nvidia’s Lesson: Set Rules Before a Crisis",
+    "url": "https://www.wsj.com/opinion/nvidias-lesson-set-rules-before-a-crisis-d4ccc369?mod=rss_Technology",
+    "vorschau": "Fast-moving companies should lock in guardrails so panicked boards don’t oust founders prematurely."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Opinion | Artificial Intelligence Can’t Replace a Doctor",
+    "url": "https://www.wsj.com/opinion/artificial-intelligence-cant-replace-a-doctor-ba5192c4?mod=rss_Technology",
+    "vorschau": "That genuine attention and clear roadmap are what ultimately bring patients relief."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "CrowdStrike’s $44 Billion Zscaler Deal Reflects a New Imperative in Cybersecurity",
+    "url": "https://www.wsj.com/pro/cybersecurity/crowdstrikes-44-billion-zscaler-deal-reflects-a-new-imperative-in-cybersecurity-5669e9db?mod=rss_Technology",
+    "vorschau": "AI is exposing the limitations of fragmented defenses, pushing security companies to combine technologies that once operated separately."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Chipexporte nach China: USA setzen Nvidia-Kunden Megaspeed auf schwarze Liste",
+    "url": "https://www.zeit.de/wirtschaft/2026-11/usa-handelssperre-schwarze-liste-megaspeed-nvidia-skandal-alice-huang-china-exportverbot",
+    "vorschau": "Die US-Regierung versucht nach Rückkehr des Nvidia-Chefs Jensen Huang, weiteren Schaden abzuwehren. Sie sperrt die verdächtige Cloud-Firma Megaspeed für den Chiphandel."
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Nvidia-Rally: Fünf Risiken halten die Börsen in Atem",
+    "url": "https://www.wiwo.de/finanzen/boerse/boersen-comeback-nach-nvidia-absturz-fuenf-risiken-im-check/100271976.html",
+    "vorschau": "Nach 33 Tagen schwerer Kursverluste proben die Börsen das Comeback – dank Nvidia. Welche Risiken es dabei gibt und wann die Korrektur an den Aktienmärkten vorbei sein könnte."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Can Jensen Huang Return to Nvidia?",
+    "url": "https://www.nytimes.com/2026/11/23/business/dealbook/jensen-huang-nvidia.html",
+    "vorschau": "Jensen Huang did just that. Nvidia’s co-founder has been reinstated as chief executive, a move that has stunned Wall Street and Washington."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Insight Innovation: Die KI, die intuitiv handelt – was nach ChatGPT kommt",
+    "url": "https://www.handelsblatt.com/technik/ki/technologie-was-nach-chatgpt-kommt-und-wie-sap-mit-neuer-ki-vorangeht/100264577.html",
+    "vorschau": "Ungenau, teuer, zu langsam: Große Sprachmodelle stoßen an Grenzen. Technologieanbieter arbeiten daher an spezialisierten Systemen, die schnell Entscheidungen treffen können. Vorn dabei: SAP."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "The Most Famous Problem in Math Was Just Solved by AI—and This Human",
+    "url": "https://www.wsj.com/tech/ai/riemann-hypothesis-anthropic-math-levent-alpoge-75351bcb?mod=rss_Technology",
+    "vorschau": "Mathematicians tried and failed to crack the Riemann Hypothesis for 167 years. Anthropic’s Levent Alpöge says he’s found a proof with Claude."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Nikkei und Hang Seng: Jensen-Huang-Rally in Asien räumt Zweifel an KI-Boom nicht aus",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nikkei-und-hang-seng-jensen-huang-rally-in-asien-raeumt-zweifel-an-ki-boom-nicht-aus/100272218.html",
+    "vorschau": "Die Rückkehr von Jensen Huang als Nvidia-Chef treibt nach schweren Kursverlusten die Aktienpreise in Ostasiens Chiphochburgen in die Höhe. Doch Experten sehen kein Ende der Volatilität."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Asian tech stocks surge after Jensen Huang’s return",
+    "url": "https://www.ft.com/content/c0cb932a-076e-4471-8009-91749fde5f47?syn-25a6b1a6=1",
+    "vorschau": "Region’s markets follow Wall Street higher on Nvidia chief’s reinstatement"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Jensen Is Back. But AI’s Problems Haven’t Gone Away.",
+    "url": "https://www.wsj.com/finance/stocks/jensen-is-back-but-ais-problems-havent-gone-away-7551770e?mod=rss_markets_main",
+    "vorschau": "The Nvidia CEO’s return is bad on multiple levels, and doesn’t remove serious challenges facing the AI ecosystem in general or the company in particular."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Tech, Media & Telecom Roundup: Market Talk",
+    "url": "https://www.wsj.com/business/tech-media-telecom-roundup-market-talk-196a238a?mod=rss_markets_main",
+    "vorschau": "Find insight on CrowdStrike, Nvidia, Zscaler and more in the latest Market Talks covering Technology, Media and Telecom."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Nikkei Rises 2.7%, Led by Chip, Metals Stocks",
+    "url": "https://www.wsj.com/finance/stocks/nikkei-rises-2-7-led-by-chip-metals-stocks-82c1bb9d?mod=rss_markets_main",
+    "vorschau": "Japanese stocks were higher in early trade as Jensen Huang’s return as the Nvidia chief executive revives an artificial-intelligence trade."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "U.S. Stocks Jump as Huang Return Triggers AI Rally",
+    "url": "https://www.wsj.com/finance/stocks/u-s-stocks-jump-as-huang-return-triggers-ai-rally-7c008308?mod=rss_markets_main",
+    "vorschau": "U.S. stocks surged broadly as Nvidia reinstated Jensen Huang as its chief executive, sparking a revival in artificial-intelligence wagers."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Jensen Huang Upends AI Outlook Once Again",
+    "url": "https://www.wsj.com/cio-journal/jensen-huang-upends-ai-outlook-once-again-b2bdb17d?mod=rss_Technology",
+    "vorschau": "Plus, OpenAI scientist proposes common limits on frontier model development."
+   },
+   {
+    "quelle": "CNBC Finance",
+    "titel": "‘This establishes a bottom’: Jensen Huang’s return seen as likely to stop market sell-off, for now",
+    "url": "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo-market-rally.html",
+    "vorschau": "Wall Street strategists say Jensen Huang’s return to Nvidia could steady the AI trade, though spending and data-center risks remain."
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Aktienmärkte: Der Börsencrash? Erstmal abgesagt",
+    "url": "https://www.wiwo.de/finanzen/boerse/boersencrash-dank-nvidia-rally-abgewendet-was-die-erholung-bedeutet/100271772.html",
+    "vorschau": "Anleger starteten mit Sorge in die Woche. Doch dann beendete die überraschende Nachricht von Huangs Rückkehr an die Nvidia-Unternehmensspitze den weltweiten Ausverkauf – vorerst."
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Aixtron: Der positive Trend hängt an einem einzigen Markt",
+    "url": "https://www.wiwo.de/finanzen/boerse/deutschlands-zweite-boersenreihe-lohnt-sich-die-aixtron-aktie/100271778.html",
+    "vorschau": "Der Anlagenbauer Aixtron soll vom KI-Boom profitieren. Die Zahlen überzeugen jedoch (noch) nicht – urteilt mit Warren Wise ausgerechnet ein KI-Agent."
+   }
+  ],
+  "⚡ Energie & Klima": [
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Ölpreis aktuell: Ölpreise geben zum Wochenstart leicht nach",
+    "url": "https://www.wiwo.de/finanzen/oelpreis-aktuell-oelpreise-geben-zum-wochenstart-leicht-nach/100207502.html",
+    "vorschau": "Die Ölpreise starten mit Verlusten in die neue Handelswoche. Anhaltende Angriffe auf Schiffe und Raffinerien im Nahen Osten begrenzen den Rückgang jedoch."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Uganda minister at COP31: 'We need a just transition'",
+    "url": "https://www.dw.com/en/uganda-minister-at-cop31-we-need-a-just-transition/a-79997209?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Funding from wealthy countries to help deal with the impacts of climate change hasn't materialized, says Uganda's environment minister. The East African country is hoping oil and carbon credits will help boost finances."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Cop31 collapses: why did climate talks fall apart? - The Latest",
+    "url": "https://www.theguardian.com/news/audio/2026/nov/23/cop31-collapses-why-did-climate-talks-fall-apart-the-latest",
+    "vorschau": "Countries at the Cop31 climate summit failed to reach a keystone agreement for the first time in 17 years. The talks, co-chaired by Turkey and Australia, were intended to produce a pact that would have injected urgency into climate action and financing for vulnerable states. Instead, the deal failed after a standoff over fossil fuels and support for countries exposed to the climate crisis. Guardian Australia’s climate and environment reporter Graham Readfearn tells Lucy Hough why there are calls"
+   }
+  ],
+  "🏥 Gesundheit": [
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Pharma: Das zweifelhafte Milliardengeschäft mit Frauen in den Wechseljahren",
+    "url": "https://www.handelsblatt.com/technik/medizin/technologie-wie-werden-frauen-in-den-wechseljahren-zum-lukrativen-geschaeft/100247911.html",
+    "vorschau": "Aus dem Handelsblatt-Archiv: Investoren und Pharmafirmen stecken Milliarden in Produkte für Frauen in der Menopause. Dennoch fehlt es an wirksamen Therapien. Ein deutscher Anbieter profitiert."
+   }
+  ],
+  "🔬 Wissenschaft": [
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Interview: ESA-Chef: „Eine Atomwaffe im All wäre genauso bedrohlich wie ein Atomkrieg auf der Erde“",
+    "url": "https://www.handelsblatt.com/technik/forschung-innovation/raumfahrt-atomwaffen-im-all-waeren-das-ultimative-horrorszenario/100270869.html",
+    "vorschau": "Der Weltraumagentur-Chef Aschbacher fordert Europas Einstieg in die bemannte Raumfahrt. Im Interview spricht er über den Konflikt mit der Nasa und die zunehmende Gefahr durch Russland im Weltall."
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Why Amazon’s Rival to Starlink Is Struggling to Catch Up With SpaceX",
+    "url": "https://www.wsj.com/tech/amazon-leo-starlink-rival-5bb0e6a0?mod=rss_Technology",
+    "vorschau": "There is plenty of demand for a Starlink alternative, but Amazon’s satellite arm, known as Leo, is facing setbacks."
+   },
+   {
+    "quelle": "Reuters DE",
+    "titel": "Virginia und Oregon verklagen Musks SpaceX wegen sexuell missbräuchlicher Bilder durch Grok-KI - Cryptopolitan",
+    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNLU4ycFJMa1hCUEhEandfR3h1NEpKRGo0WmZKdjFoMTlmNDVwNFNjcEl6UHRwTFFFem9UOWNBdkhVVmdJTlh5WGpZV25fRFVheDlGNDVtWnAydEg0Q2hGTWViQjh1SFZlb19LTGt1ZnRnd0tZQkliNEsyc1I0RjBvQjNn?oc=5",
+    "vorschau": "Virginia und Oregon verklagen Musks SpaceX wegen sexuell missbräuchlicher Bilder durch Grok-KI Cryptopolitan"
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Elon Musk Faces an A.I. Dilemma at SpaceX",
+    "url": "https://www.nytimes.com/2026/11/23/business/elon-musk-ai-anthropic-google.html",
+    "vorschau": "Mr. Musk’s SpaceX is renting out computing power from its data centers to competitors, including Anthropic. That’s making it harder for his own A.I. effort."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "SpaceX’s big bad Black Friday bond hangover",
+    "url": "https://www.ft.com/content/5ddc1453-026e-4adb-a5eb-950e7d666abc",
+    "vorschau": "🪐 🚀"
+   }
+  ],
+  "⚖️ Recht & Justiz": [
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Denmark: Top court backs hardline immigration \"ghetto law\"",
+    "url": "https://www.dw.com/en/denmark-top-court-backs-hardline-immigration-ghetto-law/a-80026478?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Denmark's Supreme Court has found that evictions of \"non-Western\" residents do not amount to discrimination. The government in Copenhagen argues its \"ghetto law\" encourages integration."
+   }
+  ],
+  "🏙️ Gesellschaft": [
+   {
+    "quelle": "NYT World",
+    "titel": "Phumzile Mlambo-Ngcuka, South Africa’s First Female Deputy President, Has Died",
+    "url": "https://www.nytimes.com/2026/11/23/world/africa/phumzile-mlambo-ngcuka-dead.html",
+    "vorschau": "A champion of women’s rights and education, she led the U.N.’s gender equality and empowerment organization after leaving political office. She died at 71."
+   }
+  ],
+  "🚗 Mobilität & Verkehr": [
+   {
+    "quelle": "NYT Business",
+    "titel": "In Vietnam, an Electric Vehicle Revolution Without Cars",
+    "url": "https://www.nytimes.com/2026/11/23/business/electric-motorcyles-vietnam.html",
+    "vorschau": "An oil shock is speeding a transformation of Vietnam’s streets, challenging global motorcycle giants and lifting a new generation of domestic manufacturers."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Fronten verhärtet: IG Metall und VW starten Tarifverhandlungen",
+    "url": "https://www.tagesspiegel.de/wirtschaft/dpa-fronten-verhartet-ig-metall-und-vw-starten-tarifverhandlungen-16318161.html",
+    "vorschau": "Nullrunden, Arbeitszeit, Zulagen: Angesichts der Krise in der Autoindustrie verlangt Volkswagen von seinen Beschäftigten massive Einschnitte. Die IG Metall wehrt sich. Nun beginnen die Verhandlungen."
+   }
+  ],
+  "🇪🇺 Europa & EU": [
+   {
+    "quelle": "Euractiv",
+    "titel": "EXCLUSIVE: Digital tax would exceed EU budget expectations",
+    "url": "https://www.rapporteur.com/news/exclusive-digital-tax-would-exceed-eu-budget-expectations/",
+    "vorschau": "António Costa makes 'new own resources’ a key element of an EU budget compromise"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Visegrad Four plus Austria leaders slam EU budget",
+    "url": "https://www.rapporteur.com/news/visegrad-four-plus-austria-leaders-slam-eu-budget/",
+    "vorschau": "'I do not consider this proposal a basis for negotiations in any way,' said Péter Magyar"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Brussels wants to stop nuclear, coal shutdowns in energy security overhaul",
+    "url": "https://www.rapporteur.com/news/brussels-wants-to-stop-nuclear-coal-shutdowns-in-energy-security-overhaul/",
+    "vorschau": "New EU draft rules could have prevented Germany's energy crisis nuclear shutdown"
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "North Macedonia remains stalled on its EU path after 21 years as a candidate",
+    "url": "https://www.dw.com/en/north-macedonia-remains-stalled-on-its-eu-path-after-21-years-as-a-candidate/a-80020841?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "EU enlargement has regained momentum, with Montenegro and Albania moving closer to membership. But North Macedonia, a candidate since 2005, remains stalled by a politically difficult dispute involving Bulgaria."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "EU Probes Coca-Cola Bottler, Citing Antitrust Concerns",
+    "url": "https://www.wsj.com/world/europe/eu-probes-coca-cola-bottler-citing-antitrust-concerns-7717c957?mod=rss_worldnews",
+    "vorschau": "The European Commission said it is concerned the company might have abused its dominance in the wholesale supply of soft drinks to supermarkets and retailers in the EU."
+   }
+  ],
+  "🗳️ Wahlen & Parteien": [
+   {
+    "quelle": "Guardian World",
+    "titel": "Burnham says it would be ‘unthinkable’ to rejoin EU without referendum",
+    "url": "https://www.theguardian.com/politics/2026/nov/23/andy-burnham-brexit-deal-eu",
+    "vorschau": "Prime minister also says former Tory premiers who have criticised revival of Brexit debate are ‘stuck in the past’ Andy Burnham has said it would be “unthinkable” for the UK to rejoin the EU without holding another referendum, offering his strongest commitment yet to directly consulting the public if he concludes Britain should go back in. The prime minister is planning to set out the long-term options for closer ties with the bloc next month, with concrete steps coming after the next general el"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Back to 1936? Civil war ghosts haunt Spanish election campaign",
+    "url": "https://www.politico.eu/article/back-to-1936-civil-war-ghosts-haunt-spanish-election-campaign/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "With the far right poised to enter government, politicians are reopening the wounds of a war that began 90 years ago."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Schlammschlacht vor Wahl: Von Zitronen und anderen Beleidigungen in Spaniens Wahlkampf",
+    "url": "https://www.tagesspiegel.de/internationales/dpa-schlammschlacht-vor-wahl-von-zitronen-und-anderen-beleidigungen-in-spaniens-wahlkampf-16318167.html",
+    "vorschau": "„Mafia“, „Gestapo-Imitat“, „Kollaborateure“: Spaniens Politiker hantieren mit immer drastischeren Vorwürfen. Was droht der Demokratie, wenn der politische Gegner zum Schurken schlechthin erklärt wird?"
+   }
+  ],
+  "📱 Medien & Kultur": [
+   {
+    "quelle": "Guardian World",
+    "titel": "Social media companies could be fined 5% of global revenue after Labor and Greens join forces on online safety laws",
+    "url": "https://www.theguardian.com/technology/2026/nov/24/social-media-big-tech-fines-global-revenue-australia-digital-duty-care-laws",
+    "vorschau": "Individual Australians will be able to sue big tech firms for harm suffered online under compromise deal Follow our Australia politics live blog for latest updates Get our daily political email , free app or daily news podcast Big tech companies may face “multibillion-dollar” fines and individuals could sue social media companies in court under Australia’s new digital duty of care laws, with the Greens to support the bill’s passage after extracting major amendments from Labor. From late 2027, Au"
+   }
+  ],
+  "⚽ Sport": [
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "US and UK to host Women's World Cups in 2031 and 2035",
+    "url": "https://www.dw.com/en/us-and-uk-to-host-women-s-world-cups-in-2031-and-2035/a-80023786?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "FIFA has confirmed the United States, Mexico, Costa Rica and Jamaica will host the 2031 Women's World Cup — the first to feature 48 teams. The UK will stage the 2035 edition, its first World Cup since 1966."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Formel-1-Weltmeister 2016: Rosbergs „extreme Angst“ - Bruch mit Jugendfreund Hamilton",
+    "url": "https://www.tagesspiegel.de/sport/dpa-formel-1-weltmeister-2016-rosbergs-extreme-angst-bruch-mit-jugendfreund-hamilton-16318172.html",
+    "vorschau": "Vor zehn Jahren erreicht Nico Rosberg als Weltmeister den Formel-1-Gipfel. Was musste der heutige Startup-Investor damals alles opfern? Und was verbindet ihn noch mit seinem Rivalen Lewis Hamilton?"
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Schach-WM: Schach-Weltmeister: Wie lange kann man das Brett anstarren?",
+    "url": "https://www.tagesspiegel.de/sport/dpa-schach-wm-schach-weltmeister-wie-lange-kann-man-das-brett-anstarren-16318158.html",
+    "vorschau": "Stundenlang sitzt Dommaraju Gukesh am Brett – und schließt dabei gerne mal minutenlang die Augen. Warum er diese Pause bei einer WM-Partie durchaus passend findet."
+   }
+  ],
+  "🔥 Sonstiges": [
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Turkey: Authorities search for lioness on the loose in Istanbul",
+    "url": "https://www.dw.com/en/turkey-authorities-search-for-lioness-on-the-loose-in-istanbul/a-80020913?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "A lioness was on the loose in northern Istanbul, with wildlife advocates demanding answers over how the animal entered the country and who was keeping it in captivity."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Gukesh to defend chess crown against rising star Sindarov",
+    "url": "https://www.dw.com/en/gukesh-to-defend-chess-crown-against-rising-star-sindarov/a-80021806?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "As the World Chess championship gets underway, it's no coincidence that the titleholder, Gukesh Dommaraju, and his challenger, Jakhovir Sindarov, are both from Asia."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "German police respond to multiple school bomb threats",
+    "url": "https://www.dw.com/en/german-police-respond-to-multiple-school-bomb-threats/a-80018842?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Police in Germany are responding to bomb threats against a series of schools, but say that at present they don't believe them to be credible. Danish authorities are reporting a similar series of apparent hoaxes."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "'I've lost her forever' — Why German voice actors are refusing to sign Netflix's AI contract",
+    "url": "https://www.dw.com/en/i-ve-lost-her-forever-why-german-voice-actors-are-refusing-to-sign-netflix-s-ai-contract/a-80004381?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "For decades, Germans have known Hollywood's biggest stars through the same familiar voices. Now an AI clause in Netflix contracts is splitting the industry over whether it protects performers or exposes them."
+   },
+   {
+    "quelle": "Deutsche Welle",
+    "titel": "Budget cuts threaten Germany's fight against antisemitism and racism",
+    "url": "https://www.dw.com/en/budget-cuts-threaten-germany-s-fight-against-antisemitism-and-racism/a-80018644?maca=en-rss-en-all-1573-rdf",
+    "vorschau": "Numerous grassroots initiatives in Germany are facing funding cuts. Affected organizations are sounding the alarm, pointing to growing challenges posed by far-right extremism."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Industrie vs. Gewerkschaften — Das Standort-Dilemma",
+    "url": "https://www.politico.eu/podcast/berlin-playbook-podcast/industrie-vs-gewerkschaften-das-standort-dilemma/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Präsentiert von YouTube."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "EU’s Socialists to hold formal discussion on Frederiksen’s migration stance",
+    "url": "https://www.politico.eu/article/eu-socialists-formal-discussion-mette-frederiksen-migration-stance-concerns-denmark/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "The Danish leader's hard line on migration has repeatedly put her at odds with fellow European Socialists and Democrats."
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Britain’s runaway Brexit debate is back",
+    "url": "https://www.politico.eu/article/britains-runaway-brexit-debate-is-back/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Like David Cameron 20 years before him, Britain’s prime minister would like to stop ‘banging on about Europe.’"
+   },
+   {
+    "quelle": "Politico Europe",
+    "titel": "Spain turns against Sánchez, POLITICO poll finds",
+    "url": "https://www.politico.eu/article/spain-pedro-sanchez-politico-poll-election/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "vorschau": "Nearly one-third of respondents to a new POLITICO poll said that removing Sánchez from power would be a key motivation for their vote."
+   },
+   {
+    "quelle": "Handelsblatt Technik",
+    "titel": "Arken Labs: Seriengründer Pausder will mit KI-Start-up den Brückenbau beschleunigen",
+    "url": "https://www.handelsblatt.com/technik/forschung-innovation/arken-labs-seriengruender-pausder-will-brueckenbau-per-ki-beschleunigen/100272121.html",
+    "vorschau": "Langsame Genehmigungsverfahren gelten als größtes Hemmnis für Investitionen in Infrastruktur. Das soll das neue Start-up des Thermono-Gründers ändern – mit prominenter Unterstützung."
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Rep. Jimmy Gomez Resigns After Panel Alleges Unwanted Sexual Contact With Aide",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/jimmy-gomez-democrat-resigns.html",
+    "vorschau": "Representative Jimmy Gomez of California disputed the allegations from the Ethics Committee but said they left him with “no other alternative than to resign, effective Dec. 1.”"
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "Turning the Lens Around: Bob Woodward Takes On Bob Woodward",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/bob-woodward-book-secrets.html",
+    "vorschau": "In a new memoir, the most celebrated journalist of his era finally tells his own story. It was “liberating,” he said in an interview. “Nothing is hidden here.”"
+   },
+   {
+    "quelle": "NYT Politics",
+    "titel": "D.N.C. Plans 12 Debates for the 2028 Presidential Primary, Starting in June",
+    "url": "https://www.nytimes.com/2026/11/23/us/politics/democrats-debates-2028-presidential-race.html",
+    "vorschau": "The national party also revealed some initial criteria for participating, including a pledge to denounce spending from supportive groups that do not disclose their donors."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "More American Women Are Turning to Natural Family Planning, Study Shows",
+    "url": "https://www.nytimes.com/2026/11/23/us/natural-family-planning-study.html",
+    "vorschau": "Researchers found that more than 2.2 million women were using a fertility-awareness method, which requires them to chart their cycles closely."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "2 City Bus Drivers Killed in Head-On Collision in Ohio",
+    "url": "https://www.nytimes.com/2026/11/23/us/columbus-ohio-bus-crash.html",
+    "vorschau": "Nine people were injured in the crash, which occurred in Columbus when one of the buses veered into the next lane, the police said."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Virginia School District Shaken by Sex Abuse Claims Closes for a Week",
+    "url": "https://www.nytimes.com/2026/11/23/us/albemarle-virginia-school-district-sex-abuse-closure.html",
+    "vorschau": "The district failed to conduct required background checks on more than 500 employees. The problem came to light after two staff members were arrested in separate child sex abuse and pornography charges."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Rain Storms Overwhelm San Francisco’s Sewers, Sending Wastewater Into the Streets",
+    "url": "https://www.nytimes.com/2026/11/23/us/san-francisco-flooding-water-sewer-rain.html",
+    "vorschau": "A downpour once again sent wastewater into San Francisco streets. It could become a frequent occurrence in this El Niño year."
+   },
+   {
+    "quelle": "NYT US",
+    "titel": "Squeezed for Space in Court Filings, Lawyers Get Typographically Creative",
+    "url": "https://www.nytimes.com/2026/11/23/us/federal-court-typography-rules.html",
+    "vorschau": "Manipulating page formatting and fonts can help exceed word limits in legal filings, but can also incur a judge’s ire."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "340.000 Beschäftigte bei Streiks in Metall- und Elektrobranche",
+    "url": "https://www.manager-magazin.de/unternehmen/industrie/340-000-beschaeftigte-bei-streiks-in-metall-und-elektrobranche-a-110b5f12-1854-4dfb-92bf-ff378acec607#ref=rss",
+    "vorschau": "Die IG Metall zieht eine erste Bilanz der vergangenen Streiktage, an denen bundesweit Beschäftigte aus 240 Betrieben in den Ausstand getreten sind. Die Streiks sollen bis zur Fortsetzung der Tarifverhandlungen am Mittwoch weitergehen."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Borussia Dortmund: BVB stellt Geschlossenheit über Sponsordeal mit Rheinmetall",
+    "url": "https://www.manager-magazin.de/unternehmen/industrie/rheinmetall-borussia-dortmund-trennt-sich-von-ruestungskonzern-a-3143da0e-1474-47c8-9d7a-95dd0c5977e4#ref=rss",
+    "vorschau": "Nach der Abkehr von Rheinmetall als umstrittenen Sponsor betont Borussia Dortmund den Zusammenhalt. Geschäftsführer Cramer sagte, die Geschlossenheit im Verein sei wichtiger als der Sponsorendeal. Rheinmetall wendet sich nun dem Schlittensport zu."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Obi und Toom: Baumarktketten fusionieren, Marke Toom soll wegfallen",
+    "url": "https://www.manager-magazin.de/unternehmen/handel/baumarkt-obi-und-toom-fusionieren-marke-toom-verschwindet-a-25ed7272-f61f-429f-afe0-460dce041a33#ref=rss",
+    "vorschau": "Die Baumarktketten Obi und Toom schließen sich zusammen, die Marke Toom verschwindet vom Markt. Im Gegenzug steigt die Toom-Eignerin Rewe bei der Tengelmann-Tochter Obi ein. In einem schwierigen Marktumfeld festigt Obi durch die Fusion seine Führungsposition."
+   },
+   {
+    "quelle": "Manager Magazin",
+    "titel": "Jaguar Land Rover: Gericht stoppt BYD-SUV-Verkauf in EU wegen Defender-Kopievorwurf",
+    "url": "https://www.manager-magazin.de/unternehmen/mobilitaet/jaguar-land-rover-gericht-stoppt-byd-suv-verkauf-in-eu-wegen-defender-kopievorwurf-a-7034f853-22d5-4210-8ec3-01378c27b61e#ref=rss",
+    "vorschau": "Jaguar Land Rover hatte BYD vorgeworfen, seinen Defender geklont zu haben und den chinesischen Rivalen verklagt. Jetzt erzielten die Briten einen ersten Erfolg. Ein Gericht verbietet BYD vorerst den Verkauf in der EU."
+   },
+   {
+    "quelle": "Reuters Business",
+    "titel": "US business activity growth eases further in November, survey shows - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOS2c1R0dOUWNCM3E3aUo2eHluWXZNTXNsWGg0ajRGVkRFeWhHSXpHb0JSX0NvWEE4amt1V0x4d0JnMl8yN1dlc2RQNnBPWnpKYW12Rll0ZnpiTUFrUjRFb0U1OUQxLTk2b3dxR1dQWVJiSVpvM2x2Q0d1UDdIZUdhUkJBejRKLU9ZdmJDREpqRGphQllNQ1E3NnYwVnhBeGx3dFFDbmRzS0VkNlF5?oc=5",
+    "vorschau": "US business activity growth eases further in November, survey shows Reuters"
+   },
+   {
+    "quelle": "Reuters Business",
+    "titel": "Even affluent shoppers are embracing buy now, pay later, Block data shows - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPNUpTeVhUUzRqZ3VZdkdCdHZwSGFES25HVkdyR2dMUUNoeDFfNU5JRWRyNXNibWxUY2wxcW1CWGVkLUxhZWFmVk5lalhDOTZtN1hIU1N0LTBGaVFMSEw4NUZZQW9KNWx6SGMxeFJhSUNzZlg5SndQUGhNX3pFbHNWQmZaekNodEstdlh1V3ROYThvc1k5TVpjRkxRZE9nRUl6ek1uNjIxRWtWOENtbWlKYlNsNWt6U28?oc=5",
+    "vorschau": "Even affluent shoppers are embracing buy now, pay later, Block data shows Reuters"
+   },
+   {
+    "quelle": "Reuters Business",
+    "titel": "Lego to invest around €1 billion in new Portugal factory to meet growing demand - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQY3pXV3ZRUFpGREJVNXVFZkR4RVM3WVZOMGppZWFUQ1M0ZWJLU2gzM1llT2RaU1B3eHotZnRkQlZLdXJSeThtNmlxVWZzaGRvU3ZackkxRVUwTnRYY19Jb1F0TEFoTnZqdExuMnh3eE5zc1F3a1djRnBYQTlOQ2VzSE5id2lrMzMyMEF2aUJQU1BicE1CMXBJSm1ERlJFbTNrWFNzdzBlN2ZEWkMtdS03SkVnRUZWcDRzZERscnVQSUJTV1MzWXU0?oc=5",
+    "vorschau": "Lego to invest around €1 billion in new Portugal factory to meet growing demand Reuters"
+   },
+   {
+    "quelle": "FT Economics",
+    "titel": "Joining the EU won’t save the UK economy by itself",
+    "url": "https://www.ft.com/content/e5a85fb7-d980-4c34-9857-c57eff52c3c7?syn-25a6b1a6=1",
+    "vorschau": "Andy Burnham is good at short-term politics but needs a long-term economic strategy"
+   },
+   {
+    "quelle": "FT Economics",
+    "titel": "The trouble with the middle powers project",
+    "url": "https://www.ft.com/content/cf3b03e3-3fbf-489b-a292-33596ea64eea?syn-25a6b1a6=1",
+    "vorschau": "Smaller nations are already dangerously dependent — and US and Chinese dominance of AI will only compound their problems"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Barbados town’s three-year deal with Bristol ‘part of the reparative process’",
+    "url": "https://www.theguardian.com/news/2026/nov/23/barbados-minister-speightstown-bristol-deal-slave-trade-reparations",
+    "vorschau": "Island’s labour minister, Tony Dyer, says agreement acknowledges links between Speightstown and UK city are rooted in slave trade A town in Barbados known as “Little Bristol” has signed a “twinning’” agreement with the UK city, marking a new chapter in a centuries-long relationship rooted in the transatlantic slave trade. Barbados says the new partnership between Speightstown and Bristol is part of its wider push for reparatory justice, built in small steps rather than around a multi-trillion-po"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "South Korea tells island residents to take shelter after Russian military aircraft approach",
+    "url": "https://www.theguardian.com/world/2026/nov/24/south-korea-tells-island-residents-to-take-shelter-after-russian-military-aircraft-approach",
+    "vorschau": "The order was issued after aircraft entered the country’s air defence identification zone over the island of Ulleungdo Residents of a remote South Korean island were ordered to take shelter on Tuesday morning after several Russian military aircraft came close to entering its airspace, prompting a pre-emptive alert from the military that anticipated a violation. The defence ministry said it would summon the Russian defence attaché on Tuesday afternoon to lodge a strong protest. Continue reading.."
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Beau Lamarre-Condon chose ‘long walk’ to witness box rather than silence, his barrister tells court",
+    "url": "https://www.theguardian.com/australia-news/2026/nov/24/beau-lamarre-condon-trial-barrister-closing-statement-ntwnfb",
+    "vorschau": "Former police officer has pleaded not guilty to murders of Jesse Baird and Luke Davies in Baird’s Paddington home in February 2024 Get our breaking news email , free app or daily news podcast Beau Lamarre-Condon could have sat in silence and let the crown “do its worst”, but he made the choice to take the “long walk” to the witness box, a jury has been told. Lamarre-Condon is accused of fatally shooting Jesse Baird and his partner, Luke Davies, with his police service weapon in Baird’s Paddingto"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Plant-based lunches could cut Australia’s emissions by 15m tonnes, new research shows",
+    "url": "https://www.theguardian.com/environment/2026/nov/23/plant-based-lunches-could-cut-australia-emissions-by-15m-tonnes-new-research-shows",
+    "vorschau": "Nationwide change in lunch habits could cut more climate pollution than grounding every domestic flight Get our breaking news email , free app or daily news podcast Australians could collectively cut climate pollution by more than 15m tonnes – more than grounding every domestic flight – simply by changing what they eat for lunch. A nationwide shift to plant-based lunches could reduce food-related emissions by 29% – 15.4m tonnes per year – while saving the average household about $611 annually, a"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "Gisèle Pelicot ‘deeply shocked’ after nude images used to promote book",
+    "url": "https://www.theguardian.com/world/2026/nov/23/gisele-pelicot-deeply-shocked-nude-images-book-france",
+    "vorschau": "French woman says she will pursue legal action against publisher and author over use of photos taken by convicted husband Gisèle Pelicot has said she is “deeply shocked” that nude photographs of her had been used without her consent to promote a psychoanalyst’s book that suggests she was complicit in her abuse. Pelicot, 73, became a global icon in the fight against sexual violence in 2024 during the trial that saw her former husband convicted of drugging and raping her , as well as recruiting 49"
+   },
+   {
+    "quelle": "Guardian World",
+    "titel": "What tactics will Burnham use to sell his EU plans? – podcast",
+    "url": "https://www.theguardian.com/politics/audio/2026/nov/23/what-tactics-will-burnham-use-to-sell-his-eu-plans-podcast",
+    "vorschau": "Andy Burnham has set out his plans to win parliamentary backing for a new EU deal. But the various options for how Britain could rejoin the EU, or ‘Breturn’, will not be outlined until December. Pippa Crerar has been speaking to the prime minister about how he hopes to convince the public that reversing Brexit is worth the headache You can tell us what you think of Guardian podcasts with our survey here Send any questions for Pippa and Kiran to politicsweeklyuk@theguardian.com You can watch this"
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Riester-Reform: Altersvorsorgedepot: Kunden wollen Sicherheit, Lebensversicherer setzen auf Risiko",
+    "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen/altersvorsorgedepot-kunden-wollen-sicherheit-versicherer-setzen-auf-risiko/100270328.html",
+    "vorschau": "Eine aktuelle Marktanalyse zeigt deutliche Unterschiede zwischen Kundenwünschen und Produktangeboten der Versicherer. Banken und Neobroker sind zudem in der Kundenansprache weiter."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Voestalpine: Deutsche Bank sieht „Kaufgelegenheit“ bei dieser Österreich-Aktie",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/aktien/voestalpine-deutsche-bank-sieht-kaufgelegenheit-bei-dieser-oesterreich-aktie/100271582.html",
+    "vorschau": "Voestalpine hat einen schwachen Herbst hinter sich, die Aktie liegt auf Jahrestief. Analysten sehen trotz vieler Herausforderungen im Tagesgeschäft Potenzial. Entscheidend wird der Januar."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Märkte Insight: Die gesunkenen Bewertungen sind eine riskante Einstiegschance",
+    "url": "https://www.handelsblatt.com/finanzen/anlagestrategie/kolumnen/aktien-die-gesunkenen-bewertungen-sind-eine-riskante-einstiegschance/100271550.html",
+    "vorschau": "Der Kursverfall und starke Konzerngewinne machen Aktien wieder attraktiv. Doch eine gefährliche Marktumkehr bremst die guten Voraussetzungen aus, analysiert Ulf Sommer."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Commerzbank: „Das Umfeld hat sich krass verändert“ – Commerz Ventures investiert mit neuem Fonds in KI-Fintechs",
+    "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen/banken/commerzbank-commerz-ventures-investiert-mit-neuem-fonds-in-ki-fintechs/100270365.html",
+    "vorschau": "Der Wagniskapitalgeber erhält von der Commerzbank frisches Geld. Das Führungsduo spricht im Handelsblatt über den Wandel in der Start-up-Branche durch KI und die neuesten Fintech-Trends."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Geldanlage: Industriekameras boomen – diese drei Aktien sollten Anleger kennen",
+    "url": "https://www.handelsblatt.com/finanzen/maerkte/aktien/geldanlage-industriekameras-boomen-diese-aktien-sollten-anleger-kennen/100268982.html",
+    "vorschau": "Kameras und Software entdecken Fehler in Fabriken und helfen Robotern beim Greifen. KI erleichtert ihren Einsatz. Experten erklären Chancen und Risiken für Anleger."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Cum-Ex-Skandal: Zehnjährige Haftstrafe für Hanno Berger bleibt bestehen",
+    "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen/cum-ex/cum-ex-skandal-zehnjaehrige-haftstrafe-fuer-hanno-berger-bleibt-bestehen/100272091.html",
+    "vorschau": "Der frühere Top-Anwalt scheitert mit seiner Beschwerde vor dem Oberlandesgericht Köln. Damit hat sich seine Hoffnung zerschlagen, früher aus der Haft entlassen zu werden."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Geldanlage: Zehn Dinge, die ich als Anfänger über ETFs gelernt habe",
+    "url": "https://www.handelsblatt.com/finanzen/anlagestrategie/geldanlage-wie-hat-der-etf-einstieg-meinen-blick-auf-geld-veraendert/100184984.html",
+    "vorschau": "Aus dem Handelsblatt-Archiv: Unser Autor befasst sich zum ersten Mal in seinem Leben mit ETFs – und stellt fest, dass Altersvorsorge damit in der Theorie einfacher ist als in der Praxis."
+   },
+   {
+    "quelle": "Handelsblatt Finanzen",
+    "titel": "Transaktionsvolumen: Alte Stärke wird jetzt zur Schwäche: Frankfurt fällt bei Immobilien-Deals deutlich zurück",
+    "url": "https://www.handelsblatt.com/finanzen/immobilien/immobilien-warum-frankfurt-bei-immobilien-deals-deutlich-zurueckfaellt/100271746.html",
+    "vorschau": "Keine andere deutsche Metropole hat in den vergangenen Jahren einen derartigen Einbruch der Transaktionen erlebt wie Frankfurt am Main. Dahinter steckt vor allem ein strukturelles Problem."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Auftragskiller auf Ex-Hells-Angel Kassra Zargaran angesetzt: „Die wussten, wo ich mich regelmäßig aufhielt“",
+    "url": "https://www.tagesspiegel.de/berlin/auftragskiller-auf-ex-hells-angel-kassra-zargaran-angesetzt-die-wussten-wo-ich-mich-regelmassig-aufhielt-16315870.html",
+    "vorschau": "Kassra Zargaran sagte gegen seine früheren Rockerbrüder aus und lebt seitdem im Zeugenschutz. Nun sollte er getötet werden. Im Interview spricht er über die Bedrohung und die tödlichen Regeln der Hells Angels."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Wenn Schutz fehlt: Schläge, Angriffe, Mord: Zehntausende Frauen erleiden Gewalt",
+    "url": "https://www.tagesspiegel.de/gesellschaft/panorama/dpa-wenn-schutz-fehlt-schlage-angriffe-mord-zehntausende-frauen-erleiden-gewalt-16318169.html",
+    "vorschau": "Bundesinnenminister Alexander Dobrindt veröffentlicht die jüngste Statistik für das Jahr 2025. Welches Martyrium hinter den Zahlen steht, können wohl die wenigsten wirklich ermessen."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "25. Todestag: „Wie sehr sie fehlt“: Vor 25 Jahren starb Regine Hildebrandt",
+    "url": "https://www.tagesspiegel.de/berlin/dpa-25-todestag-wie-sehr-sie-fehlt-vor-25-jahren-starb-regine-hildebrandt-16318165.html",
+    "vorschau": "Regine Hildebrandt war lange Sozialministerin in Brandenburg - und eine Stimme des Ostens. Ein Vierteljahrhundert nach ihrem Tod ist sie immer noch Vorbild, meint Brandenburgs Regierungschef Woidke."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Schifffahrt: Reederei-Manager klagen über mangelnden Schutz ihrer Schiffe",
+    "url": "https://www.tagesspiegel.de/wirtschaft/dpa-schifffahrt-reederei-manager-klagen-uber-mangelnden-schutz-ihrer-schiffe-16318163.html",
+    "vorschau": "Die Schifffahrt ist auf sichere Seewege angewiesen. Doch wichtige Passagen sind gefährdet. Reedereien müssen Routen immer wieder ändern und bei Gefahr hohe Versicherungsprämien entrichten."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Tag der Entscheidung bei den Berliner Linken: An der Abstimmung über Vanessa Emde hängt auch die Zukunft von Rot-Grün-Rot",
+    "url": "https://www.tagesspiegel.de/berlin/tag-der-entscheidung-in-berlin-linksfraktion-stimmt-am-dienstag-uber-ausschluss-von-vanessa-emde-ab-16316419.html",
+    "vorschau": "Die gesamte Berliner Landespolitik blickt am Dienstag auf die Linksfraktion: Wird Vanessa Emde ausgeschlossen? In der Partei liegen die Nerven blank."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "Podcast „Tatort Berlin“: Schüsse unter Brüdern – Die tödlichen Regeln der Hells Angels",
+    "url": "https://www.tagesspiegel.de/podcast-tatort-berlin-schusse-unter-brudern--die-todlichen-regeln-der-hells-angels-16316555.html",
+    "vorschau": "Wer als Mitglied eines Rockerclubs mit Rivalen spricht, lebt gefährlich. Aussteiger Kassra Zargaran gibt Einblicke in die Szene und zu einem bis heute ungeklärten Attentat unter Bikern."
+   },
+   {
+    "quelle": "Tagesspiegel",
+    "titel": "„Der talentierte Mr. F.“: Deutsche True-Crime-Doku gewinnt internationalen Emmy",
+    "url": "https://www.tagesspiegel.de/gesellschaft/dpa-der-talentierte-mr-f-deutsche-true-crime-doku-gewinnt-internationalen-emmy-16318112.html",
+    "vorschau": "Ein gestohlener Animationsfilm, ein dreister Dieb und listige Recherche in den USA: Eine ARD-Doku folgt zwei jungen Filmemachern auf der Suche nach Gerechtigkeit. Und das auf preiswürdige Art."
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Singapore is no backdoor for US chips, PM says",
+    "url": "https://www.ft.com/content/6ca21b39-ff62-42e0-9695-9220b438f7eb?syn-25a6b1a6=1",
+    "vorschau": "Lawrence Wong vows city-state will not let companies break law by circumventing export controls"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Modi rebukes India Inc",
+    "url": "https://www.ft.com/content/eefd9be8-828e-4a75-a661-b2a4893062e7?syn-25a6b1a6=1",
+    "vorschau": "Also, Sebi proposes concessions for foreign portfolio investors"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "Japan’s Sanae Takaichi isolated on world stage",
+    "url": "https://www.ft.com/content/13ea1195-a0e7-4b19-8316-d56042ac2678?syn-25a6b1a6=1",
+    "vorschau": "Treatment of prime minister makes it harder to envisage end to year-long tensions"
+   },
+   {
+    "quelle": "FT World",
+    "titel": "UK government steps up its war against quangos",
+    "url": "https://www.ft.com/content/add25ebd-63ef-4ee0-ac76-204bde4cb2f3?syn-25a6b1a6=1",
+    "vorschau": "Louise Haigh says reforming arm’s-length bodies a crucial part in rewiring the state"
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "U.S. Treasurys Edge Lower Amid Higher Fed Rate-Hike Prospects",
+    "url": "https://www.wsj.com/finance/jgb-futures-rise-buoyed-by-decline-in-crude-oil-prices-deebd8c8?mod=rss_markets_main",
+    "vorschau": "U.S. Treasurys edged lower in price terms in the Asian session amid higher prospects for Fed rate hikes."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Basic Materials Roundup: Market Talk",
+    "url": "https://www.wsj.com/business/basic-materials-roundup-market-talk-d9c78f9e?mod=rss_markets_main",
+    "vorschau": "Find insight on Suncor Energy, Bellevue Gold, BHP and more in the latest Market Talks covering Basic Materials."
+   },
+   {
+    "quelle": "WSJ Markets",
+    "titel": "Health Care Roundup: Market Talk",
+    "url": "https://www.wsj.com/business/health-care-roundup-market-talk-d350f360?mod=rss_markets_main",
+    "vorschau": "Find insight on Sanofi, Sandoz Group, Bayer and more in the latest Market Talks covering Health Care."
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Parliament’s Biotech Act position slips to 2027",
+    "url": "https://www.rapporteur.com/news/parliaments-biotech-act-position-slips-to-2027/",
+    "vorschau": "A production waiver is emerging as a key sticking point in negotiations"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Europe’s bird protection rules endangered as EPP moves to reopen nature laws",
+    "url": "https://www.rapporteur.com/news/europes-bird-protection-rules-endangered-as-epp-moves-to-reopen-nature-laws/",
+    "vorschau": "Centre-right push to reopen Birds and Habitats Directives could see law voted down"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Le Pen spectre haunts Greek plans for Montenegro’s EU entry",
+    "url": "https://www.rapporteur.com/news/le-pen-spectre-haunts-greek-plans-for-montenegros-eu-entry/",
+    "vorschau": "Athens is pushing for Montenegro but French voters might block its path to EU"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Parliament buries unlimited approvals for most pesticides",
+    "url": "https://www.rapporteur.com/news/parliament-buries-unlimited-approvals-for-most-pesticides/",
+    "vorschau": "MEPs remain divided on several aspects of the file, pushing the vote back to 2027"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Parliament on crash course over plans to transition to fibre",
+    "url": "https://www.rapporteur.com/news/parliament-on-crash-course-over-plans-to-transition-to-fibre/",
+    "vorschau": "An industry-led vs regulator-led switch pitches conservatives against social-democrats"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Airbus Defence workers oppose Berlin’s participation in GCAP",
+    "url": "https://www.rapporteur.com/news/airbus-defence-workers-oppose-berlins-participation-in-gcap/",
+    "vorschau": "They instead call for Germany to develop its own next-gen fighter jet"
+   },
+   {
+    "quelle": "Euractiv",
+    "titel": "Europe’s critical chance to end the year with a win for multilateralism [Promoted Content]",
+    "url": "https://www.rapporteur.com/opinion/europes-critical-chance-to-end-the-year-with-a-win-for-multilateralism/",
+    "vorschau": "Written by Demetres Karavellas. 2026 has been a bruising year for international cooperation. Geopolitical tensions, energy shocks and growing fragmentation have put multilateralism under unprecedented strain. Yet Europe still has an opportunity to show that collective action can deliver. That opportunity comes in early December, when governments gather at the International Maritime Organization (IMO) to […]"
+   },
+   {
+    "quelle": "WSJ US",
+    "titel": "Why Ken Chenault Is Calling for an AI ‘Manifesto’",
+    "url": "https://www.wsj.com/articles/why-ken-chenault-is-calling-for-an-ai-manifesto-7eab1b51?mod=rss_Technology",
+    "vorschau": ""
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Südkorea: Russische Militärflugzeuge nähern sich südkoreanischer Insel",
+    "url": "https://www.zeit.de/politik/ausland/2026-11/russische-militaerflugzeuge-suedkorea-adiz-insel-ulleung",
+    "vorschau": "Mehrere russische Militärjets sind in Südkoreas Luftraum eingedrungen. Behörden gaben für die Insel Ulleungdo vor der Ostküste Südkoreas eine Evakuierungswarnung aus."
+   },
+   {
+    "quelle": "Zeit Online",
+    "titel": "Autodiebstahl: Weniger Autodiebstähle in Sachsen-Anhalt",
+    "url": "https://www.zeit.de/news/2026-11/24/weniger-autodiebstaehle-in-sachsen-anhalt",
+    "vorschau": ""
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Goldpreis aktuell: Goldpreis erholt sich leicht vom 14-Monats-Tief",
+    "url": "https://www.wiwo.de/finanzen/geldanlage/goldpreis-aktuell-goldpreis-erholt-sich-leicht-vom-14-monats-tief/29741802.html",
+    "vorschau": "Der Goldpreis startet mit Gewinnen in die Woche und stieg zeitweise über 4400 Dollar. Experten erwarten bis Jahresende im Schnitt knapp 4500 Dollar."
+   },
+   {
+    "quelle": "WiWo Finanzen",
+    "titel": "Aktienmärkte: Börsen nach KI-Ausverkauf auf vorsichtigem Erholungskurs",
+    "url": "https://www.wiwo.de/finanzen/boerse/aktienmaerkte-ki-sorgen-setzen-asiens-boersen-weiter-unter-druck/100271925.html",
+    "vorschau": "An den europäischen Börsen setzt ein vorsichtiger Erholungskurs ein. Anleger griffen bei den zuletzt angeschlagenen Tech-Aktien zu. Doch Experten bleiben skeptisch."
+   },
+   {
+    "quelle": "Reuters DE",
+    "titel": "„Reuters“: USA beraten über Ausbildung der syrischen Armee - Nacionale",
+    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQQkk4bXNkamdRMGJ4Y1VYZHJYVE80UFpBdC0zVDdjX3JVQWZtUVFFdWlsWG54ZVQyVGE1dW1BM2tnT2RoSU5OM2k2RDFHMFZZOGpPQnNvZUhTVDVjQ2cxZE9SbFkzbUp1RVVuOXVXYWw1ZDk0YkhVMTFucUJHYXdUXw?oc=5",
+    "vorschau": "„Reuters“: USA beraten über Ausbildung der syrischen Armee Nacionale"
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "24 Killed After Fire Rips Through Candy Factory in Indonesia",
+    "url": "https://www.nytimes.com/2026/11/23/world/asia/indonesia-factory-fire.html",
+    "vorschau": "Hundreds of people were at the compound when a blaze broke out on Saturday and then raged for hours."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Paolo Bulgari, Heir of Italian Jewelry Dynasty, Dies at 89",
+    "url": "https://www.nytimes.com/2026/11/23/style/paolo-bulgari-dead.html",
+    "vorschau": "As the chairman of his family’s company, Mr. Bulgari embraced maximalist aesthetics that recalled ancient Rome. After the 2008 financial crisis, he steered the sale of the business to LVMH."
+   },
+   {
+    "quelle": "NYT World",
+    "titel": "Don Toliver Concert in Manchester Is Evacuated Over ‘Unknown Substance’",
+    "url": "https://www.nytimes.com/2026/11/23/world/europe/manchester-don-toliver-concert-evacuation-uk.html",
+    "vorschau": "The American rapper was performing in Manchester on Sunday when people in the crowd began experiencing effects from the substance, prompting an emergency response."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Cocaine Gangs Batter Colombian Security Forces in Wave of Attacks",
+    "url": "https://www.wsj.com/world/americas/cocaine-gangs-batter-colombian-security-forces-in-wave-of-attacks-3f14fa2e?mod=rss_worldnews",
+    "vorschau": "The insurgents use homemade rockets and drones on police and military installations to challenge President de la Espriella’s pledge to crush criminal networks."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | The Welfare State and Britain’s Idle Youth",
+    "url": "https://www.wsj.com/opinion/alan-milburn-report-u-k-youth-unemployment-52e6b3e6?mod=rss_worldnews",
+    "vorschau": "Perverse incentives encourage the young to remain jobless."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | What Napoleon Teaches Us About Meritocracy",
+    "url": "https://www.wsj.com/opinion/what-napoleon-teaches-us-about-meritocracy-475118a4?mod=rss_worldnews",
+    "vorschau": "His actions demonstrated that favoritism can destroy a merit-based system, a lesson for the age of DEI."
+   },
+   {
+    "quelle": "WSJ World",
+    "titel": "Opinion | Anchors Aweigh on the SS United States",
+    "url": "https://www.wsj.com/opinion/anchors-aweigh-on-the-ss-united-states-db357c33?mod=rss_worldnews",
+    "vorschau": "News of its sinking brought me back to my voyage aboard."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Audra Fordin Fixes Cars, and Eases Women’s Fears",
+    "url": "https://www.nytimes.com/2026/11/23/business/small-business/women-cars.html",
+    "vorschau": "Audra Fordin recognized an undeniable need to make automobile education more accessible, and did something about it."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "Marcia Ann Gillespie, Editor in Chief of Essence and Ms., Has Died",
+    "url": "https://www.nytimes.com/2026/11/23/business/media/marcia-ann-gillespie-dead.html",
+    "vorschau": "She became editor in chief of Essence at age 26, and later ran the feminist magazine Ms. She was 82."
+   },
+   {
+    "quelle": "NYT Business",
+    "titel": "How to Plan for an A.I. Emergency, or Any Calamity",
+    "url": "https://www.nytimes.com/2026/11/21/business/ai-emergency-plan.html",
+    "vorschau": "One person’s attempt to prepare for the unthinkable."
+   },
+   {
+    "quelle": "FT US",
+    "titel": "What happens when bubbles burst",
+    "url": "https://www.ft.com/content/aa71d6bc-bbca-4e95-81b1-20895ac0cb59?syn-25a6b1a6=1",
+    "vorschau": "AI enthusiasm has turned into major investor concern that a market might be heading for a fall"
+   }
+  ]
+ }
+}
